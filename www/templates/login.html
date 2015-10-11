@@ -1,0 +1,33 @@
+
+<ion-view view-title="Login" align-title="left">
+    <ion-content style="background: url(img/login-image1.jpg) center; background-size: cover;">
+        <div class="hero no-header flat">
+            <div class="content">
+                <div class="app-icon"></div>
+                <h1 class="login-title">Art Manager</h1>
+            </div>
+        </div>
+        <form name="form" novalidate>
+            <div class="list">
+                
+                <ion-md-input ng-model="user.name" name="username" placeholder="Nome de Usuario" highlight-color="balanced" type="text" ng-required="true" ></ion-md-input>
+                <div ng-show="form.$submitted || form.username.$touched" >
+                    <div ng-show="form.username.$error.required" class="login-error">
+                        Digite um nome de usuario                        
+                    </div>
+                </div>
+                <ion-md-input ng-model="user.password" name="password"  placeholder="Senha" highlight-color="energized" type="password" ng-required="true" ></ion-md-input>
+                <div ng-show="form.$submitted || form.password.$touched" >
+                    <div ng-show="form.password.$error.required" class="login-error">
+                        Digite uma senha                   
+                    </div>
+                </div>
+                
+            </div>
+            <div class="padding">
+                <!--ui-sref="app.profile"-->
+                <button type="submit"  class="btn-submit-login button button-full button-assertive ink" ng-disabled="form.password.$error.required || form.username.$error.required" ng-click="login(user)">Entrar</button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

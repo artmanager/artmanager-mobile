@@ -1,0 +1,23 @@
+/* Empty. Add your own CSS if you like */
+.login-title {
+	margin-bottom: 32%;
+	color: #fff;
+	text-transform: uppercase;
+}
+.login-error {
+	    text-align: left;
+    	margin-left: 15px;
+    	color:  #FFF;
+}
+.btn-submit-login {
+	    color: #fff!important;
+    	background-color: #F44336!important;
+}
+
+.menu-title {
+	color:  #FFF;
+}
+
+.list:last-child {
+    margin-top: 31px;
+}
