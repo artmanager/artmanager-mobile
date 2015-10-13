@@ -8,6 +8,7 @@ var app = angular.module('artmanager', [
                           'controllers.appController',
                           'controllers.loginController',
                           'controllers.dashboardController',
+                          'controllers.userController',
                           'services.loginService',
                           'services.utilService',
                           'ionic-material', 
@@ -55,6 +56,14 @@ app.config(function ($urlRouterProvider, $stateProvider, $ionicConfigProvider) {
             }
         }
     })  
-      
+    .state('app.createUser', {
+      url: '/createUsers',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/form-user.html',
+          controller: 'UserCtrl'
+        }
+      }
+    })  
    $urlRouterProvider.otherwise('/app/login');
 });

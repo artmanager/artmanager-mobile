@@ -5,9 +5,9 @@
     app.controller('LoginCtrl', ['$scope','$state' , '$timeout', '$stateParams', 'ionicMaterialInk', 'LoginService', 'LocalStorageService', 
         function($scope, $state, $timeout, $stateParams, ionicMaterialInk, LoginService, LocalStorageService) {
             //////LAYOUT
-            if(LocalStorageService.get('token') != null) {
-                $state.go('app.dashboard');   
-            }
+            // if(LocalStorageService.get('token') != null) {
+            //     $state.go('app.dashboard');   
+            // }
             
             
             $scope.$parent.clearFabs();
@@ -20,8 +20,14 @@
             $scope.use = {'name': '', 'password': ''};
                             
             $scope.login = function (user) {
-                LoginService.login(user).then(function (token) {
-                    LocalStorageService.set('token',token);
+                var data = {'data': btoa(user.name + "-"+ user.password)};
+                
+                LoginService.login(data).then(function (token) {
+                    if(token != null){
+                        LocalStorageService.set('token',token);
+                        $state.go('app.dashboard');
+                    }
+
                 });
             }
             

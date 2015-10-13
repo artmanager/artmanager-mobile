@@ -21,3 +21,6 @@
 .list:last-child {
     margin-top: 31px;
 }
+.color-white {
+	color: #fff;
+}
