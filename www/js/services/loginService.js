@@ -5,6 +5,7 @@
 	app.service('LoginService', ['$http', 'ConstantsService', function ($http, ConstantsService) {
 		return {
 			login : function (user) {
+				debugger;
 				var defer = Promise.defer();
 				defer.resolve(btoa('test'));
 				return defer.promise;

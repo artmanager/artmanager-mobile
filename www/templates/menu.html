@@ -4,15 +4,18 @@
                 
 
         <ion-nav-bar class="bar-assertive-900" align-title="left">
-            <ion-nav-back-button class="no-text">
-            </ion-nav-back-button>
             <ion-nav-buttons side="left">
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
                 </button>
-                </ion-nav-buttons>
+           </ion-nav-buttons>
+           <!-- <ion-nav-back-button class="no-text">
+           </ion-nav-back-button> -->
         </ion-nav-bar>
         <ion-nav-view name="menuContent" ng-class="{expanded: isExpanded}" ></ion-nav-view>
-        <button id="fab-options" class="button button-fab button-fab-bottom-right expanded button-energized-900 drop"><i class="icon ion-plus"></i></button>
+
+        <button id="fab-options" class="button button-fab button-fab-bottom-right expanded button-energized-900 drop">
+            <i class="icon ion-plus"></i>
+        </button>
         
     </ion-side-menu-content>
     <ion-side-menu side="left">

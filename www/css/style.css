@@ -24,3 +24,57 @@
 .color-white {
 	color: #fff;
 }
+
+.card-home-grey, .card-home-blue, .card-home-pink {
+    border-top-style: solid;
+    border-top-width: 5px!important;
+}
+.card-home-, .card-home-blue, .card-home-pink {
+    border-top-style: solid;
+    border-top-width: 5px!important;
+}
+
+.card-home-grey {
+    border-top-color: #727272;
+}
+
+.card-home-pink {
+    border-top-color: #FF4081;
+}
+
+.card-home-blue {
+    border-top-color: #1976D2;
+}
+
+.card-home-title-grey {
+    color: #727272!important;
+}
+
+.card-home-title-pink {
+    color: #FF4081!important;
+}
+
+.card-home-title-blue {
+    color: #1976D2!important;
+}
+.card-home-title-green {
+    color: #7BDC99!important;
+}
+
+
+.card-home-p {
+    margin-top: 15px;
+}
+.row-home-header, .col-home-header {
+    padding-top: 0px!important;
+}
+
+.item {
+	border-style: none!important;
+    color: #212121!important;
+}
+.item h2, .item h2 {
+	color: #2196F3;
+	font-weight: bold;
+	font-size: 16px;
+}
