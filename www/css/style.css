@@ -1,4 +1,7 @@
 /* Empty. Add your own CSS if you like */
+* {
+    font-size: 20px;
+}
 .login-title {
 	margin-bottom: 32%;
 	color: #fff;
@@ -25,40 +28,41 @@
 	color: #fff;
 }
 
-.card-home-grey, .card-home-blue, .card-home-pink {
-    border-top-style: solid;
-    border-top-width: 5px!important;
+.card-home-grey, .card-home-red, .card-home-green, .card-home-yellow {
+    border-left-style: solid;
+    border-left-width: 30px!important;
+    font-size: 20px;
 }
-.card-home-, .card-home-blue, .card-home-pink {
-    border-top-style: solid;
-    border-top-width: 5px!important;
-}
+
 
 .card-home-grey {
-    border-top-color: #727272;
+    border-left-color: #727272;
 }
 
-.card-home-pink {
-    border-top-color: #FF4081;
+.card-home-yellow {
+    border-left-color: #FDD835;
 }
 
-.card-home-blue {
-    border-top-color: #1976D2;
+.card-home-red {
+    border-left-color: #DD2C00;
+}
+.card-home-green {
+    border-left-color: #64DD17!important;
 }
 
 .card-home-title-grey {
     color: #727272!important;
 }
 
-.card-home-title-pink {
-    color: #FF4081!important;
+.card-home-title-yellow {
+    color: #FDD835!important;
 }
 
-.card-home-title-blue {
-    color: #1976D2!important;
+.card-home-title-red {
+    color: #DD2C00!important;
 }
 .card-home-title-green {
-    color: #7BDC99!important;
+    color: #64DD17!important;
 }
 
 
@@ -72,9 +76,10 @@
 .item {
 	border-style: none!important;
     color: #212121!important;
+    font-size: 18px;
 }
 .item h2, .item h2 {
 	color: #2196F3;
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 24px;
 }
