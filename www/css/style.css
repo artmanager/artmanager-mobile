@@ -2,6 +2,11 @@
 * {
     font-size: 20px;
 }
+.home {
+    background-color: #EEEEEE;
+    background: url(../img/login-image1.jpg) center; 
+    background-size: cover;
+}
 .login-title {
 	margin-bottom: 32%;
 	color: #fff;
