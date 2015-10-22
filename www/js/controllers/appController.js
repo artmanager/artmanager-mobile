@@ -1,7 +1,9 @@
 (function () {
     'use strict';
 var app = angular.module('controllers.appController', []);
-
+//VERMELHO = 15
+//AMARELO - 15 - 45
+//VERDE - 45 >
 app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout) {
     // Form data for the login modal
     $scope.loginData = {};
