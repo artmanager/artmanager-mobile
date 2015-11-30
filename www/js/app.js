@@ -4,66 +4,79 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('artmanager', [
-                          'ionic', 
-                          'controllers.appController',
-                          'controllers.loginController',
-                          'controllers.dashboardController',
-                          'controllers.userController',
-                          'services.loginService',
-                          'services.utilService',
-                          'ionic-material', 
-                          'ionMdInput'
-                          ]);
+  'ionic', 
+  'controllers.appController',
+  'controllers.loginController',
+  'controllers.dashboardController',
+  'controllers.userController',
+  'controllers.providerController',
+  'services.loginService',
+  'services.utilService',
+  'ionic-material', 
+  'ionMdInput'
+  ]);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }
-  });
+  if(window.cordova && window.cordova.plugins.Keyboard) {
+    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+  }
+  if(window.StatusBar) {
+    StatusBar.styleDefault();
+  }
+});
 });
 
 app.config(function ($urlRouterProvider, $stateProvider, $ionicConfigProvider) {
-    $ionicConfigProvider.views.maxCache(0);
-    
-    $stateProvider
-      .state('app', {
-        url: '/app',
-        abstract: true,
-        templateUrl: 'templates/menu.html',
-        controller: 'AppCtrl'
-      })
-       .state('app.login', {
-        url: '/login',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/login.html',
-                controller: 'LoginCtrl'
-            }
-        }
-    })
-    .state('app.dashboard', {
-        url: '/dashboard',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/dashboard.html',
-                controller: 'DashboardCtrl'
-            }
-        }
-    })  
-    .state('app.createUser', {
-      url: '/createUsers',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/form-user.html',
-          controller: 'UserCtrl'
-        }
+  $ionicConfigProvider.views.maxCache(0);
+
+  var stateProvider =  $stateProvider;
+
+  stateProvider.state('app', {
+    url: '/app',
+    abstract: true,
+    templateUrl: 'templates/menu.html',
+    controller: 'AppCtrl'
+  });
+
+  stateProvider.state('app.login', {
+    url: '/login',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/login.html',
+        controller: 'LoginCtrl'
       }
-    })  
-   $urlRouterProvider.otherwise('/app/login');
+    }
+  });
+  stateProvider.state('app.dashboard', {
+    url: '/dashboard',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/dashboard.html',
+        controller: 'DashboardCtrl'
+      }
+    }
+  });  
+  stateProvider.state('app.createUser', {
+    url: '/createUser',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/form-user.html',
+        controller: 'UserCtrl'
+      }
+    }
+  });
+  stateProvider.state('app.createProvider', {
+    url: '/createProvider',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/form-provider.html',
+        controller: 'ProviderCtrl'
+      }
+    }
+  });
+    
+  $urlRouterProvider.otherwise('/app/login');
 });
