@@ -6,6 +6,7 @@
 
 	app.service('ConstantsService', ['BASE_API_URL', function (BASE_API_URL) {
 		this.LOGIN_URL = BASE_API_URL + 'autenticacao';
+		this.CREATE_USER_URL = BASE_API_URL + 'users'
 	}]);
 
 	app.factory('LocalStorageService', [function (){

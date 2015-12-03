@@ -13,7 +13,7 @@
         </ion-nav-bar>
         <ion-nav-view name="menuContent" ng-class="{expanded: isExpanded}" ></ion-nav-view>
 
-        <button id="fab-options" class="button button-fab button-fab-bottom-right expanded button-energized-900 drop">
+        <button ng-show="fabOptionVisible" id="fab-options" class="button button-fab button-fab-bottom-right expanded button-energized-900 drop">
             <i class="icon ion-plus"></i>
         </button>
         

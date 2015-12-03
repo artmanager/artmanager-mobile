@@ -4,12 +4,13 @@ var app = angular.module('controllers.appController', []);
 //VERMELHO = 15
 //AMARELO - 15 - 45
 //VERDE - 45 >
-app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout) {
+app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout, $rootScope) {
     // Form data for the login modal
     $scope.loginData = {};
     $scope.isExpanded = false;
     $scope.hasHeaderFabLeft = false;
     $scope.hasHeaderFabRight = false;
+    $rootScope.fabOptionVisible = false;
 
     var navIcons = document.getElementsByClassName('ion-navicon');
     for (var i = 0; i < navIcons.length; i++) {

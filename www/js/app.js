@@ -12,8 +12,10 @@ var app = angular.module('artmanager', [
   'controllers.providerController',
   'services.loginService',
   'services.utilService',
+  'services.userService',
   'ionic-material', 
-  'ionMdInput'
+  'ionMdInput',
+  'ui.utils.masks'
   ]);
 
 app.run(function($ionicPlatform) {

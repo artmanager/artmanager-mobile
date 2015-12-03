@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "art-manager-app: An Ionic project",
   "dependencies": {
+    "angular-input-masks": "^2.1.1",
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
     "gulp-minify-css": "^0.3.0",

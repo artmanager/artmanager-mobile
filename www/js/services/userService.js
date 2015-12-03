@@ -1,22 +1,15 @@
 (function (){
 	'use strict';
-	var app = angular.module('services.loginService', []);
+	var app = angular.module('services.userService', []);
 	
-	app.service('LoginService', ['$http', 'ConstantsService', function ($http, ConstantsService) {
+	app.service('UserService', ['$http', 'ConstantsService', function ($http, ConstantsService) {
 		return {
-			login : function (user) {
-				var defer = Promise.defer();
-				defer.resolve(btoa('test'));
-				return defer.promise;
-				
-				// return $http.post(ConstantsService.LOGIN_URL, user).then(function (token) {
-				// 	return token;
-				// });
-				
-			},
-			logout: function (user) {
-				
+			Create : function (user) {
+				$http.post(ConstantsService.CREATE_USER_URL, user).then(function (e) {
+					alert(JSON.stringify(e));
+				});
 			}
 		}
-	}])
+	}]);
+
 })();
