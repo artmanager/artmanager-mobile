@@ -10,9 +10,11 @@ var app = angular.module('artmanager', [
   'controllers.dashboardController',
   'controllers.userController',
   'controllers.providerController',
+  'controllers.clientController',
   'services.loginService',
   'services.utilService',
   'services.userService',
+  'services.clientService',
   'ionic-material', 
   'ionMdInput',
   'ui.utils.masks'
@@ -70,6 +72,16 @@ app.config(function ($urlRouterProvider, $stateProvider, $ionicConfigProvider) {
       }
     }
   });
+  stateProvider.state('app.createClient', {
+    url: '/createClient',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/form-client.html',
+        controller: 'ClientCtrl'
+      }
+    }
+  });
+
   stateProvider.state('app.createProvider', {
     url: '/createProvider',
     views: {

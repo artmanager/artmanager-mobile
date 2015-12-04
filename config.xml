@@ -5,9 +5,9 @@
         An Ionic Framework and Cordova project.
     </description>
   <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+      Devs ArtManager
     </author>
-  <content src="http://192.168.56.1:8100" original-src="index.html"/>
+  <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
