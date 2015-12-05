@@ -18,6 +18,13 @@
                 </div>
             </div>
 
+            <ion-md-input ng-model="user.email" name="email" placeholder="Email" 
+            highlight-color="balanced" type="email" ng-required="true"></ion-md-input>
+            <div ng-show="form.$submitted || form.email.$touched" >
+                <div ng-show="form.nome.$error.required" class="login-error">
+                    Digite um email                        
+                </div>
+            </div>
 
            
 

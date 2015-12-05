@@ -25,6 +25,7 @@
                 LoginService.login(data).then(function (token) {
                     if(token != null){
                         LocalStorageService.set('token',token);
+                        alert(token)
                         $state.go('app.dashboard');
                     }
 
