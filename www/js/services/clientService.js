@@ -6,7 +6,10 @@
 		return {
 			Create : function (user) {
 				$http.post(ConstantsService.CREATE_CLIENT_URL, user).then(function (e) {
-					alert(e.data.success);
+					if (e.data.success)
+						alert('Usuario cadastrado com sucesso');
+					else 
+						alert('Erro ao cadastrar');
 				});
 			}
 		}

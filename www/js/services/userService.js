@@ -9,7 +9,7 @@
 					if (obj.data.erro != undefined)
 						alert(obj.data.erro);
 					else
-						alert(obj.data.success);
+						alert('Cadastro efetuado com sucesso.');
 				});
 			}
 		}

@@ -1,12 +1,8 @@
 /**
- * @ngdoc object
- * @name ui.router.util.$resolve
- *
+ * Service (`ui-util`). Manages resolution of (acyclic) graphs of promises.
+ * @module $resolve
  * @requires $q
  * @requires $injector
- *
- * @description
- * Manages resolution of (acyclic) graphs of promises.
  */
 $Resolve.$inject = ['$q', '$injector'];
 function $Resolve(  $q,    $injector) {
@@ -20,28 +16,18 @@ function $Resolve(  $q,    $injector) {
   
 
   /**
-   * @ngdoc function
-   * @name ui.router.util.$resolve#study
-   * @methodOf ui.router.util.$resolve
-   *
-   * @description
    * Studies a set of invocables that are likely to be used multiple times.
-   * <pre>
-   * $resolve.study(invocables)(locals, parent, self)
-   * </pre>
+   *      $resolve.study(invocables)(locals, parent, self)
    * is equivalent to
-   * <pre>
-   * $resolve.resolve(invocables, locals, parent, self)
-   * </pre>
-   * but the former is more efficient (in fact `resolve` just calls `study` 
-   * internally).
-   *
-   * @param {object} invocables Invocable objects
-   * @return {function} a function to pass in locals, parent and self
+   *      $resolve.resolve(invocables, locals, parent, self)
+   * but the former is more efficient (in fact `resolve` just calls `study` internally).
+   * See {@link module:$resolve/resolve} for details.
+   * @function
+   * @param {Object} invocables
+   * @return {Function}
    */
   this.study = function (invocables) {
     if (!isObject(invocables)) throw new Error("'invocables' must be an object");
-    var invocableKeys = objectKeys(invocables || {});
     
     // Perform a topological sort of invocables to build an ordered plan
     var plan = [], cycle = [], visited = {};
@@ -50,7 +36,7 @@ function $Resolve(  $q,    $injector) {
       
       cycle.push(key);
       if (visited[key] === VISIT_IN_PROGRESS) {
-        cycle.splice(0, indexOf(cycle, key));
+        cycle.splice(0, cycle.indexOf(key));
         throw new Error("Cyclic dependency: " + cycle.join(" -> "));
       }
       visited[key] = VISIT_IN_PROGRESS;
@@ -102,8 +88,7 @@ function $Resolve(  $q,    $injector) {
         if (!--wait) {
           if (!merged) merge(values, parent.$$values); 
           result.$$values = values;
-          result.$$promises = result.$$promises || true; // keep for isResolve()
-          delete result.$$inheritedValues;
+          result.$$promises = true; // keep for isResolve()
           resolution.resolve(values);
         }
       }
@@ -112,28 +97,20 @@ function $Resolve(  $q,    $injector) {
         result.$$failure = reason;
         resolution.reject(reason);
       }
-
+      
       // Short-circuit if parent has already failed
       if (isDefined(parent.$$failure)) {
         fail(parent.$$failure);
         return result;
       }
       
-      if (parent.$$inheritedValues) {
-        merge(values, omit(parent.$$inheritedValues, invocableKeys));
-      }
-
       // Merge parent values if the parent has already resolved, or merge
       // parent promises and wait if the parent resolve is still in progress.
-      extend(promises, parent.$$promises);
       if (parent.$$values) {
-        merged = merge(values, omit(parent.$$values, invocableKeys));
-        result.$$inheritedValues = omit(parent.$$values, invocableKeys);
+        merged = merge(values, parent.$$values);
         done();
       } else {
-        if (parent.$$inheritedValues) {
-          result.$$inheritedValues = omit(parent.$$inheritedValues, invocableKeys);
-        }        
+        extend(promises, parent.$$promises);
         parent.then(done, fail);
       }
       
@@ -183,65 +160,51 @@ function $Resolve(  $q,    $injector) {
   };
   
   /**
-   * @ngdoc function
-   * @name ui.router.util.$resolve#resolve
-   * @methodOf ui.router.util.$resolve
-   *
-   * @description
-   * Resolves a set of invocables. An invocable is a function to be invoked via 
-   * `$injector.invoke()`, and can have an arbitrary number of dependencies. 
-   * An invocable can either return a value directly,
-   * or a `$q` promise. If a promise is returned it will be resolved and the 
-   * resulting value will be used instead. Dependencies of invocables are resolved 
-   * (in this order of precedence)
+   * Resolves a set of invocables. An invocable is a function to be invoked via `$injector.invoke()`,
+   * and can have an arbitrary number of dependencies. An invocable can either return a value directly,
+   * or a `$q` promise. If a promise is returned it will be resolved and the resulting value will be
+   * used instead. Dependencies of invocables are resolved (in this order of precedence)
    *
    * - from the specified `locals`
    * - from another invocable that is part of this `$resolve` call
-   * - from an invocable that is inherited from a `parent` call to `$resolve` 
-   *   (or recursively
-   * - from any ancestor `$resolve` of that parent).
+   * - from an invocable that is inherited from a `parent` call to `$resolve` (or recursively
+   *   from any ancestor `$resolve` of that parent).
    *
-   * The return value of `$resolve` is a promise for an object that contains 
-   * (in this order of precedence)
+   * The return value of `$resolve` is a promise for an object that contains (in this order of precedence)
    *
    * - any `locals` (if specified)
    * - the resolved return values of all injectables
    * - any values inherited from a `parent` call to `$resolve` (if specified)
    *
-   * The promise will resolve after the `parent` promise (if any) and all promises 
-   * returned by injectables have been resolved. If any invocable 
-   * (or `$injector.invoke`) throws an exception, or if a promise returned by an 
-   * invocable is rejected, the `$resolve` promise is immediately rejected with the 
-   * same error. A rejection of a `parent` promise (if specified) will likewise be 
-   * propagated immediately. Once the `$resolve` promise has been rejected, no 
-   * further invocables will be called.
+   * The promise will resolve after the `parent` promise (if any) and all promises returned by injectables
+   * have been resolved. If any invocable (or `$injector.invoke`) throws an exception, or if a promise
+   * returned by an invocable is rejected, the `$resolve` promise is immediately rejected with the same error.
+   * A rejection of a `parent` promise (if specified) will likewise be propagated immediately. Once the
+   * `$resolve` promise has been rejected, no further invocables will be called.
    * 
-   * Cyclic dependencies between invocables are not permitted and will caues `$resolve`
-   * to throw an error. As a special case, an injectable can depend on a parameter 
-   * with the same name as the injectable, which will be fulfilled from the `parent` 
-   * injectable of the same name. This allows inherited values to be decorated. 
-   * Note that in this case any other injectable in the same `$resolve` with the same
+   * Cyclic dependencies between invocables are not permitted and will caues `$resolve` to throw an
+   * error. As a special case, an injectable can depend on a parameter with the same name as the injectable,
+   * which will be fulfilled from the `parent` injectable of the same name. This allows inherited values
+   * to be decorated. Note that in this case any other injectable in the same `$resolve` with the same
    * dependency would see the decorated value, not the inherited value.
    *
-   * Note that missing dependencies -- unlike cyclic dependencies -- will cause an 
-   * (asynchronous) rejection of the `$resolve` promise rather than a (synchronous) 
-   * exception.
+   * Note that missing dependencies -- unlike cyclic dependencies -- will cause an (asynchronous) rejection
+   * of the `$resolve` promise rather than a (synchronous) exception.
    *
-   * Invocables are invoked eagerly as soon as all dependencies are available. 
-   * This is true even for dependencies inherited from a `parent` call to `$resolve`.
+   * Invocables are invoked eagerly as soon as all dependencies are available. This is true even for
+   * dependencies inherited from a `parent` call to `$resolve`.
    *
-   * As a special case, an invocable can be a string, in which case it is taken to 
-   * be a service name to be passed to `$injector.get()`. This is supported primarily 
-   * for backwards-compatibility with the `resolve` property of `$routeProvider` 
-   * routes.
+   * As a special case, an invocable can be a string, in which case it is taken to be a service name
+   * to be passed to `$injector.get()`. This is supported primarily for backwards-compatibility with the
+   * `resolve` property of `$routeProvider` routes.
    *
-   * @param {object} invocables functions to invoke or 
-   * `$injector` services to fetch.
-   * @param {object} locals  values to make available to the injectables
-   * @param {object} parent  a promise returned by another call to `$resolve`.
-   * @param {object} self  the `this` for the invoked methods
-   * @return {object} Promise for an object that contains the resolved return value
-   * of all invocables, as well as any inherited and local values.
+   * @function
+   * @param {Object.<string, Function|string>} invocables  functions to invoke or `$injector` services to fetch.
+   * @param {Object.<string, *>} [locals]  values to make available to the injectables
+   * @param {Promise.<Object>} [parent]  a promise returned by another call to `$resolve`.
+   * @param {Object} [self]  the `this` for the invoked methods
+   * @return {Promise.<Object>}  Promise for an object that contains the resolved return value
+   *    of all invocables, as well as any inherited and local values.
    */
   this.resolve = function (invocables, locals, parent, self) {
     return this.study(invocables)(locals, parent, self);
