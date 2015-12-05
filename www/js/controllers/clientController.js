@@ -1,7 +1,7 @@
 (function () {
 	var app = angular.module('controllers.clientController', ['ngSanitize']);
 
-	app.controller('ClientCtrl', ['$scope','$rootScope', '$timeout', 'ionicMaterialMotion', 'ionicMaterialInk', 'ClientService', function ($scope, $rootScope, $timeout, ionicMaterialMotion, ionicMaterialInk, UserService) {
+	app.controller('ClientCtrl', ['$scope','$rootScope', '$timeout', 'ionicMaterialMotion', 'ionicMaterialInk', 'ClientService', function ($scope, $rootScope, $timeout, ionicMaterialMotion, ionicMaterialInk, ClientService) {
 		$scope.countPhone 		= 1;
 		$scope.countLocation 	= 1
 		$scope.isFormUser 		= true;
@@ -14,11 +14,9 @@
 
 	
 		$scope.login = function (user ) {
-			
-			alert(JSON.stringify(user));
 			ClientService.Create(user);
-			
 		}
+		
 		var disableAll = function () {
 			
 			$scope.isFormUser = false;

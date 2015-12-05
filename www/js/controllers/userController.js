@@ -29,28 +29,25 @@
   //       	});
 		// });
 
-		var newFildPhone = function () {
-			$scope.countPhone ++;
-			var templateTelefone = 
-			"<ion-md-input "+ 
-				"ng-model='user.telefone["+ $scope.countPhone+"].numero' "+ 
-				"name='telefone' "+  
-				"placeholder='Telefone Adicional (opcional)' "+ 
-				"highlight-color=energized " +
-				"type=text "+ 
-				"ng-required=false> " +
-			"</ion-md-input> ";
-			return templateTelefone;
-		}
+		// var newFildPhone = function () {
+		// 	$scope.countPhone ++;
+		// 	var templateTelefone = 
+		// 	"<ion-md-input "+ 
+		// 		"ng-model='user.telefone["+ $scope.countPhone+"].numero' "+ 
+		// 		"name='telefone' "+  
+		// 		"placeholder='Telefone Adicional (opcional)' "+ 
+		// 		"highlight-color=energized " +
+		// 		"type=text "+ 
+		// 		"ng-required=false> " +
+		// 	"</ion-md-input> ";
+		// 	return templateTelefone;
+		// }
 
 
 
 
 		$scope.login = function (user ) {
-			
-			alert(JSON.stringify(user));
 			UserService.Create(user);
-			
 		}
 		var disableAll = function () {
 			
