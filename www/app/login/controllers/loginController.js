@@ -22,13 +22,13 @@
             $scope.login = function (user) {
                 var data = {'data': btoa(user.name + "-"+ user.password)};
                 
-                LoginService.login(data).then(function (token) {
-                    if(token != null){
-                        LocalStorageService.set('token',token);
+                // LoginService.login(data).then(function (token) {
+                //     if(token != null){
+                //         LocalStorageService.set('token',token);
                         $state.go('app.dashboard');
-                    }
+                //     }
 
-                });
+                // });
             }
             
             

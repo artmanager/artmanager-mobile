@@ -41,7 +41,7 @@ app.config(function ($urlRouterProvider, $stateProvider, $ionicConfigProvider) {
   stateProvider.state('app', {
     url: '/app',
     abstract: true,
-    templateUrl: 'templates/menu.html',
+    templateUrl: 'app/common/menu.html',
     controller: 'AppCtrl'
   });
 
@@ -49,7 +49,7 @@ app.config(function ($urlRouterProvider, $stateProvider, $ionicConfigProvider) {
     url: '/login',
     views: {
       'menuContent': {
-        templateUrl: 'templates/login.html',
+        templateUrl: 'app/login/login.html',
         controller: 'LoginCtrl'
       }
     }
@@ -58,7 +58,7 @@ app.config(function ($urlRouterProvider, $stateProvider, $ionicConfigProvider) {
     url: '/dashboard',
     views: {
       'menuContent': {
-        templateUrl: 'templates/dashboard.html',
+        templateUrl: 'app/dashboard/dashboard.html',
         controller: 'DashboardCtrl'
       }
     }
@@ -67,7 +67,7 @@ app.config(function ($urlRouterProvider, $stateProvider, $ionicConfigProvider) {
     url: '/createUser',
     views: {
       'menuContent': {
-        templateUrl: 'templates/form-user.html',
+        templateUrl: 'app/user/form-user.html',
         controller: 'UserCtrl'
       }
     }
@@ -76,7 +76,7 @@ app.config(function ($urlRouterProvider, $stateProvider, $ionicConfigProvider) {
     url: '/createClient',
     views: {
       'menuContent': {
-        templateUrl: 'templates/form-client.html',
+        templateUrl: 'app/client/form-client.html',
         controller: 'ClientCtrl'
       }
     }
@@ -86,7 +86,7 @@ app.config(function ($urlRouterProvider, $stateProvider, $ionicConfigProvider) {
     url: '/createProvider',
     views: {
       'menuContent': {
-        templateUrl: 'templates/form-provider.html',
+        templateUrl: 'app/provider/form-provider.html',
         controller: 'ProviderCtrl'
       }
     }
