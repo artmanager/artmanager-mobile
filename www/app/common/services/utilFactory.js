@@ -1,4 +1,4 @@
-(function (){
+(function (angular){
 	var app = angular.module('services.utilService', []);
 	
 	app.constant('BASE_API_URL', 'http://localhost:3000/');
@@ -26,4 +26,4 @@
 			}
 	}]);
 	
-})();
+})(angular);
