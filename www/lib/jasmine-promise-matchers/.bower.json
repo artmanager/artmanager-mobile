@@ -1,0 +1,31 @@
+{
+  "name": "jasmine-promise-matchers",
+  "version": "2.0.2",
+  "main": "dist/jasmine-promise-matchers.js",
+  "license": "MIT",
+  "ignore": [
+    "source",
+    "spec",
+    ".bowerrc",
+    ".gitignore",
+    ".jshintignore",
+    ".jshintrc",
+    "bower.json",
+    "gruntfile.js",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "homepage": "https://github.com/bvaughn/jasmine-promise-matchers",
+  "_release": "2.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.0.2",
+    "commit": "fab4f540674b1a49bf5b0e820c824c9eb51945ad"
+  },
+  "_source": "git://github.com/bvaughn/jasmine-promise-matchers.git",
+  "_target": "^2.0.2",
+  "_originalSource": "jasmine-promise-matchers",
+  "_direct": true
+}

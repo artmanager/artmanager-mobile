@@ -15,7 +15,7 @@
 
 	
 		$scope.login = function (user ) {
-			ClientService.Create(user);
+			ClientService.create(user);
 		}
 		
 		var disableAll = function () {

@@ -5,9 +5,14 @@
 	// app.constant('BASE_API_URL', 'localhost:3000/');
 
 	app.service('ConstantsService', ['BASE_API_URL', function (BASE_API_URL) {
-		this.LOGIN_URL = BASE_API_URL + 'autenticacao';
-		this.CREATE_USER_URL = BASE_API_URL + 'usuarios';
-		this.CREATE_CLIENT_URL = BASE_API_URL + 'cliente'
+        var baseAutenticacao = BASE_API_URL + 'autenticacao';
+        var baseUser = BASE_API_URL + 'usuarios';
+        var baseClient =   BASE_API_URL + 'cliente';
+        
+		this.LOGIN_URL = baseAutenticacao;
+		this.CREATE_USER_URL = baseUser;
+		this.CREATE_CLIENT_URL = baseClient;
+        this.GET_CLIENT_URL = baseClient;
 	}]);
 
 	app.factory('LocalStorageService', [function (){
