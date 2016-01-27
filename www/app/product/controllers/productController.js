@@ -1,6 +1,6 @@
 (function (angular) {
     var app = angular.module('controllers.productController', []);
-    app.controller('ProductsCtrl', ['$scope','$timeout', 'ionicMaterialMotion', 'ionicMaterialInk','ProductsService', function ($scope, $timeout,ionicMaterialMotion, ionicMaterialInk, ProductsService) {
+    app.controller('ProductCtrl', ['$scope','$timeout', 'ionicMaterialMotion', 'ionicMaterialInk','ProductService', function ($scope, $timeout,ionicMaterialMotion, ionicMaterialInk, ProductService) {
         // Set Header
         var self = $scope;
         
@@ -24,7 +24,7 @@
         
         self.filters = getFilters();
         self.init = (function () {
-            ProductsService.products().then(function (itens) {
+            ProductService.products().then(function (itens) {
                 self.items = itens;
                 
             });

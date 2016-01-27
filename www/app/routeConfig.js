@@ -64,11 +64,22 @@
             views: {
                 'menuContent': {
                     templateUrl: 'app/product/products.html',
-                    controller: 'ProductsCtrl',
+                    controller: 'ProductCtrl',
                     controllerAs: 'products'
                 }
             }
         });
+        stateProvider.state('app.productsCount', {
+            url: '/products/count',
+            views: {
+                'menuContent': {
+                    templateUrl: 'app/product/products-count.html',
+                    controller: 'ProductCountCtrl',
+                    controllerAs: 'products'
+                }
+            }
+        });
+        
         stateProvider.state('app.employees', {
             url: '/employees',
             views: {

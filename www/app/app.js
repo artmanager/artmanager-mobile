@@ -15,6 +15,8 @@
         'controllers.providerController',
         'controllers.clientController',
         'controllers.productController',
+        'controllers.productCountController',
+
         'controllers.employeeController',
         'controllers.employeeDetailController',
         
@@ -22,7 +24,7 @@
         'services.utilService',
         'services.userService',
         'services.clientService',
-        'services.productsService',
+        'services.productService',
         'services.employeeService',
         
         'ionic-material',
