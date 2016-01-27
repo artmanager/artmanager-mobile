@@ -30,6 +30,15 @@
                 }
             }
         });
+        stateProvider.state('app.orderDetail', {
+            url: '/orders/:id',
+            views: {
+                'menuContent': {
+                    templateUrl: 'app/order/order-detail.html',
+                    controller: 'OrderDetailCtrl'
+                }
+            }
+        });
         stateProvider.state('app.createUser', {
             url: '/createUser',
             views: {

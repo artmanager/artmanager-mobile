@@ -6,6 +6,7 @@
         'controllers.appController',
         'controllers.loginController',
         'controllers.orderController',
+        'controllers.orderDetailController',
         'controllers.userController',
         'controllers.providerController',
         'controllers.clientController',
