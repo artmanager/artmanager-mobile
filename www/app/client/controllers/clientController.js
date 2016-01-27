@@ -1,8 +1,9 @@
-(function () {
+(function (angular) {
 	var app = angular.module('controllers.clientController', ['ngSanitize']);
 
 	app.controller('ClientCtrl', ['$scope','$rootScope', '$timeout', 'ionicMaterialMotion', 'ionicMaterialInk', 'ClientService', function ($scope, $rootScope, $timeout, ionicMaterialMotion, ionicMaterialInk, ClientService) {
-		$scope.countPhone 		= 1;
+		
+        $scope.countPhone 		= 1;
 		$scope.countLocation 	= 1
 		$scope.isFormUser 		= true;
 		$scope.isFormContato 	= false;
@@ -52,4 +53,4 @@
 		}]);
 
 
-})();   
+})(angular);   

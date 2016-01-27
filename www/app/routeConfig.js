@@ -58,17 +58,18 @@
                 }
             }
         });
-    
-          stateProvider.state('app.products', {
+
+        stateProvider.state('app.products', {
             url: '/products',
             views: {
-              'menuContent': {
-                templateUrl: 'app/product/products.html',
-                controller: 'ProductsCtrl'
-              }
+                'menuContent': {
+                    templateUrl: 'app/product/products.html',
+                    controller: 'ProductsCtrl',
+                    controllerAs: 'products'
+                }
             }
-          });
-  
+        });
+
         $urlRouterProvider.otherwise('/app/login');
     });
 

@@ -1,1 +1,78 @@
+<ion-view view-title="PRODUTOS" name="products-view">
+    <ion-content>
+        <div class="row">
 
+            <div class="row">
+                <div class="col-20">
+                    <div class="input-label">
+                        Ordem:
+                    </div>
+                </div>
+                <div class="col-10">
+                    <a href="#" class="ion-arrow-up-c" ng-click="ascending=true"></a>
+                </div>
+                <div class="col-10">
+                    <a href="#" class="ion-arrow-down-c" ng-click="ascending=false"></a>
+                </div>
+                <div class="col-50 item-select">
+                    <div class="input-label">
+                        Por:
+                    </div>
+                    <select class="col-20" ng-model="order">
+                        <option ng-repeat="filter in filters"  value="{{filter.value}}" ng-selected="{{filter.selected}}">{{filter.desc}} </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+            <ion-list ng-repeat="product in products | orderBy:order:ascending">
+                <ion-item href="#/app/profile" class="card">
+                    <h2>{{product.nome}}</h2>
+
+                    <div class="row">
+                        <div class="padding"></div>
+                        <div class="col-25">
+                            <h3>Fornecedor:</h3>
+                            <p> {{product.fornecedor}}</p>
+                        </div>
+                        <div class="col-25">
+                            <h3>Tamanho:</h3>
+                            <p> {{product.tamanho}} CM</p>
+                        </div>
+                        <div class="col-25">
+                            <h3>Peso:</h3>
+                            <p> {{product.peso}} KG</p>
+                        </div>
+                        <div class="col-25">
+                            <h3>Categoria:</h3>
+                            <p> Produtos {{product.categoria}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="padding"></div>
+                        <div class="col-50">
+                            <h3>Preco de Venda:</h3>
+                            <p> R$ {{product.precoVenda}}</p>
+                        </div>
+                        <div class="col-50">
+                            <h3>Custo:</h3>
+                            <p>R$ {{product.custo}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="padding"></div>
+                        <div class="col-50">
+                            <h3>Descricao:</h3>
+                            <p>
+                                {{product.descricao}}</p>
+                        </div>
+                        <div class="col-50">
+                            <h3>Quantidade Disponível:</h3>
+                            <p> {{product.quantidadeDisponivel}} unidades</p>
+                        </div>
+                    </div>
+
+                </ion-item>
+            </ion-list>
+    </ion-content>
+</ion-view>
