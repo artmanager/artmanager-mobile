@@ -6,8 +6,6 @@
 
 > sudo npm rebuild gulp-sass 
 
-Para rodar o app apenas faça o download
-no terminal digite 
 > sudo npm install
 
 testes
