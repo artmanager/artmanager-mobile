@@ -69,7 +69,26 @@
                 }
             }
         });
-
+        stateProvider.state('app.employees', {
+            url: '/employees',
+            views: {
+                'menuContent': {
+                    templateUrl: 'app/employee/employees.html',
+                    controller: 'EmployeeCtrl',
+                    controllerAs: 'employees'
+                }
+            }
+        });
+        stateProvider.state('app.employeesDetail', {
+            url: '/employees/:id',
+            views: {
+                'menuContent': {
+                    templateUrl: 'app/employee/employees-detail.html',
+                    controller: 'EmployeeDetailCtrl',
+                    controllerAs: 'employees'
+                }
+            }
+        });
         $urlRouterProvider.otherwise('/app/login');
     });
 

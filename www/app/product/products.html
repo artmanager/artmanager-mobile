@@ -1,4 +1,4 @@
-<ion-view view-title="PRODUTOS" name="products-view">
+<ion-view view-title="PRODUTOS" name="items-view">
     <ion-content>
         <div class="row">
 
@@ -25,38 +25,38 @@
             </div>
         </div>
         
-            <ion-list ng-repeat="product in products | orderBy:order:ascending">
-                <ion-item href="#/app/profile" class="card">
-                    <h2>{{product.nome}}</h2>
+            <ion-list ng-repeat="item in items | orderBy:order:ascending">
+                <ion-item  class="card">
+                    <h2>{{item.nome}}</h2>
 
                     <div class="row">
                         <div class="padding"></div>
                         <div class="col-25">
                             <h3>Fornecedor:</h3>
-                            <p> {{product.fornecedor}}</p>
+                            <p> {{item.fornecedor}}</p>
                         </div>
                         <div class="col-25">
                             <h3>Tamanho:</h3>
-                            <p> {{product.tamanho}} CM</p>
+                            <p> {{item.tamanho}} CM</p>
                         </div>
                         <div class="col-25">
                             <h3>Peso:</h3>
-                            <p> {{product.peso}} KG</p>
+                            <p> {{item.peso}} KG</p>
                         </div>
                         <div class="col-25">
                             <h3>Categoria:</h3>
-                            <p> Produtos {{product.categoria}}</p>
+                            <p> Produtos {{item.categoria}}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="padding"></div>
                         <div class="col-50">
                             <h3>Preco de Venda:</h3>
-                            <p> R$ {{product.precoVenda}}</p>
+                            <p> R$ {{item.precoVenda}}</p>
                         </div>
                         <div class="col-50">
                             <h3>Custo:</h3>
-                            <p>R$ {{product.custo}}</p>
+                            <p>R$ {{item.custo}}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -64,11 +64,11 @@
                         <div class="col-50">
                             <h3>Descricao:</h3>
                             <p>
-                                {{product.descricao}}</p>
+                                {{item.descricao}}</p>
                         </div>
                         <div class="col-50">
                             <h3>Quantidade Disponível:</h3>
-                            <p> {{product.quantidadeDisponivel}} unidades</p>
+                            <p> {{item.quantidadeDisponivel}} unidades</p>
                         </div>
                     </div>
 

@@ -1,0 +1,49 @@
+<ion-view view-title="FORNECEDORES" name="items-view">
+    <ion-content>
+        <div class="row">
+
+            <div class="row">
+                <div class="col-20">
+                    <div class="input-label">
+                        Ordem:
+                    </div>
+                </div>
+                <div class="col-10">
+                    <a href="#" class="ion-arrow-up-c" ng-click="ascending=true"></a>
+                </div>
+                <div class="col-10">
+                    <a href="#" class="ion-arrow-down-c" ng-click="ascending=false"></a>
+                </div>
+                <div class="col-50 item-select">
+                    <div class="input-label">
+                        Por:
+                    </div>
+                    <select class="col-20" ng-model="order">
+                        <option ng-repeat="filter in filters"  value="{{filter.value}}" ng-selected="{{filter.selected}}">{{filter.desc}} </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+            <ion-list ng-repeat="item in items | orderBy:order:ascending">
+                <ion-item  class="card" href="#/app/employees/{{item.id}}">
+                    <h2>{{item.nome}}</h2>
+
+                    <div class="row">
+                        <div class="col-50">
+                            <h3>Fornecedor:</h3>
+                            <p> {{item.fornecedor}}</p>
+                        </div>
+                        <div class="col-33">
+                            <h3>Valor a Receber:</h3>
+                            <p> R$ {{item.valorReceber}}</p>
+                        </div>
+                        <div >
+                            <i class="ion-chevron-right"></i>
+                        </div>
+                    </div>
+
+                </ion-item>
+            </ion-list>
+    </ion-content>
+</ion-view>

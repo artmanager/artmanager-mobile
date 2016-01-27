@@ -18,14 +18,14 @@
         ionicMaterialInk.displayEffect();
 
 
-        self.products = [];
+        self.items = [];
         self.order = "nome";
         self.ascending = true;
         
         self.filters = getFilters();
         self.init = (function () {
             ProductsService.products().then(function (itens) {
-                self.products = itens;
+                self.items = itens;
                 
             });
         })();

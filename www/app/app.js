@@ -15,12 +15,15 @@
         'controllers.providerController',
         'controllers.clientController',
         'controllers.productController',
+        'controllers.employeeController',
+        'controllers.employeeDetailController',
         
         'services.loginService',
         'services.utilService',
         'services.userService',
         'services.clientService',
         'services.productsService',
+        'services.employeeService',
         
         'ionic-material',
         'ionMdInput',
