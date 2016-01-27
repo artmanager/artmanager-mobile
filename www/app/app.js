@@ -5,13 +5,12 @@
         
         'controllers.appController',
         'controllers.loginController',
-        'controllers.dashboardController',
+        'controllers.orderController',
         'controllers.userController',
         'controllers.providerController',
         'controllers.clientController',
         'controllers.productController',
         'controllers.productCountController',
-
         'controllers.employeeController',
         'controllers.employeeDetailController',
         
@@ -21,6 +20,7 @@
         'services.clientService',
         'services.productService',
         'services.employeeService',
+        'services.orderService',
         
         'ionic-material',
         'ionMdInput',

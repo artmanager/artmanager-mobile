@@ -3,11 +3,9 @@
 	var app = angular.module('services.clientService', []);
 	
 	app.service('ClientService', ['$http', 'ConstantsService', function ($http, ConstantsService) {
-		
-        
-        return {
-			Create : create
-		}
+		return {
+			create : create
+		};
         
                 
         function create (user) {

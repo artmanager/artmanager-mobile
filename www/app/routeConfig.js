@@ -21,12 +21,12 @@
                 }
             }
         });
-        stateProvider.state('app.dashboard', {
-            url: '/dashboard',
+        stateProvider.state('app.orders', {
+            url: '/orders',
             views: {
                 'menuContent': {
-                    templateUrl: 'app/dashboard/dashboard.html',
-                    controller: 'DashboardCtrl'
+                    templateUrl: 'app/order/orders.html',
+                    controller: 'OrderCtrl'
                 }
             }
         });

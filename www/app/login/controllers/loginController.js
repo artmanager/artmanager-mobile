@@ -25,7 +25,7 @@
                 // LoginService.login(data).then(function (token) {
                 //     if(token != null){
                 //         LocalStorageService.set('token',token);
-                        $state.go('app.dashboard');
+                        $state.go('app.orders');
                 //     }
 
                 // });
