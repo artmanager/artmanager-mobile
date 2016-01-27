@@ -1,14 +1,14 @@
 # README #
 
-> npm install -g gulp 
+> sudo npm install -g gulp 
 
-> npm install -g gulp-sass
+> sudo npm install -g gulp-sass
 
-> npm rebuild gulp-sass 
+> sudo npm rebuild gulp-sass 
 
 Para rodar o app apenas faça o download
 no terminal digite 
-> npm install
+> sudo npm install
 
 testes
 > gulp specs
