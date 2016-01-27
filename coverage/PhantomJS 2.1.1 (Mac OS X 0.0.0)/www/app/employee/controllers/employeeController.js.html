@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">11.43% </span>
+        <span class="strong">11.11% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/35</span>
+        <span class='fraction'>4/36</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.67% </span>
+        <span class="strong">14.29% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/6</span>
+        <span class='fraction'>1/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">11.43% </span>
+        <span class="strong">11.11% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/35</span>
+        <span class='fraction'>4/36</span>
       </div>
     </div>
   </div>
@@ -101,7 +101,9 @@
 56
 57
 58
-59</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+59
+60
+61</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -114,22 +116,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -154,6 +141,23 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -161,58 +165,60 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function (angular) {
     var app = angular.module('controllers.employeeController', []);
-    app.controller('EmployeeCtrl', ['$scope','$timeout', 'ionicMaterialMotion', 'ionicMaterialInk','EmployeeService', <span class="fstat-no" title="function not covered" >function ($scope, $timeout,ionicMaterialMotion, ionicMaterialInk, EmployeeService) {</span>
+    app.controller('EmployeeCtrl', ['$scope', '$timeout', 'ionicMaterialMotion', 'ionicMaterialInk', 'EmployeeService', <span class="fstat-no" title="function not covered" >function ($scope, $timeout, ionicMaterialMotion, ionicMaterialInk, EmployeeService) {</span>
         // Set Header
 <span class="cstat-no" title="statement not covered" >        var self = $scope;</span>
-        
-<span class="cstat-no" title="statement not covered" >        self.$parent.showHeader();</span>
-<span class="cstat-no" title="statement not covered" >        self.$parent.clearFabs();</span>
-<span class="cstat-no" title="statement not covered" >        self.$parent.setHeaderFab('left');</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        $timeout(<span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >            self.isExpanded = true;</span>
-<span class="cstat-no" title="statement not covered" >            self.$parent.setExpanded(true);</span>
-        }, 300);
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        ionicMaterialMotion.fadeSlideInRight();</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        ionicMaterialInk.displayEffect();</span>
-&nbsp;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        self.items = [];</span>
 <span class="cstat-no" title="statement not covered" >        self.order = "nome";</span>
 <span class="cstat-no" title="statement not covered" >        self.ascending = true;</span>
-        
+&nbsp;
 <span class="cstat-no" title="statement not covered" >        self.filters = getFilters();</span>
 <span class="cstat-no" title="statement not covered" >        self.init = (<span class="fstat-no" title="function not covered" >function () {</span></span>
 <span class="cstat-no" title="statement not covered" >            EmployeeService.employess().then(<span class="fstat-no" title="function not covered" >function (itens) {</span></span>
 <span class="cstat-no" title="statement not covered" >                self.items = itens;</span>
-                
             });
         })();
-        
-<span class="fstat-no" title="function not covered" >        function getFilters () {</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function getFilters() {</span>
 <span class="cstat-no" title="statement not covered" >            var filters = [];</span>
 <span class="cstat-no" title="statement not covered" >            var filter = {};</span>
-            
-<span class="cstat-no" title="statement not covered" >            filter.value= "nome";</span>
-<span class="cstat-no" title="statement not covered" >            filter.desc = "Nome"; </span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            filter.value = "nome";</span>
+<span class="cstat-no" title="statement not covered" >            filter.desc = "Nome";</span>
 <span class="cstat-no" title="statement not covered" >            filter.selected = true;</span>
 <span class="cstat-no" title="statement not covered" >            filters.push(filter);</span>
-            
-<span class="cstat-no" title="statement not covered" >             filter = {};</span>
-<span class="cstat-no" title="statement not covered" >            filter.value= "fornecedor";</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            filter = {};</span>
+<span class="cstat-no" title="statement not covered" >            filter.value = "fornecedor";</span>
 <span class="cstat-no" title="statement not covered" >            filter.desc = "Fornecedor";</span>
 <span class="cstat-no" title="statement not covered" >            filters.push(filter);</span>
-            
-            
+&nbsp;
+&nbsp;
 <span class="cstat-no" title="statement not covered" >            filter = {};</span>
-<span class="cstat-no" title="statement not covered" >            filter.value= "valorReceber";</span>
+<span class="cstat-no" title="statement not covered" >            filter.value = "valorReceber";</span>
 <span class="cstat-no" title="statement not covered" >            filter.desc = "Valor a Receber";</span>
 <span class="cstat-no" title="statement not covered" >            filters.push(filter);</span>
-            
+&nbsp;
 <span class="cstat-no" title="statement not covered" >            return filters;</span>
         };
+        
+        //animations
+<span class="cstat-no" title="statement not covered" >        (<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            self.$parent.showHeader();</span>
+<span class="cstat-no" title="statement not covered" >            self.$parent.clearFabs();</span>
+<span class="cstat-no" title="statement not covered" >            self.$parent.setHeaderFab('left');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            $timeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                self.isExpanded = true;</span>
+<span class="cstat-no" title="statement not covered" >                self.$parent.setExpanded(true);</span>
+            }, 300);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            ionicMaterialMotion.fadeSlideInRight();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            ionicMaterialInk.displayEffect();</span>
+        })()
+&nbsp;
     }]);
 &nbsp;
 &nbsp;
@@ -223,7 +229,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jan 27 2016 17:30:15 GMT-0200 (BRST)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jan 27 2016 20:45:30 GMT-0200 (BRST)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

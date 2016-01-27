@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for www/app/common/controllers/appController.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">all files</a> / <a href="index.html">www/app/common/controllers/</a> appController.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.88% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>3/51</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">7.14% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.88% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>3/51</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function () {
+    'use strict';
+var app = angular.module('controllers.appController', []);
+//VERMELHO = 15
+//AMARELO - 15 - 45
+//VERDE - 45 &gt;
+app.controller('AppCtrl', <span class="fstat-no" title="function not covered" >function($scope, $ionicModal, $ionicPopover, $timeout, $rootScope) {</span>
+    // Form data for the login modal
+<span class="cstat-no" title="statement not covered" >    $scope.loginData = {};</span>
+<span class="cstat-no" title="statement not covered" >    $scope.isExpanded = false;</span>
+<span class="cstat-no" title="statement not covered" >    $scope.hasHeaderFabLeft = false;</span>
+<span class="cstat-no" title="statement not covered" >    $scope.hasHeaderFabRight = false;</span>
+<span class="cstat-no" title="statement not covered" >    $rootScope.fabOptionVisible = false;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var navIcons = document.getElementsByClassName('ion-navicon');</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = 0; i &lt; navIcons.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >        navIcons.addEventListener('click', <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            this.classList.toggle('active');</span>
+        });
+    }
+&nbsp;
+    ////////////////////////////////////////
+    // Layout Methods
+    ////////////////////////////////////////
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    $scope.hideNavBar = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        document.getElementsByTagName('ion-nav-bar')[0].style.display = 'none';</span>
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    $scope.showNavBar = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        document.getElementsByTagName('ion-nav-bar')[0].style.display = 'block';</span>
+    };
+<span class="cstat-no" title="statement not covered" >   $scope.noHeader = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        var content = document.getElementsByTagName('ion-content');</span>
+<span class="cstat-no" title="statement not covered" >        for (var i = 0; i &lt; content.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            if (content[i].classList.contains('has-header')) {</span>
+<span class="cstat-no" title="statement not covered" >                content[i].classList.toggle('has-header');</span>
+            }
+        }
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    $scope.setExpanded = <span class="fstat-no" title="function not covered" >function(bool) {</span></span>
+<span class="cstat-no" title="statement not covered" >        $scope.isExpanded = bool;</span>
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    $scope.setHeaderFab = <span class="fstat-no" title="function not covered" >function(location) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var hasHeaderFabLeft = false;</span>
+<span class="cstat-no" title="statement not covered" >        var hasHeaderFabRight = false;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        switch (location) {</span>
+            case 'left':
+<span class="cstat-no" title="statement not covered" >                hasHeaderFabLeft = true;</span>
+<span class="cstat-no" title="statement not covered" >                break;</span>
+            case 'right':
+<span class="cstat-no" title="statement not covered" >                hasHeaderFabRight = true;</span>
+<span class="cstat-no" title="statement not covered" >                break;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.hasHeaderFabLeft = hasHeaderFabLeft;</span>
+<span class="cstat-no" title="statement not covered" >        $scope.hasHeaderFabRight = hasHeaderFabRight;</span>
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    $scope.hasHeader = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        var content = document.getElementsByTagName('ion-content');</span>
+<span class="cstat-no" title="statement not covered" >        for (var i = 0; i &lt; content.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            if (!content[i].classList.contains('has-header')) {</span>
+<span class="cstat-no" title="statement not covered" >                content[i].classList.toggle('has-header');</span>
+            }
+        }
+&nbsp;
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    $scope.hideHeader = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        $scope.hideNavBar();</span>
+<span class="cstat-no" title="statement not covered" >        $scope.noHeader();</span>
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    $scope.showHeader = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        $scope.showNavBar();</span>
+<span class="cstat-no" title="statement not covered" >        $scope.hasHeader();</span>
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    $scope.clearFabs = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        var fabs = document.getElementsByClassName('button-fab');</span>
+<span class="cstat-no" title="statement not covered" >        if (fabs.length &amp;&amp; fabs.length &gt; 1) {</span>
+<span class="cstat-no" title="statement not covered" >            fabs[0].remove();</span>
+        }
+    };
+<span class="cstat-no" title="statement not covered" >    $scope.buttonOptions = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        $timeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            document.getElementById('fab-options').classList.toggle('on');</span>
+        }, 600);
+    }()
+})
+})()</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jan 27 2016 22:59:16 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

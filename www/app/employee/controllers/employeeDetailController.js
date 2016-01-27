@@ -7,7 +7,7 @@
         self.item = {};
         EmployeeService.employee(id).then(function (item) {
            self.item = item;
-           console.log($scope.item);
+           console.log(item);
         });
         
     });
