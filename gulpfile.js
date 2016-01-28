@@ -21,12 +21,13 @@ gulp.task('tests',function(done) {
   new Server({
     configFile: __dirname + '/tests/karma.conf.js',
     singleRun: true
-  }, done).start();
+  }, function (){done()}).start();
 });
       
 
 gulp.task('watch', function() {
-  gulp.watch('./www/app/**', ['tests']);
+  gulp.watch('www/**/*', ['tests']);
+  gulp.watch('tests/**/*', ['tests']);
 });
 
 gulp.task('install', ['git-check'], function() {

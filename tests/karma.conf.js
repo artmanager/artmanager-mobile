@@ -23,7 +23,7 @@ module.exports = function (config) {
             '../www/lib/jasmine-promise-matchers/dist/jasmine-promise-matchers.min.js',
             '../www/app/**/**/**/*.js',
             '**/*.test.js',
-            '**/*.spec.js'
+            // '**/*.spec.js'
         ],
 
 

@@ -6,6 +6,6 @@
   ],
   "watchPatterns": [
     "www/**/*",
-    "tests/**/**/*"
+    "tests/**/**/*.js"
   ]
 }
