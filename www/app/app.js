@@ -1,3 +1,4 @@
+/*global cordova, StatusBar */
 (function (angular) {
     var app = angular.module('artmanager', [
         'ionic',
@@ -22,6 +23,8 @@
         'services.productService',
         'services.employeeService',
         'services.orderService',
+        
+        'filters.commonFilters',
         
         'ionic-material',
         'ionMdInput',

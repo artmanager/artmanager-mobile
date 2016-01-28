@@ -10,22 +10,9 @@
         self.filters = getFilters();
         self.init = (function () {
             OrderService.get().then(function (items) {
-                self.items = mapStatusItems(items);
+                self.items = items;
             });
         })();
-
-        function mapStatusItems(items) {
-            return items.map(function (val) {
-                val.color = {};
-                val.color.text = colorOrderStatus(val.status);
-                val.color.val = val.status;
-                return val;
-            });
-        };
-        
-        function colorOrderStatus(status) {
-            return status == 0 ? 'red' : (status == 1 ? 'yellow' : 'green');
-        };
 
         function getFilters () {
             var filters = [];

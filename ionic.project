@@ -1,4 +1,11 @@
 {
   "name": "artmanager-mobile",
-  "app_id": ""
+  "app_id": "",
+  "gulpStartupTasks": [
+    "default"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "tests/**/**/*"
+  ]
 }
