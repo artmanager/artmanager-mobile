@@ -23,11 +23,11 @@
         </div>
 
         <ion-list ng-repeat="item in items| orderBy:order:ascending">
-            <ion-item class="card card-home-{{item.status | filterStatusColor}}" href="#/app/orders/{{item.id}}">
+            <ion-item class="card card-home-{{item.status | statusColor}}" href="#/app/orders/{{item.id}}">
                 <div class="item-text-wrap">
                     <div class="row row-home-header">
                         <div class="col col-home-header">
-                            <h2 class="card-home-title-{{item.color.text}}">{{item.product}}</h2>
+                            <h2 class="card-home-title-{{item.status | statusColor}}">{{item.product}}</h2>
                         </div>
                     </div>
                     <div class="row">

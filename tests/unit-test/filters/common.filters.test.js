@@ -7,8 +7,8 @@
             module('filters.commonFilters');
         });
         beforeEach(inject(function ($filter) {
-            $filterColors = $filter('filterStatusColor');
-            expect($filter('filterStatusColor')).not.toBeNull();
+            $filterColors = $filter('statusColor');
+            expect($filter('statusColor')).not.toBeNull();
         }));
 
         it('check with status 0 is red  ', function () {

@@ -14,12 +14,14 @@ $dark: #444 !default;
   box-shadow: none;
   padding-top: 30px;
   padding-bottom: 0;
+
   .input-label {
     position: absolute;
     padding: 5px 0 0;
+
     z-index: 2;
-    -webkit-transform: translate3d(0, -30px, 0) scale(1);
-    transform: translate3d(0, -30px, 0) scale(1);
+    -webkit-transform: translate3d(0, -30px, 0) scale(1);;
+    transform: translate3d(0,-30px, 0) scale(1);;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
     color: $dark;
@@ -31,7 +33,7 @@ $dark: #444 !default;
     position: relative;
     bottom: 0;
   }
-  .highlight {
+  .hightlight {
     position: absolute;
     bottom: 0;
     height: 2px;
@@ -42,31 +44,31 @@ $dark: #444 !default;
     -webkit-transition: all 0.15s ease;
     transition: all 0.15s ease;
   }
-  .highlight-light {
+  .hightlight-light {
     background: $light;
   }
-  .highlight-stable {
+  .hightlight-stable {
     background: $stable;
   }
-  .highlight-positive {
+  .hightlight-positive {
     background: $positive;
   }
-  .highlight-calm {
+  .hightlight-calm {
     background: $calm;
   }
-  .highlight-balanced {
+  .hightlight-balanced {
     background: $balanced;
   }
-  .highlight-energized {
+  .hightlight-energized {
     background: $energized;
   }
-  .highlight-assertive {
+  .hightlight-assertive {
     background: $assertive;
   }
-  .highlight-royal {
+  .hightlight-royal {
     background: $royal;
   }
-  .highlight-dark {
+  .hightlight-dark {
     background: $dark;
   }
   input:focus ~ .input-label,
@@ -74,10 +76,10 @@ $dark: #444 !default;
     -webkit-transform: translate3d(0, -60px, 0) scale(0.9);
     transform: translate3d(0, -60px, 0) scale(0.9);
     opacity: 1;
+
   }
-  input:focus ~ .highlight {
+  input:focus ~ .hightlight {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
 }
-

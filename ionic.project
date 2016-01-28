@@ -2,7 +2,8 @@
   "name": "artmanager-mobile",
   "app_id": "",
   "gulpStartupTasks": [
-    "default"
+    "default",
+    "sass"
   ],
   "watchPatterns": [
     "www/**/*",

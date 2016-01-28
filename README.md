@@ -8,7 +8,7 @@
 > sudo npm install
 
 testes
-> gulp specs
+> gulp tests
 
 rodar app
 > ionic serve

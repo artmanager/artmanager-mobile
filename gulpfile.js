@@ -15,16 +15,27 @@ var paths = {
 };
 
 
-gulp.task('default', ['tests','watch']);
+gulp.task('default', ['watch']);
 
 gulp.task('tests',function(done) {
   new Server({
     configFile: __dirname + '/tests/karma.conf.js',
     singleRun: true
-  }, function (){done()}).start();
+  }, done).start();
 });
       
-
+gulp.task('sass', function(done) {
+  gulp.src('./scss/ionic.app.scss')
+    .pipe(sass())
+    .on('error', sass.logError)
+    .pipe(gulp.dest('./www/css/'))
+    .pipe(minifyCss({
+      keepSpecialComments: 0
+    }))
+    .pipe(rename({ extname: '.min.css' }))
+    .pipe(gulp.dest('./www/css/'))
+    .on('end', done);
+});
 gulp.task('watch', function() {
   gulp.watch('www/**/*', ['tests']);
   gulp.watch('tests/**/*', ['tests']);

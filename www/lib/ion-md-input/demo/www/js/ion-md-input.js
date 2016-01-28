@@ -8,21 +8,22 @@ angular.module('ionMdInput', [])
     template: '<label class="item item-input item-md-label">' +
       '<input type="text" class="md-input">' +
       '<span class="input-label"></span>' +
-      '<div class="highlight"></div>' +
+      '<div class="hightlight"></div>' +
       '</label>',
     compile: function(element, attr) {
 
-      var highlight = element[0].querySelector('.highlight');
-      var highlightColor;
-      if (!attr.highlightColor) {
-        highlightColor = 'calm';
+      var hightlight = element[0].querySelector('.hightlight');
+      var hightlightColor;
+      if (!attr.hightlightColor) {
+        hightlightColor = 'calm';
       } else {
-        highlightColor = attr.highlightColor;
+        hightlightColor = attr.hightlightColor;
       }
-      highlight.className += ' highlight-' + highlightColor;
+      hightlight.className += ' hightlight-' + hightlightColor;
 
       var label = element[0].querySelector('.input-label');
       label.innerHTML = attr.placeholder;
+
 
       /*Start From here*/
       var input = element.find('input');
@@ -47,16 +48,17 @@ angular.module('ionMdInput', [])
       });
 
       var cleanUp = function() {
-        ionic.off('$destroy', cleanUp, element[0]);
-      };
-      // add listener
+          ionic.off('$destroy', cleanUp, element[0]);
+        }
+        // add listener
       ionic.on('$destroy', cleanUp, element[0]);
 
-      return function LinkingFunction($scope, $element) {
+      return function LinkingFunction($scope, $element, $attributes) {
 
-        var mdInput = $element[0].querySelector('.md-input');
 
-        var dirtyClass = 'used';
+        var mdInput = $element[0].querySelector('.md-input')
+
+        var dirtyClass = 'used'
 
         var reg = new RegExp('(\\s|^)' + dirtyClass + '(\\s|$)');
 
@@ -65,22 +67,14 @@ angular.module('ionMdInput', [])
           if (this.value === '') {
             this.className = mdInput.className.replace(reg, ' ');
           } else {
-            this.classList.add(dirtyClass);
+            this.classList.toggle(dirtyClass);
           }
         };
-
-        //Lets check if there is a value on load
-        ionic.DomUtil.ready(function() {
-          if (mdInput.value === '') {
-            mdInput.className = mdInput.className.replace(reg, ' ');
-          } else {
-            mdInput.classList.add(dirtyClass);
-          }
-        });
         // Here we are saying, on 'blur', call toggleClass, on mdInput
         ionic.on('blur', toggleClass, mdInput);
 
       };
+
 
     }
   };
