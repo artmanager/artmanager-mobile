@@ -1,6 +1,6 @@
 <ion-view view-title="PEDIDOS - PRODUÇÃO" align-title="left">
     <ion-content class="has-header">
-        <div class="row">
+        <!--<div class="row">
             <div class="col-20">
                 <div class="input-label">
                     Ordem:
@@ -20,8 +20,9 @@
                     <option ng-repeat="filter in filters" value="{{filter.value}}" ng-selected="{{filter.selected}}">{{filter.desc}} </option>
                 </select>
             </div>
-        </div>
-
+        </div>-->
+        <filter-grid filters="{{filters}}"></filter-grid>
+        
         <ion-list ng-repeat="item in items| orderBy:order:ascending">
             <ion-item class="card card-home-{{item.status | statusColor}}" href="#/app/orders/{{item.id}}">
                 <div class="item-text-wrap">

@@ -26,6 +26,8 @@
         
         'filters.commonFilters',
         
+        'directives.filter-grid',
+        
         'ionic-material',
         'ionMdInput',
         'ui.utils.masks'

@@ -1,0 +1,22 @@
+<p>test</p>
+<div class="row">
+    <div class="col-20">
+        <div class="input-label">
+            Ordem:
+        </div>
+    </div>
+    <div class="col-10">
+        <a href="#" class="ion-arrow-up-c" ng-click="ascending=true"></a>
+    </div>
+    <div class="col-10">
+        <a href="#" class="ion-arrow-down-c" ng-click="ascending=false"></a>
+    </div>
+    <div class="col-50 item-select">
+        <div class="input-label">
+            Por:
+        </div>
+        <select class="col-20" ng-model="order">
+            <option ng-repeat="filter in filters" value="{{filter.value}}" ng-selected="{{filter.selected}}">{{filter.desc}} </option>
+        </select>
+    </div>
+</div>
