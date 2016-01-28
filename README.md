@@ -1,8 +1,6 @@
 # README #
 
-> sudo npm install -g gulp 
-
-> sudo npm install -g gulp-sass
+> sudo npm install -g gulp gulp-sass 
 
 > sudo npm rebuild node-sass 
 
