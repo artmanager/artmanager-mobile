@@ -1,5 +1,6 @@
 # README #
 
+> sudo npm install -g ionic cordova  
 > sudo npm install -g gulp gulp-sass 
 
 > sudo npm rebuild node-sass 
