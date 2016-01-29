@@ -1,4 +1,3 @@
-<p>test</p>
 <div class="row">
     <div class="col-20">
         <div class="input-label">
@@ -16,7 +15,7 @@
             Por:
         </div>
         <select class="col-20" ng-model="order">
-            <option ng-repeat="filter in filters" value="{{filter.value}}" ng-selected="{{filter.selected}}">{{filter.desc}} </option>
+            <option ng-repeat="filter in filters" value="{{filter.value}}" ng-selected="{{filter.value === order}}">{{filter.desc}} </option>
         </select>
     </div>
 </div>

@@ -1,34 +1,12 @@
 <ion-view view-title="PEDIDOS - PRODUÇÃO" align-title="left">
     <ion-content class="has-header">
-        <!--<div class="row">
-            <div class="col-20">
-                <div class="input-label">
-                    Ordem:
-                </div>
-            </div>
-            <div class="col-10">
-                <a href="#" class="ion-arrow-up-c" ng-click="ascending=true"></a>
-            </div>
-            <div class="col-10">
-                <a href="#" class="ion-arrow-down-c" ng-click="ascending=false"></a>
-            </div>
-            <div class="col-50 item-select">
-                <div class="input-label">
-                    Por:
-                </div>
-                <select class="col-20" ng-model="order">
-                    <option ng-repeat="filter in filters" value="{{filter.value}}" ng-selected="{{filter.selected}}">{{filter.desc}} </option>
-                </select>
-            </div>
-        </div>-->
-        <filter-grid filters="{{filters}}"></filter-grid>
-        
+        <filter-grid filters="filters"></filter-grid>
         <ion-list ng-repeat="item in items| orderBy:order:ascending">
-            <ion-item class="card card-home-{{item.status | statusColor}}" href="#/app/orders/{{item.id}}">
+            <ion-item class="card card-home-{{item.status}}" href="#/app/orders/{{item.id}}">
                 <div class="item-text-wrap">
                     <div class="row row-home-header">
                         <div class="col col-home-header">
-                            <h2 class="card-home-title-{{item.status | statusColor}}">{{item.product}}</h2>
+                            <h2 class="card-home-title-{{item.status}}">{{item.product}}</h2>
                         </div>
                     </div>
                     <div class="row">

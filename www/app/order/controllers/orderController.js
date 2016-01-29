@@ -1,30 +1,39 @@
 /* global angular */
 (function (angular) {
     var app = angular.module('controllers.orderController', []);
-    app.controller('OrderCtrl', ['$scope', '$timeout', 'ionicMaterialMotion', 'ionicMaterialInk', 'OrderService', function ($scope, $timeout, ionicMaterialMotion, ionicMaterialInk, OrderService) {
+    app.controller('OrderCtrl', ['$scope', '$timeout', '$filter', 'ionicMaterialMotion', 'ionicMaterialInk', 'OrderService', function ($scope, $timeout, $filter,ionicMaterialMotion, ionicMaterialInk, OrderService) {
         var self = $scope;
+        var statusColor = $filter('statusColor');
+
         self.items = [];
-        self.order = 'color.val';
-        self.ascending = true;
+        self.order = 'status';
+        //self.ascending = true;
         
         self.filters = getFilters();
         self.init = (function () {
             OrderService.get().then(function (items) {
-                self.items = items;
+                self.items = mapStatusColor(items);
+               console.log(items); 
             });
         })();
-
+        
+       function mapStatusColor (items) {
+           return items.map(function (item) {
+               item.status = statusColor(item.status);
+               return item;
+           });
+       }
+        
         function getFilters () {
             var filters = [];
             var filter = {};
             
             filter.value= "name";
             filter.desc = "Nome"; 
-            filter.selected = true;
             filters.push(filter);
             
              filter = {};
-            filter.value= "color.val";
+            filter.value= "status";
             filter.desc = "Status";
             filters.push(filter);
             
