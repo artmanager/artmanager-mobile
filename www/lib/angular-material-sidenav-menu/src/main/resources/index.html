@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html ng-app="App">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Material Design Sidenav Menu</title>
+    <meta name="viewport" content="initial-scale=1"/>
+    <link rel="stylesheet"
+          href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/angular-material-sidenav-menu/material-menu-sidenav.min.css">
+</head>
+
+<body layout="column" ng-controller="AppCtrl">
+
+<md-toolbar layout="row">
+    <div class="md-toolbar-tools">
+
+        <md-button ng-click="toggleSidenav('left')" class="md-icon-button">
+            <md-icon>
+                <i class="material-icons md-24">menu</i>
+            </md-icon>
+        </md-button>
+
+        <h1>Service</h1>
+    </div>
+</md-toolbar>
+
+<div layout="row" flex>
+    <md-sidenav style="overflow-y: scroll" layout="column" class="md-sidenav-left md-whiteframe-z2"
+                md-component-id="left">
+
+        <div layout="row" layout-padding>
+            <h1 class="md-title">olimou/material-sidenav-menu</h1>
+        </div>
+
+        <md-divider></md-divider>
+
+        <md-menu-sidenav>
+            <md-menu-sidenav-item>
+                <md-menu-sidenav-title>
+                    <md-toogle-menu layout="row" flex>
+                        <md-icon flex="15">face</md-icon>
+                        <h1 class="md-body-2" flex>Mapa</h1>
+                    </md-toogle-menu>
+
+                    <md-icon flex="15">pause</md-icon>
+                </md-menu-sidenav-title>
+
+                <md-menu-sidenav-content>
+                    <md-menu-sidenav-subitem>Item 1</md-menu-sidenav-subitem>
+                    <md-menu-sidenav-subitem>Item 2</md-menu-sidenav-subitem>
+                    <md-menu-sidenav-subitem>Item 3</md-menu-sidenav-subitem>
+                </md-menu-sidenav-content>
+            </md-menu-sidenav-item>
+
+            <md-divider></md-divider>
+
+            <md-menu-sidenav-item>
+                <md-menu-sidenav-title>
+                    <md-toogle-menu layout="row" flex>
+                        <md-icon flex="15">face</md-icon>
+                        <h1 class="md-body-2" flex>Mapa</h1>
+                        <md-icon flex="15">pause</md-icon>
+                    </md-toogle-menu>
+
+                </md-menu-sidenav-title>
+
+                <md-menu-sidenav-content>
+                    <md-menu-sidenav-subitem>Item 1</md-menu-sidenav-subitem>
+                    <md-menu-sidenav-subitem>Item 2</md-menu-sidenav-subitem>
+                    <md-menu-sidenav-subitem>Item 3</md-menu-sidenav-subitem>
+                    <md-menu-sidenav-subitem>Item 4</md-menu-sidenav-subitem>
+                </md-menu-sidenav-content>
+            </md-menu-sidenav-item>
+
+            <md-menu-sidenav-item>
+                <md-menu-sidenav-title>
+                    <md-toogle-menu layout="row" flex>
+                        <md-icon flex="15">face</md-icon>
+                        <h1 class="md-body-2" flex>Mapa</h1>
+                    </md-toogle-menu>
+
+                </md-menu-sidenav-title>
+
+                <md-menu-sidenav-content>
+                    <md-menu-sidenav-subitem>Item 1</md-menu-sidenav-subitem>
+                    <md-menu-sidenav-subitem>Item 2</md-menu-sidenav-subitem>
+                    <md-menu-sidenav-subitem>Item 3</md-menu-sidenav-subitem>
+                </md-menu-sidenav-content>
+            </md-menu-sidenav-item>
+
+            <md-divider></md-divider>
+        </md-menu-sidenav>
+    </md-sidenav>
+
+    <div layout="column" flex id="content">
+        <md-content layout="column" flex class="md-padding" ng-view="">
+
+        </md-content>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
+<script src="/bower_components/angular-material-sidenav-menu/material-menu-sidenav.min.js"></script>
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

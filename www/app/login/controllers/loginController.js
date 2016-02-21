@@ -2,20 +2,9 @@
     'user strict';
     var app = angular.module('controllers.loginController', []);
 
-    app.controller('LoginCtrl', ['$scope','$state' , '$timeout', '$stateParams', 'ionicMaterialInk', 'LoginService', 'LocalStorageService', 
-        function($scope, $state, $timeout, $stateParams, ionicMaterialInk, LoginService, LocalStorageService) {
-            //////LAYOUT
-            // if(LocalStorageService.get('token') != null) {
-            //     $state.go('app.dashboard');   
-            // }
+    app.controller('LoginCtrl', ['$scope','$state' , '$timeout', '$stateParams', 'LoginService', 'LocalStorageService', 
+        function($scope, $state, $timeout, $stateParams, LoginService, LocalStorageService) {
             
-            
-            $scope.$parent.clearFabs();
-            $timeout(function() {
-                $scope.$parent.hideHeader();
-            }, 0);
-            ionicMaterialInk.displayEffect();
-            /// </LAYOUT />
             
             $scope.use = {'name': '', 'password': ''};
                             

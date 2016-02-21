@@ -8,6 +8,5 @@
                 
             return colors[status];
         }; 
-    });
-    
+    });    
 })(angular);

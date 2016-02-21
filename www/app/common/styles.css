@@ -1,0 +1,14 @@
+.md-toolbar-tools h1, .md-toolbar-tools h2, .md-toolbar-tools h3 {
+    color: white;
+}
+body > ion-nav-view > div > div > md-sidenav, .menu-content{
+        /*background:#7F408A;*/
+}
+/*.menu-content {
+    background-color: rgb(156,39,176);
+}*/
+/*rgba(177, 123, 187, 0.42);*/
+.menu-title {
+    color: rgba(255,255,255,0.87)!important;
+    
+}

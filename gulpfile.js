@@ -21,7 +21,9 @@ gulp.task('tests',function(done) {
   new Server({
     configFile: __dirname + '/tests/karma.conf.js',
     singleRun: true
-  }, done).start();
+  }, function () {
+      done();
+  }).start();
 });
       
 gulp.task('sass', function(done) {

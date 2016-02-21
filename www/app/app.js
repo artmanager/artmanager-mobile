@@ -3,7 +3,14 @@
     var app = angular.module('artmanager', [
         'ionic',
         'app.routes',
+        'ngMaterial',
+        'ngAnimate',
+        'ngAria', 
+        'ngMessages',
+        'ngMenuSidenav',
+        'material.svgAssetsCache',
         
+                
         'controllers.appController',
         'controllers.loginController',
         'controllers.orderController',
@@ -16,6 +23,8 @@
         'controllers.employeeController',
         'controllers.employeeDetailController',
         
+        
+        
         'services.loginService',
         'services.utilService',
         'services.userService',
@@ -26,11 +35,11 @@
         
         'filters.commonFilters',
         
-        'directives.filter-grid',
+        'directives.filter-grid'
         
-        'ionic-material',
-        'ionMdInput',
-        'ui.utils.masks'
+        // 'angular-material',
+        // 'ionMdInput',
+        // 'ui.utils.masks'
     ]);
 
     app.run(function ($ionicPlatform) {
@@ -43,7 +52,12 @@
             }
         });
     });
-
+    //  red, pink, purple, deep-purple, indigo, blue, light-blue,
+    // cyan, teal, green, light-green, lime, yellow, amber, orange, deep-orange, brown, grey, blue-grey
+   app.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('purple');
+});
 
 
 })(angular);

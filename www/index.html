@@ -5,24 +5,37 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
-    <!--<link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="lib/angular-material/angular-material.min.css">
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="lib/ion-md-input/css/ion-md-input.min.css" rel="stylesheet">
-    <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">-->
-    
-      <link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="lib/ion-md-input/css/ion-md-input.min.css" rel="stylesheet">
-    <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="lib/angular-material-sidenav-menu/material-menu-sidenav.min.css">
+    <!--<link rel="stylesheet" href="https://material.angularjs.org/1.0.5/docs.css">-->
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="app/common/styles.css">
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">-->
+    <!--<link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>-->
+    <!--<link href="css/ionic.app.min.css" rel="stylesheet">-->
+
+</head>
+
+<body ng-app="artmanager" ng-cloak layout="column">
+    <ion-nav-view></ion-nav-view>
+
+
+
+
+
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-    <script src="lib/ionic-material/dist/ionic.material.min.js"></script>
-    <script src="lib/ion-md-input/js/ion-md-input.min.js"></script>
-    <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
+    <!-- Angular Material requires Angular.js Libraries -->
+    <!--<script src="lib/angular-animate/angular-animate.min.js"></script>-->
+    <script src="lib/angular-aria/angular-aria.min.js"></script>
+    <script src="lib/angular-messages/angular-messages.min.js"></script>
+    <script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
+    <script src="lib/angular-material/angular-material.min.js"></script>
+
+    <!--my scripts-->
     <!-- your app's js -->
     <script src="app/app.js"></script>
     <script src="app/routeConfig.js"></script>
@@ -41,6 +54,7 @@
     <script src="app/employee/controllers/employeeDetailController.js"></script>
 
     <!-- services-->
+
     <script src="app/login/services/loginService.js"></script>
     <script src="app/order/services/orderService.js"></script>
     <script src="app/user/services/userService.js"></script>
@@ -52,18 +66,13 @@
     <!--filters-->
     <script src="app/common/filters/commonFilters.js"></script>
 
-    <!--filters-->
+    <!--directives-->
     <script src="app/common/directives/filter-grid.js"></script>
 
-    <!-- components-->
+
+    <!--components-->
     <script src="lib/angular-input-masks/angular-input-masks-standalone.min.js"></script>
-
-
-
-</head>
-
-<body ng-app="artmanager">
-    <ion-nav-view></ion-nav-view>
+    <script src="lib/angular-material-sidenav-menu/material-menu-sidenav.min.js"></script>
 </body>
 
 </html>

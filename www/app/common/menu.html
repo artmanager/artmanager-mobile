@@ -1,6 +1,172 @@
-<ion-side-menus enable-menu-with-back-views="true">
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="menu" ng-click="vm.toggleSidenav('left')">
+            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+        </md-button>
+
+        <h2 class="md-display-1">ArtManager - Gerenciador Pessoal</h2>
+
+        <span flex=""></span>
+        <md-button class="md-icon-button" aria-label="More">
+            <!--<md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>-->
+            <i class="fa fa-bars"></i>
+        </md-button>
+    </div>
+</md-toolbar>
+
+
+<div layout="row" flex>
+    <md-sidenav style="overflow-y: scroll" layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+
+        <div layout="row" layout-padding class="">
+            <md-card>
+                <img src="http://www.fm-base.co.uk/forum/attachments/football-manager-2015-manager-stories/776584d1424331188-frank-lampard-8-735.png"
+                class="md-card-image" alt="image caption">
+            </md-card>
+            <!--<h2 class="md-title ">Menu</h2>-->
+            <!--<img src="http://www.fm-base.co.uk/forum/attachments/football-manager-2015-manager-stories/776584d1424331188-frank-lampard-8-735.png" alt="">-->
+            <!--<h2 class="md-heading  menu-title">Menu</h2>-->
+        </div>
+
+
+        <md-menu-sidenav>
+
+
+            <md-card>
+
+                <md-menu-sidenav-item>
+                    <md-menu-sidenav-title>
+                        <md-toogle-menu layout="row" flex>
+                            <md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>
+                            
+                            <h1 class="md-heading md-primary" flex>Cadastros</h1>
+                            <md-icon flex="15"></md-icon>
+                        </md-toogle-menu>
+
+                    </md-menu-sidenav-title>
+
+                    <md-menu-sidenav-content>
+                        <md-menu-sidenav-subitem>
+                            <md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>
+
+                            Cadastrar Usuário
+                        </md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem>
+                            <md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>
+                            Cadastrar Funcionario
+                        </md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem>
+                            <md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>
+                            Cadastrar Cliente
+                        </md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem>
+                            <md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>
+                            Cadastrar Fornecedor
+                        </md-menu-sidenav-subitem>
+                    </md-menu-sidenav-content>
+                </md-menu-sidenav-item>
+            </md-card>
+
+
+            <md-card>
+                <md-menu-sidenav-item>
+                    <md-menu-sidenav-title>
+                        <md-toogle-menu layout="row" class="md-primary" flex>
+                            <md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>
+                            <h1 class="md-heading" flex>Relatórios</h1>
+
+                        </md-toogle-menu>
+
+                    </md-menu-sidenav-title>
+                    <md-menu-sidenav-content>
+                        <md-menu-sidenav-subitem>
+                            <md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>
+                            Relatório de Caixa
+                        </md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem>
+                            <md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>
+                            Relatório de Comissões
+                        </md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem>
+                            <md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>
+                            Relatório de Produtos Vendidos
+                        </md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem>
+                            <md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>
+                            Relatório de Itens
+                        </md-menu-sidenav-subitem>
+                    </md-menu-sidenav-content>
+                </md-menu-sidenav-item>
+            </md-card>
+            
+            <md-card>
+                <md-menu-sidenav-item>
+                    <md-menu-sidenav-title>
+                        <md-toogle-menu layout="row" class="md-primary" flex>
+                            <md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>
+                            <h1 class="md-heading" flex>Caixa</h1>
+
+                        </md-toogle-menu>
+
+                    </md-menu-sidenav-title>
+                </md-menu-sidenav-item>
+            </md-card>
+            
+            <md-card>
+                <md-menu-sidenav-item>
+                    <md-menu-sidenav-title>
+                        <md-toogle-menu layout="row" class="md-primary" flex>
+                            <md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>
+                            <h1 class="md-heading" flex>Sair</h1>
+
+                        </md-toogle-menu>
+
+                    </md-menu-sidenav-title>
+                </md-menu-sidenav-item>
+            </md-card>
+        </md-menu-sidenav>
+    </md-sidenav>
+
+    <div layout="column" flex id="content">
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </div>
+</div>
+
+<!--<div layout-margin="" style="padding:25px;" ng-cloak="" >
+    <div class="bar bar-header bar-stable">
+        <h1 class="title">bar-stable</h1>
+    </div>
+
+
+    <div layout="row" layout-padding class="bg-dark-blue nav-dark">
+        <div>
+            <md-button>Home</md-button>
+            <md-button>Item 1</md-button>
+            <md-button>Item 2</md-button>
+            <md-menu>
+                <md-button md-menu-origin ng-click="$mdOpenMenu()">Help</md-button>
+                <md-menu-content width="2">
+                    <md-menu-item>
+                        <md-button>Help</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button>About</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+        <div class="nav-buttons">
+            <md-button class="md-raised md-accent">My profile</md-button>
+            <md-button class="md-raised md-warn">Log Out</md-button>
+        </div>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+        
+    </div>
+</div>-->
+
+
+<!--<ion-side-menus enable-menu-with-back-views="true">
     <ion-side-menu-content>
-    <!-- <div class="bar bar-header bar-assertive"> <div class="buttons buttons-left header-item"> <span class="left-buttons"> <button class="button button-icon button-clear ion-navicon"> </button> </span> </div> <div class="h1 title title-left light">Normal Header</div> <div class="buttons buttons-right header-item"> <span class="right-buttons"> <button class="button button-icon button-clear ion-android-more-vertical"> </button> </span> </div> </div> -->
                 
 
         <ion-nav-bar class="bar-assertive-900" align-title="left">
@@ -20,59 +186,47 @@
     </ion-side-menu-content>
     <ion-side-menu side="left" >
         <ion-header-bar class="bar-assertive-900" >
-            <!--<span class="avatar" style="background: url('img/crown.jpg'); background-size: cover;"></span>-->
             <h2 class="menu-title title">Menu</h2>
         </ion-header-bar>
         <ion-content>
             <ion-list>
                 <ion-item nav-clear menu-close ui-sref="app.orders">
-                    <!--<i class="ion-ios-home"></i>-->
                     Pedidos
                 </ion-item>
                 <ion-item nav-clear menu-close ui-sref="app.createUser">
-                    <!--<i class="ion-person"></i>-->
-
+            
                     Cadastro de Usuarios
                 </ion-item>
                 <ion-item nav-clear menu-close ui-sref="app.createClient">
-                    <!--<i class="ion-person"></i>-->
-
                     Cadastro de Clientes
                 </ion-item>
                  <ion-item nav-clear menu-close ui-sref="app.products">
-                    <!--<i class="ion-person"></i>-->
-
+            
                     Produtos
                 </ion-item> 
                 <ion-item nav-clear menu-close ui-sref="app.employees">
-                    <!--<i class="ion-person"></i>-->
-
+            
                     Fornecedores
                 </ion-item> 
                 <ion-item nav-clear menu-close ui-sref="app.productsCount">
-                    <!--<i class="ion-person"></i>-->
-
+            
                     Relatórios - Quantidade de Produtos Vendidos
                 </ion-item> 
                 
                 
                 <ion-item nav-clear menu-close ui-sref="app.login">
-                    <!--<i class="ion-calculator"></i>-->
                     Caixa
                 </ion-item>
                 <ion-item nav-clear menu-close ui-sref="app.login">
-                    <!--<i class="ion-grid"></i>-->
                     Estoque
                 </ion-item>
                 <ion-item nav-clear menu-close ui-sref="app.login">
-                    <!--<i class="ion-settings"></i>-->
                     Administrador
                 </ion-item>
                 <ion-item nav-clear menu-close ui-sref="app.login">
-                    <!--<i class="ion-close-round"></i>-->
                       Sair  
                 </ion-item>
             </ion-list>
         </ion-content>
     </ion-side-menu>
-</ion-side-menus>
+</ion-side-menus>-->

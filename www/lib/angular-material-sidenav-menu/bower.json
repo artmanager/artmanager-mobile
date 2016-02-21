@@ -1,0 +1,43 @@
+{
+  "name": "angular-material-sidenav-menu",
+  "version": "0.0.2",
+  "homepage": "https://github.com/olimou/material-sidenav-menu",
+  "authors": [
+    "olimou <olimou@gmail.com>"
+  ],
+  "description": "Menu collapse for Angular-Material",
+  "main": [
+    "material-menu-sidenav.min.js",
+    "material-menu-sidenav.min.css"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "menu",
+    "angular-material",
+    "angular",
+    "material",
+    "collapse",
+    "menu",
+    "sidenav",
+    "side",
+    "nav"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "master",
+    "angular-route": "~1.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/olimou/material-sidenav-menu.git"
+  }
+}

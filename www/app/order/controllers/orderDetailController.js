@@ -8,7 +8,7 @@
         self.init = (function () {
             
             OrderService.order(id).then(function (value) {
-                
+               
                self.items = value;
                console.log(value) 
             });
