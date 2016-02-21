@@ -1,43 +1,46 @@
-<md-toolbar>
-    <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="menu" ng-click="vm.toggleSidenav('left')">
-            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-        </md-button>
+<ion-side-menus enable-menu-with-back-views="true">
 
-        <h2 class="md-display-1">ArtManager - Gerenciador Pessoal</h2>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="menu" ng-click="vm.toggleSidenav('left')">
+                <!--<md-icon md-svg-icon="img/icons/menu.svg"></md-icon>-->
+                <i class="fa fa-2x fa-bars" title="Entrar"></i>
+            </md-button>
 
-        <span flex=""></span>
-        <md-button class="md-icon-button" aria-label="More">
-            <!--<md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>-->
-            <!--<i class="fa fa-bars"></i>-->
-            <i class="fa fa-2x fa-sign-in" title="Entrar"></i> 
-        </md-button>
-    </div>
-</md-toolbar>
+            <h2 class="md-display-1">ArtManager - Gerenciador Pessoal</h2>
 
-
-<div layout="row" flex>
-    <md-sidenav style="overflow-y: scroll" layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-
-        <div layout="row" layout-padding class="">
-            <md-card>
-                <img src="http://www.fm-base.co.uk/forum/attachments/football-manager-2015-manager-stories/776584d1424331188-frank-lampard-8-735.png"
-                class="md-card-image" alt="image caption">
-            </md-card>
-            <!--<h2 class="md-title ">Menu</h2>-->
-            <!--<img src="http://www.fm-base.co.uk/forum/attachments/football-manager-2015-manager-stories/776584d1424331188-frank-lampard-8-735.png" alt="">-->
-            <!--<h2 class="md-heading  menu-title">Menu</h2>-->
+            <span flex=""></span>
+            <md-button class="md-icon-button" aria-label="More">
+                <!--<md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>-->
+                <!--<i class="fa fa-bars"></i>-->
+                <i class="fa fa-2x fa-sign-in" title="Entrar"></i>
+            </md-button>
         </div>
+    </md-toolbar>
 
 
-        <md-menu-sidenav>
+    <div layout="row" flex>
+        <md-sidenav style="overflow-y: scroll" layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+
+            <div layout="row" layout-padding class="">
+                <md-card>
+                    <img src="http://www.fm-base.co.uk/forum/attachments/football-manager-2015-manager-stories/776584d1424331188-frank-lampard-8-735.png"
+                    class="md-card-image" alt="image caption">
+                </md-card>
+                <!--<h2 class="md-title ">Menu</h2>-->
+                <!--<img src="http://www.fm-base.co.uk/forum/attachments/football-manager-2015-manager-stories/776584d1424331188-frank-lampard-8-735.png" alt="">-->
+                <!--<h2 class="md-heading  menu-title">Menu</h2>-->
+            </div>
+
+
+            <md-menu-sidenav>
 
                 <md-menu-sidenav-item>
                     <md-menu-sidenav-title>
                         <md-toogle-menu layout="row" flex>
                             <!--<md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>-->
                             <md-icon flex="15"></md-icon>
-                            
+
                             <h1 class="md-heading md-primary" flex><i class="fa fa-plus fa-stack"></i> Cadastros</h1>
                             <md-icon flex="15"></md-icon>
                         </md-toogle-menu>
@@ -46,28 +49,24 @@
 
                     <md-menu-sidenav-content>
                         <md-menu-sidenav-subitem>
-                        <md-icon flex="15"></md-icon>
-                            <i class="fa fa-arrow-right fa-stack"></i>
-                            Cadastrar Usuário
+                            <md-icon flex="15"></md-icon>
+                            <i class="fa fa-arrow-right fa-stack"></i> Cadastrar Usuário
                         </md-menu-sidenav-subitem>
                         <md-menu-sidenav-subitem>
                             <md-icon flex="15"></md-icon>
-                            <i class="fa fa-arrow-right fa-stack"></i>
-                            Cadastrar Funcionario
-                        </md-menu-sidenav-subitem>
-                        <md-menu-sidenav-subitem>
-                           <md-icon flex="15"></md-icon>
-                            <i class="fa fa-arrow-right fa-stack"></i>
-                            Cadastrar Cliente
+                            <i class="fa fa-arrow-right fa-stack"></i> Cadastrar Funcionario
                         </md-menu-sidenav-subitem>
                         <md-menu-sidenav-subitem>
                             <md-icon flex="15"></md-icon>
-                            <i class="fa fa-arrow-right fa-stack"></i>
-                            Cadastrar Fornecedor
+                            <i class="fa fa-arrow-right fa-stack"></i> Cadastrar Cliente
+                        </md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem>
+                            <md-icon flex="15"></md-icon>
+                            <i class="fa fa-arrow-right fa-stack"></i> Cadastrar Fornecedor
                         </md-menu-sidenav-subitem>
                     </md-menu-sidenav-content>
                 </md-menu-sidenav-item>
-            
+
                 <md-menu-sidenav-item>
                     <md-menu-sidenav-title>
                         <md-toogle-menu layout="row" class="md-primary" flex>
@@ -80,32 +79,28 @@
                     <md-menu-sidenav-content>
                         <md-menu-sidenav-subitem>
                             <md-icon flex="15"></md-icon>
-                            
-                            <i class="fa fa-arrow-right fa-stack"></i>
-                            Relatório de Caixa
+
+                            <i class="fa fa-arrow-right fa-stack"></i> Relatório de Caixa
                         </md-menu-sidenav-subitem>
                         <md-menu-sidenav-subitem>
                             <md-icon flex="15"></md-icon>
-                            <i class="fa fa-arrow-right fa-stack"></i>
-                            Relatório de Comissões
+                            <i class="fa fa-arrow-right fa-stack"></i> Relatório de Comissões
                         </md-menu-sidenav-subitem>
                         <md-menu-sidenav-subitem>
                             <md-icon flex="15"></md-icon>
-                            <i class="fa fa-arrow-right fa-stack"></i>
-                            Relatório de Produtos Vendidos
+                            <i class="fa fa-arrow-right fa-stack"></i> Relatório de Produtos Vendidos
                         </md-menu-sidenav-subitem>
                         <md-menu-sidenav-subitem>
                             <md-icon flex="15"></md-icon>
-                            <i class="fa fa-arrow-right fa-stack"></i>
-                            Relatório de Itens
+                            <i class="fa fa-arrow-right fa-stack"></i> Relatório de Itens
                         </md-menu-sidenav-subitem>
                     </md-menu-sidenav-content>
                 </md-menu-sidenav-item>
-          
+
                 <md-menu-sidenav-item>
                     <md-menu-sidenav-title>
                         <md-toogle-menu layout="row" class="md-primary" flex>
-                            
+
                             <md-icon flex="15"></md-icon>
                             <h1 class="md-heading" flex><i class="fa fa-desktop fa-stack"></i> Caixa</h1>
 
@@ -113,7 +108,7 @@
 
                     </md-menu-sidenav-title>
                 </md-menu-sidenav-item>
-            
+
                 <md-menu-sidenav-item>
                     <md-menu-sidenav-title>
                         <md-toogle-menu layout="row" class="md-primary" flex>
@@ -126,16 +121,17 @@
 
                     </md-menu-sidenav-title>
                 </md-menu-sidenav-item>
-            </md-card>
-        </md-menu-sidenav>
-    </md-sidenav>
+                </md-card>
+            </md-menu-sidenav>
+        </md-sidenav>
 
-    <div layout="column" flex id="content">
-        <ion-nav-view name="menuContent"></ion-nav-view>
+        <div layout="column" flex id="content">
+            <ion-nav-view name="menuContent"></ion-nav-view>
+        </div>
     </div>
-</div>
 
-<!--<div layout-margin="" style="padding:25px;" ng-cloak="" >
+
+    <!--<div layout-margin="" style="padding:25px;" ng-cloak="" >
     <div class="bar bar-header bar-stable">
         <h1 class="title">bar-stable</h1>
     </div>
@@ -168,7 +164,7 @@
 </div>-->
 
 
-<!--<ion-side-menus enable-menu-with-back-views="true">
+    <!--<ion-side-menus enable-menu-with-back-views="true">
     <ion-side-menu-content>
                 
 

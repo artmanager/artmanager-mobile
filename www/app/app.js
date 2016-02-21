@@ -8,7 +8,7 @@
         'ngAria', 
         'ngMessages',
         'ngMenuSidenav',
-        'material.svgAssetsCache',
+        // 'material.svgAssetsCache',
         
                 
         'controllers.appController',

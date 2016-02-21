@@ -1,36 +1,74 @@
-<ion-view view-title="Login" align-title="left">
-    <md-content layout="column" flex class="md-padding">
+<link rel="stylesheet" href="app/login/login.css">
 
-        <!--<ion-content class="home">-->
-        <div class="hero no-header flat">
-            <div class="content">
-                <div class="app-icon"></div>
-                <h1 class="login-title">Art Manager</h1>
-            </div>
-        </div>
+<div class="container">
+    <br>
+
+    <div class="card">
+        <h1 class="title">Login </h1>
         <form name="form" novalidate>
-            <div class="list">
-
-                <ion-md-input ng-model="user.name" name="username" placeholder="Nome de Usuario" highlight-color="balanced" type="text" ng-required="true"></ion-md-input>
-                <div ng-show="form.$submitted || form.username.$touched">
-                    <div ng-show="form.username.$error.required" class="login-error">
-                        Digite um nome de usuario
-                    </div>
-                </div>
-                <ion-md-input ng-model="user.password" name="password" placeholder="Senha" highlight-color="energized" type="password" ng-required="true"></ion-md-input>
-                <div ng-show="form.$submitted || form.password.$touched">
-                    <div ng-show="form.password.$error.required" class="login-error">
-                        Digite uma senha
-                    </div>
-                </div>
-
+            <div class="input-container">
+                <input type="text" id="Username" name="username" ng-model="user.name" ng-required="true" />
+                <label for="Username">Usuario </label>
+                <div class="bar"></div>
             </div>
-            <div class="padding">
-                <button type="submit" class="btn-submit-login button button-full button-assertive ink" ng-disabled="form.password.$error.required || form.username.$error.required"
-                ng-click="login(user)">Entrar</button>
+
+            <div class="input-container">
+                <input type="password" name="password" id="Password" ng-model="user.password" ng-required="true" />
+                <label for="Password">Senha</label>
+                <div class="bar"></div>
             </div>
+
+            <div class="button-container">
+                <button type="submit" class="md-input md-primary  {{(form.password.$invalid || form.username.$invalid) ? '' : 'button-input-active' }} "
+                ng-disabled="(form.password.$invalid || form.username.$invalid)" ng-click="login(user)">
+                    <span class="{{(form.password.$invalid || form.username.$invalid) ? ''  : 'span-input-active' }}">Entrar</span>
+                </button>
+            </div>
+            <div class="footer"><a href="#">Esqueceu sua senha?</a></div>
         </form>
-        <!--</ion-content>-->
-    </md-content>
+    </div>
+    <div class="card alt">
+        <div class="toggle"></div>
 
-</ion-view>
+        <div class="close"></div>
+        </h1>
+
+    </div>
+</div>
+
+<!--<md-content layout="column" flex class="md-padding">-->
+
+<!--<ion-content class="home">-->
+<!--<div class="hero no-header flat">
+                    <div class="content">
+                        <div class="app-icon"></div>
+                        <h1 class="login-title">Art Manager</h1>
+                    </div>
+                </div>-->
+<!--<form name="form" novalidate>
+                    <div class="list">
+                        <div class="group">
+                            <input type="text"><span class="highlight"></span><span class="bar"></span>
+                            <label>Name</label>
+                        </div>-->
+<!--<ion-md-input ng-model="user.name" name="username" placeholder="Nome de Usuario" highlight-color="balanced" type="text" ng-required="true"></ion-md-input>-->
+<!--<div ng-show="form.$submitted || form.username.$touched">
+                            <div ng-show="form.username.$error.required" class="login-error">
+                                Digite um nome de usuario
+                            </div>
+                        </div>-->
+<!--<ion-md-input ng-model="user.password" name="password" placeholder="Senha" highlight-color="energized" type="password" ng-required="true"></ion-md-input>-->
+<!--<div ng-show="form.$submitted || form.password.$touched">
+                            <div ng-show="form.password.$error.required" class="login-error">
+                                Digite uma senha
+                            </div>
+                        </div>-->
+
+<!--</div>-->
+<!--<div class="padding">
+        <button type="submit" class="md-button md-primary" ng-disabled="form.password.$error.required || form.username.$error.required"
+        ng-click="login(user)">Entrar</button>
+    </div>-->
+<!--</form>-->
+<!--</div>-->
+<!--</ion-view>-->

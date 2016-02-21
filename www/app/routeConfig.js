@@ -13,15 +13,13 @@
             controllerAs: 'vm'
         });
 
-        stateProvider.state('app.login', {
+        stateProvider.state('login', {
             url: '/login',
-            views: {
-                'menuContent': {
-                    templateUrl: 'app/login/login.html',
-                    controller: 'LoginCtrl',
+
+            templateUrl: 'app/login/login.html',
+            controller: 'LoginCtrl',
             controllerAs: 'vm'
-                }
-            }
+
         });
         stateProvider.state('app.orders', {
             url: '/orders',
@@ -29,7 +27,7 @@
                 'menuContent': {
                     templateUrl: 'app/order/orders.html',
                     controller: 'OrderCtrl',
-            controllerAs: 'vm'
+                    controllerAs: 'vm'
                 }
             }
         });
@@ -39,7 +37,7 @@
                 'menuContent': {
                     templateUrl: 'app/order/order-detail.html',
                     controller: 'OrderDetailCtrl',
-            controllerAs: 'vm'
+                    controllerAs: 'vm'
                 }
             }
         });
@@ -49,7 +47,7 @@
                 'menuContent': {
                     templateUrl: 'app/user/form-user.html',
                     controller: 'UserCtrl',
-            controllerAs: 'vm'
+                    controllerAs: 'vm'
                 }
             }
         });
@@ -59,7 +57,7 @@
                 'menuContent': {
                     templateUrl: 'app/client/form-client.html',
                     controller: 'ClientCtrl',
-            controllerAs: 'vm'
+                    controllerAs: 'vm'
                 }
             }
         });
@@ -70,7 +68,7 @@
                 'menuContent': {
                     templateUrl: 'app/provider/form-provider.html',
                     controller: 'ProviderCtrl',
-            controllerAs: 'vm'
+                    controllerAs: 'vm'
                 }
             }
         });
@@ -81,7 +79,7 @@
                 'menuContent': {
                     templateUrl: 'app/product/products.html',
                     controller: 'ProductCtrl',
-            controllerAs: 'vm'
+                    controllerAs: 'vm'
                 }
             }
         });
@@ -91,12 +89,12 @@
                 'menuContent': {
                     templateUrl: 'app/product/products-count.html',
                     controller: 'ProductCountCtrl',
-                    
-            controllerAs: 'vm'
+
+                    controllerAs: 'vm'
                 }
             }
         });
-        
+
         stateProvider.state('app.employees', {
             url: '/employees',
             views: {
