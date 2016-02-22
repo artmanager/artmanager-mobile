@@ -7,20 +7,20 @@
         <h1 class="title">Login </h1>
         <form name="form" novalidate>
             <div class="input-container">
-                <input type="text" id="Username" name="username" ng-model="user.name" ng-required="true" />
+                <input type="text" id="Username" name="username" ng-model="vm.user.name" ng-required="true" />
                 <label for="Username">Usuario </label>
                 <div class="bar"></div>
             </div>
 
             <div class="input-container">
-                <input type="password" name="password" id="Password" ng-model="user.password" ng-required="true" />
+                <input type="password" name="password" id="Password" ng-model="vm.user.password" ng-required="true" />
                 <label for="Password">Senha</label>
                 <div class="bar"></div>
             </div>
 
             <div class="button-container">
                 <button type="submit" class="md-input md-primary  {{(form.password.$invalid || form.username.$invalid) ? '' : 'button-input-active' }} "
-                ng-disabled="(form.password.$invalid || form.username.$invalid)" ng-click="login(user)">
+                ng-disabled="(form.password.$invalid || form.username.$invalid)" ng-click="vm.login(user)">
                     <span class="{{(form.password.$invalid || form.username.$invalid) ? ''  : 'span-input-active' }}">Entrar</span>
                 </button>
             </div>
