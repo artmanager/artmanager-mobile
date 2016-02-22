@@ -58,6 +58,8 @@
         $mdThemingProvider.theme('default')
             .primaryPalette('purple');
     });
-
+    app.config(function ($mdGestureProvider) {
+        $mdGestureProvider.skipClickHijack();
+    });
 
 })(angular);

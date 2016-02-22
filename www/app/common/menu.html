@@ -1,23 +1,20 @@
 <ion-side-menus enable-menu-with-back-views="true">
-
     <md-toolbar>
         <div class="md-toolbar-tools">
             <md-button class="md-icon-button" aria-label="menu" ng-click="vm.toggleSidenav('left')">
-                <!--<md-icon md-svg-icon="img/icons/menu.svg"></md-icon>-->
+                
                 <i class="fa fa-2x fa-bars" title="Entrar"></i>
             </md-button>
+            
 
-            <h2 class="md-display-1">ArtManager - Gerenciador Pessoal</h2>
+            <h2 class="md-display-1 center">ArtManager - Gerenciador Pessoal</h2>
 
             <span flex=""></span>
             <md-button class="md-icon-button" aria-label="More">
-                <!--<md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>-->
-                <!--<i class="fa fa-bars"></i>-->
                 <i class="fa fa-2x fa-sign-in" title="Entrar"></i>
             </md-button>
         </div>
     </md-toolbar>
-
 
     <div layout="row" flex>
         <md-sidenav style="overflow-y: scroll" layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
@@ -27,9 +24,7 @@
                     <img src="http://www.fm-base.co.uk/forum/attachments/football-manager-2015-manager-stories/776584d1424331188-frank-lampard-8-735.png"
                     class="md-card-image" alt="image caption">
                 </md-card>
-                <!--<h2 class="md-title ">Menu</h2>-->
-                <!--<img src="http://www.fm-base.co.uk/forum/attachments/football-manager-2015-manager-stories/776584d1424331188-frank-lampard-8-735.png" alt="">-->
-                <!--<h2 class="md-heading  menu-title">Menu</h2>-->
+               
             </div>
 
 
@@ -38,7 +33,6 @@
                 <md-menu-sidenav-item>
                     <md-menu-sidenav-title>
                         <md-toogle-menu layout="row" flex>
-                            <!--<md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>-->
                             <md-icon flex="15"></md-icon>
 
                             <h1 class="md-heading md-primary" flex><i class="fa fa-plus fa-stack"></i> Cadastros</h1>
@@ -48,9 +42,9 @@
                     </md-menu-sidenav-title>
 
                     <md-menu-sidenav-content>
-                        <md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem >
                             <md-icon flex="15"></md-icon>
-                            <i class="fa fa-arrow-right fa-stack"></i> Cadastrar Usuário
+                            <span></span><i class="fa fa-arrow-right fa-stack"></i> Cadastrar Usuário
                         </md-menu-sidenav-subitem>
                         <md-menu-sidenav-subitem>
                             <md-icon flex="15"></md-icon>
@@ -114,7 +108,6 @@
                         <md-toogle-menu layout="row" class="md-primary" flex>
                             <md-icon flex="15"></md-icon>
 
-                            <!--<md-icon flex="15" md-svg-icon="img/icons/ic_play_arrow_24px.svg"></md-icon>-->
                             <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i> Sair</h1>
 
                         </md-toogle-menu>
@@ -126,7 +119,8 @@
         </md-sidenav>
 
         <div layout="column" flex id="content">
-            <ion-nav-view name="menuContent"></ion-nav-view>
+            <ion-nav-view layout="column" layout-fill="" name="menuContent" layout-padding="" class="ui-view-container"></ion-nav-view>
+
         </div>
     </div>
 
