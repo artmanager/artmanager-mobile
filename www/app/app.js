@@ -5,10 +5,10 @@
         'app.routes',
         'ngMaterial',
         'ngAnimate',
-        'ngAria', 
+        'ngAria',
         'ngMessages',
         'ngMenuSidenav',
-        // 'material.svgAssetsCache',
+    // 'material.svgAssetsCache',
         
                 
         'controllers.appController',
@@ -22,9 +22,9 @@
         'controllers.productCountController',
         'controllers.employeeController',
         'controllers.employeeDetailController',
-        
-        
-        
+
+
+
         'services.loginService',
         'services.utilService',
         'services.userService',
@@ -32,9 +32,9 @@
         'services.productService',
         'services.employeeService',
         'services.orderService',
-        
+
         'filters.commonFilters',
-        
+
         'directives.filter-grid'
         
         // 'angular-material',
@@ -54,10 +54,10 @@
     });
     //  red, pink, purple, deep-purple, indigo, blue, light-blue,
     // cyan, teal, green, light-green, lime, yellow, amber, orange, deep-orange, brown, grey, blue-grey
-   app.config(function($mdThemingProvider) {
-  $mdThemingProvider.theme('default')
-    .primaryPalette('purple');
-});
+    app.config(function ($mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+            .primaryPalette('purple');
+    });
 
 
 })(angular);
