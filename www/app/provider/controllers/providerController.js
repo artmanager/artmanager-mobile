@@ -14,11 +14,11 @@
                 vm.content.personalData = false;
                 vm.content.location = true;
             };
-            vm.create = function (user) {
-                vm.dados = user;
-                alert(JSON.stringify(user))
+            vm.create = function () {
+                
+                alert(JSON.stringify(vm.provider));
             };
-            vm.t = providerForm;
+            
             
             vm.goBack = function () {
                 vm.content.personalData = true;
