@@ -61,10 +61,11 @@ gulp.task('tests', function (done) {
 });
 
 gulp.task('watch', function () {
-    var watchTasks = ['minify-concat','templatecache', 'lint', 'tests'];
+    var watchTasks = ['minify-concat', 'templatecache', 'lint', 'tests'];
     var watchTestTasks = ['tests', 'templatecache'];
     
-    gulp.watch(['www/**/*', "!www/build/**/*"], watchTasks);
+    
+    gulp.watch(['www/**/*', '!www/dist/*.js'], watchTasks);
     gulp.watch('tests/**/*', watchTestTasks);
 
 });
