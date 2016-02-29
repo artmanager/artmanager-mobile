@@ -1,7 +1,9 @@
 var root = './www/app/';
 var files =
     [
-        
+        "app.js",
+        "routeConfig.js",
+        "!views.js",
         "common/controllers/appController.js",
         "login/controllers/loginController.js",
         "order/controllers/orderController.js",
@@ -27,8 +29,8 @@ var files =
 
         "common/filters/commonFilters.js",
         "common/directives/filter-grid.js",
-
-        "!views.js"
+        
+        
     ];
     
 function rootFiles(item) {
