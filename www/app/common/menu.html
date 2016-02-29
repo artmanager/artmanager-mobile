@@ -1,225 +1,135 @@
 <ion-side-menus enable-menu-with-back-views="true">
-    <md-toolbar>
-        <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" aria-label="menu" ng-click="vm.toggleSidenav('left')">
-                
-                <i class="fa fa-2x fa-bars" title="Entrar"></i>
-            </md-button>
-            
+    <div md-swipe-right="vm.openSidenav('left')" md-swipe-left="vm.closeSidenav('left')">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" aria-label="menu" ng-click="vm.toggleSidenav('left')">
 
-            <h2 class="md-display-1 center">ArtManager - Gerenciador Pessoal</h2>
+                    <i class="fa fa-2x fa-bars" title="Entrar"></i>
+                </md-button>
+                <h2 class="md-display-1">{{vm.currentTitle()}}</h2>
 
-            <span flex=""></span>
-            <md-button class="md-icon-button" aria-label="More">
-                <i class="fa fa-2x fa-sign-in" title="Entrar"></i>
-            </md-button>
-        </div>
-    </md-toolbar>
-
-    <div layout="row" flex>
-        <md-sidenav style="overflow-y: scroll" layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-
-            <div layout="row" layout-padding class="">
-                <md-card>
-                    <img src="http://www.fm-base.co.uk/forum/attachments/football-manager-2015-manager-stories/776584d1424331188-frank-lampard-8-735.png"
-                    class="md-card-image" alt="image caption">
-                </md-card>
-               
+                <span flex=""></span>
+                <md-button class="md-icon-button" aria-label="More">
+                    <i class="fa fa-2x fa-sign-in" title="Entrar"></i>
+                </md-button>
             </div>
+        </md-toolbar>
+
+        <div layout="row" flex>
+            <md-sidenav style="overflow-y: scroll" layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+
+                <div layout="row" layout-padding>
+                    <md-card>
+                        <img src="img/logo-extended.png"
+                        class="md-card-image" alt="image caption">
+                    </md-card>
+
+                </div>
 
 
-            <md-menu-sidenav>
+                <md-menu-sidenav>
+                    <md-menu-sidenav-item >
+                        <md-menu-sidenav-title>
+                            <!--<md-item ui-sref="app.orders">-->
+                                   <md-icon flex="15"></md-icon>
+                                <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i> Dashboard Pedidos</h1>
+ <!--</md-item>-->
 
-                <md-menu-sidenav-item>
-                    <md-menu-sidenav-title>
-                        <md-toogle-menu layout="row" flex>
-                            <md-icon flex="15"></md-icon>
+                        </md-menu-sidenav-title>
+                    </md-menu-sidenav-item>
+                    <md-menu-sidenav-item>
+                        <md-menu-sidenav-title>
+                            <md-toogle-menu layout="row" flex>
+                                <md-icon flex="15"></md-icon>
 
-                            <h1 class="md-heading md-primary" flex><i class="fa fa-plus fa-stack"></i> Cadastros</h1>
-                            <md-icon flex="15"></md-icon>
-                        </md-toogle-menu>
+                                <h1 class="md-heading md-primary" flex><i class="fa fa-plus fa-stack"></i> Cadastros</h1>
+                                <md-icon flex="15"></md-icon>
+                            </md-toogle-menu>
 
-                    </md-menu-sidenav-title>
+                        </md-menu-sidenav-title>
 
-                    <md-menu-sidenav-content>
-                        <md-menu-sidenav-subitem >
-                            <md-icon flex="15"></md-icon>
-                            <span></span><i class="fa fa-arrow-right fa-stack"></i> Cadastrar Usuário
-                        </md-menu-sidenav-subitem>
-                        <md-menu-sidenav-subitem>
-                            <md-icon flex="15"></md-icon>
-                            <i class="fa fa-arrow-right fa-stack"></i> Cadastrar Funcionario
-                        </md-menu-sidenav-subitem>
-                        <md-menu-sidenav-subitem>
-                            <md-icon flex="15"></md-icon>
-                            <i class="fa fa-arrow-right fa-stack"></i> Cadastrar Cliente
-                        </md-menu-sidenav-subitem>
-                        <md-menu-sidenav-subitem>
-                            <md-icon flex="15"></md-icon>
-                            <i class="fa fa-arrow-right fa-stack"></i> Cadastrar Fornecedor
-                        </md-menu-sidenav-subitem>
-                    </md-menu-sidenav-content>
-                </md-menu-sidenav-item>
+                        <md-menu-sidenav-content>
+                            <md-menu-sidenav-subitem ui-sref="app.createUser">
+                                <md-icon flex="15"></md-icon>
+                                <span></span><i class="fa fa-arrow-right fa-stack"></i> Cadastrar Usuário
+                            </md-menu-sidenav-subitem>
 
-                <md-menu-sidenav-item>
-                    <md-menu-sidenav-title>
-                        <md-toogle-menu layout="row" class="md-primary" flex>
-                            <md-icon flex="15"></md-icon>
-                            <h1 class="md-heading" flex><i class="fa fa-bar-chart fa-stack"></i> Relatórios</h1>
+                            <md-menu-sidenav-subitem ui-sref="app.createClient">
+                                <md-icon flex="15"></md-icon>
+                                <i class="fa fa-arrow-right fa-stack"></i> Cadastrar Cliente
+                            </md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem>
+                                <md-icon flex="15"></md-icon>
+                                <i class="fa fa-arrow-right fa-stack"></i> Cadastrar Fornecedor
+                            </md-menu-sidenav-subitem>
+                        </md-menu-sidenav-content>
+                    </md-menu-sidenav-item>
 
-                        </md-toogle-menu>
+                    <md-menu-sidenav-item>
+                        <md-menu-sidenav-title>
+                            <md-toogle-menu layout="row" class="md-primary" flex>
+                                <md-icon flex="15"></md-icon>
+                                <h1 class="md-heading" flex><i class="fa fa-bar-chart fa-stack"></i> Relatórios</h1>
 
-                    </md-menu-sidenav-title>
-                    <md-menu-sidenav-content>
-                        <md-menu-sidenav-subitem>
-                            <md-icon flex="15"></md-icon>
+                            </md-toogle-menu>
 
-                            <i class="fa fa-arrow-right fa-stack"></i> Relatório de Caixa
-                        </md-menu-sidenav-subitem>
-                        <md-menu-sidenav-subitem>
-                            <md-icon flex="15"></md-icon>
-                            <i class="fa fa-arrow-right fa-stack"></i> Relatório de Comissões
-                        </md-menu-sidenav-subitem>
-                        <md-menu-sidenav-subitem>
-                            <md-icon flex="15"></md-icon>
-                            <i class="fa fa-arrow-right fa-stack"></i> Relatório de Produtos Vendidos
-                        </md-menu-sidenav-subitem>
-                        <md-menu-sidenav-subitem>
-                            <md-icon flex="15"></md-icon>
-                            <i class="fa fa-arrow-right fa-stack"></i> Relatório de Itens
-                        </md-menu-sidenav-subitem>
-                    </md-menu-sidenav-content>
-                </md-menu-sidenav-item>
+                        </md-menu-sidenav-title>
+                        <md-menu-sidenav-content>
+                            <md-menu-sidenav-subitem>
+                                <md-icon flex="15"></md-icon>
+                                <i class="fa fa-arrow-right fa-stack"></i> Relatório de Caixa
+                            </md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem ui-sref="app.products">
+                                <md-icon flex="15"></md-icon>
+                                <i class="fa fa-arrow-right fa-stack"></i> Relatório de Produtos
+                            </md-menu-sidenav-subitem>
 
-                <md-menu-sidenav-item>
-                    <md-menu-sidenav-title>
-                        <md-toogle-menu layout="row" class="md-primary" flex>
+                            <md-menu-sidenav-subitem ui-sref="app.employees">
+                                <md-icon flex="15"></md-icon>
+                                <i class="fa fa-arrow-right fa-stack"></i> Relatório de Fornecedores
+                            </md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem ui-sref="app.productsCount">
+                                <md-icon flex="15"></md-icon>
+                                <i class="fa fa-arrow-right fa-stack"></i> Relatório de Produtos Vendidos
+                            </md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem>
+                                <md-icon flex="15"></md-icon>
+                                <i class="fa fa-arrow-right fa-stack"></i> Relatório de Itens
+                            </md-menu-sidenav-subitem>
+                        </md-menu-sidenav-content>
+                    </md-menu-sidenav-item>
 
-                            <md-icon flex="15"></md-icon>
-                            <h1 class="md-heading" flex><i class="fa fa-desktop fa-stack"></i> Caixa</h1>
+                    <md-menu-sidenav-item>
+                        <md-menu-sidenav-title>
+                            <md-toogle-menu layout="row" class="md-primary" flex>
 
-                        </md-toogle-menu>
+                                <md-icon flex="15"></md-icon>
+                                <h1 class="md-heading" flex><i class="fa fa-desktop fa-stack"></i> Caixa</h1>
 
-                    </md-menu-sidenav-title>
-                </md-menu-sidenav-item>
+                            </md-toogle-menu>
 
-                <md-menu-sidenav-item>
-                    <md-menu-sidenav-title>
-                        <md-toogle-menu layout="row" class="md-primary" flex>
-                            <md-icon flex="15"></md-icon>
+                        </md-menu-sidenav-title>
+                    </md-menu-sidenav-item>
 
-                            <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i> Sair</h1>
+                    <md-menu-sidenav-item>
+                        <md-menu-sidenav-title>
+                            <md-toogle-menu layout="row" class="md-primary" flex>
+                                <md-icon flex="15"></md-icon>
 
-                        </md-toogle-menu>
+                                <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i> Sair</h1>
 
-                    </md-menu-sidenav-title>
-                </md-menu-sidenav-item>
-                </md-card>
-            </md-menu-sidenav>
-        </md-sidenav>
+                            </md-toogle-menu>
 
-        <div layout="column" flex id="content">
-            <ion-nav-view layout="column" layout-fill="" name="menuContent" layout-padding="" class="ui-view-container"></ion-nav-view>
+                        </md-menu-sidenav-title>
+                    </md-menu-sidenav-item>
+                    </md-card>
+                </md-menu-sidenav>
+            </md-sidenav>
 
+            <div layout="column" flex id="content">
+                <ion-nav-view layout="column" layout-fill="" name="menuContent" layout-padding="" class="ui-view-container"></ion-nav-view>
+
+            </div>
         </div>
     </div>
-
-
-    <!--<div layout-margin="" style="padding:25px;" ng-cloak="" >
-    <div class="bar bar-header bar-stable">
-        <h1 class="title">bar-stable</h1>
-    </div>
-
-
-    <div layout="row" layout-padding class="bg-dark-blue nav-dark">
-        <div>
-            <md-button>Home</md-button>
-            <md-button>Item 1</md-button>
-            <md-button>Item 2</md-button>
-            <md-menu>
-                <md-button md-menu-origin ng-click="$mdOpenMenu()">Help</md-button>
-                <md-menu-content width="2">
-                    <md-menu-item>
-                        <md-button>Help</md-button>
-                    </md-menu-item>
-                    <md-menu-item>
-                        <md-button>About</md-button>
-                    </md-menu-item>
-                </md-menu-content>
-            </md-menu>
-        </div>
-        <div class="nav-buttons">
-            <md-button class="md-raised md-accent">My profile</md-button>
-            <md-button class="md-raised md-warn">Log Out</md-button>
-        </div>
-        <ion-nav-view name="menuContent"></ion-nav-view>
-        
-    </div>
-</div>-->
-
-
-    <!--<ion-side-menus enable-menu-with-back-views="true">
-    <ion-side-menu-content>
-                
-
-        <ion-nav-bar class="bar-assertive-900" align-title="left">
-            <ion-nav-buttons side="left">
-                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-                </button>
-           </ion-nav-buttons>
-            <ion-nav-back-button class="no-text">
-           </ion-nav-back-button> 
-        </ion-nav-bar>
-        <ion-nav-view name="menuContent" ng-class="{expanded: isExpanded}" ></ion-nav-view>
-
-        <button ng-show="fabOptionVisible" id="fab-options" class="button button-fab button-fab-bottom-right expanded button-energized-900 drop">
-            <i class="icon ion-plus"></i>
-        </button>
-        
-    </ion-side-menu-content>
-    <ion-side-menu side="left" >
-        <ion-header-bar class="bar-assertive-900" >
-            <h2 class="menu-title title">Menu</h2>
-        </ion-header-bar>
-        <ion-content>
-            <ion-list>
-                <ion-item nav-clear menu-close ui-sref="app.orders">
-                    Pedidos
-                </ion-item>
-                <ion-item nav-clear menu-close ui-sref="app.createUser">
-            
-                    Cadastro de Usuarios
-                </ion-item>
-                <ion-item nav-clear menu-close ui-sref="app.createClient">
-                    Cadastro de Clientes
-                </ion-item>
-                 <ion-item nav-clear menu-close ui-sref="app.products">
-            
-                    Produtos
-                </ion-item> 
-                <ion-item nav-clear menu-close ui-sref="app.employees">
-            
-                    Fornecedores
-                </ion-item> 
-                <ion-item nav-clear menu-close ui-sref="app.productsCount">
-            
-                    Relatórios - Quantidade de Produtos Vendidos
-                </ion-item> 
-                
-                
-                <ion-item nav-clear menu-close ui-sref="app.login">
-                    Caixa
-                </ion-item>
-                <ion-item nav-clear menu-close ui-sref="app.login">
-                    Estoque
-                </ion-item>
-                <ion-item nav-clear menu-close ui-sref="app.login">
-                    Administrador
-                </ion-item>
-                <ion-item nav-clear menu-close ui-sref="app.login">
-                      Sair  
-                </ion-item>
-            </ion-list>
-        </ion-content>
-    </ion-side-menu>
-</ion-side-menus>-->
+</ion-side-menus>

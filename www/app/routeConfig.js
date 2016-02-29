@@ -23,16 +23,18 @@
         });
         stateProvider.state('app.orders', {
             url: '/orders',
+            title: 'Pedidos',
             views: {
                 'menuContent': {
                     templateUrl: 'app/order/orders.html',
                     controller: 'OrderCtrl',
-                    controllerAs: 'vm'
+                    controllerAs: 'vm',
                 }
             }
         });
         stateProvider.state('app.orderDetail', {
             url: '/orders/:id',
+            title: 'Detalhes Pedido',
             views: {
                 'menuContent': {
                     templateUrl: 'app/order/order-detail.html',
@@ -43,6 +45,7 @@
         });
         stateProvider.state('app.createUser', {
             url: '/createUser',
+            title: 'Cadastrar Usuário',
             views: {
                 'menuContent': {
                     templateUrl: 'app/user/form-user.html',
@@ -53,6 +56,7 @@
         });
         stateProvider.state('app.createClient', {
             url: '/createClient',
+            title: 'Cadastrar Clientes',
             views: {
                 'menuContent': {
                     templateUrl: 'app/client/form-client.html',
@@ -64,6 +68,7 @@
 
         stateProvider.state('app.createProvider', {
             url: '/createProvider',
+            title: 'Cadastrar Fornecedor',
             views: {
                 'menuContent': {
                     templateUrl: 'app/provider/form-provider.html',
@@ -75,6 +80,7 @@
 
         stateProvider.state('app.products', {
             url: '/products',
+            title: 'Produtos',
             views: {
                 'menuContent': {
                     templateUrl: 'app/product/products.html',
@@ -85,6 +91,7 @@
         });
         stateProvider.state('app.productsCount', {
             url: '/products/count',
+            title: 'Relatorio de Produtos',
             views: {
                 'menuContent': {
                     templateUrl: 'app/product/products-count.html',
@@ -97,6 +104,7 @@
 
         stateProvider.state('app.employees', {
             url: '/employees',
+            title: '',
             views: {
                 'menuContent': {
                     templateUrl: 'app/employee/employees.html',
@@ -107,6 +115,7 @@
         });
         stateProvider.state('app.employeesDetail', {
             url: '/employees/:id',
+            title: 'Detalhes',
             views: {
                 'menuContent': {
                     templateUrl: 'app/employee/employees-detail.html',
@@ -115,7 +124,7 @@
                 }
             }
         });
-        $urlRouterProvider.otherwise('/app/login');
+        $urlRouterProvider.otherwise('/login');
     });
 
 })(angular);

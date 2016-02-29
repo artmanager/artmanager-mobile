@@ -42,7 +42,8 @@
         // 'ui.utils.masks'
     ]);
 
-    app.run(function ($ionicPlatform) {
+    app.run(['$ionicPlatform', function ($ionicPlatform) {
+
         $ionicPlatform.ready(function () {
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -51,15 +52,36 @@
                 StatusBar.styleDefault();
             }
         });
-    });
+    }]);
     //  red, pink, purple, deep-purple, indigo, blue, light-blue,
     // cyan, teal, green, light-green, lime, yellow, amber, orange, deep-orange, brown, grey, blue-grey
+    // app.config(function ($mdThemingProvider) {
+    //     $mdThemingProvider.theme('default')
+    //         .primaryPalette('purple');
+    // });
+    // app.config(function ($mdGestureProvider) {
+    //     $mdGestureProvider.skipClickHijack();
+    // });
     app.config(function ($mdThemingProvider) {
+        var customBlueMap = $mdThemingProvider.extendPalette('light-blue', {
+            'contrastDefaultColor': 'light',
+            'contrastDarkColors': ['50'],
+            '50': 'ffffff'
+        });
+        $mdThemingProvider.definePalette('customBlue', customBlueMap);
         $mdThemingProvider.theme('default')
-            .primaryPalette('purple');
-    });
-    app.config(function ($mdGestureProvider) {
-        $mdGestureProvider.skipClickHijack();
+            .primaryPalette('customBlue', {
+                'default': '600',
+                'hue-1': '50'
+            })
+            .accentPalette('pink');
+        $mdThemingProvider.theme('input', 'default')
+            .primaryPalette('grey');
     });
 
+
+    // wait for angular-material fix on ionic click hijacking
+    app.config(function ($mdGestureProvider) {
+        $mdGestureProvider.skipClickHijack();
+    })
 })(angular);
