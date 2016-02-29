@@ -8,7 +8,7 @@
         stateProvider.state('app', {
             url: '/app',
             abstract: true,
-            templateUrl: 'app/common/menu.html',
+            templateUrl: 'templates/common/menu.html',
             controller: 'AppCtrl',
             controllerAs: 'vm'
         });
@@ -16,7 +16,7 @@
         stateProvider.state('login', {
             url: '/login',
 
-            templateUrl: 'app/login/login.html',
+            templateUrl: 'templates/login/login.html',
             controller: 'LoginCtrl',
             controllerAs: 'vm'
 
@@ -26,7 +26,7 @@
             title: 'Pedidos',
             views: {
                 'menuContent': {
-                    templateUrl: 'app/order/orders.html',
+                    templateUrl: 'templates/order/orders.html',
                     controller: 'OrderCtrl',
                     controllerAs: 'vm',
                 }
@@ -37,7 +37,7 @@
             title: 'Detalhes Pedido',
             views: {
                 'menuContent': {
-                    templateUrl: 'app/order/order-detail.html',
+                    templateUrl: 'templates/order/order-detail.html',
                     controller: 'OrderDetailCtrl',
                     controllerAs: 'vm'
                 }
@@ -48,7 +48,7 @@
             title: 'Cadastrar Usuário',
             views: {
                 'menuContent': {
-                    templateUrl: 'app/user/form-user.html',
+                    templateUrl: 'templates/user/form-user.html',
                     controller: 'UserCtrl',
                     controllerAs: 'vm'
                 }
@@ -59,7 +59,7 @@
             title: 'Cadastrar Clientes',
             views: {
                 'menuContent': {
-                    templateUrl: 'app/client/form-client.html',
+                    templateUrl: 'templates/client/form-client.html',
                     controller: 'ClientCtrl',
                     controllerAs: 'vm'
                 }
@@ -71,7 +71,7 @@
             title: 'Cadastrar Fornecedor',
             views: {
                 'menuContent': {
-                    templateUrl: 'app/provider/form-provider.html',
+                    templateUrl: 'templates/provider/form-provider.html',
                     controller: 'ProviderCtrl',
                     controllerAs: 'vm'
                 }
@@ -83,7 +83,7 @@
             title: 'Produtos',
             views: {
                 'menuContent': {
-                    templateUrl: 'app/product/products.html',
+                    templateUrl: 'templates/product/products.html',
                     controller: 'ProductCtrl',
                     controllerAs: 'vm'
                 }
@@ -94,7 +94,7 @@
             title: 'Relatorio de Produtos',
             views: {
                 'menuContent': {
-                    templateUrl: 'app/product/products-count.html',
+                    templateUrl: 'templates/product/products-count.html',
                     controller: 'ProductCountCtrl',
 
                     controllerAs: 'vm'
@@ -107,7 +107,7 @@
             title: '',
             views: {
                 'menuContent': {
-                    templateUrl: 'app/employee/employees.html',
+                    templateUrl: 'templates/employee/employees.html',
                     controller: 'EmployeeCtrl',
                     controllerAs: 'employees'
                 }
@@ -118,7 +118,7 @@
             title: 'Detalhes',
             views: {
                 'menuContent': {
-                    templateUrl: 'app/employee/employees-detail.html',
+                    templateUrl: 'templates/employee/employees-detail.html',
                     controller: 'EmployeeDetailCtrl',
                     controllerAs: 'employees'
                 }

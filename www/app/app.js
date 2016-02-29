@@ -3,6 +3,7 @@
     var app = angular.module('artmanager', [
         'ionic',
         'app.routes',
+        'app.views',
         'ngResource',
         'ngMaterial',
         'ngAnimate',

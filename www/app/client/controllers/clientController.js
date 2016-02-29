@@ -1,6 +1,6 @@
 (function (angular) {
 	var app = angular.module('controllers.clientController', ['ngSanitize']);
-
+ 
 	app.controller('ClientCtrl', ['$scope','$rootScope', '$timeout', 'ClientService', function ($scope, $rootScope, $timeout,  ClientService) {
 		
         $scope.countPhone 		= 1;
