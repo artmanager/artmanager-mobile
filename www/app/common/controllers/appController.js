@@ -8,26 +8,6 @@
         var vm = this;
         vm.index = 0;
 
-        vm.menu = [{
-            link: 'status',
-            title: 'Status',
-            icon: 'action:dashboard'
-        }, {
-                link: 'contacts',
-                title: 'Contacts',
-                icon: 'communication:contacts'
-            }];
-
-        vm.admin = [{
-            link: 'settings',
-            title: 'Settings',
-            icon: 'action:settings'
-        }, {
-                link: 'help',
-                title: 'Help',
-                icon: 'action:help'
-            }];
-
         vm.toggleSidenav = function (menuId) {
             $mdSidenav(menuId).toggle();
         };
@@ -41,9 +21,7 @@
         vm.currentTitle = function () {
             return $state.current.title;
         };
-        vm.toggleSidenav = function (menuId) {
-            $mdSidenav(menuId).toggle();
-        };
+        
         vm.topDirections = ['left', 'up'];
         vm.bottomDirections = ['down', 'right'];
         vm.isOpen = false;

@@ -1,39 +1,42 @@
-<link rel="stylesheet" href="app/login/login.css">
+<ion-view>
+    <ion-content>
+        <link rel="stylesheet" href="app/login/login.css">
 
-<div class="container">
-    <br>
+        <div class="container">
+            <br>
 
-    <div class="card">
-        <img class="title" src="img/logo-extended.png" width="350" alt="">
-        <!--<h1 >Login </h1>-->
-        <form name="form" novalidate>
-            <div class="input-container">
-                <input type="text" id="Username" name="username" ng-model="vm.user.name" ng-required="true" />
-                <label for="Username">Usuario </label>
-                <div class="bar"></div>
+            <div class="card">
+                <img class="title" src="img/logo-extended.png" width="350" alt="">
+                <!--<h1 >Login </h1>-->
+                <form name="form" novalidate>
+                    <div class="input-container">
+                        <input type="text" id="Username" name="username" ng-model="vm.user.name" ng-required="true" />
+                        <label for="Username">Usuario </label>
+                        <div class="bar"></div>
+                    </div>
+
+                    <div class="input-container">
+                        <input type="password" name="password" id="Password" ng-model="vm.user.password" ng-required="true" />
+                        <label for="Password">Senha</label>
+                        <div class="bar"></div>
+                    </div>
+
+                    <div class="button-container">
+                        <button type="submit" class="md-input md-primary  {{(form.password.$invalid || form.username.$invalid) ? '' : 'button-input-active' }} "
+                        ng-disabled="(form.password.$invalid || form.username.$invalid)" ng-click="vm.login(user)">
+                            <span class="{{(form.password.$invalid || form.username.$invalid) ? ''  : 'span-input-active' }}">Entrar</span>
+                        </button>
+                    </div>
+                    <div class="footer"><a href="#">Esqueceu sua senha?</a></div>
+                </form>
             </div>
-
-            <div class="input-container">
-                <input type="password" name="password" id="Password" ng-model="vm.user.password" ng-required="true" />
-                <label for="Password">Senha</label>
-                <div class="bar"></div>
-            </div>
-
-            <div class="button-container">
-                <button type="submit" class="md-input md-primary  {{(form.password.$invalid || form.username.$invalid) ? '' : 'button-input-active' }} "
-                ng-disabled="(form.password.$invalid || form.username.$invalid)" ng-click="vm.login(user)">
-                    <span class="{{(form.password.$invalid || form.username.$invalid) ? ''  : 'span-input-active' }}">Entrar</span>
-                </button>
-            </div>
-            <div class="footer"><a href="#">Esqueceu sua senha?</a></div>
-        </form>
-    </div>
-    <!--<div class="card alt">
+            <!--<div class="card alt">
         <div class="toggle"></div>
         <div class="close"></div>
     </div>-->
-</div>
-
+        </div>
+    </ion-content>
+</ion-view>
 <!--<md-content layout="column" flex class="md-padding">-->
 
 <!--<ion-content class="home">-->

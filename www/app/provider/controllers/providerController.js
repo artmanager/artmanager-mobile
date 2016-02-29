@@ -19,6 +19,7 @@
                 alert(JSON.stringify(user))
             };
             vm.t = providerForm;
+            
             vm.goBack = function () {
                 vm.content.personalData = true;
                 vm.content.location = false;
