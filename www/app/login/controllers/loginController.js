@@ -7,7 +7,7 @@
             var vm  = this;
 
             vm.user = { 'name': '', 'password': '' };
-            
+            // LoginService.login({ 'data': btoa('erick' + "-" + '123') });
             vm.login = function (user) {
                 var data = { 'data': btoa(vm.user.name + "-" + vm.user.password) };
                 

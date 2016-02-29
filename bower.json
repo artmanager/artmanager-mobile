@@ -16,7 +16,8 @@
     "angular-input-masks": "~2.1.1",
     "ion-md-input": "~1.0.4",
     "Waves": "waves#~0.7.4",
-    "angular-ui-router-styles": "~1.1.0"
+    "angular-ui-router-styles": "~1.1.0",
+    "angular-resource": "~1.5.0"
   },
   "authors": [
     "erick.workspace <erick.workspace@hotmail.com>"
