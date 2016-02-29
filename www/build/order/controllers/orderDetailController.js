@@ -1,0 +1,1 @@
+!function(r){var e=r.module("controllers.orderDetailController",[]);e.controller("OrderDetailCtrl",["$scope","$stateParams","OrderService",function(r,e,o){var t=r,n=e.id;t.items=[],t.init=function(){o.order(n).then(function(r){t.items=r,console.log(r)})}()}])}(angular);

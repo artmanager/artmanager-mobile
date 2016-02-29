@@ -20,9 +20,9 @@
                     else {
                         alert(obj.data.erro);
                         return false;
-                    };
+                    }
                 });
-        };
+        }
         function get () {
             return $http.get(ConstantsService.GET_CLIENT_URL).then(function (data){
                return data; 

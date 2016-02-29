@@ -1,0 +1,1 @@
+!function(e){var o=e.module("controllers.employeeDetailController",[]);o.controller("EmployeeDetailCtrl",["$scope","$stateParams","EmployeeService",function(e,o,l){var t=e,n=o.id;t.item={},l.employee(n).then(function(e){t.item=e,console.log(e)})}])}(angular);

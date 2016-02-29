@@ -1,7 +1,7 @@
 (function (angular) {
     var app = angular.module('services.utilService', []);
 
-    app.constant('BASE_API_URL', 'api.artmanager.com.br:3000/');
+    app.constant('BASE_API_URL', 'http://api.artmanager.com.br:3000/');
     // app.constant('BASE_API_URL', 'localhost:3000/');
 
     app.service('ConstantsService', ['BASE_API_URL', function (BASE_API_URL) {
@@ -28,7 +28,7 @@
             }
 
 
-        }
+        };
     }]);
     app.factory('UtilService', [function () {
         return {

@@ -44,7 +44,7 @@
             filters.push(filter);
             
             return filters;
-        };
+        }
        
 
     }]);

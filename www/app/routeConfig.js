@@ -1,6 +1,6 @@
 (function (angular) {
     var app = angular.module('app.routes', []);
-    app.config(function ($urlRouterProvider, $stateProvider, $ionicConfigProvider) {
+    app.config(['$urlRouterProvider', '$stateProvider', '$ionicConfigProvider', function ($urlRouterProvider, $stateProvider, $ionicConfigProvider) {
         $ionicConfigProvider.views.maxCache(0);
 
         var stateProvider = $stateProvider;
@@ -125,6 +125,6 @@
             }
         });
         $urlRouterProvider.otherwise('/login');
-    });
+    }]);
 
 })(angular);

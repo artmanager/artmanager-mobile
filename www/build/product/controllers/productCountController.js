@@ -1,0 +1,1 @@
+!function(o){var t=o.module("controllers.productCountController",[]);t.controller("ProductCountCtrl",["$scope","ProductService",function(o,t){var n=o;n.item={},n.init=function(){t.productsCountMonth().then(function(o){n.item=o,console.log(o)})}()}])}(angular);

@@ -1,6 +1,6 @@
 (function (angular) {
     var app = angular.module('controllers.employeeController', []);
-    app.controller('EmployeeCtrl', ['$scope', '$timeout', 'ionicMaterialMotion', 'ionicMaterialInk', 'EmployeeService', function ($scope, $timeout, ionicMaterialMotion, ionicMaterialInk, EmployeeService) {
+    app.controller('EmployeeCtrl', ['$scope', '$timeout', 'EmployeeService', function ($scope, $timeout, EmployeeService) {
         // Set Header
         var self = $scope;
 
@@ -36,23 +36,9 @@
             filters.push(filter);
 
             return filters;
-        };
+        }
         
-        //animations
-        (function () {
-            self.$parent.showHeader();
-            self.$parent.clearFabs();
-            self.$parent.setHeaderFab('left');
-
-            $timeout(function () {
-                self.isExpanded = true;
-                self.$parent.setExpanded(true);
-            }, 300);
-
-            ionicMaterialMotion.fadeSlideInRight();
-
-            ionicMaterialInk.displayEffect();
-        })()
+        
 
     }]);
 

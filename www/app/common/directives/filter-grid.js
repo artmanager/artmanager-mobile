@@ -14,9 +14,9 @@
             link: function (scope, iElement, iAttrs, controller) {
 
                 scope.ascending = scope.$parent.ascending || true;
-                debugger;
+               
                 scope.order = scope.$parent.order || scope.filters[0].value;
-                console.log(scope.order)
+                // console.log(scope.order);
                 scope.$watch('order', function (value) {
 
                     scope.$parent.order = value;

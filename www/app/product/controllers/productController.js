@@ -1,22 +1,8 @@
 (function (angular) {
     var app = angular.module('controllers.productController', []);
-    app.controller('ProductCtrl', ['$scope','$timeout', 'ionicMaterialMotion', 'ionicMaterialInk','ProductService', function ($scope, $timeout,ionicMaterialMotion, ionicMaterialInk, ProductService) {
-        // Set Header
+    app.controller('ProductCtrl', ['$scope','$timeout', 'ProductService', function ($scope, $timeout,ProductService) {
         var self = $scope;
         
-        self.$parent.showHeader();
-        self.$parent.clearFabs();
-        self.$parent.setHeaderFab('left');
-
-        $timeout(function() {
-            self.isExpanded = true;
-            self.$parent.setExpanded(true);
-        }, 300);
-
-        ionicMaterialMotion.fadeSlideInRight();
-
-        ionicMaterialInk.displayEffect();
-
 
         self.items = [];
         self.order = "nome";
@@ -68,9 +54,9 @@
             filter.desc = "Peso";
             filter.selected = false;
             filters.push(filter);
-            console.log(filters)
+            console.log(filters);
             return filters;
-        };
+        }
     }]);
 
 

@@ -1,6 +1,6 @@
 (function (angular) {
     var app = angular.module('controllers.productCountController', []);
-    app.controller('ProductCountCtrl', function ($scope, ProductService){
+    app.controller('ProductCountCtrl', ['$scope', 'ProductService',function ($scope, ProductService){
         var self = $scope;
         self.item = {};
         
@@ -11,7 +11,7 @@
           });
         })();
         
-    });
+    }]);
     
     
     

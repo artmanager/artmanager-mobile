@@ -1,0 +1,1 @@
+!function(){"user strict";var r=angular.module("controllers.loginController",[]);r.controller("LoginCtrl",["$state","LoginService","LocalStorageService","UtilService",function(r,o,e,n){var a=this;a.user={name:"",password:""},a.login=function(o){({data:btoa(a.user.name+"-"+a.user.password)});n.removeCSS("app/login/login.css"),r.go("app.createProvider")}}])}();

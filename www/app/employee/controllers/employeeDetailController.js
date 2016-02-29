@@ -1,6 +1,6 @@
 (function (angular) {
     var app = angular.module('controllers.employeeDetailController', []);
-    app.controller('EmployeeDetailCtrl', function ($scope, $stateParams, EmployeeService) {
+    app.controller('EmployeeDetailCtrl', ['$scope', '$stateParams', 'EmployeeService', function ($scope, $stateParams, EmployeeService) {
         var self = $scope;
         var id = $stateParams.id;
         
@@ -10,5 +10,5 @@
            console.log(item);
         });
         
-    });
+    }]);
 })(angular);

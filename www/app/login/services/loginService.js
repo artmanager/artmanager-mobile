@@ -14,7 +14,7 @@
 
             var Login =  $resource(ConstantsService.LOGIN_URL, user);
             Login.save(function (token) {
-                debugger;
+                
             });
                 // if (obj.data.erro != undefined) {
                 //     alert(obj.data.erro);

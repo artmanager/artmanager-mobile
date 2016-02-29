@@ -1,7 +1,7 @@
 (function (angular) {
     var app = angular.module('services.employeeService', []);
 
-    app.service('EmployeeService', function ($q) {
+    app.service('EmployeeService', ['$q', function ($q) {
         return {
             employess: employess,
             employee: getDetail
@@ -12,11 +12,11 @@
             var deferred = $q.defer();
             deferred.resolve(getItens());
             return deferred.promise;
-        };
+        }
         
         function getItens () {
            return [{"id":"a037b28c-1e53-436e-933b-f7db657af6dc","fornecedor":"BESTO","nome":"Padilla","valorReceber":8627.766},{"id":"0ad2b5bc-e1d4-424f-a3b3-2c0a2713d159","fornecedor":"XUMONK","nome":"Kris","valorReceber":2307.7789},{"id":"f3073b4e-a0b5-4b68-b1b5-08248aad8e3e","fornecedor":"ZEDALIS","nome":"Cummings","valorReceber":3790.0628},{"id":"69503d00-a302-4b9d-9542-6128fed5f060","fornecedor":"VERBUS","nome":"Yates","valorReceber":8570.3764},{"id":"b2699dbc-0175-4c4a-ac28-cfbe3b1e1173","fornecedor":"AFFLUEX","nome":"Inez","valorReceber":3501.6929},{"id":"66852092-e1d6-4eec-9160-b05cd5962850","fornecedor":"PYRAMIS","nome":"Liliana","valorReceber":5616.4573},{"id":"74d0b381-fc9f-4a50-a86c-60d130f61267","fornecedor":"ZILLACTIC","nome":"Brianna","valorReceber":5123.7357},{"id":"0c94ba94-ca40-4a88-96fe-e5eb72aedaed","fornecedor":"BUZZMAKER","nome":"June","valorReceber":5705.3393},{"id":"1ce93016-8cbe-48c6-a6fd-bd943c9cf051","fornecedor":"XIIX","nome":"Jessie","valorReceber":4358.0958},{"id":"7605d8ff-d20d-4f6f-ae13-7c6a3f6d66fa","fornecedor":"GENESYNK","nome":"Imogene","valorReceber":3704.1932},{"id":"2e16b957-8a75-41e4-891c-2adb4f589f61","fornecedor":"COSMETEX","nome":"Washington","valorReceber":8801.9922},{"id":"70a50bc3-1d75-4651-b2e4-e4b82f081cc0","fornecedor":"JAMNATION","nome":"Carla","valorReceber":8554.1573},{"id":"a547073e-05cd-4485-aa04-a8ae5d0d07f5","fornecedor":"FANFARE","nome":"Chapman","valorReceber":8709.4926},{"id":"e2f768e9-fe7b-4bcc-9535-40b72c53738d","fornecedor":"PERKLE","nome":"Olson","valorReceber":8735.1405},{"id":"ae8eb1c7-0269-4f84-b05f-227f5a330ba9","fornecedor":"SYNKGEN","nome":"Kirby","valorReceber":6512.4634},{"id":"d7080e91-cab6-4eac-afe3-f3784cb75786","fornecedor":"EVENTEX","nome":"Gonzalez","valorReceber":5088.4524},{"id":"abc0ead8-1de5-4055-8a9c-97f12dece385","fornecedor":"KYAGURU","nome":"Etta","valorReceber":6104.8188}];
-        };
+        }
         
         function getDetail(id) {
            var deferred = $q.defer();
@@ -26,6 +26,6 @@
             
             deferred.resolve(employee);
             return deferred.promise;
-        };
-    });
+        }
+    }]);
 })(angular);

@@ -1,5 +1,6 @@
 {
   "name": "Waves",
+  "version": "0.6.6",
   "homepage": "http://fian.my.id/Waves",
   "authors": [
     "Alfiana E. Sibuea <alfian.sibuea@gmail.com>"
@@ -21,14 +22,13 @@
     "test",
     "tests"
   ],
-  "version": "0.7.5",
-  "_release": "0.7.5",
+  "_release": "0.6.6",
   "_resolution": {
     "type": "version",
-    "tag": "v0.7.5",
-    "commit": "5ce37da75c9e1c41b0344afd4a8dd6eea92424e7"
+    "tag": "v0.6.6",
+    "commit": "7cfc479b8246e6d15e660bc2a69fa5b3a792ce98"
   },
   "_source": "git://github.com/fians/Waves.git",
-  "_target": "~0.7.4",
-  "_originalSource": "waves"
+  "_target": "0.6"
+}"
 }

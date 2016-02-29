@@ -10,15 +10,29 @@ var sh = require('shelljs');
 var exec = require('child_process').exec;
 var Server = require('karma').Server;
 var templateCache = require('gulp-angular-templatecache');
-
+var uglify = require('gulp-uglify');
+var jshint = require('gulp-jshint');
 var paths = {
     templatecache: ['./www/app/**/*.html'],
+    js: ['www/app/**/*.js'],
     sass: ['./scss/**/*.scss']
 };
 
 
-gulp.task('default', ['templatecache', 'watch']);
+gulp.task('default', ['watch']);
+ 
+ 
+ gulp.task('lint', function() {
+  return gulp.src('./www/app/**/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
 
+gulp.task('compress', function() {
+  return gulp.src(paths.js)
+    .pipe(uglify().on('error', gutil.log))
+    .pipe(gulp.dest('www/build'));
+});
 gulp.task('templatecache', function (done) {
     gulp.src(paths.templatecache)
         .pipe(templateCache(
@@ -54,8 +68,10 @@ gulp.task('sass', function (done) {
 });
 gulp.task('watch', function () {
     var watchTasks = ['tests', 'templatecache'];
-    gulp.watch('www/**/*', watchTasks);
-    gulp.watch('tests/**/*', watchTasks);
+    var watchTestTasks = ['tests', 'templatecache'];
+    
+    gulp.watch(['www/**/*', "!www/build/**/*"], watchTasks).pipe(jshint());
+    gulp.watch('tests/**/*', watchTestTasks).pipe(jshint());
 
 });
 

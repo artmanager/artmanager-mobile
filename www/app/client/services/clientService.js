@@ -15,11 +15,9 @@
 					else 
 						alert('Usuario cadastrado com sucesso');
 				});
-			};
+			}
             
-         function get() {
-             return 
-         }
+         
 	}]);
 
 })(angular);

@@ -1,6 +1,6 @@
 (function (angular){
     var app = angular.module('controllers.orderDetailController', []);
-    app.controller('OrderDetailCtrl', function ($scope,$stateParams, OrderService){
+    app.controller('OrderDetailCtrl', ['$scope','$stateParams', 'OrderService', function ($scope,$stateParams, OrderService){
         var self = $scope;
         
         var id = $stateParams.id;
@@ -10,11 +10,11 @@
             OrderService.order(id).then(function (value) {
                
                self.items = value;
-               console.log(value) 
+               console.log(value) ;
             });
         })();
         
         
-    });
+    }]);
     
-})(angular)
+})(angular);

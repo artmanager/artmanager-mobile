@@ -39,8 +39,8 @@
 
         'directives.filter-grid',
         
-        // 'angular-material',
-        // 'ionMdInput',
+    // 'angular-material',
+    // 'ionMdInput',
         'ui.utils.masks'
     ]);
 
@@ -64,7 +64,8 @@
     // app.config(function ($mdGestureProvider) {
     //     $mdGestureProvider.skipClickHijack();
     // });
-    app.config(function ($mdThemingProvider) {
+    app.config(['$mdThemingProvider', '$mdGestureProvider', 
+    function ($mdThemingProvider, $mdGestureProvider) {
         var customBlueMap = $mdThemingProvider.extendPalette('light-blue', {
             'contrastDefaultColor': 'light',
             'contrastDarkColors': ['50'],
@@ -79,11 +80,9 @@
             .accentPalette('pink');
         $mdThemingProvider.theme('input', 'default')
             .primaryPalette('grey');
-    });
-
-
-    // wait for angular-material fix on ionic click hijacking
-    app.config(function ($mdGestureProvider) {
         $mdGestureProvider.skipClickHijack();
-    })
+    }]);
+
+
+
 })(angular);
