@@ -1,1 +1,0 @@
-!function(e){"use strict";var t=e.module("services.clientService",[]);t.service("ClientService",["$http","ConstantsService",function(e,t){function r(r){return e.post(t.CREATE_CLIENT_URL,r).then(function(e){e.data.success?alert("Usuario cadastrado com sucesso"):alert("Erro ao cadastrar")})}return{create:r}}])}(angular);

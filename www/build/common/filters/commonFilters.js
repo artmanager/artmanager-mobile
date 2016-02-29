@@ -1,1 +1,0 @@
-!function(r){var t=r.module("filters.commonFilters",[]);t.filter("statusColor",function(){var r=["red","yellow","green"];return function(t){if("string"==typeof t)throw new TypeError("statusColor - The status must be an integer");if(t>r.length)throw new RangeError("statusColor - the informed status is incorrect");return r[t]}})}(angular);

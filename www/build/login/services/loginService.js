@@ -1,1 +1,0 @@
-!function(){"use strict";var n=angular.module("services.loginService",[]);n.service("LoginService",["$resource","ConstantsService",function(n,e){function i(){}function o(i){var o=n(e.LOGIN_URL,i);o.save(function(n){})}return{login:o,logout:i}}])}();

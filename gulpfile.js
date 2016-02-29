@@ -1,17 +1,20 @@
 /* global __dirname, process */
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var bower = require('bower');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
+var jshint = require('gulp-jshint');
+ var concat = require('gulp-concat');
+var templateCache = require('gulp-angular-templatecache');
+var files = require('./www/files-dependencies');
+
+var bower = require('bower');
 var sh = require('shelljs');
 var exec = require('child_process').exec;
 var Server = require('karma').Server;
-var templateCache = require('gulp-angular-templatecache');
-var uglify = require('gulp-uglify');
-var jshint = require('gulp-jshint');
 var paths = {
     templatecache: ['./www/app/**/*.html'],
     js: ['www/app/**/*.js'],
@@ -21,6 +24,13 @@ var paths = {
 
 gulp.task('default', ['watch']);
  
+
+gulp.task('minify-concat', function() {
+  return gulp.src(files)
+        .pipe(concat('all.min.js', {newLine: ';'}))
+        .pipe(uglify())
+        .pipe(gulp.dest('www/dist'));
+});
  
  gulp.task('lint', function() {
   return gulp.src('./www/app/**/*.js')
@@ -28,11 +38,6 @@ gulp.task('default', ['watch']);
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('compress', function() {
-  return gulp.src(paths.js)
-    .pipe(uglify().on('error', gutil.log))
-    .pipe(gulp.dest('www/build'));
-});
 gulp.task('templatecache', function (done) {
     gulp.src(paths.templatecache)
         .pipe(templateCache(
@@ -56,7 +61,7 @@ gulp.task('tests', function (done) {
 });
 
 gulp.task('watch', function () {
-    var watchTasks = ['compress','templatecache', 'lint', 'tests'];
+    var watchTasks = ['minify-concat','templatecache', 'lint', 'tests'];
     var watchTestTasks = ['tests', 'templatecache'];
     
     gulp.watch(['www/**/*', "!www/build/**/*"], watchTasks);
