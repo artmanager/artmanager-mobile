@@ -45,6 +45,7 @@ gulp.task('templatecache', function (done) {
         .pipe(gulp.dest('./www/app/'))
         .on('end', done);
 });
+
 gulp.task('tests', function (done) {
     new Server({
         configFile: __dirname + '/tests/karma.conf.js',
@@ -52,6 +53,15 @@ gulp.task('tests', function (done) {
     }, function () {
         done();
     }).start();
+});
+
+gulp.task('watch', function () {
+    var watchTasks = ['compress','templatecache', 'lint', 'tests'];
+    var watchTestTasks = ['tests', 'templatecache'];
+    
+    gulp.watch(['www/**/*', "!www/build/**/*"], watchTasks);
+    gulp.watch('tests/**/*', watchTestTasks);
+
 });
 
 gulp.task('sass', function (done) {
@@ -65,14 +75,6 @@ gulp.task('sass', function (done) {
         .pipe(rename({ extname: '.min.css' }))
         .pipe(gulp.dest('./www/css/'))
         .on('end', done);
-});
-gulp.task('watch', function () {
-    var watchTasks = ['tests', 'templatecache'];
-    var watchTestTasks = ['tests', 'templatecache'];
-    
-    gulp.watch(['www/**/*', "!www/build/**/*"], watchTasks).pipe(jshint());
-    gulp.watch('tests/**/*', watchTestTasks).pipe(jshint());
-
 });
 
 gulp.task('install', ['git-check'], function () {
