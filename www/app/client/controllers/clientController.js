@@ -1,7 +1,7 @@
 (function (angular) {
 	var app = angular.module('controllers.clientController', ['ngSanitize']);
 
-	app.controller('ClientCtrl', ['$scope','$rootScope', '$timeout', 'ionicMaterialMotion', 'ionicMaterialInk', 'ClientService', function ($scope, $rootScope, $timeout, ionicMaterialMotion, ionicMaterialInk, ClientService) {
+	app.controller('ClientCtrl', ['$scope','$rootScope', '$timeout', 'ClientService', function ($scope, $rootScope, $timeout,  ClientService) {
 		
         $scope.countPhone 		= 1;
 		$scope.countLocation 	= 1
@@ -34,22 +34,7 @@
 			disableAll();
 			$scope.isFormEndereco = true;
 		}
-		//---------------------------------------------------------
-		// Set Header
-	    $scope.$parent.showHeader();
-	    $scope.$parent.clearFabs();
-	    $scope.$parent.setHeaderFab('left');
 
-	    // Delay expansion
-	    $timeout(function() {
-	        $scope.isExpanded = true;
-	    }, 300);
-
-	    // Set Motion
-	    ionicMaterialMotion.fadeSlideInRight();
-
-	    // Set Ink
-	    ionicMaterialInk.displayEffect();
 		}]);
 
 

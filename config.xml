@@ -16,14 +16,12 @@
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
-  <preference name="AutoHideSplashScreen" value="false" />
-  
+  <preference name="AutoHideSplashScreen" value="false"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
   <platform name="android">
     <icon src="resources/android/icon/icon.png"/>
-    <splash src="resources/android/splash/splash.png" />
-    
+    <splash src="resources/android/splash/splash.png"/>
   </platform>
 </widget>

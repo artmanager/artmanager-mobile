@@ -16,7 +16,8 @@
                 //         LocalStorageService.set('token',token);
                 
                 UtilService.removeCSS("app/login/login.css");
-                $state.go('app.orders');
+                // $state.go('app.orders');
+                $state.go('app.createProvider');
                 //     }
 
                 // });

@@ -1,5 +1,80 @@
+<div layout="column" ng-cloak class="md-inline-form">
 
-<ion-view view-title="FORNECEDORES" align-title="left">
+    <md-content layout-padding>
+        <div>
+            <form name="providerForm">
+
+                <div ng-show="vm.content.personalData">
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" >
+                            <label>Razão social</label>
+                            <input name="companyName" ng-model="provider.companyName" required>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Nome Fantasia</label>
+                            <input name="fantasyName" ng-model="provider.fantasyName">
+                        </md-input-container>
+                    </div>
+                    <div layout-gt-sm="row">
+
+                        <md-input-container class="md-block">
+                            <label>CNPJ</label>
+                            <input name="CNPJ" ng-model="provider.CNPJ" ui-br-cnpj-mask>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Telefone</label>
+                            <input ng-model="provider.telephone" ui-br-phone-number>
+                        </md-input-container>
+                        <div layout="row" layout-align="end center">
+                            <md-button class="md-primary" ng-click="vm.toggleForm()" ng-disabled="providerForm.companyName.$invalid ||
+                                                providerForm.CNPJ.$invalid ">Proximo</md-button>
+                        </div>
+                    </div>
+
+                </div>
+                <div ng-show="vm.content.location">
+
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Rua</label>
+                            <input ng-model="provider.street">
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Número</label>
+                            <input ng-model="provider.number">
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Bairro</label>
+                            <input ng-model="provider.district">
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>CEP</label>
+                            <input name="postalCode" ng-model="provider.postalCode" required ui-br-cep-mask required>
+
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Cidade</label>
+                            <input ng-model="provider.city">
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Estado</label>
+                            <input ng-model="provider.state">
+                        </md-input-container>
+                        <div layout="row" layout-align="end center">
+                            <md-button class="md-primary" ng-click="vm.goBack()">Voltar</md-button>
+                            <md-button class="md-primary" ng-click="vm.create()">Cadastrar</md-button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </form>
+</div>
+</md-content>
+</div>
+<!--<ion-view view-title="FORNECEDORES" align-title="left">
     <ion-content class="home">
         <div class="hero no-header flat">
             <div class="content">
@@ -101,10 +176,10 @@
                     </div>
                     
                     <div class="padding">
-                        <!--ui-sref="app.profile"-->
+                        
                         <button type="submit"  class="btn-submit-login button button-full button-assertive ink" ng-disabled="form.$invalid" ng-click="create(user)">Cadastrar</button>
                     </div>
                 
         </form>
     </ion-content>
-</ion-view>
+</ion-view>-->

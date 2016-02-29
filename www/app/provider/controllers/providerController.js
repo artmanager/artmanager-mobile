@@ -1,30 +1,28 @@
-(function (){
-	'user strict';
-	var app = angular.module('controllers.providerController', []);
+(function () {
+    'user strict';
+    var app = angular.module('controllers.providerController', []);
 
-	app.controller('ProviderCtrl', ['$scope','$state' , '$timeout', '$stateParams', 'ionicMaterialInk', 'ionicMaterialMotion', 'LocalStorageService', 
-		function($scope, $state, $timeout, $stateParams, ionicMaterialInk, ionicMaterialMotion, LocalStorageService) {
-           //---------------------------------------------------------
-			// Set Header
-			$scope.$parent.showHeader();
-			$scope.$parent.clearFabs();
-			$scope.$parent.setHeaderFab('left');
+    app.controller('ProviderCtrl', ['$state', '$timeout', '$stateParams', 'LocalStorageService',
+        function ($state, $timeout, $stateParams, LocalStorageService) {
+            var vm = this;
+            
+            var defaultContent = { personalData: true, location: false };
+            vm.content = defaultContent;
 
-		    // Delay expansion
-		    $timeout(function() {
-		    	$scope.isExpanded = true;
-		    }, 300);
+            vm.toggleForm = function () {
+                
+                vm.content.personalData = false;
+                vm.content.location = true;
+            };
+            vm.create = function (user) {
+                vm.dados = user;
+                alert(JSON.stringify(user))
+            };
+            vm.t = providerForm;
+            vm.goBack = function () {
+                vm.content.personalData = true;
+                vm.content.location = false;
+            };
 
-		    // Set Motion
-		    ionicMaterialMotion.fadeSlideInRight();
-
-		    // Set Ink
-		    ionicMaterialInk.displayEffect();
-
-		    $scope.create = function (user) {
-		    	$scope.dados = user;
-		    	alert(JSON.stringify(user))
-		    }
-
-		}]);
+        }]);
 })()

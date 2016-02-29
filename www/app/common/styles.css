@@ -13,3 +13,9 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
     
 }
 
+.menu-image {
+     width: 270px;
+    height: 100px;
+
+
+}

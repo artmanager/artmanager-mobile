@@ -10,7 +10,7 @@
 
                 <span flex=""></span>
                 <md-button class="md-icon-button" aria-label="More">
-                    <i class="fa fa-2x fa-sign-in" title="Entrar"></i>
+                    <i class="fa fa-2x fa-sign-in" title="Entrar" ui-sref="login"></i>
                 </md-button>
             </div>
         </md-toolbar>
@@ -21,7 +21,7 @@
                 <div layout="row" layout-padding>
                     <md-card>
                         <img src="img/logo-extended.png"
-                        class="md-card-image" alt="image caption">
+                        class="md-card-image menu-image" alt="image caption">
                     </md-card>
 
                 </div>
@@ -58,7 +58,7 @@
                                 <md-icon flex="15"></md-icon>
                                 <i class="fa fa-arrow-right fa-stack"></i> Cadastrar Cliente
                             </md-menu-sidenav-subitem>
-                            <md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem ui-sref="app.createProvider">
                                 <md-icon flex="15"></md-icon>
                                 <i class="fa fa-arrow-right fa-stack"></i> Cadastrar Fornecedor
                             </md-menu-sidenav-subitem>
@@ -111,9 +111,9 @@
                         </md-menu-sidenav-title>
                     </md-menu-sidenav-item>
 
-                    <md-menu-sidenav-item>
+                    <md-menu-sidenav-item ui-sref="login">
                         <md-menu-sidenav-title>
-                            <md-toogle-menu layout="row" class="md-primary" flex>
+                            <md-toogle-menu layout="row" class="md-primary" flex >
                                 <md-icon flex="15"></md-icon>
 
                                 <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i> Sair</h1>

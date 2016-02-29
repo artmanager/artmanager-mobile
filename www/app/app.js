@@ -36,11 +36,11 @@
 
         'filters.commonFilters',
 
-        'directives.filter-grid'
+        'directives.filter-grid',
         
         // 'angular-material',
         // 'ionMdInput',
-        // 'ui.utils.masks'
+        'ui.utils.masks'
     ]);
 
     app.run(['$ionicPlatform', function ($ionicPlatform) {
