@@ -4,7 +4,10 @@
     app.constant('BASE_API_URL', 'http://api.artmanager.com.br:3000/');
     // app.constant('BASE_API_URL', 'localhost:3000/');
 
-    app.service('ConstantsService', ['BASE_API_URL', function (BASE_API_URL) {
+    app.service('ConstantsService', ConstantsService);
+    ConstantsService.$inject = ['BASE_API_URL'];
+
+    function ConstantsService(BASE_API_URL) {
         var baseAutenticacao = BASE_API_URL + 'autenticacao';
         var baseUser = BASE_API_URL + 'usuarios';
         var baseClient = BASE_API_URL + 'cliente';
@@ -13,9 +16,10 @@
         this.CREATE_USER_URL = baseUser;
         this.CREATE_CLIENT_URL = baseClient;
         this.GET_CLIENT_URL = baseClient;
-    }]);
+    }
 
-    app.factory('LocalStorageService', [function () {
+    app.factory('LocalStorageService', LocalStorageService);
+    function LocalStorageService() {
         return {
             get: function (key) {
                 return localStorage[key] || null;
@@ -26,11 +30,11 @@
             clear: function (key) {
                 localStorage[key] = null;
             }
-
-
         };
-    }]);
-    app.factory('UtilService', [function () {
+    }
+    
+    app.factory('UtilService', UtilService);
+    function UtilService () {
         return {
             removeCSS: removeCSS
         };
@@ -39,8 +43,6 @@
             var node = document.querySelector("[href='" + cssPath + "']");
             node.parentNode.removeChild(node);
         }
-
-
-    }]);
+    }
 
 })(angular);

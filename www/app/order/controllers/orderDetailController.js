@@ -1,6 +1,8 @@
 (function (angular){
-    var app = angular.module('controllers.orderDetailController', []);
-    app.controller('OrderDetailCtrl', ['$scope','$stateParams', 'OrderService', function ($scope,$stateParams, OrderService){
+    angular.module('controllers.orderDetailController', [])
+        .controller('OrderDetailCtrl', OrderDetailCtrl);
+    OrderDetailCtrl.$inject = ['$scope','$stateParams', 'OrderService']; 
+    function OrderDetailCtrl($scope,$stateParams, OrderService){
         var self = $scope;
         
         var id = $stateParams.id;
@@ -15,6 +17,6 @@
         })();
         
         
-    }]);
+    }
     
 })(angular);

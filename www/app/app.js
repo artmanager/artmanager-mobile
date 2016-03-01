@@ -1,51 +1,77 @@
 /*global cordova, StatusBar */
 (function (angular) {
-    var app = angular.module('artmanager', [
-        'ionic',
+    angular.module('controllers',
+        [
+            'controllers.appController',
+            'controllers.loginController',
+            'controllers.orderController',
+            'controllers.orderDetailController',
+            'controllers.userController',
+            'controllers.providerController',
+            'controllers.clientController',
+            'controllers.productController',
+            'controllers.productCountController',
+            'controllers.employeeController',
+            'controllers.employeeDetailController'
+        ]);
+
+    angular.module('services',
+        [
+            'services.loginService',
+            'services.utilService',
+            'services.userService',
+            'services.clientService',
+            'services.productService',
+            'services.employeeService',
+            'services.orderService',
+        ]);
+
+    angular.module('components',
+        [
+            'ionic',
+            'ngResource',
+            'ngMaterial',
+            'ngAnimate',
+            'ngAria',
+            'ngMessages',
+            'ngMenuSidenav',
+            'ui.utils.masks'
+        ]);
+
+    angular.module('directives',
+        [
+            'directives.filter-grid'
+        ]);
+
+    angular.module('filters',
+        [
+            'filters.commonFilters'
+        ]);
+
+
+    angular.module('artmanager', [
+        'components',
+        'directives',
+        'filters',
+        'controllers',
+        'services',
         'app.routes',
-        'app.views',
-        'ngResource',
-        'ngMaterial',
-        'ngAnimate',
-        'ngAria',
-        'ngMessages',
-        'ngMenuSidenav',
-    // 'material.svgAssetsCache',
-        
-                
-        'controllers.appController',
-        'controllers.loginController',
-        'controllers.orderController',
-        'controllers.orderDetailController',
-        'controllers.userController',
-        'controllers.providerController',
-        'controllers.clientController',
-        'controllers.productController',
-        'controllers.productCountController',
-        'controllers.employeeController',
-        'controllers.employeeDetailController',
+        'app.views']);
+    function run($ionicPlatform) {
+        function onReady() {
+            if (window.cordova && window.cordova.plugins.Keyboard)
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 
+            if (window.StatusBar)
+                StatusBar.styleDefault();
+        }
+        $ionicPlatform.ready(onReady);
+    }
+    angular.module('artmanager')
+        .run(['$ionicPlatform', ionicConfig])
+        .config(['$mdThemingProvider', '$mdGestureProvider', config]);
 
-
-        'services.loginService',
-        'services.utilService',
-        'services.userService',
-        'services.clientService',
-        'services.productService',
-        'services.employeeService',
-        'services.orderService',
-
-        'filters.commonFilters',
-
-        'directives.filter-grid',
-        
-    // 'angular-material',
-    // 'ionMdInput',
-        'ui.utils.masks'
-    ]);
-
-    app.run(['$ionicPlatform', function ($ionicPlatform) {
-
+    function ionicConfig($ionicPlatform) {
         $ionicPlatform.ready(function () {
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -54,34 +80,27 @@
                 StatusBar.styleDefault();
             }
         });
-    }]);
-    //  red, pink, purple, deep-purple, indigo, blue, light-blue,
-    // cyan, teal, green, light-green, lime, yellow, amber, orange, deep-orange, brown, grey, blue-grey
-    // app.config(function ($mdThemingProvider) {
-    //     $mdThemingProvider.theme('default')
-    //         .primaryPalette('purple');
-    // });
-    // app.config(function ($mdGestureProvider) {
-    //     $mdGestureProvider.skipClickHijack();
-    // });
-    app.config(['$mdThemingProvider', '$mdGestureProvider', 
-    function ($mdThemingProvider, $mdGestureProvider) {
-        var customBlueMap = $mdThemingProvider.extendPalette('light-blue', {
-            'contrastDefaultColor': 'light',
-            'contrastDarkColors': ['50'],
-            '50': 'ffffff'
-        });
+    }
+    function config($mdThemingProvider, $mdGestureProvider) {
+        var customBlueMap =
+            $mdThemingProvider
+                .extendPalette('light-blue', {
+                    'contrastDefaultColor': 'light',
+                    'contrastDarkColors': ['50'],
+                    '50': 'ffffff'
+                });
         $mdThemingProvider.definePalette('customBlue', customBlueMap);
-        $mdThemingProvider.theme('default')
+        $mdThemingProvider
+            .theme('default')
             .primaryPalette('customBlue', {
                 'default': '600',
                 'hue-1': '50'
             })
-            .accentPalette('pink');
-        $mdThemingProvider.theme('input', 'default')
+            .accentPalette('pink')
+            .theme('input', 'default')
             .primaryPalette('grey');
         $mdGestureProvider.skipClickHijack();
-    }]);
+    }
 
 
 

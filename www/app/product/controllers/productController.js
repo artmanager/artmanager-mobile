@@ -1,63 +1,65 @@
 (function (angular) {
-    var app = angular.module('controllers.productController', []);
-    app.controller('ProductCtrl', ['$scope','$timeout', 'ProductService', function ($scope, $timeout,ProductService) {
+    angular.module('controllers.productController', [])
+        .controller('ProductCtrl', ProductCtrl);
+    ProductCtrl.$inject = ['$scope', '$timeout', 'ProductService'];
+    function ProductCtrl($scope, $timeout, ProductService) {
         var self = $scope;
-        
+
 
         self.items = [];
         self.order = "nome";
         self.ascending = true;
-        
+
         self.filters = getFilters();
         self.init = (function () {
             ProductService.products().then(function (itens) {
                 self.items = itens;
-                
+
             });
         })();
-        
-        function getFilters () {
+
+        function getFilters() {
             var filters = [];
-            
+
             var filter = {};
-            filter.value= "nome";
+            filter.value = "nome";
             filter.desc = "Nome";
             filter.selected = true;
             filters.push(filter);
-            
+
             filter = {};
-            filter.value= "categoria";
+            filter.value = "categoria";
             filter.desc = "Categoria";
             filter.selected = false;
             filters.push(filter);
-            
+
             filter = {};
-            filter.value= "quantidadeDisponivel";
+            filter.value = "quantidadeDisponivel";
             filter.desc = "Quantidade";
             filter.selected = false;
             filters.push(filter);
-            
+
             filter = {};
-            filter.value= "precoVenda";
+            filter.value = "precoVenda";
             filter.desc = "Preco de Venda";
             filter.selected = false;
             filters.push(filter);
-            
+
             filter = {};
-            filter.value= "precoCusto";
+            filter.value = "precoCusto";
             filter.desc = "Preco de Custo";
             filter.selected = false;
             filters.push(filter);
-            
+
             filter = {};
-            filter.value= "peso";
+            filter.value = "peso";
             filter.desc = "Peso";
             filter.selected = false;
             filters.push(filter);
             console.log(filters);
             return filters;
         }
-    }]);
+    }
 
 
 
