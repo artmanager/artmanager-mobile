@@ -1,71 +1,66 @@
 (function () {
-	var app = angular.module('controllers.userController', ['ngSanitize']);
+    angular.module('controllers.userController', ['ngSanitize'])
+        .controller('UserCtrl', UserCtrl);
 
-	app.controller('UserCtrl', ['$scope','$rootScope', '$timeout',  'UserService', function ($scope, $rootScope, $timeout, UserService) {
-		$scope.countPhone 		= 1;
-		$scope.countLocation 	= 1;
-		$scope.isFormUser 		= true;
-		$scope.isFormContato 	= false;
-		$scope.isFormEndereco 	= false;
-		$scope.user = {
-			telefone: [],
-			endereco:[]
-		};
+    UserCtrl.$inject = ['$rootScope', '$timeout', 'UserService'];
 
-		// $scope.$watch('isFormContato', function (value) {
-		// debugger;
-		// $rootScope.fabOptionVisible = true;
-		// 	alert('a')
-		// });
-		// $scope.$watch('isFormEndereco', function (value) {
+    function UserCtrl($rootScope, $timeout, UserService) {
+        var vm = this;
+        vm.isFormUser = true;
+        vm.isFormContact = false;
+        vm.isFormLocation = false;
 
-		// 	alert('a')
+        vm.profiles = [{ id: 0, description: 'Administrador' }, { id: 1, description: 'Usuario' }];
 
-		// })
-		// (function() {
-		// 	document.getElementById('fab-options')
-  //       	.addEventListener('click', function() {
-        		
-  //       	});
-		// });
+        vm.user = {
+            phone: [],
+            name: '',
+            userName: '',
+            password: '',
+            profile: 0,
+            number: '',
+            district: '',
+            postalCode: '',
+            city: '',
+            state: ''
+            
+        };
 
-		// var newFildPhone = function () {
-		// 	$scope.countPhone ++;
-		// 	var templateTelefone = 
-		// 	"<ion-md-input "+ 
-		// 		"ng-model='user.telefone["+ $scope.countPhone+"].numero' "+ 
-		// 		"name='telefone' "+  
-		// 		"placeholder='Telefone Adicional (opcional)' "+ 
-		// 		"highlight-color=energized " +
-		// 		"type=text "+ 
-		// 		"ng-required=false> " +
-		// 	"</ion-md-input> ";
-		// 	return templateTelefone;
-		// }
+        vm.create = function () {
+            UserService.Create(user);
+        };
 
+        vm.nextContato = function () {
+            disableAll();
+            vm.isFormContact = true;
 
+        };
+        vm.nextLocation = function () {
+            disableAll();
+            vm.isFormLocation = true;
+        };
+        vm.goBack = function (form) {
+            disableAll();
+            switch (form) {
+                case 'contact':
+                    vm.isFormContact = true;
+                    break;
+                case 'user':
+                    vm.isFormUser = true;
+                    break;
 
+                default:
+                    vm.isFormContato = true;
+                    break;
+            }
+        };
+        var disableAll = function () {
 
-		$scope.login = function (user ) {
-			UserService.Create(user);
-		};
-		var disableAll = function () {
-			
-			$scope.isFormUser = false;
-			$scope.isFormContato = false;
-			$scope.isFormEndereco = false;
+            vm.isFormUser = false;
+            vm.isFormContact = false;
+            vm.isFormLocation = false;
 
-		};
-		$scope.nextContato = function () {
-			disableAll();
-			$scope.isFormContato = true;
+        };
 
-		};
-		$scope.nextEndereco = function () {
-			disableAll();
-			$scope.isFormEndereco = true;
-		};
-		
-
-    }]);
+    }
 })();   

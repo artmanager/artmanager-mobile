@@ -61,7 +61,7 @@ gulp.task('tests', function (done) {
 });
 
 gulp.task('watch', function () {
-    var watchTasks = ['minify-concat', 'templatecache', 'lint', 'tests'];
+    var watchTasks = ['templatecache', 'minify-concat',  'lint', 'tests'];
     var watchTestTasks = ['tests', 'templatecache'];
     
     
