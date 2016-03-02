@@ -31,7 +31,7 @@ Telefone, Endereco devem ser enviados como array
 
                             <md-input-container class="md-block">
                                 <label>Senha</label>
-                                <input name="password" type="password" ng-model="vm.user.password" required>
+                                <input name="password" type="password" ng-model="vm.user.password" required class="border-input-all">
                             </md-input-container>
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Perfil</label>
@@ -76,7 +76,7 @@ Telefone, Endereco devem ser enviados como array
                     <div ng-show="vm.isFormLocation">
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Número</label>
-                            <input ng-model="vm.user.number" required>
+                            <input type="number" class="border-input-all" ng-model="vm.user.number" required>
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>

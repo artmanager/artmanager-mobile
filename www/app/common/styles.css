@@ -19,3 +19,7 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
 
 
 }
+
+.border-input-all {
+    border-bottom-color: #E1E1E1!important;
+}
