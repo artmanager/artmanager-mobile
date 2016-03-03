@@ -2,7 +2,7 @@
     <div md-swipe-right="vm.openSidenav('left')" md-swipe-left="vm.closeSidenav('left')">
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <md-button class="md-icon-button" aria-label="menu" ng-click="vm.toggleSidenav('left')" >
+                <md-button class="md-icon-button" aria-label="menu" ng-click="vm.toggleSidenav('left')">
 
                     <i class="fa fa-2x fa-bars" title="Entrar"></i>
                 </md-button>
@@ -20,24 +20,22 @@
 
                 <div layout="row" layout-padding>
                     <md-card>
-                        <img src="img/logo-extended.png"
-                        class="md-card-image menu-image" alt="image caption">
+                        <img src="img/logo-extended.png" class="md-card-image menu-image" alt="image caption">
                     </md-card>
 
                 </div>
 
 
                 <md-menu-sidenav>
-                    <md-menu-sidenav-item md-prevent-menu-close="md-prevent-menu-close">
+                    <md-menu-sidenav-item ng-click="vm.closeSidenav('left')" ui-sref="app.orders">
                         <md-menu-sidenav-title>
-                            <!--<md-item ui-sref="app.orders">-->
-                                   <md-icon flex="15"></md-icon>
-                                <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i> Dashboard Pedidos</h1>
-                            <!--</md-item>-->
+
+                            <md-icon flex="15"></md-icon>
+                            <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i> Dashboard Pedidos</h1>
 
                         </md-menu-sidenav-title>
                     </md-menu-sidenav-item>
-                    <md-menu-sidenav-item >
+                    <md-menu-sidenav-item>
                         <md-menu-sidenav-title>
                             <md-toogle-menu layout="row" flex>
                                 <md-icon flex="15"></md-icon>
@@ -49,7 +47,7 @@
                         </md-menu-sidenav-title>
 
                         <md-menu-sidenav-content>
-                            <md-menu-sidenav-subitem ui-sref="app.createUser" ng-click="vm.closeSidenav('left')"> 
+                            <md-menu-sidenav-subitem ui-sref="app.createUser" ng-click="vm.closeSidenav('left')">
                                 <md-icon flex="15"></md-icon>
                                 <span></span><i class="fa fa-arrow-right fa-stack"></i> Cadastrar Usuário
                             </md-menu-sidenav-subitem>
@@ -60,7 +58,7 @@
                             </md-menu-sidenav-subitem>
                             <md-menu-sidenav-subitem ui-sref="app.createProvider" ng-click="vm.closeSidenav('left')">
                                 <md-icon flex="15"></md-icon>
-                                <i class="fa fa-arrow-right fa-stack" ></i> Cadastrar Fornecedor
+                                <i class="fa fa-arrow-right fa-stack"></i> Cadastrar Fornecedor
                             </md-menu-sidenav-subitem>
                         </md-menu-sidenav-content>
                     </md-menu-sidenav-item>
@@ -113,7 +111,7 @@
 
                     <md-menu-sidenav-item ui-sref="login" ng-click="vm.closeSidenav('left')">
                         <md-menu-sidenav-title>
-                            <md-toogle-menu layout="row" class="md-primary" flex >
+                            <md-toogle-menu layout="row" class="md-primary" flex>
                                 <md-icon flex="15"></md-icon>
 
                                 <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i> Sair</h1>

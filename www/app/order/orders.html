@@ -1,25 +1,35 @@
+<ion-view name="pedidos-view">
+    <md-content>
+        <filter-grid filters="filters"></filter-grid>
+        <md-content >
+            <ioni-list>
+            <md-card ng-repeat="item in items| orderBy:order:ascending" ui-href="#/app/orders/{{item.id}}">
+                <md-toolbar class="md-primary">
+                    <div class="md-toolbar-tools">
+                        <h3 class="md-headline"> {{item.product}}</h3>
+                    </div>
+                </md-toolbar>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-display-2">{{item.product}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content layout="row" layout-align="space-between">
+                        <h3 class="md-headline"> {{item.name}}</h3>
+
+                    
+                </md-card-content>
+            </md-card>
+            </ioni-list>
+        </md-content>
+    </md-content>
 
 
-<ion-view view-title="PEDIDOS - PRODUÇÃO">
-    
- <md-card>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Card with  image</span>
-          </md-card-title-text>
-        </md-card-title>
-        <md-card-content layout="row" layout-align="space-between">
-          <div class="md-media-xl card-media"></div>
-          
-        </md-card-content>
-      </md-card>
-    </div>
 </ion-view>
 
 
 <!--<ion-view view-title="PEDIDOS - PRODUÇÃO" align-title="left">
     <ion-content class="has-header">
-        <filter-grid filters="filters"></filter-grid>
         <ion-list ng-repeat="item in items| orderBy:order:ascending">
             <ion-item class="card card-home-{{item.status}}" href="#/app/orders/{{item.id}}">
                 <div class="item-text-wrap">

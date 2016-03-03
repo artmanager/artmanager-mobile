@@ -7666,7 +7666,7 @@ textarea {
       -webkit-transition: opacity 0.15s ease-in, top 0.2s linear;
       transition: opacity 0.15s ease-in, top 0.2s linear; }
 
-/*textarea,
+textarea,
 input[type="text"],
 input[type="password"],
 input[type="datetime"],
@@ -7688,7 +7688,7 @@ input[type="color"] {
   color: #111;
   vertical-align: middle;
   font-size: 14px;
-  line-height: 16px; }*/
+  line-height: 16px; }
 
 .platform-ios input[type="datetime-local"],
 .platform-ios input[type="date"],
@@ -7719,7 +7719,7 @@ textarea {
 textarea {
   height: auto; }
 
-/*textarea,
+textarea,
 input[type="text"],
 input[type="password"],
 input[type="datetime"],
@@ -7734,13 +7734,13 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"] {
-  border: 0; }*/
+  border: 0; }
 
-/*input[type="radio"],
+input[type="radio"],
 input[type="checkbox"] {
   margin: 0;
-  line-height: normal; }*/
-/*
+  line-height: normal; }
+
 .item-input input[type="file"],
 .item-input input[type="image"],
 .item-input input[type="submit"],
@@ -7751,14 +7751,14 @@ input[type="checkbox"] {
   width: auto; }
 
 input[type="file"] {
-  line-height: 34px; }*/
+  line-height: 34px; }
 
-/*.previous-input-focus,
+.previous-input-focus,
 .cloned-text-input + input,
 .cloned-text-input + textarea {
   position: absolute !important;
   left: -9999px;
-  width: 200px; }*/
+  width: 200px; }
 
 input::-moz-placeholder,
 textarea::-moz-placeholder {
