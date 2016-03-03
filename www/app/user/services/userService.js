@@ -1,13 +1,15 @@
 /* global angular */
 (function () {
     'use strict';
-    var app = angular.module('services.userService', []);
-
-    app.service('UserService', ['$http', '$q', 'ConstantsService', function ($http, $q, ConstantsService) {
+    angular.module('services.userService', [])
+        .service('UserService', UserService);
+        
+    UserService.$inject = ['$http', '$q', 'ConstantsService'];
+    function UserService($http, $q, ConstantsService) {
         return {
             create: create,
-            get : get
-            
+            get: get
+
         };
 
         function create(user) {
@@ -23,13 +25,13 @@
                     }
                 });
         }
-        function get () {
-            return $http.get(ConstantsService.GET_CLIENT_URL).then(function (data){
-               return data; 
+        function get() {
+            return $http.get(ConstantsService.GET_CLIENT_URL).then(function (data) {
+                return data;
             });
         }
-    }]);
-    
+    }
+
 
 
 })();

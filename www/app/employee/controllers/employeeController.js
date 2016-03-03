@@ -1,7 +1,10 @@
 (function (angular) {
-    var app = angular.module('controllers.employeeController', []);
-    app.controller('EmployeeCtrl', ['$scope', '$timeout', 'EmployeeService', function ($scope, $timeout, EmployeeService) {
-        // Set Header
+    angular.module('controllers.employeeController', [])
+        .controller('EmployeeCtrl', EmployeeCtrl);
+
+    EmployeeCtrl.$inject = ['$scope', '$timeout', 'EmployeeService'];
+    function EmployeeCtrl($scope, $timeout, EmployeeService) {
+        
         var self = $scope;
 
         self.items = [];
@@ -37,10 +40,8 @@
 
             return filters;
         }
-        
-        
 
-    }]);
+    }
 
 
 

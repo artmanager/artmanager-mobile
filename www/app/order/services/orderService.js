@@ -1,7 +1,10 @@
 /* global angular*/
 (function (angular) {
-    var app = angular.module('services.orderService', []);
-    app.service('OrderService', ['$q', function ($q) {
+    angular.module('services.orderService', [])
+        .service('OrderService', OrderService);
+    OrderService.$inject = ['$q'];
+    
+    function OrderService($q) {
         return {
             get: getItens,
             order: getDetail
@@ -15,7 +18,7 @@
         }
 
         function getDetail(id) {
-            
+
             var deferred = $q.defer();
             getItens().then(function (items) {
                 var item = items.filter(function (item) { return item.id === id; })[0];
@@ -34,7 +37,7 @@
             return deferred.promise;
 
         }
-    }]);
+    }
 
 
 
