@@ -1,21 +1,28 @@
-<div class="row">
-    <div class="col-20">
-        <div class="input-label">
+<md-toolbar>
+    <br>
+<div layout="row" layout-align="space-around start">
+    
+    <div flex>
+        <div class="md-title">
             Ordem:
         </div>
     </div>
-    <div class="col-10">
-        <a href="#" class="ion-arrow-up-c" ng-click="ascending=true"></a>
+    <div flex="20">
+        <a href="#" ng-click="ascending=true" class="filter-icon"><i class="fa fa-arrow-up"></i></a>
     </div>
-    <div class="col-10">
-        <a href="#" class="ion-arrow-down-c" ng-click="ascending=false"></a>
+    <div flex="20">
+        <a href="#" ng-click="ascending=false" class="filter-icon"><i class="fa fa-arrow-down"></i></a>
     </div>
-    <div class="col-50 item-select">
-        <div class="input-label">
+    <div flex="10">
+        <div class="md-title">
             Por:
         </div>
-        <select class="col-20" ng-model="order">
-            <option ng-repeat="filter in filters" value="{{filter.value}}" ng-selected="{{filter.value === order}}">{{filter.desc}} </option>
-        </select>
     </div>
+    <div flex="30">
+        <md-select ng-model="order" class="md-title filter-select">
+            <md-option ng-repeat="filter in filters" value="{{filter.value}}" ng-selected="{{filter.value === order}}">{{filter.desc}}</md-option>
+        </md-select>
+    </div>
+
 </div>
+</md-toolbar>

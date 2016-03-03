@@ -37,5 +37,13 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
     background-color: #FDD835!important;
 }
 .card-green {
-    background-color: #2E7D32!important;
+    background-color: #4CAF50!important;
+}
+.filter-icon {
+    color: rgb(256, 256, 256);
+} 
+.filter-select { 
+    
+     margin: -4px;
+
 }
