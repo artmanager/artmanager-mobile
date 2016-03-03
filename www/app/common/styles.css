@@ -23,3 +23,19 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
 .border-input-all {
     border-bottom-color: #E1E1E1!important;
 }
+.text-right {
+    text-align: right;
+}
+
+.item-list {
+    color: rgb(255,255,255)!important;
+}
+.card-red {
+    background-color: #E53935!important;
+}
+.card-yellow {
+    background-color: #FDD835!important;
+}
+.card-green {
+    background-color: #2E7D32!important;
+}

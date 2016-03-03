@@ -1,28 +1,40 @@
 <ion-view name="pedidos-view">
-    <md-content>
-        <filter-grid filters="filters"></filter-grid>
-        <md-content >
-            <ioni-list>
-            <md-card ng-repeat="item in items| orderBy:order:ascending" ui-href="#/app/orders/{{item.id}}">
-                <md-toolbar class="md-primary">
-                    <div class="md-toolbar-tools">
-                        <h3 class="md-headline"> {{item.product}}</h3>
-                    </div>
-                </md-toolbar>
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-display-2">{{item.product}}</span>
-                    </md-card-title-text>
-                </md-card-title>
-                <md-card-content layout="row" layout-align="space-between">
-                        <h3 class="md-headline"> {{item.name}}</h3>
+    <ion-content>
+        <md-content>
+            <filter-grid filters="filters"></filter-grid>
+            <md-content>
+                <ioni-list >
 
-                    
-                </md-card-content>
-            </md-card>
-            </ioni-list>
+                    <md-card ng-repeat="item in items| orderBy:order:ascending" ui-href="#/app/orders/{{item.id}}" >
+                        <md-toolbar class="item-list card-{{item.status}}">
+                            <div class="md-toolbar-tools">
+                                <h3 class="md-headline"> {{item.status}} {{item.product}}</h3>
+                            </div>
+                        </md-toolbar>
+                        <!--<md-card-title>
+                        <md-card-title-text>
+                            <span class="md-display-2">{{item.product}}</span>
+                        </md-card-title-text>
+                    </md-card-title>-->
+                        <md-card-content layout="row" layout-align="space-between">
+                            <!--<h3 class="md-headline"> </h3>-->
+                            <div layout="column">
+                                <h3 flex class="md-headline">{{item.name}} </h3>
+                                <h3 flex class="md-headline">{{item.product}} </h3>
+                            </div>
+
+                            <div layout="column">
+                                <!--<div layout-align="end center"></div>   -->
+                                <i flex="40" layout-align="end center" class="fa fa-2x fa-chevron-right text-right"></i>
+                                <h3 flex class="md-headline">{{item.date}} </h3>
+
+                            </div>
+                        </md-card-content>
+                    </md-card>
+                </ioni-list>
+            </md-content>
         </md-content>
-    </md-content>
+    </ion-content>
 
 
 </ion-view>
