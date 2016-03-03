@@ -2,9 +2,9 @@
     'use strict';
     angular.module('services.loginService', [])
         .service('LoginService', LoginService);
-    LoginService.$inject = ['$resource', 'ConstantsService'];
+    LoginService.$inject = [ '$http', '$resource', 'ConstantsService'];
 
-    function LoginService($resource, ConstantsService) {
+    function LoginService( $http, $resource, ConstantsService) {
         return {
             login: login,
             logout: logout
@@ -13,16 +13,13 @@
 
         }
         function login(user) {
-
-            var Login = $resource(ConstantsService.LOGIN_URL, user);
-            Login.save(function (token) {
-
-            });
-            // if (obj.data.erro != undefined) {
-            //     alert(obj.data.erro);
-            // }
-            // else
-            //     return obj.data.token;
+            return $http.post(ConstantsService.LOGIN_URL, user).then(function name(params) {
+                return params.data;
+             }); 
+            
+            //  var Login = $resource(ConstantsService.LOGIN_URL + "/data", user);
+            // Login.save(function (token) {
+            //     console.log(token);
             // });
 
         }

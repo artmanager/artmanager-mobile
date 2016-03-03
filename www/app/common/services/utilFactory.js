@@ -8,7 +8,7 @@
     ConstantsService.$inject = ['BASE_API_URL'];
 
     function ConstantsService(BASE_API_URL) {
-        var baseAutenticacao = BASE_API_URL + 'autenticacao';
+        var baseAutenticacao = BASE_API_URL + 'authentication';
         var baseUser = BASE_API_URL + 'usuarios';
         var baseClient = BASE_API_URL + 'cliente';
 
