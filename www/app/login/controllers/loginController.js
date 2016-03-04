@@ -11,7 +11,7 @@
         vm.user = { 'name': '', 'password': '' };
 
         vm.login = function (user) {
-            var data = { 'data': btoa('artmanager' + "-" + 'artmanager') };
+            var data = { 'data': btoa(vm.user.name + "-" + vm.user.password) };
             LoginService.login(data)
                 .then(onSuccess, onError);
         };
@@ -32,6 +32,5 @@
         function onError() {
             toastr.error('Não foi possivel conectar ao servidor.', 'Erro!');
         }
-        vm.login();
     }
 })();
