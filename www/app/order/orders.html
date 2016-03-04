@@ -8,7 +8,7 @@
                     <md-card ng-repeat="item in items| orderBy:order:ascending" ui-href="#/app/orders/{{item.id}}" >
                         <md-toolbar class="item-list card-{{item.status}}">
                             <div class="md-toolbar-tools">
-                                <h3 class="md-headline"> {{item.status}} {{item.product}}</h3>
+                                <h3 class="md-headline">  {{item.product | uppercase}}</h3>
                             </div>
                         </md-toolbar>
                         <!--<md-card-title>

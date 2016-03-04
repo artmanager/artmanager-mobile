@@ -3,15 +3,14 @@
     angular.module('controllers.orderController', [])
         .controller('OrderCtrl', OrderCtrl);
         
-    OrderCtrl.$inject = ['$scope', '$state', '$filter', 'OrderService'];
-    function OrderCtrl($scope, $state, $filter, OrderService) {
+    OrderCtrl.$inject = ['$scope', '$state', '$filter', 'OrderService', 'toastr'];
+    function OrderCtrl($scope, $state, $filter, OrderService, toastr) {
         var self = $scope;
         var statusColor = $filter('statusColor');
 
         self.items = [];
         self.order = 'status';
         //self.ascending = true;
-        
         self.filters = getFilters();
         self.init = (function () {
             OrderService.get().then(function (items) {

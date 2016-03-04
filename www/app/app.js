@@ -10,6 +10,7 @@
         'ngAria',
         'ngMessages',
         'ngMenuSidenav',
+        'toastr',
     // 'material.svgAssetsCache',
         
                 
@@ -64,25 +65,37 @@
     // app.config(function ($mdGestureProvider) {
     //     $mdGestureProvider.skipClickHijack();
     // });
-    app.config(['$mdThemingProvider', '$mdGestureProvider', 
-    function ($mdThemingProvider, $mdGestureProvider) {
-        var customBlueMap = $mdThemingProvider.extendPalette('light-blue', {
-            'contrastDefaultColor': 'light',
-            'contrastDarkColors': ['50'],
-            '50': 'ffffff'
+    app.config(['$mdThemingProvider', '$mdGestureProvider',
+        function ($mdThemingProvider, $mdGestureProvider) {
+            var customBlueMap = $mdThemingProvider.extendPalette('light-blue', {
+                'contrastDefaultColor': 'light',
+                'contrastDarkColors': ['50'],
+                '50': 'ffffff'
+            });
+            $mdThemingProvider.definePalette('customBlue', customBlueMap);
+            $mdThemingProvider.theme('default')
+                .primaryPalette('customBlue', {
+                    'default': '600',
+                    'hue-1': '50'
+                })
+                .accentPalette('pink');
+            $mdThemingProvider.theme('input', 'default')
+                .primaryPalette('grey');
+            $mdGestureProvider.skipClickHijack();
+        }]);
+
+    app.config(['toastrConfig', function (toastrConfig) {
+        angular.extend(toastrConfig, {
+            autoDismiss: true,
+            timeOut: 5000,
+            containerId: 'toast-container',
+            maxOpened: 0,
+            newestOnTop: true,
+            positionClass: 'toast-bottom-right',
+            preventDuplicates: false,
+            preventOpenDuplicates: false,
+            target: 'body'
         });
-        $mdThemingProvider.definePalette('customBlue', customBlueMap);
-        $mdThemingProvider.theme('default')
-            .primaryPalette('customBlue', {
-                'default': '600',
-                'hue-1': '50'
-            })
-            .accentPalette('pink');
-        $mdThemingProvider.theme('input', 'default')
-            .primaryPalette('grey');
-        $mdGestureProvider.skipClickHijack();
     }]);
-
-
 
 })(angular);
