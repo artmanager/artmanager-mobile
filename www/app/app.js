@@ -87,7 +87,7 @@
     app.config(['toastrConfig', function (toastrConfig) {
         angular.extend(toastrConfig, {
             autoDismiss: true,
-            timeOut: 145000,
+            timeOut: 5000,
             containerId: 'toast-container',
             maxOpened: 0,
             newestOnTop: true,

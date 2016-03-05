@@ -51,21 +51,21 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
 
 .toast-top-center { 
     top: 450px; 
-    left: 50%; 
-    margin-left: -260px; 
+    /*left: 50%; */
+    /*margin-left: -260px; */
 } 
 @media all and (max-width: 240px) { 
     .toast-top-center { 
-        margin-left: -54px; 
+        margin-left: -84px; 
     } 
 } 
 @media all and (min-width: 241px) and (max-width: 320px) { 
     .toast-top-center { 
-        margin-left: -64px; 
+        margin-left: -84px; 
     } 
 } 
 @media all and (min-width: 321px) and (max-width: 480px) { 
     .toast-top-center { 
-        margin-left: -96px; 
+        margin-left: -50px; 
     } 
 }
