@@ -87,11 +87,11 @@
     app.config(['toastrConfig', function (toastrConfig) {
         angular.extend(toastrConfig, {
             autoDismiss: true,
-            timeOut: 5000,
+            timeOut: 145000,
             containerId: 'toast-container',
             maxOpened: 0,
             newestOnTop: true,
-            positionClass: 'toast-bottom-right',
+            positionClass: 'toast-top-center',
             preventDuplicates: false,
             preventOpenDuplicates: false,
             target: 'body'

@@ -16,10 +16,10 @@
                 animation: 'fade-in',
 
             });
-        }
+        };
         var hidePopup = function () {
-            
-        }
+            $ionicLoading.hide();
+        };
 
         vm.user = { 'name': '', 'password': '' };
 
@@ -32,7 +32,7 @@
 
 
         function onSuccess(token) {
-            $ionicLoading.hide();
+            hidePopup();
             if (token.erro) {
                 toastr.error('Usuario ou senha inválidos.', 'Autenticação');
                 return;
@@ -43,7 +43,7 @@
 
         }
         function onError() {
-            $ionicLoading.hide();
+            hidePopup();
             toastr.error('Não foi possivel conectar ao servidor.', 'Erro!');
         }
     }
