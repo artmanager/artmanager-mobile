@@ -3,7 +3,7 @@
         <md-content>
             <filter-grid filters="filters"></filter-grid>
             <md-content>
-                <ioni-list >
+                <ion-list >
 
                     <md-card ng-repeat="item in items| orderBy:order:ascending" ui-href="#/app/orders/{{item.id}}" >
                         <md-toolbar class="item-list card-{{item.status}}">
@@ -31,7 +31,7 @@
                             </div>
                         </md-card-content>
                     </md-card>
-                </ioni-list>
+                </ion-list>
             </md-content>
         </md-content>
     </ion-content>
