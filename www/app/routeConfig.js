@@ -104,7 +104,7 @@
 
         stateProvider.state('app.employees', {
             url: '/employees',
-            title: '',
+            title: 'Fornecedores',
             views: {
                 'menuContent': {
                     templateUrl: 'templates/employee/employees.html',

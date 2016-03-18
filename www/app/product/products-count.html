@@ -1,35 +1,30 @@
-<ion-view view-title="RELATÓRIO DE PRODUTOS VENDIDOS" name="items-view">
+<ion-view name="products-count-view">
     <ion-content>
-        <ion-item class="card">
-            <div class="row">
-                <div class="col-50">
-                    <h3>Quantidade de Produtos Vendidos:</h3>
-                    <p> {{item.count}}</p>
-                </div>
-                <div class="col-33">
-                    <h3>Mês/Ano:</h3>
-                    <p> {{item.month}}/{{item.year}} </p>
-                </div>
+        <md-content>
+            <md-content>
+                <ion-list>
+                    <md-card ng-repeat="item in item.employees| orderBy:order:ascending" href="#/app/employees/{{item.id}}">
+                        <md-toolbar class="item-list card-primary">
+                            <div class="md-toolbar-tools">
+                                <h3 class="md-headline">  {{item.nome | uppercase}}</h3>
+                            </div>
+                        </md-toolbar>
 
-            </div>
-
-        </ion-item>
-        <div class="padding"></div>
-        <ion-item class="card" ng-repeat="product in item.employees">
-            <h2>{{product.nome}}</h2>
-
-            <div class="row">
-
-                <div class="padding"></div>
-
-                <div class="padding"></div>
-                <div class="col-50 col-offset-50">
-                    <h3>Quantidade Vendidos:</h3>
-                    <p> {{product.count}}</p>
-                </div>
-
-            </div>
-
-        </ion-item>
+                        <md-card-content layout-align>
+                            <div layout="row">
+                                <div flex>
+                                    <h3 class="md-headline">Quantidade</h3>
+                                    <h3 class="md-headline">{{item.count}} Unidades</h3>
+                                </div>
+                                <!--</div><div layout="row">-->
+                                <div flex>
+                                    <h3 class="md-headline">Mês/Ano:</h3>
+                                    <h3 class="md-headline">02/02</h3>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </md-card>
+                </ion-list>
+            </md-content>
+        </md-content>
     </ion-content>
-</ion-view>
