@@ -6,15 +6,15 @@
             <filter-grid filters="filters"></filter-grid>
             <md-content>
                 <ion-list>
-
-                    <md-card ng-repeat="item in items| orderBy:order:ascending" ui-href="app.products">
+                   
+                    <md-card ng-repeat="item in items| orderBy:order:ascending" >
                         <md-toolbar class="item-list card-primary">
                             <div class="md-toolbar-tools">
                                 <h3 class="md-headline">  {{item.nome | uppercase}}</h3>
                             </div>
                         </md-toolbar>
 
-                        <md-card-content layout-align="space-between" >
+                        <md-card-content layout-align="space-between" ui-href="app.products">
 
                             <div layout="row">
                                 <h3 flex class="md-headline">Fornecedor:</h3>

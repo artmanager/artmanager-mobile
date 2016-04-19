@@ -3,9 +3,9 @@
     angular.module('controllers.loginController', [])
         .controller('LoginCtrl', LoginCtrl);
 
-    LoginCtrl.$inject = ['$state', 'LoginService', 'LocalStorageService', 'UtilService', 'toastr', '$ionicLoading'];
+    LoginCtrl.$inject = ['$state', 'httpRequestInterceptor', 'LoginService', 'LocalStorageService', 'UtilService', 'toastr', '$ionicLoading'];
 
-    function LoginCtrl($state, LoginService, LocalStorageService, UtilService, toastr, $ionicLoading) {
+    function LoginCtrl($state, httpRequestInterceptor, LoginService, LocalStorageService, UtilService, toastr, $ionicLoading) {
         var vm = this;
 
         var showPopup = function () {
@@ -37,8 +37,8 @@
                 toastr.error('Usuario ou senha inválidos.', 'Autenticação');
                 return;
             }
-            LocalStorageService.set('token', token);
             UtilService.removeCSS("app/login/login.css");
+            LoginService.setAuthToken(token);
             $state.go('app.orders');
 
         }

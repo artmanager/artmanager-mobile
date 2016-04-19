@@ -97,5 +97,9 @@
             target: 'body'
         });
     }]);
-
+    
+    app.config(['$httpProvider', function ($httpProvider) {
+        $httpProvider.interceptors.push('httpRequestInterceptor');
+        console.log($httpProvider);
+    }]);
 })(angular);

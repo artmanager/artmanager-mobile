@@ -7,10 +7,22 @@
     function LoginService( $http, $resource, ConstantsService) {
         return {
             login: login,
-            logout: logout
+            logout: logout,
+            setAuthToken: setAuthToken
+            
         };
+        function setAuthToken(value) {
+            
+            console.log($http);
+            $http.defaults.headers.common[ConstantsService.ACCESS_TOKEN_KEY] = value;
+        }
+        function  killAuthToken() {
+            $http.defaults.headers.common[ConstantsService.ACCESS_TOKEN_KEY] = '';
+            
+        }
+        
         function logout() {
-
+            killAuthToken();
         }
         function login(user) {
             return $http.post(ConstantsService.LOGIN_URL, user).then(function name(params) {

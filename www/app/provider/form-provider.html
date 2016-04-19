@@ -22,8 +22,12 @@
                                 <input name="CNPJ" ng-model="vm.provider.CNPJ" ui-br-cnpj-mask>
                             </md-input-container>
                             <md-input-container class="md-block">
+                                <label>Email</label>
+                                <input ng-model="vm.provider.mail" ui-br-phone-number>
+                            </md-input-container>
+                            <md-input-container class="md-block">
                                 <label>Telefone</label>
-                                <input ng-model="vm.provider.telephone" ui-br-phone-number>
+                                <input ng-model="vm.provider.phones[0].number" ui-br-phone-number>
                             </md-input-container>
                             <div layout="row" layout-align="end center">
                                 <md-button class="md-primary" ng-click="vm.toggleForm()" ng-disabled="providerForm.companyName.$invalid ||
@@ -38,31 +42,31 @@
                             <div layout="row">
                                 <md-input-container class="md-block" flex>
                                 <label>Rua</label>
-                                <input ng-model="vm.provider.street">
+                                <input ng-model="vm.provider.address[0].street">
                             </md-input-container>
                             <md-input-container class="md-block" flex="20">
                                 <label>Número</label>
-                                <input type="number" class="border-input-all" ng-model="vm.provider.number">
+                                <input type="number" class="border-input-all" ng-model="vm.provider.address[0].number">
                             </md-input-container>
                             </div>
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Bairro</label>
-                                <input ng-model="vm.provider.district">
+                                <input ng-model="vm.provider.address[0].neighborhood">
                             </md-input-container>
 
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>CEP</label>
-                                <input name="postalCode" ng-model="vm.provider.postalCode" required ui-br-cep-mask required>
+                                <input name="postalCode" ng-model="vm.provider.address[0].zip_code" required ui-br-cep-mask required>
 
                             </md-input-container>
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Cidade</label>
-                                <input ng-model="vm.provider.city">
+                                <input ng-model="vm.provider.address[0].city">
                             </md-input-container>
 
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Estado</label>
-                                <input ng-model="vm.provider.state">
+                                <input ng-model="vm.provider.address[0].state">
                             </md-input-container>
                             <div layout="row" layout-align="end center">
                                 <md-button class="md-primary" ng-click="vm.goBack()">Voltar</md-button>

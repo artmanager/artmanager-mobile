@@ -1,41 +1,65 @@
 (function (angular) {
 	var app = angular.module('controllers.clientController', ['ngSanitize']);
- 
-	app.controller('ClientCtrl', ['$scope','$rootScope', '$timeout', 'ClientService', function ($scope, $rootScope, $timeout,  ClientService) {
-		
-        $scope.countPhone 		= 1;
-		$scope.countLocation 	= 1;
-		$scope.isFormUser 		= true;
-		$scope.isFormContato 	= false;
-		$scope.isFormEndereco 	= false;
-		$scope.user = {
-			telefone: [],
-			endereco:[]
-		};
 
-	
-		$scope.login = function (user ) {
-			ClientService.create(user);
-		};
-		
-		var disableAll = function () {
-			
-			$scope.isFormUser = false;
-			$scope.isFormContato = false;
-			$scope.isFormEndereco = false;
+	ClientController.$inject = ['$timeout', 'ClientService']
+	app.controller('ClientCtrl', ClientController);
 
-		};
-		$scope.nextContato = function () {
-			disableAll();
-			$scope.isFormContato = true;
+	function ClientController($timeout, ClientService) {
+		var vm = this;
+        vm.isFormUser = true;
+        vm.isFormContact = false;
+        vm.isFormLocation = false;
 
-		};
-		$scope.nextEndereco = function () {
-			disableAll();
-			$scope.isFormEndereco = true;
-		};
+        vm.profiles = [{ id: 0, description: 'Administrador' }, { id: 1, description: 'Usuario' }];
 
-		}]);
+        vm.user = {
+            phone: [],
+            name: '',
+            number: '',
+            district: '',
+            postalCode: '',
+            city: '',
+            state: ''
+
+        };
+
+        vm.create = function () {
+            alert(vm.user);
+            UserService.Create(vm.user);
+        };
+
+        vm.nextContato = function () {
+            disableAll();
+            vm.isFormContact = true;
+
+        };
+        vm.nextLocation = function () {
+            disableAll();
+            vm.isFormLocation = true;
+        };
+        vm.goBack = function (form) {
+            disableAll();
+            switch (form) {
+                case 'contact':
+                    vm.isFormContact = true;
+                    break;
+                case 'user':
+                    vm.isFormUser = true;
+                    break;
+
+                default:
+                    vm.isFormContato = true;
+                    break;
+            }
+        };
+        var disableAll = function () {
+
+            vm.isFormUser = false;
+            vm.isFormContact = false;
+            vm.isFormLocation = false;
+
+        };
+	}
 
 
 })(angular);   
