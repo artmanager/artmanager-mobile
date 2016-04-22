@@ -52,11 +52,11 @@
 
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Estado</label>
-                            <input ng-model="vm.user.state" required>
+                            <input ng-model="vm.user.state" maxlength="2" required>
                         </md-input-container>
                         <div layout="row" layout-align="end center">
                             <md-button class="md-primary" ng-click="vm.goBack('contact')">Voltar</md-button>
-                            <md-button class="md-primary" ng-click="vm.create()" ng-disabled="formUser.$invalid">Cadastrar</md-button>
+                            <md-button class="md-primary" ng-click="vm.create()">Cadastrar</md-button>
                         </div>
                     </div>
 

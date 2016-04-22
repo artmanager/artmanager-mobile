@@ -124,7 +124,7 @@
                 }
             }
         });
-        $urlRouterProvider.otherwise('/app/orders');
+        $urlRouterProvider.otherwise('/login');
     }]);
 
 })(angular);

@@ -55,7 +55,7 @@
         };
 
         function request(config) {
-            config.headers = { 'x-access-token':  defaultToken }
+            config.headers = { 'x-access-token':  defaultToken };
             return config;
         }
           

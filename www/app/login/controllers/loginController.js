@@ -26,8 +26,9 @@
         vm.login = function (user) {
             var data = { 'data': btoa(vm.user.name + "-" + vm.user.password) };
             showPopup();
-            LoginService.login(data)
-                .then(onSuccess, onError);
+            onSuccess(data);
+            // LoginService.login(data)
+            //     .then(onSuccess, onError);
         };
 
 
