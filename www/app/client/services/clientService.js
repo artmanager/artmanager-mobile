@@ -1,23 +1,38 @@
-(function (angular) {
-	'use strict';
-	var app = angular.module('services.clientService', []);
-	
-	app.service('ClientService', ['$http', 'ConstantsService', function ($http, ConstantsService) {
-		return {
-			create : create
-		};
+/* global angular */
+(function () {
+    'use strict';
+    angular.module('services.clientService', [])
+        .service('ClientService', ClientService);
         
-                
-        function create (user) {
-				return $http.post(ConstantsService.CREATE_CLIENT_URL, user).then(function (e) {
-					if (!e.data.success)
-						alert('Erro ao cadastrar');
-					else 
-						alert('Usuario cadastrado com sucesso');
-				});
-			}
-            
-         
-	}]);
+    ClientService.$inject = ['$http', '$q', 'ConstantsService', 'toastr'];
+    function ClientService($http, $q, ConstantsService, toastr) {
+        return {
+            create: create,
+            get: get
 
-})(angular);
+        };
+
+        function create(user) {
+            return $http.post(ConstantsService.CREATE_CLIENT_URL, user)
+                .then(function (obj) {
+                    if (obj.data.erro === undefined) {
+                        toastr.success('Cadastro efetuado com sucesso.');
+                        return true;
+                    }
+                    else {
+                        toastr.error("Erro ao cadastrar fornecedor");
+                        return false;
+                    }
+                    
+                });
+        }
+        function get() {
+            return $http.get(ConstantsService.GET_CLIENT_URL).then(function (data) {
+                return data;
+            });
+        }
+    }
+
+
+
+})();

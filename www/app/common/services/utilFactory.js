@@ -9,13 +9,15 @@
     function ConstantsService(BASE_API_URL) {
         var baseAutenticacao = BASE_API_URL + 'authentication';
         var baseUser = BASE_API_URL + 'usuarios';
-        var baseClient = BASE_API_URL + 'cliente';
+        var baseClient = BASE_API_URL + 'client';
         var baseProvider = BASE_API_URL + 'supplier';
 
         this.LOGIN_URL = baseAutenticacao;
         this.CREATE_USER_URL = baseUser;
+        
         this.CREATE_CLIENT_URL = baseClient;
         this.GET_CLIENT_URL = baseClient;
+        
         this.CREATE_PROVIDER_URL = baseProvider;
         this.GET_PROVIDER_URL = baseProvider;
 
@@ -50,12 +52,12 @@
         }
     }
     app.factory('LoadingPopup', LoadingPopup);
-    LoadingPopup.$inject = ['$ionicLoading']
+    LoadingPopup.$inject = ['$ionicLoading'];
     function LoadingPopup($ionicLoading) {
         return {
             show: show,
             hide: hide
-        }
+        };
         
         function hide() {
             $ionicLoading.hide();

@@ -8,52 +8,82 @@
                         <div layout-gt-sm="row">
                             <md-input-container class="md-block">
                                 <label>Nome</label>
-                                <input name="name" ng-model="vm.user.name" required>
+                                <input name="name" ng-model="vm.user.client.name" required>
                             </md-input-container>
 
                         </div>
 
                         <div layout-gt-sm="row">
-
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Email</label>
+                                <input name="phone1" ng-model="vm.user.client.email">
+                            </md-input-container>
+                            
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Telefone</label>
-                                <input name="phone1" ng-model="vm.user.phone[0]" required ui-br-phone-number>
+                                <input name="phone1" ng-model="vm.user.phone[0]" ui-br-phone-number>
                             </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Tipo de Telefone</label>
+
+                                <md-select ng-model="vm.user.phones[0].type" name="type">
+                                    <md-option ng-repeat="type in vm.phoneTypes" value="{{type.id}}">
+                                        {{type.description}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+<!--                            
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Telefone (opcional)</label>
                                 <input name="phone2" ng-model="vm.user.phone[1]" ui-br-phone-number>
                             </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Tipo de Telefone</label>
+
+                                <md-select ng-model="vm.user.phones[1].type" name="type">
+                                    <md-option ng-repeat="type in vm.phoneTypes" value="{{type.id}}">
+                                        {{type.description}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>-->
                             <div layout="row" layout-align="end center">
-                                <md-button class="md-primary" ng-click="vm.nextLocation()" ng-disabled="(formUser.phone1.$error.required)">Proximo</md-button>
+                                <md-button class="md-primary" ng-click="vm.nextLocation()" 
+                                ng-disabled="(formUser.name.$error.required)">Proximo</md-button>
                             </div>
                         </div>
                     </div>
 
                     <div ng-show="vm.isFormLocation">
                         <md-input-container class="md-block" flex-gt-sm>
-                            <label>Número</label>
-                            <input type="number" class="border-input-all" ng-model="vm.user.number" required>
+                            <label>CEP</label>
+                            <input name="postalCode" ng-model="vm.user.address[0].zip_code"  ui-br-cep-mask required>
                         </md-input-container>
-
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Rua</label>
+                            <input ng-model="vm.user.address[0].street" >
+                            
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Número</label>
+                            <input type="number" class="border-input-all" ng-model="vm.user.address[0].number" >
+                        </md-input-container>
+                        
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Bairro</label>
-                            <input ng-model="vm.user.district" required>
+                            <input ng-model="vm.user.address[0].neighborhood" >
                         </md-input-container>
 
-                        <md-input-container class="md-block" flex-gt-sm>
-                            <label>CEP</label>
-                            <input name="postalCode" ng-model="vm.user.postalCode" required ui-br-cep-mask required>
-
-                        </md-input-container>
+                        
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Cidade</label>
-                            <input ng-model="vm.user.city" required>
+                            <input ng-model="vm.user.address[0].city" >
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Estado</label>
-                            <input ng-model="vm.user.state" maxlength="2" required>
+                            <input ng-model="vm.user.address[0].state" maxlength="2">
                         </md-input-container>
+                        
                         <div layout="row" layout-align="end center">
                             <md-button class="md-primary" ng-click="vm.goBack('contact')">Voltar</md-button>
                             <md-button class="md-primary" ng-click="vm.create()">Cadastrar</md-button>
