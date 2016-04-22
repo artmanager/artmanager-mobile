@@ -10,6 +10,7 @@ var files =
         "order/controllers/orderDetailController.js",
         "user/controllers/userController.js",
         "provider/controllers/providerController.js",
+        
         "client/controllers/clientController.js",
         "product/controllers/productController.js",
         "product/controllers/productCountController.js",
@@ -18,6 +19,7 @@ var files =
 
 
 
+        "provider/services/providerService.js",
         "login/services/loginService.js",
         "order/services/orderService.js",
         "user/services/userService.js",
@@ -25,7 +27,6 @@ var files =
         "product/services/productService.js",
         "employee/services/employeeService.js",
         "common/services/utilFactory.js",
-
 
         "common/filters/commonFilters.js",
         "common/directives/filter-grid.js",

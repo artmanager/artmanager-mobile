@@ -35,7 +35,8 @@
         'services.productService',
         'services.employeeService',
         'services.orderService',
-
+        'services.providerService',
+        
         'filters.commonFilters',
 
         'directives.filter-grid',
