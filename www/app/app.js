@@ -23,6 +23,7 @@
         'controllers.clientController',
         'controllers.productController',
         'controllers.productCountController',
+        'controllers.productRegisterController',
         'controllers.employeeController',
         'controllers.employeeDetailController',
 

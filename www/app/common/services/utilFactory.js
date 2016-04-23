@@ -11,6 +11,7 @@
         var baseUser = BASE_API_URL + 'usuarios';
         var baseClient = BASE_API_URL + 'client';
         var baseProvider = BASE_API_URL + 'supplier';
+        var baseProduct = BASE_API_URL + 'product';
 
         this.LOGIN_URL = baseAutenticacao;
         this.CREATE_USER_URL = baseUser;
@@ -21,6 +22,9 @@
         this.CREATE_PROVIDER_URL = baseProvider;
         this.GET_PROVIDER_URL = baseProvider;
 
+        this.CREATE_PRODUCT_URL = baseProduct;
+        this.GET_PRODUCT_URL = baseProduct;
+        
         this.ACCESS_TOKEN_KEY = 'x-access-token';
 
     }

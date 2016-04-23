@@ -1,0 +1,75 @@
+<ion-view>
+    <ion-content>
+        <div layout="column" ng-cloak class="md-inline-form">
+            <md-content layout-padding>
+                <form name="productForm">
+
+                    <div ng-show="vm.content.personalData">
+
+                        <md-input-container class="md-block">
+                            <label>Nome</label>
+                            <input name="name" ng-model="vm.product.name" required>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Descricao</label>
+                            <input name="describe" ng-model="vm.product.describe">
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Categoria</label>
+                            <md-select name="category" ng-model="vm.product.id_product_category" required>
+                                <md-option ng-repeat="category in vm.categories" value="{{category.id}}">
+                                    {{category.description}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <br>
+                        <md-input-container class="md-block">
+                            <label>Tamanho (CM)</label>
+                            <input name="size" ng-model="vm.product.size" class="border-input-all" type="text" ui-number-mask required>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Peso (KG)</label>
+                            <input name="weight" ng-model="vm.product.weight" class="border-input-all" type="text" ui-number-mask required>
+                        </md-input-container>
+
+
+                        <div layout="row" layout-align="end center">
+                            <md-button class="md-primary" 
+                            ng-click="vm.toggleForm()"
+                            ng-disabled="
+                                productForm.name.$error.required ||
+                                productForm.category.$error.required ||
+                                productForm.size.$error.required ||
+                                productForm.weight.$error.required">Proximo</md-button>
+                        </div>
+                    </div>
+
+                    <div ng-show="vm.content.cost">
+
+                        <div layout-gt-sm="row">
+
+                            <md-input-container class="md-block">
+                                <label>Preço (R$)</label>
+                                <input ng-model="vm.product.cost" class="border-input-all" type="text" ui-number-mask>
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Preço de venda (R$)</label>
+                                <input class="border-input-all" type="text" ng-model="vm.product.sale_cost" ui-number-mask>
+                            </md-input-container>
+
+                            <md-input-container class="md-block">
+                                <label>Quantidade</label>
+                                <input ng-model="vm.product.quantity" type="number" class="border-input-all">
+                            </md-input-container>
+                            <div layout="row" layout-align="end center">
+                                <md-button class="md-primary" ng-click="vm.goBack()">Voltar</md-button>
+                                <md-button class="md-primary" ng-click="vm.create()">Cadastrar</md-button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </md-content>
+        </div>
+    </ion-content>
+</ion-view>

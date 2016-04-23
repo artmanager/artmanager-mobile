@@ -77,7 +77,18 @@
                 }
             }
         });
-
+        stateProvider.state('app.createProduct', {
+            url: '/createProduct',
+            title: 'Cadastrar Produtos',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/product/form-products.html',
+                    controller: 'ProductRegisterCtrl',
+                    controllerAs: 'vm'
+                }
+            }
+        });
+        
         stateProvider.state('app.products', {
             url: '/products',
             title: 'Produtos',

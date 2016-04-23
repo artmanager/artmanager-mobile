@@ -1,3 +1,4 @@
+
 (function (angular) {
 	var app = angular.module('controllers.clientController', ['ngSanitize']);
 

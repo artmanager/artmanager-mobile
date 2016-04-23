@@ -14,6 +14,7 @@ var files =
         "client/controllers/clientController.js",
         "product/controllers/productController.js",
         "product/controllers/productCountController.js",
+        "product/controllers/productRegisterController.js",
         "employee/controllers/employeeController.js",
         "employee/controllers/employeeDetailController.js",
 

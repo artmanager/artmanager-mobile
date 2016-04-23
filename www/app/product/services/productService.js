@@ -1,15 +1,22 @@
 (function (angular) {
     angular.module('services.productService', [])
         .service('ProductService', ProductService);
-        
-    ProductService.$inject = ['$q'];
-    function ProductService($q) {
+
+    ProductService.$inject = ['$q', '$http', 'ConstantsService'];
+    function ProductService($q, $http, ConstantsService) {
         return {
             products: products,
-            productsCountMonth: getCountItens
+            productsCountMonth: getCountItens,
+            create: create
         };
 
-
+        function create(product) {
+            console.log('product', product);
+            return $http.post(ConstantsService.CREATE_PRODUCT_URL, product)
+                .then(function (params) {
+                    return params.data;
+                });
+        }
         function products() {
             var deferred = $q.defer();
             deferred.resolve(getItens());
