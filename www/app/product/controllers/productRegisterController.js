@@ -7,7 +7,11 @@
     function ProductRegisterCtrl(toastr, ProductService, LoadingPopup) {
         var vm = this;
         vm.content = { personalData: true, cost: false };
-        vm.categories = [{ id: 1, description: 'roupas' }];
+        vm.categories = [{ id: 1, description: 'roupas' },
+                         { id: 2, description: 'reciclaveis' }];
+                         
+        vm.suppliers = [{ id: 1, description: 'Maria dos remédios' },
+                        { id: 2, description: 'Josefa Silva' } ];
         // vm.product = {
         //     id_product_category: 5,
         //     id_supplier: null,

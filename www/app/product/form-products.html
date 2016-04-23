@@ -5,7 +5,16 @@
                 <form name="productForm">
 
                     <div ng-show="vm.content.personalData">
-
+                        <md-input-container class="md-block">
+                            <label>Fornecedor</label>
+                            <md-select name="supplier" ng-model="vm.product.id_supplier" >
+                                <md-option ng-repeat="supplier in vm.suppliers" value="{{supplier.id}}">
+                                    {{supplier.description}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <br>
+                        
                         <md-input-container class="md-block">
                             <label>Nome</label>
                             <input name="name" ng-model="vm.product.name" required>
