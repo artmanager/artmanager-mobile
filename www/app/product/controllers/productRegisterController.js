@@ -9,7 +9,7 @@
         vm.content = { personalData: true, cost: false };
         vm.categories = [{ id: 1, description: 'roupas' },
                          { id: 2, description: 'reciclaveis' }];
-                         
+                            
         vm.suppliers = [{ id: 1, description: 'Maria dos remédios' },
                         { id: 2, description: 'Josefa Silva' } ];
         // vm.product = {
@@ -47,12 +47,12 @@
         function onCreate(response) {
             
             if (response.erro)
-                toastr.error('Erro ao cadastrar', response.erro);
+                toastr.error('Erro, contate o suporte.','Não foi possivel cadastrar');
 
             LoadingPopup.hide();
         }
         function onFail(response) {
-            toastr.error('Erro ao cadastrar', response.erro);
+           toastr.error('Erro, contate o suporte.', 'Não foi possivel cadastrar');
             LoadingPopup.hide();
         }
     }

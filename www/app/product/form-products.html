@@ -7,14 +7,14 @@
                     <div ng-show="vm.content.personalData">
                         <md-input-container class="md-block">
                             <label>Fornecedor</label>
-                            <md-select name="supplier" ng-model="vm.product.id_supplier" >
+                            <md-select name="supplier" ng-model="vm.product.id_supplier">
                                 <md-option ng-repeat="supplier in vm.suppliers" value="{{supplier.id}}">
                                     {{supplier.description}}
                                 </md-option>
                             </md-select>
                         </md-input-container>
-                        <br>
                         
+
                         <md-input-container class="md-block">
                             <label>Nome</label>
                             <input name="name" ng-model="vm.product.name" required>
@@ -32,48 +32,51 @@
                                 </md-option>
                             </md-select>
                         </md-input-container>
-                        <br>
-                        <md-input-container class="md-block">
-                            <label>Tamanho (CM)</label>
-                            <input name="size" ng-model="vm.product.size" class="border-input-all" type="text" ui-number-mask required>
-                        </md-input-container>
-                        <md-input-container class="md-block">
-                            <label>Peso (KG)</label>
-                            <input name="weight" ng-model="vm.product.weight" class="border-input-all" type="text" ui-number-mask required>
-                        </md-input-container>
-
 
                         <div layout="row" layout-align="end center">
-                            <md-button class="md-primary" 
-                            ng-click="vm.toggleForm()"
-                            ng-disabled="
+                            <md-button class="md-primary" ng-click="vm.toggleForm()" ng-disabled="
                                 productForm.name.$error.required ||
-                                productForm.category.$error.required ||
-                                productForm.size.$error.required ||
-                                productForm.weight.$error.required">Proximo</md-button>
+                                productForm.category.$error.required">Proximo</md-button>
                         </div>
                     </div>
 
                     <div ng-show="vm.content.cost">
 
                         <div layout-gt-sm="row">
+                            <md-input-container class="md-block">
+                                <label>Tamanho (CM)</label>
+                                <input name="size" ng-model="vm.product.size" class="border-input-all" type="text" ui-number-mask required>
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Peso (KG)</label>
+                                <input name="weight" ng-model="vm.product.weight" class="border-input-all" type="text" ui-number-mask required>
+                            </md-input-container>
 
                             <md-input-container class="md-block">
                                 <label>Preço (R$)</label>
-                                <input ng-model="vm.product.cost" class="border-input-all" type="text" ui-number-mask>
+                                <input name="cost" ng-model="vm.product.cost" class="border-input-all" type="text" ui-number-mask>
                             </md-input-container>
                             <md-input-container class="md-block">
                                 <label>Preço de venda (R$)</label>
-                                <input class="border-input-all" type="text" ng-model="vm.product.sale_cost" ui-number-mask>
+                                <input name="sale_cost" class="border-input-all" type="text" ng-model="vm.product.sale_cost" ui-number-mask>
                             </md-input-container>
 
                             <md-input-container class="md-block">
                                 <label>Quantidade</label>
-                                <input ng-model="vm.product.quantity" type="number" class="border-input-all">
+                                <input name="quantity" ng-model="vm.product.quantity" type="number" class="border-input-all">
                             </md-input-container>
                             <div layout="row" layout-align="end center">
                                 <md-button class="md-primary" ng-click="vm.goBack()">Voltar</md-button>
-                                <md-button class="md-primary" ng-click="vm.create()">Cadastrar</md-button>
+                                <md-button class="md-primary" ng-click="vm.create()"
+                                ng-disabled="
+                                productForm.size.$error.required ||
+                                productForm.weight.$error.required ||
+                                productForm.cost.$error.required ||
+                                productForm.sale_cost.$error.required ||
+                                productForm.cost.$error.required ||
+                                productForm.quantity.$error.required
+                                
+                                ">Cadastrar</md-button>
                             </div>
                         </div>
                     </div>
