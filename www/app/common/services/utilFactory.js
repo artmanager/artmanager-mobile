@@ -88,20 +88,20 @@
             return { 'x-access-token': localStorage.token };
         } 
     }
-     app.factory('httpRequestInterceptor', httpRequestInterceptor);
-    httpRequestInterceptor.$inject = ['ConstantsService'];
-    function httpRequestInterceptor(ConstantsService) {
-        var defaultToken = 'authentication';
-        return {
-            request: request
-        };
+    //  app.factory('httpRequestInterceptor', httpRequestInterceptor);
+    // httpRequestInterceptor.$inject = ['ConstantsService'];
+    // function httpRequestInterceptor(ConstantsService) {
+    //     var defaultToken = 'authentication';
+    //     return {
+    //         request: request
+    //     };
 
-        function request(config) {
-            config.headers = { 'x-access-token': defaultToken };
-            return config;
-        }
+    //     function request(config) {
+    //         config.headers = { 'x-access-token': defaultToken };
+    //         return config;
+    //     }
 
-    }
+    // }
 
 })(angular);
 

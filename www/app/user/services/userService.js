@@ -20,14 +20,7 @@
                     headers: AuthService.headers()
                 })
                 .then(function (obj) {
-                    if (obj.data.erro === undefined) {
-                        alert('Cadastro efetuado com sucesso.');
-                        return true;
-                    }
-                    else {
-                        alert(obj.data.erro);
-                        return false;
-                    }
+                    return obj.data;
                 });
         }
         function get() {

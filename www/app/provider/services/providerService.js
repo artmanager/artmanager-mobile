@@ -4,8 +4,8 @@
     angular.module('services.providerService', [])
         .service('ProviderService', ProviderService);
         
-    ProviderService.$inject = ['$http', '$q', 'ConstantsService', 'toastr'];
-    function ProviderService($http, $q, ConstantsService, toastr) {
+    ProviderService.$inject = ['$http', '$q', 'ConstantsService', 'toastr', 'AuthService'];
+    function ProviderService($http, $q, ConstantsService, toastr, AuthService) {
         return {
             create: create,
             get: get
@@ -13,7 +13,12 @@
         };
 
         function create(user) {
-            return $http.post(ConstantsService.CREATE_PROVIDER_URL, user)
+           return $http({
+                    method: 'POST',
+                    url: ConstantsService.CREATE_PROVIDER_URL,
+                    data: user,
+                    headers: AuthService.headers()
+                })
                 .then(function (obj) {
                     if (obj.data.erro === undefined) {
                         toastr.success('Cadastro efetuado com sucesso.');
@@ -27,7 +32,9 @@
                 });
         }
         function get() {
-            return $http.get(ConstantsService.GET_PROVIDER_URL).then(function (data) {
+            return $http.get(ConstantsService.GET_PROVIDER_URL, {
+                headers: AuthService.headers()
+            }).then(function (data) {
                 return data;
             });
         }

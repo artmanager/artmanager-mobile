@@ -2,8 +2,8 @@
     angular.module('services.productService', [])
         .service('ProductService', ProductService);
 
-    ProductService.$inject = ['$q', '$http', 'ConstantsService'];
-    function ProductService($q, $http, ConstantsService) {
+    ProductService.$inject = ['$q', '$http', 'ConstantsService', 'AuthService'];
+    function ProductService($q, $http, ConstantsService, AuthService) {
         return {
             products: products,
             productsCountMonth: getCountItens,
@@ -12,7 +12,12 @@
 
         function create(product) {
             console.log('product', product);
-            return $http.post(ConstantsService.CREATE_PRODUCT_URL, product)
+            return $http({
+                    method: 'POST',
+                    url: ConstantsService.CREATE_PRODUCT_URL,
+                    data: product,
+                    headers: AuthService.headers()
+                })
                 .then(function (params) {
                     return params.data;
                 });

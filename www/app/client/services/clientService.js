@@ -4,8 +4,8 @@
     angular.module('services.clientService', [])
         .service('ClientService', ClientService);
         
-    ClientService.$inject = ['$http', '$q', 'ConstantsService', 'toastr'];
-    function ClientService($http, $q, ConstantsService, toastr) {
+    ClientService.$inject = ['$http', '$q', 'ConstantsService', 'toastr', 'AuthService'];
+    function ClientService($http, $q, ConstantsService, toastr, AuthService) {
         return {
             create: create,
             get: get
@@ -13,7 +13,12 @@
         };
 
         function create(user) {
-            return $http.post(ConstantsService.CREATE_CLIENT_URL, user)
+            return $http({
+                    method: 'POST',
+                    url: ConstantsService.CREATE_CLIENT_URL,
+                    data: user,
+                    headers: AuthService.headers()
+                })
                 .then(function (obj) {
                     if (obj.data.erro === undefined) {
                         toastr.success('Cadastro efetuado com sucesso.');
