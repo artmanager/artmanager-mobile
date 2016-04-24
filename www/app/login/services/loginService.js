@@ -12,9 +12,9 @@
             
         };
         function setAuthToken(value) {
-            
-            console.log($http);
-            $http.defaults.headers.common[ConstantsService.ACCESS_TOKEN_KEY] = value;
+            localStorage.token = value.token;
+            // console.log($http.defaults.headers.common);
+            // $http.defaults.headers.common[ConstantsService.ACCESS_TOKEN_KEY] = value;
         }
         function  killAuthToken() {
             $http.defaults.headers.common[ConstantsService.ACCESS_TOKEN_KEY] = '';
@@ -25,9 +25,11 @@
             killAuthToken();
         }
         function login(user) {
-            return $http.post(ConstantsService.LOGIN_URL, user).then(function name(params) {
-                return params.data;
-             }); 
+            console.log(user);
+            return $http.post(ConstantsService.LOGIN_URL, user)
+                    .then(function name(params) {
+                        return params.data;
+                    }); 
             
             //  var Login = $resource(ConstantsService.LOGIN_URL + "/data", user);
             // Login.save(function (token) {

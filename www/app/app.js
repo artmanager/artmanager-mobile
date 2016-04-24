@@ -100,8 +100,8 @@
         });
     }]);
     
-    app.config(['$httpProvider', function ($httpProvider) {
-        $httpProvider.interceptors.push('httpRequestInterceptor');
-        console.log($httpProvider);
-    }]);
+    // app.config(['$httpProvider', function ($httpProvider) {
+    //     $httpProvider.interceptors.push('httpRequestInterceptor');
+    //     console.log($httpProvider);
+    // }]);
 })(angular);

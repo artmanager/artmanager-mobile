@@ -12,9 +12,10 @@
         vm.user = { 'name': '', 'password': '' };
 
         vm.login = function (user) {
-            var data = { 'data': btoa(vm.user.name + "-" + vm.user.password) };
+            var data = { "data": btoa(vm.user.name + "-" + vm.user.password) };
+        
             LoadingPopup.show();
-            LoginService.login(data)
+            LoginService.login(JSON.stringify(data))
                 .then(onSuccess, onError);
         };
 

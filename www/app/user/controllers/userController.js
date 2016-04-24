@@ -27,8 +27,8 @@
         };
 
         vm.create = function () {
-            alert(vm.user);
-            UserService.Create(vm.user);
+            console.log(vm.user);
+            UserService.create(vm.user);
         };
 
         vm.nextContato = function () {

@@ -8,7 +8,7 @@
 
     function ConstantsService(BASE_API_URL) {
         var baseAutenticacao = BASE_API_URL + 'authentication';
-        var baseUser = BASE_API_URL + 'usuarios';
+        var baseUser = BASE_API_URL + 'users';
         var baseClient = BASE_API_URL + 'client';
         var baseProvider = BASE_API_URL + 'supplier';
         var baseProduct = BASE_API_URL + 'product';
@@ -49,7 +49,7 @@
         return {
             removeCSS: removeCSS
         };
-
+        
         function removeCSS(cssPath) {
             var node = document.querySelector("[href='" + cssPath + "']");
             node.parentNode.removeChild(node);
@@ -78,7 +78,17 @@
             
         }
     }
-    app.factory('httpRequestInterceptor', httpRequestInterceptor);
+    
+    app.factory('AuthService', AuthService);
+    function AuthService() {
+        return {
+          headers: headers  
+        };
+        function headers() {
+            return { 'x-access-token': localStorage.token };
+        } 
+    }
+     app.factory('httpRequestInterceptor', httpRequestInterceptor);
     httpRequestInterceptor.$inject = ['ConstantsService'];
     function httpRequestInterceptor(ConstantsService) {
         var defaultToken = 'authentication';
