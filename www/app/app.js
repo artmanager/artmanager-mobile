@@ -18,6 +18,7 @@
         'controllers.loginController',
         'controllers.orderController',
         'controllers.orderDetailController',
+        'controllers.orderRegisterController',
         'controllers.userController',
         'controllers.providerController',
         'controllers.clientController',

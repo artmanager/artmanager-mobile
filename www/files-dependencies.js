@@ -8,6 +8,7 @@ var files =
         "login/controllers/loginController.js",
         "order/controllers/orderController.js",
         "order/controllers/orderDetailController.js",
+        "order/controllers/orderRegisterController.js",
         "user/controllers/userController.js",
         "provider/controllers/providerController.js",
         

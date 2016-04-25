@@ -32,6 +32,17 @@
                 }
             }
         });
+        stateProvider.state('app.createOrder', {
+            url: '/createOrder',
+            title: 'Cadastrar Pedido',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/order/form-order.html',
+                    controller: 'OrderRegisterCtrl',
+                    controllerAs: 'vm',
+                }
+            }
+        });
         stateProvider.state('app.orderDetail', {
             url: '/orders/:id',
             title: 'Detalhes Pedido',
@@ -55,7 +66,7 @@
             }
         });
         stateProvider.state('app.createClient', {
-            url: '/createClient',
+            url: '/createClient/:clientName',
             title: 'Cadastrar Clientes',
             views: {
                 'menuContent': {

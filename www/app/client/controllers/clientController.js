@@ -2,28 +2,24 @@
 (function (angular) {
 	var app = angular.module('controllers.clientController', ['ngSanitize']);
 
-	ClientController.$inject = ['$timeout', 'ClientService', 'LoadingPopup'];
+	ClientController.$inject = ['$timeout', 'ClientService', 'LoadingPopup', '$state'];
 	app.controller('ClientCtrl', ClientController);
 
-	function ClientController($timeout, ClientService, LoadingPopup) {
+	function ClientController($timeout, ClientService, LoadingPopup, $state) {
 		var vm = this;
         vm.isFormUser = true;
         vm.isFormLocation = false;
         
         var phoneTypes = [{ id: 1, description: 'FIXO' }, { id: 3, description: 'CELULAR' }];
+        var clientName = $state.params.clientName;
+        console.log('clientName', clientName);
         vm.phoneTypes = phoneTypes;
+        vm.user = {}; 
+        vm.user.client = {};
+        if(clientName) {
+            vm.user.client.name = clientName;
+        }
         
-        vm.user = {
-            phone: [],
-            name: '',
-            number: '',
-            district: '',
-            postalCode: '',
-            city: '',
-            state: ''
-
-        };
-
         vm.create = function () {
             LoadingPopup.show();
             ClientService.create(vm.user).then(onCreate, onFail);

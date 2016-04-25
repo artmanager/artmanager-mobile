@@ -2,29 +2,29 @@
     angular.module('controllers.userController', ['ngSanitize'])
         .controller('UserCtrl', UserCtrl);
 
-    UserCtrl.$inject = ['$rootScope', '$state','$timeout', 'UserService', 'toastr', 'LoadingPopup'];
+    UserCtrl.$inject = ['$rootScope', '$state', '$timeout', 'UserService', 'toastr', 'LoadingPopup'];
 
     function UserCtrl($rootScope, $state, $timeout, UserService, toastr, LoadingPopup) {
         var vm = this;
-        
+
         vm.profiles = [{ id: 0, description: 'Administrador' }, { id: 1, description: 'Usuario' }];
- 
+
         vm.create = function () {
             console.log(vm.user);
-LoadingPopup.show();
-            var user = {"user": vm.user};
+            LoadingPopup.show();
+            var user = { "user": vm.user };
             UserService.create(user).then(onSuccess, onError);
         };
-        
-       
+
+
         function onSuccess(result) {
             LoadingPopup.hide();
-            if(result.error) {
+            if (result.error) {
                 toastr.error(result.error);
                 return;
             }
             toastr.success('Usuario cadastrado com sucesso!');
-            setTimeout(function (){
+            setTimeout(function () {
                 $state.go('app.orders');
             }, 1000);
         }
