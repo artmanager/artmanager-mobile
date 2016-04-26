@@ -4,53 +4,67 @@
             <md-content layout-padding>
                 <form name="formOrder">
 
-                    
-                            <md-autocomplete 
-                                    md-search-text-change="vm.searchTextChange(vm.searchText)"
-                                    md-search-text="vm.searchText" 
-                                    md-selected-item-change="vm.selectedItemChange(item)" 
-                                    md-items="item in vm.querySearch(vm.searchText)"
-                                    md-item-text="item.display" 
-                                    md-min-length="0" 
-                                    placeholder="Digite o Nome do Cliente">
-                                <md-item-template>
-                                    <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.display}}</span>
-                                </md-item-template>
-                                <md-not-found>
-                                    "{{vm.searchText}}" foi encontrado.
-                                    <a ng-click="vm.newClient(vm.searchText)">Cadastrar cliente agora</a>
-                                </md-not-found>
-                            </md-autocomplete>
-                        
-                        
-                    <div layout-gt-sm="row" ng-if="false">
-                        <md-input-container class="md-block">
-                            <label>Nome</label>
-                            <input name="name" ng-model="vm.user.name" required>
-                        </md-input-container>
-                        <md-input-container class="md-block">
-                            <label>Usuario</label>
-                            <input name="userName" ng-model="vm.user.user" required>
-
-                        </md-input-container>
+                    {{vm.selectedProduct}}
+                    <md-autocomplete md-search-text-change="vm.searchTextClientChangeClient(vm.searchTextClient)" md-search-text="vm.searchTextClient"
+                        md-selected-item-change="vm.selectedItemChangeClient(item)" md-items="item in vm.querySearchClient(vm.searchTextClient)"
+                        md-item-text="item.display" md-min-length="0" placeholder="Digite o Nome do Cliente">
+                        <md-item-template>
+                            <span md-highlight-text="vm.searchTextClient" md-highlight-flags="^i">{{item.display}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            "{{vm.searchTextClient}}" foi encontrado.
+                            <a ng-click="vm.newClient(vm.searchTextClient)">Cadastrar cliente agora</a>
+                        </md-not-found>
+                    </md-autocomplete>
 
 
+                    <div layout-gt-sm="row" ng-if="vm.showFormProduct">
+                        <br />
+                        <md-autocomplete md-search-text-change="vm.searchTextChangeProduct(vm.searchTextProduct)" md-search-text="vm.searchTextProduct"
+                            md-selected-item-change="vm.selectedItemChangeProduct(item)" md-items="item in vm.querySearchProduct(vm.searchTextProduct)"
+                            md-item-text="item.display" md-min-length="0" placeholder="Digite o Nome do Produto">
+                            <md-item-template>
+                                <span md-highlight-text="vm.searchTextProduct" md-highlight-flags="^i">{{item.display}}</span>
+                            </md-item-template>
+                            <md-not-found>
+                                "{{vm.searchTextProduct}}" foi encontrado.
+                                <a ng-click="vm.newProduct(vm.searchTextProduct)">Cadastrar Produto agora</a>
+                            </md-not-found>
+                        </md-autocomplete>
 
-                        <md-input-container class="md-block">
-                            <label>Senha</label>
-                            <input name="password" type="password" ng-model="vm.user.password" required class="border-input-all">
-                        </md-input-container>
-                        <md-input-container class="md-block" flex-gt-sm>
-                            <label>Perfil</label>
-                            <md-select ng-model="user.profile" name="profile" required>
-                                <md-option ng-repeat="profile in vm.profiles" value="{{profile.id}}">
-                                    {{profile.description}}
-                                </md-option>
-                            </md-select>
-                        </md-input-container>
+                        <div ng-if="vm.selectedProduct.id">
+                            <md-input-container class="md-block">
+                                <label>Preço: </label>
+                                <input name="cost" ng-model="vm.selectedProduct.precoVenda" ui-number-mask required disabled>
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Fornecedor: </label>
+                                <input name="supplier" ng-model="vm.selectedProduct.fornecedor" required disabled>
+                            </md-input-container>
 
-                        <div layout="row" layout-align="end center">
-                            <md-button class="md-primary" ng-click="vm.create()" ng-disabled="formUser.$invalid">Cadastrar</md-button>
+                            <md-input-container class="md-block">
+                                <label>Observação</label>
+                                <input name="describe" ng-model="vm.selectedProduct.observacao" required>
+                            </md-input-container>
+
+                            <md-input-container class="md-block">
+                                <label>Quantidade</label>
+                                <input name="quantity" ng-model="vm.selectedProduct.quantity" ui-number-mask required>
+                            </md-input-container>
+                            <md-checkbox ng-model="vm.selectedProduct.toProduction" aria-label="Produção">
+                                Produção
+                            </md-checkbox>
+                            <div ng-if="vm.selectedProduct.toProduction">
+                                <md-input-container class="md-block">
+                                    <label>Data de entrega</label>
+                                    <input type="date" class="border-input-all" name="sendDate" ng-model="vm.selectedProduct.sendDate" required>
+                                </md-input-container>
+                            </div>
+
+
+                            <div layout="row" layout-align="end center">
+                                <md-button class="md-primary" ng-click="vm.create()" ng-disabled="formUser.$invalid">Cadastrar</md-button>
+                            </div>
                         </div>
                     </div>
 

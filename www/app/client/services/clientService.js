@@ -32,7 +32,9 @@
                 });
         }
         function get() {
-            return $http.get(ConstantsService.GET_CLIENT_URL).then(function (data) {
+            return $http.get(ConstantsService.GET_CLIENT_URL, {
+                headers:  AuthService.headers()
+            }).then(function (data) {
                 return data;
             });
         }
