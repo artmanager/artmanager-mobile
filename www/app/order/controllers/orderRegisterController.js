@@ -4,30 +4,50 @@
     OrderRegisterCtrl.$inject = ['OrderService', '$log', '$state', 'ClientService', 'ProductService'];
     function OrderRegisterCtrl(OrderService, $log, $state, ClientService, ProductService) {
         var vm = this;
-        vm.clients = loadClients();
         vm.showFormProduct = false;
         vm.querySearchClient = querySearchClient;
         vm.selectedItemChangeClient = selectedItemChangeClient;
         vm.searchTextChangeClient = searchTextChangeClient;
         vm.newClient = newClient;
-        
-        vm.userId = 0; 
+
+        vm.userId = 0;
         vm.products = [];
         vm.productsModel = [];
+        vm.order = { products: [] };
         vm.selectedProduct = {};
         vm.selectedClient = {};
         vm.showFormProduct = false;
+        vm.showButtons = false;
         vm.querySearchProduct = querySearchProduct;
         vm.selectedItemChangeProduct = selectedItemChangeProduct;
         vm.searchTextChangeProduct = searchTextChangeProduct;
         vm.newProduct = newProduct;
+        vm.addToOrder = addToOrder;
+        vm.resetFields = resetFields;
         init();
 
 
         function init() {
             loadProducts();
+            loadClients();
         }
-
+        function resetFields(form) {
+            if (form) {
+                form.$setPristine();
+                form.$setUntouched();
+            }
+            
+            vm.searchTextProduct = '';
+            vm.selectedClient = {};
+            vm.selectedProduct = {};
+               
+        }
+        function addToOrder(form) {
+            if (!vm.selectedProduct) return;
+            vm.order.products.push(vm.selectedProduct);   
+            
+            resetFields(form);
+        }
         /**
          * clients
          */
@@ -64,7 +84,8 @@
                 { value: 4, display: 'Gustavo Oliveira2' },
                 { value: 3, display: 'Ícaro Bichir' }
             ];
-            return clients;
+            
+            vm.clients = clients;
 
         }
         /////////////////////////////////////
@@ -75,8 +96,7 @@
         function newProduct(state) {
             $state.go('app.createProduct', { 'ProductName': vm.searchTextProduct });
         }
-
-
+        
 
         function querySearchProduct(query) {
             query = angular.lowercase(query);
@@ -92,13 +112,16 @@
             $log.info('Text changed to ' + text);
         }
         function selectedItemChangeProduct(item) {
+            if (!item) return;
+
             var selected = vm.productsModel.filter(function filterProducts(product) {
                 return product.id == item.value;
             });
+
             vm.selectedProduct = selected[0];
-            vm.selectedProduct.client = {id : vm.selectedClient.value};
-            vm.selectedProduct.user = {id: vm.userId};
-            
+            vm.selectedProduct.client = { id: vm.selectedClient.value };
+            vm.selectedProduct.user = { id: vm.userId };
+            vm.showButtons = true;
             $log.info('Item changed to ' + JSON.stringify(selected[0]));
         }
 
@@ -114,6 +137,7 @@
             });
 
         }
+
     }
 
 })(angular);
