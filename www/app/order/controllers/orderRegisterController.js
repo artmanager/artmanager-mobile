@@ -18,18 +18,27 @@
         vm.selectedClient = {};
         vm.showFormProduct = false;
         vm.showButtons = false;
+        vm.showFormOrder = true;
         vm.querySearchProduct = querySearchProduct;
         vm.selectedItemChangeProduct = selectedItemChangeProduct;
         vm.searchTextChangeProduct = searchTextChangeProduct;
         vm.newProduct = newProduct;
         vm.addToOrder = addToOrder;
         vm.resetFields = resetFields;
+        vm.removeItem = removeItem;
         init();
 
 
         function init() {
             loadProducts();
             loadClients();
+        }
+        function removeItem(item) {
+            vm.order.products.pop(item);
+        }
+        
+        function toPaymentOrder() {
+            
         }
         function resetFields(form) {
             if (form) {
