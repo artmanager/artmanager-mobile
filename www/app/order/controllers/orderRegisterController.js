@@ -18,9 +18,9 @@
         vm.selectedClient = {};
         vm.showFormProduct = false;
         vm.showButtons = false;
-        vm.showFormOrder = false;
+        vm.showFormOrder = true;
         vm.showFormPayment = false;
-        vm.showDetailOrder = true; 
+        vm.showDetailOrder = false; 
         vm.querySearchProduct = querySearchProduct;
         vm.selectedItemChangeProduct = selectedItemChangeProduct;
         vm.searchTextChangeProduct = searchTextChangeProduct;
@@ -29,7 +29,9 @@
         vm.toPaymentOrder = toPaymentOrder;
         vm.resetFields = resetFields;
         vm.removeItem = removeItem;
-
+        vm.finishOrder = finishOrder;
+        vm.backToPayment =backToPayment;
+        vm.backToFormOrder = backToFormOrder;
         init();
 
 
@@ -37,12 +39,26 @@
             loadProducts();
             loadClients();
         }
+        function backToFormOrder () {
+            vm.showFormPayment = false;
+            vm.showFormOrder = true;
+        }
+        function backToPayment() {
+            vm.showDetailOrder = false;
+            vm.showFormPayment = true;
+        }
         function removeItem(item) {
             vm.order.products.pop(item);
         }
         function toggleForms() {
             vm.showFormPayment = vm.showFormPayment ? false : true;
             vm.showFormOrder = !vm.showFormPayment;
+        }
+        function finishOrder() {
+            vm.order.total_value = vm.order.total_value - (vm.order.discount + vm.order.entrance);
+            vm.showDetailOrder = true;
+            vm.showFormPayment = false;
+            
         }
         function toPaymentOrder() {
             toggleForms();
