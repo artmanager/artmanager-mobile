@@ -18,14 +18,18 @@
         vm.selectedClient = {};
         vm.showFormProduct = false;
         vm.showButtons = false;
-        vm.showFormOrder = true;
+        vm.showFormOrder = false;
+        vm.showFormPayment = false;
+        vm.showDetailOrder = true; 
         vm.querySearchProduct = querySearchProduct;
         vm.selectedItemChangeProduct = selectedItemChangeProduct;
         vm.searchTextChangeProduct = searchTextChangeProduct;
         vm.newProduct = newProduct;
         vm.addToOrder = addToOrder;
+        vm.toPaymentOrder = toPaymentOrder;
         vm.resetFields = resetFields;
         vm.removeItem = removeItem;
+
         init();
 
 
@@ -36,25 +40,33 @@
         function removeItem(item) {
             vm.order.products.pop(item);
         }
-        
+        function toggleForms() {
+            vm.showFormPayment = vm.showFormPayment ? false : true;
+            vm.showFormOrder = !vm.showFormPayment;
+        }
         function toPaymentOrder() {
-            
+            toggleForms();
+            vm.order.total_value = 0;
+
+            vm.order.products.forEach(function (e) {
+                vm.order.total_value += parseFloat(e.quantity) * parseFloat(e.precoVenda);
+            });
         }
         function resetFields(form) {
             if (form) {
                 form.$setPristine();
                 form.$setUntouched();
             }
-            
+
             vm.searchTextProduct = '';
             vm.selectedClient = {};
             vm.selectedProduct = {};
-               
+
         }
         function addToOrder(form) {
             if (!vm.selectedProduct) return;
-            vm.order.products.push(vm.selectedProduct);   
-            
+            vm.order.products.push(vm.selectedProduct);
+
             resetFields(form);
         }
         /**
@@ -93,7 +105,7 @@
                 { value: 4, display: 'Gustavo Oliveira2' },
                 { value: 3, display: 'Ícaro Bichir' }
             ];
-            
+
             vm.clients = clients;
 
         }
@@ -105,7 +117,7 @@
         function newProduct(state) {
             $state.go('app.createProduct', { 'ProductName': vm.searchTextProduct });
         }
-        
+
 
         function querySearchProduct(query) {
             query = angular.lowercase(query);
