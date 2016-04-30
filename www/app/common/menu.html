@@ -35,6 +35,14 @@
 
                         </md-menu-sidenav-title>
                     </md-menu-sidenav-item>
+                    <md-menu-sidenav-item ng-click="vm.closeSidenav('left')" ui-sref="app.createOrder">
+                        <md-menu-sidenav-title>
+
+                            <md-icon flex="15"></md-icon>
+                            <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i> Novo Pedido</h1>
+
+                        </md-menu-sidenav-title>
+                    </md-menu-sidenav-item>
                     <md-menu-sidenav-item>
                         <md-menu-sidenav-title>
                             <md-toogle-menu layout="row" flex>
@@ -77,10 +85,10 @@
 
                         </md-menu-sidenav-title>
                         <md-menu-sidenav-content>
-                            <md-menu-sidenav-subitem ng-click="vm.closeSidenav('left')">
+                            <!--<md-menu-sidenav-subitem ng-click="vm.closeSidenav('left')">
                                 <md-icon flex="15"></md-icon>
                                 <i class="fa fa-arrow-right fa-stack"></i> Relatório de Caixa
-                            </md-menu-sidenav-subitem>
+                            </md-menu-sidenav-subitem>-->
                             <md-menu-sidenav-subitem ui-sref="app.products" ng-click="vm.closeSidenav('left')">
                                 <md-icon flex="15"></md-icon>
                                 <i class="fa fa-arrow-right fa-stack"></i> Relatório de Produtos
@@ -94,23 +102,14 @@
                                 <md-icon flex="15"></md-icon>
                                 <i class="fa fa-arrow-right fa-stack"></i> Relatório de Produtos Vendidos
                             </md-menu-sidenav-subitem>
-                            <md-menu-sidenav-subitem ng-click="vm.closeSidenav('left')">
+                            <!--<md-menu-sidenav-subitem ng-click="vm.closeSidenav('left')">
                                 <md-icon flex="15"></md-icon>
                                 <i class="fa fa-arrow-right fa-stack"></i> Relatório de Itens
-                            </md-menu-sidenav-subitem>
+                            </md-menu-sidenav-subitem>-->
                         </md-menu-sidenav-content>
                     </md-menu-sidenav-item>
 
-                     <md-menu-sidenav-item ng-click="vm.closeSidenav('left')" ui-sref="app.createOrder">
-                        <md-menu-sidenav-title>
-
-                            <md-icon flex="15"></md-icon>
-                            <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i> Novo Pedido</h1>
-
-                        </md-menu-sidenav-title>
-                    </md-menu-sidenav-item>
-                    
-                    <md-menu-sidenav-item ng-click="vm.closeSidenav('left')">
+                    <!--<md-menu-sidenav-item ng-click="vm.closeSidenav('left')">
                         <md-menu-sidenav-title>
                             <md-toogle-menu layout="row" class="md-primary" flex>
 
@@ -120,7 +119,7 @@
                             </md-toogle-menu>
 
                         </md-menu-sidenav-title>
-                    </md-menu-sidenav-item>
+                    </md-menu-sidenav-item>-->
                     
                     <md-menu-sidenav-item ui-sref="login" ng-click="vm.closeSidenav('left')">
                         <md-menu-sidenav-title>

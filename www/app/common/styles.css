@@ -69,3 +69,11 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
         margin-left: -50px; 
     } 
 }
+
+#select_value_label_0 > span > div,
+#select_value_label_6 > span > div {
+    color: white;
+}
+#content > ion-nav-view > ion-view > ion-content > div.scroll > md-content > div > md-content > md-list > md-list-item > button > md-checkbox > div.md-container.md-ink-ripple {
+    top: -5px;
+}

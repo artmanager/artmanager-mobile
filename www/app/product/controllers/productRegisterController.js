@@ -6,20 +6,19 @@
     ProductRegisterCtrl.$inject = ['toastr', 'ProductService', 'LoadingPopup'];
     function ProductRegisterCtrl(toastr, ProductService, LoadingPopup) {
         var vm = this;
-        vm.content = content;
-        vm.categories = categories;
-        vm.suppliers = suppliers;
+
+
+        vm.content = { personalData: true, cost: false };
+        vm.categories = [{ id: 1, description: 'roupas' },
+                         { id: 2, description: 'reciclaveis' }];
+                         
+        vm.suppliers = [{ id: 1, description: 'Maria dos remédios' },
+                        { id: 2, description: 'Josefa Silva' }];
+
         vm.toggleForm = toggleForm;
         vm.create = create;
         vm.goBack = goBack;
 
-        var content = { personalData: true, cost: false };
-
-        var categories = [{ id: 1, description: 'roupas' },
-            { id: 2, description: 'reciclaveis' }];
-
-        var suppliers = [{ id: 1, description: 'Maria dos remédios' },
-            { id: 2, description: 'Josefa Silva' }];
 
         function toggleForm() {
             var isPersonal = vm.content.personalData;

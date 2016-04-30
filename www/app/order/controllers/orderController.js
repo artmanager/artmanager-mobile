@@ -14,7 +14,7 @@
         self.filters = getFilters();
         self.init = (function () {
             OrderService.get().then(function (items) {
-                self.items = mapStatusColor(items);
+                self.items = items;
                 //    console.log(items); 
             });
         })();

@@ -17,11 +17,12 @@
         vm.searchTextClient = '';
         vm.selectedProduct = {};
         vm.selectedClient = {};
+        vm.client = {};
         vm.showFormProduct = false;
         vm.showButtons = false;
         vm.showFormOrder = true;
         vm.showFormPayment = false;
-        vm.showDetailOrder = false; 
+        vm.showDetailOrder = false;
         vm.querySearchProduct = querySearchProduct;
         vm.selectedItemChangeProduct = selectedItemChangeProduct;
         vm.searchTextChangeProduct = searchTextChangeProduct;
@@ -31,48 +32,53 @@
         vm.resetFields = resetFields;
         vm.removeItem = removeItem;
         vm.finishOrder = finishOrder;
-        vm.backToPayment =backToPayment;
+        vm.backToPayment = backToPayment;
         vm.backToFormOrder = backToFormOrder;
         vm.create = create;
         init();
-
+        
+         
+        //--------------------
 
         function init() {
             loadProducts();
             loadClients();
         }
-        function create () {
+        function create() {
             var order = {};
-            order.client = vm.selectedClient;
+            LoadingPopup.show();
+            order.client = { id: vm.client.value };
             order.user = vm.userId;
             order.which = {
-                                total_value : vm.order.total_value, 
-                                entrance : vm.order.entrance,
-                                discount: vm.order.discount 
-                            };
+                total_value: vm.order.total_value,
+                entrance: vm.order.entrance,
+                discount: vm.order.discount
+            };
             order.products = vm.order.products.map(function (product) {
                 var obj = {
-                  id: product.id,
-                  describe: product.describe
+                    id: product.id,
+                    describe: product.describe
                 };
-                if(product.sendDate) {
+                if (product.sendDate) {
                     obj.delivery_date = product.sendDate;
                 }
-                
+
                 return obj;
             });
-            $log.debug('order', order);                             
+            $log.debug('order', order);
             OrderService.create(order).then(onCreateSuccess, onCreateError);
         }
-        function onCreateError (err) {
+        function onCreateError(err) {
+            LoadingPopup.hide();
             $log.error('onCreateError', err);
             toastr.error('Erro interno no servidor');
         }
-        function onCreateSuccess (success) {
+        function onCreateSuccess(success) {
+            LoadingPopup.hide();
             $log.debug('onCreateSuccess', success);
             toastr.success('Pedido registrado com sucesso !');
         }
-        function backToFormOrder () {
+        function backToFormOrder() {
             vm.showFormPayment = false;
             vm.showFormOrder = true;
         }
@@ -91,10 +97,10 @@
             var discount = vm.order.discount || 0;
             var entrance = vm.order.entrance || 0;
             vm.order.total_value = vm.order.total_value - (discount + entrance);
-            
+
             vm.showDetailOrder = true;
             vm.showFormPayment = false;
-            
+
         }
         function toPaymentOrder() {
             toggleForms();
@@ -144,21 +150,28 @@
         function selectedItemChangeClient(item) {
             vm.showFormProduct = true;
             vm.selectedClient = item;
+            vm.client = item;
             $log.info('Item changed to ' + JSON.stringify(item));
         }
 
         function loadClients() {
-            // ClientService.get().then(function (values) {
-            //     $log.debug('value', values);
-            // });
-            var clients = [
-                { value: 1, display: 'Erick Wendel' },
-                { value: 2, display: 'Gustavo Oliveira' },
-                { value: 4, display: 'Gustavo Oliveira2' },
-                { value: 3, display: 'Ícaro Bichir' }
-            ];
+            ClientService.get().then(function (values) {
+                if (values.error) {
+                    toastr.error('Erro ao carregar clientes');
+                    return;
+                }
+                if (!values.data) return;
+                var clients = values.data.clients.map(function (client) {
+                    return {
+                        value: client.id,
+                        display: client.name
+                    };
+                });
 
-            vm.clients = clients;
+                vm.clients = clients;
+
+
+            });
 
         }
         /////////////////////////////////////
@@ -192,7 +205,7 @@
             });
 
             vm.selectedProduct = selected[0];
-            vm.selectedProduct.client = { id: vm.selectedClient.value };
+            vm.selectedProduct.client = { id: vm.client.value };
             vm.selectedProduct.user = { id: vm.userId };
             vm.showButtons = true;
             $log.info('Item changed to ' + JSON.stringify(selected[0]));

@@ -24,17 +24,7 @@
             var deferred = $q.defer();
             getItens().then(function (items) {
                 var item = items.filter(function (item) { return item.id === id; })[0];
-                // var order = {
-                //     "id": "56a942e2e6777f0dda71853d",
-                //     "clientName": "Janelle Alston",
-                //     "employeeName": item.name,
-                //     "orderDate": item.date,
-                //     "signalValue": 38.2848,
-                //     "totalValue": 515.6781,
-                //     "product": item.product,
-
-                // }
-                deferred.resolve(item);
+                 deferred.resolve(item);
             });
             return deferred.promise;
 
