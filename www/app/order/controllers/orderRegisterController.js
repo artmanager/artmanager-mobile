@@ -1,8 +1,8 @@
 (function (angular) {
     angular.module('controllers.orderRegisterController', [])
         .controller('OrderRegisterCtrl', OrderRegisterCtrl);
-    OrderRegisterCtrl.$inject = ['OrderService', '$log', '$state', 'ClientService', 'ProductService'];
-    function OrderRegisterCtrl(OrderService, $log, $state, ClientService, ProductService) {
+    OrderRegisterCtrl.$inject = ['OrderService', '$log', '$state', 'ClientService', 'ProductService', 'toastr'];
+    function OrderRegisterCtrl(OrderService, $log, $state, ClientService, ProductService, toastr) {
         var vm = this;
         vm.showFormProduct = false;
         vm.querySearchClient = querySearchClient;
@@ -14,6 +14,7 @@
         vm.products = [];
         vm.productsModel = [];
         vm.order = { products: [] };
+        vm.searchTextClient = '';
         vm.selectedProduct = {};
         vm.selectedClient = {};
         vm.showFormProduct = false;
@@ -32,12 +33,44 @@
         vm.finishOrder = finishOrder;
         vm.backToPayment =backToPayment;
         vm.backToFormOrder = backToFormOrder;
+        vm.create = create;
         init();
 
 
         function init() {
             loadProducts();
             loadClients();
+        }
+        function create () {
+            var order = {};
+            order.client = vm.selectedClient;
+            order.user = vm.userId;
+            order.which = {
+                                total_value : vm.order.total_value, 
+                                entrance : vm.order.entrance,
+                                discount: vm.order.discount 
+                            };
+            order.products = vm.order.products.map(function (product) {
+                var obj = {
+                  id: product.id,
+                  describe: product.describe
+                };
+                if(product.sendDate) {
+                    obj.delivery_date = product.sendDate;
+                }
+                
+                return obj;
+            });
+            $log.debug('order', order);                             
+            OrderService.create(order).then(onCreateSuccess, onCreateError);
+        }
+        function onCreateError (err) {
+            $log.error('onCreateError', err);
+            toastr.error('Erro interno no servidor');
+        }
+        function onCreateSuccess (success) {
+            $log.debug('onCreateSuccess', success);
+            toastr.success('Pedido registrado com sucesso !');
         }
         function backToFormOrder () {
             vm.showFormPayment = false;
@@ -55,7 +88,10 @@
             vm.showFormOrder = !vm.showFormPayment;
         }
         function finishOrder() {
-            vm.order.total_value = vm.order.total_value - (vm.order.discount + vm.order.entrance);
+            var discount = vm.order.discount || 0;
+            var entrance = vm.order.entrance || 0;
+            vm.order.total_value = vm.order.total_value - (discount + entrance);
+            
             vm.showDetailOrder = true;
             vm.showFormPayment = false;
             
