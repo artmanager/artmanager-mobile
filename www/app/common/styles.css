@@ -48,11 +48,8 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
 
 }
 
-
 .toast-top-center { 
-    top: 450px; 
-    /*left: 50%; */
-    /*margin-left: -260px; */
+    top: 450px;
 } 
 @media all and (max-width: 240px) { 
     .toast-top-center { 
@@ -76,4 +73,16 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
 }
 #content > ion-nav-view > ion-view > ion-content > div.scroll > md-content > div > md-content > md-list > md-list-item > button > md-checkbox > div.md-container.md-ink-ripple {
     top: -5px;
+}   
+
+#content > ion-nav-view > ion-view > ion-content > div.scroll > md-content > div > md-content > ion-list > div > md-card > md-card-content > div > p {
+    font-size: 20px;
+    text-align: center;
+    
+}
+#content > ion-nav-view > ion-view > ion-content > div.scroll > md-content > div > md-content > ion-list > div > md-card > md-card-content > div > h3 {
+    font-size: 21px;
+    font-weight: bold;
+    margin-top: -1px;
+    text-align: center;
 }

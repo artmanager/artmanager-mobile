@@ -10,11 +10,10 @@
 
         self.items = [];
         self.order = 'status';
-        //self.ascending = true;
         self.filters = getFilters();
         self.init = (function () {
             OrderService.get().then(function (items) {
-                self.items = items;
+                self.items = items.reverse();
                 //    console.log(items); 
             });
         })();
@@ -41,7 +40,7 @@
 
 
             filter = {};
-            filter.value = "date";
+            filter.value = "dataUTC";
             filter.desc = "Data de Entrega";
             filters.push(filter);
 

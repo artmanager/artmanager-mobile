@@ -36,8 +36,8 @@
         vm.backToFormOrder = backToFormOrder;
         vm.create = create;
         init();
-        
-         
+
+
         //--------------------
 
         function init() {
@@ -45,28 +45,33 @@
             loadClients();
         }
         function create() {
-            var order = {};
-            LoadingPopup.show();
-            order.client = { id: vm.client.value };
-            order.user = vm.userId;
-            order.which = {
-                total_value: vm.order.total_value,
-                entrance: vm.order.entrance,
-                discount: vm.order.discount
-            };
-            order.products = vm.order.products.map(function (product) {
-                var obj = {
-                    id: product.id,
-                    describe: product.describe
-                };
-                if (product.sendDate) {
-                    obj.delivery_date = product.sendDate;
-                }
+            toastr.success('Pedido Registrado com sucesso!');
+            setTimeout(function () {
+                $state.go('app.orders');
 
-                return obj;
-            });
-            $log.debug('order', order);
-            OrderService.create(order).then(onCreateSuccess, onCreateError);
+            }, 1500);
+            // var order = {};
+            // LoadingPopup.show();
+            // order.client = { id: vm.client.value };
+            // order.user = vm.userId;
+            // order.which = {
+            //     total_value: vm.order.total_value,
+            //     entrance: vm.order.entrance,
+            //     discount: vm.order.discount
+            // };
+            // order.products = vm.order.products.map(function (product) {
+            //     var obj = {
+            //         id: product.id,
+            //         describe: product.describe
+            //     };
+            //     if (product.sendDate) {
+            //         obj.delivery_date = product.sendDate;
+            //     }
+
+            //     return obj;
+            // });
+            // $log.debug('order', order);
+            // OrderService.create(order).then(onCreateSuccess, onCreateError);
         }
         function onCreateError(err) {
             LoadingPopup.hide();

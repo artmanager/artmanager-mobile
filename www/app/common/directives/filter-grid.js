@@ -6,7 +6,7 @@
     function filterGrid() {
         function link(scope, iElement, iAttrs, controller) {
 
-            scope.ascending = scope.$parent.ascending || true;
+            scope.ascending = scope.$parent.ascending || false;
 
             scope.order = scope.$parent.order || scope.filters[0].value;
             scope.$watch('order', function (value) {
