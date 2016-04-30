@@ -8,7 +8,7 @@
         var self = $scope;
 
         self.items = [];
-        self.order = "nome";
+        self.order = "fornecedor";
         self.ascending = true;
 
         self.filters = getFilters();
@@ -22,10 +22,10 @@
             var filters = [];
             var filter = {};
 
-            filter.value = "nome";
-            filter.desc = "Nome";
-            filter.selected = true;
-            filters.push(filter);
+            // filter.value = "nome";
+            // filter.desc = "Nome";
+            // filter.selected = true;
+            // filters.push(filter);
 
             filter = {};
             filter.value = "fornecedor";

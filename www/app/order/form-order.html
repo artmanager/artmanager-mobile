@@ -6,21 +6,18 @@
                 <md-content layout-padding ng-if="vm.showFormOrder">
 
                     <form name="formOrder">
-                        <md-autocomplete 
-                            md-search-text-change="vm.searchTextClientChangeClient(vm.searchTextClient)" 
-                            md-search-text="vm.searchTextClient"
-                            md-selected-item-change="vm.selectedItemChangeClient(item)" 
-                            md-items="item in vm.querySearchClient(vm.searchTextClient)"
+                        <md-autocomplete md-search-text-change="vm.searchTextClientChangeClient(vm.searchTextClient)" md-search-text="vm.searchTextClient"
+                            md-selected-item-change="vm.selectedItemChangeClient(item)" md-items="item in vm.querySearchClient(vm.searchTextClient)"
                             md-item-text="item.display" md-min-length="0" placeholder="Digite o Nome do Cliente">
                             <md-item-template>
                                 <span md-highlight-text="vm.searchTextClient" md-highlight-flags="^i">{{item.display}}</span>
-                            </md-item-template> 
+                            </md-item-template>
                             <md-not-found>
                                 "{{vm.searchTextClient}}" foi encontrado.
                                 <a ng-click="vm.newClient(vm.searchTextClient)">Cadastrar cliente agora</a>
                             </md-not-found>
                         </md-autocomplete>
-                         
+
                         <div layout-gt-sm="row" ng-if="vm.showFormProduct">
                             <br />
                             <md-autocomplete md-search-text-change="vm.searchTextChangeProduct(vm.searchTextProduct)" md-search-text="vm.searchTextProduct"
@@ -36,9 +33,9 @@
                             </md-autocomplete>
                             <md-divider></md-divider>
                             <div ng-if="vm.selectedProduct.id">
-                                
+
                                 <div layout="row">
-                                    
+
                                     <md-input-container class="md-block" flex>
                                         <label>Preço: </label>
                                         <input name="cost" ng-model="vm.selectedProduct.precoVenda" ui-number-mask required disabled>
@@ -80,33 +77,26 @@
                     </form>
 
                     <md-list ng-if="vm.order.products.length > 0">
+
                         <md-subheader class="md-no-sticky">Produtos selecionados no pedido</md-subheader>
                         <md-divider></md-divider>
-                        <md-list-item ng-repeat="product in vm.order.products" layout="row">
-                            <p flex>
-                                <label for="" layout="row"> <strong>Nome: </strong> </label>
-                                <label for="" layout="row">{{ product.nome }}</label>
-                            </p>
-                            <p flex>
-                                <label for="" layout="row"> <strong>Quantidade: </strong> </label>
-                                <label for="" layout="row">{{ product.quantity }}</label>
-                            </p>
-
-                            <p flex>
-                                <label for="" layout="row"> <strong>Data de Entrega: </strong> </label>
-
-                                <label for="" layout="row">
-                                <span  ng-if="product.toProduction">{{product.sendDate.toLocaleDateString()}}</span>
-                                <span  ng-if="!product.toProduction"> - </span>
-                            </label>
-                            </p>
-
-                            <md-checkbox aria-label="remover" flex layout="row" class="md-secondary" ng-click="vm.removeItem(product)"></md-checkbox>
-
-
-
-                        </md-list-item>
-
+                        <md-card ng-repeat="product in vm.order.products">
+                            <md-card-content layout-align="space-between">
+                                <div class="row">
+                                    <p class="col ">Nome:</p>
+                                    <p class="col ">Quantidade:</p>
+                                    <p class="col ">Entrega:</p>
+                                    <p class="col">#</p>
+                                </div>
+                                <div class="row">
+                                    <p class="col">{{ product.nome }}</p>
+                                    <p class="col">{{ product.quantity }}</p>
+                                    <p class="col" ng-if="product.sendDate">{{product.sendDate.toLocaleDateString()}}</p>
+                                    <p class="col" ng-if="!product.sendDate"> - </p>
+                                    <md-checkbox aria-label="remover" class="col md-secondary" ng-click="vm.removeItem(product)"></md-checkbox>
+                                </div>
+                            </md-card-content>
+                        </md-card>
                         <md-divider></md-divider>
                     </md-list>
 
@@ -173,7 +163,8 @@
                                     <p flex class="md-headline">{{product.tamanho}} CM</p>
                                     <p flex class="md-headline">{{product.peso}} KG </p>
                                 </div>
-
+                                <md-divider></md-divider>
+                                
                             </md-card-content>
                             <md-card-content layout-align="space-between">
                                 <div layout="row">
@@ -185,6 +176,7 @@
                                     <p flex class="md-headline" ng-if="vm.order.discount">R$ {{vm.order.discount}}</p>
                                     <p flex class="md-headline" ng-if="vm.order.entrance">R$ {{vm.order.entrance}}</p>
                                 </div>
+                                
                                 <div layout="row">
                                     <h3 flex class="md-headline">Total:</h3>
                                 </div>

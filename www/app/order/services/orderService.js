@@ -147,7 +147,7 @@
                 if (calc < 20)
                     params.status = 0;
                 else if (calc > 20 && calc < 40)
-                    params.status = 1
+                    params.status = 1;
                 else if (calc > 40)
                     params.status = 2;
 

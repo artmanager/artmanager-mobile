@@ -34,7 +34,7 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
     background-color: #E53935!important;
 }
 .card-yellow {
-    background-color: #FDD835!important;
+    background-color: #F9A825!important;
 }
 .card-green {
     background-color: #4CAF50!important;
@@ -75,14 +75,22 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
     top: -5px;
 }   
 
-#content > ion-nav-view > ion-view > ion-content > div.scroll > md-content > div > md-content > ion-list > div > md-card > md-card-content > div > p {
+#content > ion-nav-view > ion-view > ion-content > div.scroll > md-content > div > md-content > ion-list > div > md-card > md-card-content > div > p,
+#content > ion-nav-view > ion-view > ion-content > div.scroll > md-content > md-content > ion-list > div > md-card > md-card-content > div > h6 {
     font-size: 20px;
     text-align: center;
     
 }
-#content > ion-nav-view > ion-view > ion-content > div.scroll > md-content > div > md-content > ion-list > div > md-card > md-card-content > div > h3 {
+#content > ion-nav-view > ion-view > ion-content > div.scroll > md-content > div > md-content > ion-list > div > md-card > md-card-content > div > h3,
+#content > ion-nav-view > ion-view > ion-content > div.scroll > md-content > md-content > ion-list > div > md-card> md-card-content > div > h3 {
     font-size: 21px;
     font-weight: bold;
     margin-top: -1px;
     text-align: center;
 }
+
+#content > ion-nav-view > ion-view > ion-content > div.scroll > md-content > md-content > ion-list > div > md-card > md-toolbar > div > h3 {
+    font-weight: bold!important;
+}
+
+

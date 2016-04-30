@@ -10,24 +10,25 @@
                     <md-card ng-repeat="item in items| orderBy:order:ascending" href="#/app/employees/{{item.id}}">
                         <md-toolbar class="item-list card-primary">
                             <div class="md-toolbar-tools">
-                                <h3 class="md-headline">  {{item.nome | uppercase}}</h3>
+                                <div class="row">
+                                    <h3 class="md-headline col col-90">  {{item.fornecedor | uppercase}}</h3>
+                                    <i class="fa fa-chevron-right col"></i>
+                                </div>
+
                             </div>
                         </md-toolbar>
 
-                        <md-card-content layout-align="space-between" >
+                        <md-card-content layout-align="space-between">
 
                             <div layout="row">
-                                <h3 flex class="md-headline">Fornecedor:</h3>
+                                <!--<h3 flex class="md-headline">Fornecedor:</h3>-->
                                 <h3 flex class="md-headline">Valor a Receber:</h3>
-                                
+
                             </div>
                             <div layout="row">
-                                <h3 flex class="md-headline">{{item.fornecedor}}</h3>
-                                <h3 flex class="md-headline">R$ {{item.valorReceber}}</h3>
+                                <!--<h3 flex class="md-headline">{{item.fornecedor}}</h3>-->
+                                <h6 flex class="md-headline">R$ {{item.valorReceber | number: 2}}</h6>
                             </div>
-                            <div layout="column">
-                                    <i flex="40" layout-align="end center" class="fa fa-2x fa-chevron-right text-right"></i>
-                                </div>
                         </md-card-content>
                     </md-card>
                 </ion-list>

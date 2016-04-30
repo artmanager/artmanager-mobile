@@ -140,6 +140,10 @@
         }
 
         function querySearchClient(query) {
+            if(!vm.clients) {
+                toastr.success('Aguarde...');
+                return;
+            }
             query = angular.lowercase(query);
             var results = query ?
                 vm.clients.filter(function (item) {

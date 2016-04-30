@@ -3,21 +3,24 @@
         <md-content>
             <filter-grid filters="filters"></filter-grid>
             <md-content>
-                <ion-list >
-                    <md-card ng-repeat="item in items| orderBy:order:ascending" ui-href="#/app/orders/{{item.id}}" >
+                <ion-list>
+                    <md-card ng-repeat="item in items| orderBy:order:ascending" ui-href="#/app/orders/{{item.id}}">
                         <md-toolbar class="item-list card-{{item.status | statusColor}}">
                             <div class="md-toolbar-tools">
-                                <h3 class="md-headline">  {{item.product | uppercase}}</h3>
+                                <div class="row">
+                                    <h3 class="col col-90 md-headline">  {{item.product | uppercase}}</h3>
+                                    <i class="fa fa-chevron-right col"></i>
+
+                                </div>
                             </div>
                         </md-toolbar>
                         <md-card-content layout="row" layout-align="space-between">
                             <div layout="column">
                                 <h3 flex class="md-headline">{{item.name}} </h3>
-                                <h3 flex class="md-headline">{{item.product}} </h3>
                             </div>
 
                             <div layout="column">
-                                <i flex="40" layout-align="end center" class="fa fa-2x fa-chevron-right text-right"></i>
+                                <!--<i flex="40" layout-align="end center" class="fa fa-2x fa-chevron-right text-right"></i>-->
                                 <h3 flex class="md-headline">{{item.date}} </h3>
 
                             </div>
@@ -30,4 +33,3 @@
 
 
 </ion-view>
-
