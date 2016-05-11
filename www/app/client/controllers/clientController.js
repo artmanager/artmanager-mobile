@@ -54,6 +54,12 @@
         
         function onCreate () {
             LoadingPopup.hide();
+            if(vm.user.client.name) {
+                $state.go('app.createOrder');
+                return;
+            }
+            
+            $state.go('app.orders');
         }
         function onFail () {
             LoadingPopup.hide();

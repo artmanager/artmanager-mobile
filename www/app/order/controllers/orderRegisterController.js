@@ -1,20 +1,19 @@
 (function (angular) {
     angular.module('controllers.orderRegisterController', [])
         .controller('OrderRegisterCtrl', OrderRegisterCtrl);
-    OrderRegisterCtrl.$inject = ['OrderService', '$log', '$state', 'ClientService', 'ProductService', 'toastr'];
-    function OrderRegisterCtrl(OrderService, $log, $state, ClientService, ProductService, toastr) {
+
+    OrderRegisterCtrl.$inject = ['OrderService', '$log', '$state', 'ClientService', 'ProductService', 'toastr', 'LoadingPopup'];
+
+    function OrderRegisterCtrl(OrderService, $log, $state, ClientService, ProductService, toastr, LoadingPopup) {
         var vm = this;
         vm.showFormProduct = false;
-        vm.querySearchClient = querySearchClient;
-        vm.selectedItemChangeClient = selectedItemChangeClient;
-        vm.searchTextChangeClient = searchTextChangeClient;
-        vm.newClient = newClient;
 
         vm.userId = 0;
         vm.products = [];
         vm.productsModel = [];
         vm.order = { products: [] };
         vm.searchTextClient = '';
+        vm.searchTextProduct = '';
         vm.selectedProduct = {};
         vm.selectedClient = {};
         vm.client = {};
@@ -23,10 +22,6 @@
         vm.showFormOrder = true;
         vm.showFormPayment = false;
         vm.showDetailOrder = false;
-        vm.querySearchProduct = querySearchProduct;
-        vm.selectedItemChangeProduct = selectedItemChangeProduct;
-        vm.searchTextChangeProduct = searchTextChangeProduct;
-        vm.newProduct = newProduct;
         vm.addToOrder = addToOrder;
         vm.toPaymentOrder = toPaymentOrder;
         vm.resetFields = resetFields;
@@ -35,10 +30,26 @@
         vm.backToPayment = backToPayment;
         vm.backToFormOrder = backToFormOrder;
         vm.create = create;
+        
+        //altoCompletes
+        vm.querySearchClient = querySearchClient;
+        vm.querySearchProduct = querySearchProduct;
+
+        vm.selectedItemChangeClient = selectedItemChangeClient;
+        vm.selectedItemChangeProduct = selectedItemChangeProduct;
+        
+        vm.searchTextChangeClient = searchTextChangeClient;
+        vm.searchTextChangeProduct = searchTextChangeProduct;
+
+        vm.newClient = newClient;
+        vm.newProduct = newProduct;
+
+
         init();
 
 
         //--------------------
+
 
         function init() {
             loadProducts();
@@ -132,15 +143,20 @@
 
             resetFields(form);
         }
-        /**
-         * clients
-         */
+       
+       
+        //altoCOmpletes
         function newClient(state) {
             $state.go('app.createClient', { 'clientName': vm.searchTextClient });
         }
+        function newProduct(state) {
+            $state.go('app.createProduct', { 'ProductName': vm.searchTextProduct });
+        }
+
+
 
         function querySearchClient(query) {
-            if(!vm.clients) {
+            if (!vm.clients) {
                 toastr.success('Aguarde...');
                 return;
             }
@@ -153,14 +169,48 @@
 
             return results;
         }
+
+        function querySearchProduct(query) {
+            if (!vm.products) {
+                toastr.success('Aguarde...');
+                return;
+            }
+            query = angular.lowercase(query);
+            var results = query ?
+                vm.products.filter(function (item) {
+                    return angular.lowercase(item.display).indexOf(query) >= 0;
+                })
+                : vm.products;
+
+            return results;
+        }
+
+
         function searchTextChangeClient(text) {
             $log.info('Text changed to ' + text);
         }
+        function searchTextChangeProduct(text) {
+            $log.info('Text changed to ' + text);
+        }
+        
         function selectedItemChangeClient(item) {
             vm.showFormProduct = true;
             vm.selectedClient = item;
             vm.client = item;
             $log.info('Item changed to ' + JSON.stringify(item));
+        }
+        function selectedItemChangeProduct(item) {
+            if (!item) return;
+
+            var selected = vm.productsModel.filter(function filterProducts(product) {
+                return product.id == item.value;
+            });
+
+            vm.selectedProduct = selected[0];
+            vm.selectedProduct.client = { id: vm.client.value };
+            vm.selectedProduct.user = { id: vm.userId };
+            vm.showButtons = true;
+            $log.info('Item changed to ' + JSON.stringify(selected[0]));
         }
 
         function loadClients() {
@@ -183,43 +233,6 @@
             });
 
         }
-        /////////////////////////////////////
-
-        /**
-         * products
-         */
-        function newProduct(state) {
-            $state.go('app.createProduct', { 'ProductName': vm.searchTextProduct });
-        }
-
-
-        function querySearchProduct(query) {
-            query = angular.lowercase(query);
-            var results = query ?
-                vm.products.filter(function (item) {
-                    return angular.lowercase(item.display).indexOf(query) >= 0;
-                })
-                : vm.products;
-
-            return results;
-        }
-        function searchTextChangeProduct(text) {
-            $log.info('Text changed to ' + text);
-        }
-        function selectedItemChangeProduct(item) {
-            if (!item) return;
-
-            var selected = vm.productsModel.filter(function filterProducts(product) {
-                return product.id == item.value;
-            });
-
-            vm.selectedProduct = selected[0];
-            vm.selectedProduct.client = { id: vm.client.value };
-            vm.selectedProduct.user = { id: vm.userId };
-            vm.showButtons = true;
-            $log.info('Item changed to ' + JSON.stringify(selected[0]));
-        }
-
         function loadProducts() {
             ProductService.products().then(function (products) {
                 if (!products) return;
@@ -232,6 +245,13 @@
             });
 
         }
+        /////////////////////////////////////
+ 
+
+
+        
+
+        
 
     }
 
