@@ -1,10 +1,10 @@
 (function (angular) {
-    angular.module('controllers.orderRegisterController', [])
-        .controller('OrderRegisterCtrl', OrderRegisterCtrl);
+    angular.module('controllers.orderController', [])
+        .controller('OrderCtrl', OrderCtrl);
 
-    OrderRegisterCtrl.$inject = ['ProductionService', '$log', '$state', 'ClientService', 'ProductService', 'toastr', 'LoadingPopup'];
+    OrderCtrl.$inject = ['ProductionService', '$log', '$state', 'ClientService', 'ProductService', 'toastr', 'LoadingPopup'];
 
-    function OrderRegisterCtrl(ProductionService, $log, $state, ClientService, ProductService, toastr, LoadingPopup) {
+    function OrderCtrl(ProductionService, $log, $state, ClientService, ProductService, toastr, LoadingPopup) {
         var vm = this;
         vm.showFormProduct = false;
 

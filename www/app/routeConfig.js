@@ -44,8 +44,8 @@
         //         }
         //     }
         // });
-         stateProvider.state('app.orders', {
-            url: '/orders',
+         stateProvider.state('app.production', {
+            url: '/production',
             title: 'Produção',
             views: {
                 'menuContent': {
@@ -56,7 +56,7 @@
             }
         });
         stateProvider.state('app.productionDetail', {
-            url: '/orders/:item',
+            url: '/production/:item',
             title: 'Detalhes Produto',
             views: {
                 'menuContent': {
@@ -72,11 +72,23 @@
             views: {
                 'menuContent': {
                     templateUrl: 'templates/order/form-order.html',
-                    controller: 'OrderRegisterCtrl',
+                    controller: 'OrderCtrl',
                     controllerAs: 'vm',
                 }
             }
         });
+        stateProvider.state('app.orders', {
+            url: '/orders',
+            title: 'Cadastrar Pedido',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/order/form-order.html',
+                    controller: 'OrderCtrl',
+                    controllerAs: 'vm',
+                }
+            }
+        });
+        
         
         
         stateProvider.state('app.createUser', {

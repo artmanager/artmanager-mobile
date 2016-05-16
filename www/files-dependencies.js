@@ -8,7 +8,7 @@ var files =
         "login/controllers/loginController.js",
         "production/controllers/productionController.js",
         "production/controllers/productionDetailController.js",
-        "order/controllers/orderRegisterController.js",
+        "order/controllers/orderController.js",
         "user/controllers/userController.js",
         "provider/controllers/providerController.js",
         

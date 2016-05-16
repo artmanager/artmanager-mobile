@@ -36,7 +36,7 @@
 
         }
         function back() {
-            $state.go('app.orders');
+            $state.go('app.production');
         }
     }
 
