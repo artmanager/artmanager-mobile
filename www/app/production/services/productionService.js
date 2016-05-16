@@ -8,7 +8,6 @@
         return {
             get: getItens,
             order: getDetail,
-            create: create,
             updateStatus: updateStatus
         };
         function getItens() {
@@ -98,17 +97,7 @@
             return deferred.promise;
 
         }
-        function create(order) {
-            return $http({
-                method: 'POST',
-                url: ConstantsService.CREATE_ORDER_URL,
-                data: order,
-                headers: AuthService.headers()
-            }).then(function (params) {
-                return params.data;
-            });
-        }
-        
+         
         function updateStatus(obj) {
            return $http({
                 method: 'POST',

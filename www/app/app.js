@@ -38,6 +38,7 @@
         'services.employeeService',
         'services.productionService',
         'services.providerService',
+        'services.orderService',
         'filters.commonFilters',
 
         'directives.filter-grid',

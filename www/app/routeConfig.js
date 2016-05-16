@@ -71,7 +71,7 @@
             title: 'Cadastrar Pedido',
             views: {
                 'menuContent': {
-                    templateUrl: 'templates/production/form-order.html',
+                    templateUrl: 'templates/order/form-order.html',
                     controller: 'OrderRegisterCtrl',
                     controllerAs: 'vm',
                 }

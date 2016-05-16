@@ -8,13 +8,10 @@ var files =
         "login/controllers/loginController.js",
         "production/controllers/productionController.js",
         "production/controllers/productionDetailController.js",
-        "production/controllers/orderRegisterController.js",
+        "order/controllers/orderRegisterController.js",
         "user/controllers/userController.js",
         "provider/controllers/providerController.js",
         
-        // "production/controllers/productionController.js",
-        
-        // "production/controllers/productionDetailController.js",
         
         
         "client/controllers/clientController.js",
@@ -29,6 +26,7 @@ var files =
         "provider/services/providerService.js",
         "login/services/loginService.js",
         "production/services/productionService.js",
+        "order/services/orderService.js",
         "user/services/userService.js",
         "client/services/clientService.js",
         "product/services/productService.js",
