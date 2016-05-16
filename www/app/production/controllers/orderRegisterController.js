@@ -2,9 +2,9 @@
     angular.module('controllers.orderRegisterController', [])
         .controller('OrderRegisterCtrl', OrderRegisterCtrl);
 
-    OrderRegisterCtrl.$inject = ['OrderService', '$log', '$state', 'ClientService', 'ProductService', 'toastr', 'LoadingPopup'];
+    OrderRegisterCtrl.$inject = ['ProductionService', '$log', '$state', 'ClientService', 'ProductService', 'toastr', 'LoadingPopup'];
 
-    function OrderRegisterCtrl(OrderService, $log, $state, ClientService, ProductService, toastr, LoadingPopup) {
+    function OrderRegisterCtrl(ProductionService, $log, $state, ClientService, ProductService, toastr, LoadingPopup) {
         var vm = this;
         vm.showFormProduct = false;
 
@@ -82,7 +82,7 @@
             //     return obj;
             // });
             // $log.debug('order', order);
-            // OrderService.create(order).then(onCreateSuccess, onCreateError);
+            // ProductionService.create(order).then(onCreateSuccess, onCreateError);
         }
         function onCreateError(err) {
             LoadingPopup.hide();

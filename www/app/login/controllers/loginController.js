@@ -29,7 +29,7 @@
             UtilService.removeCSS("app/login/login.css");
             console.log('token', token);
             LoginService.setAuthToken(token);
-            $state.go('app.orders');
+            $state.go('app.ordersProduction');
 
         }
         function onError() {

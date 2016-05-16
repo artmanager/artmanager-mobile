@@ -16,8 +16,8 @@
                 
         'controllers.appController',
         'controllers.loginController',
-        'controllers.orderController',
-        'controllers.orderDetailController',
+        'controllers.productionController',
+        'controllers.productionDetailController',
         'controllers.orderRegisterController',
         'controllers.userController',
         'controllers.providerController',
@@ -36,9 +36,8 @@
         'services.clientService',
         'services.productService',
         'services.employeeService',
-        'services.orderService',
+        'services.productionService',
         'services.providerService',
-        
         'filters.commonFilters',
 
         'directives.filter-grid',

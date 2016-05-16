@@ -46,12 +46,23 @@
         // });
          stateProvider.state('app.orders', {
             url: '/orders',
-            title: 'Pedidos',
+            title: 'Produção',
             views: {
                 'menuContent': {
-                    templateUrl: 'templates/order/orders.html',
-                    controller: 'OrderCtrl',
+                    templateUrl: 'templates/production/production-items.html',
+                    controller: 'ProductionCtrl',
                     controllerAs: 'vm',
+                }
+            }
+        });
+        stateProvider.state('app.productionDetail', {
+            url: '/orders/:item',
+            title: 'Detalhes Produto',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/production/production-product-detail.html',
+                    controller: 'ProductionDetailCtrl',
+                    controllerAs: 'vm'
                 }
             }
         });
@@ -60,23 +71,14 @@
             title: 'Cadastrar Pedido',
             views: {
                 'menuContent': {
-                    templateUrl: 'templates/order/form-order.html',
+                    templateUrl: 'templates/production/form-order.html',
                     controller: 'OrderRegisterCtrl',
                     controllerAs: 'vm',
                 }
             }
         });
-        stateProvider.state('app.orderDetail', {
-            url: '/orders/:item',
-            title: 'Detalhes Pedido',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/order/order-detail.html',
-                    controller: 'OrderDetailCtrl',
-                    controllerAs: 'vm'
-                }
-            }
-        });
+        
+        
         stateProvider.state('app.createUser', {
             url: '/createUser',
             title: 'Cadastrar Usuário',

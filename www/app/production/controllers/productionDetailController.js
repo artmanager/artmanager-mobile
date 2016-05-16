@@ -1,81 +1,43 @@
-/* global angular */
 (function (angular) {
-    angular.module('controllers.productionController', [])
-        .controller('ProductionCtrl', OrderCtrl);
-
-    OrderCtrl.$inject = ['$state', '$filter', 'OrderService', 'toastr', 'DateService'];
-    function OrderCtrl($state, $filter, OrderService, toastr, DateService) {
+    angular.module('controllers.productionDetailController', [])
+        .controller('ProductionDetailCtrl', ProductionDetailCtrl);
+    ProductionDetailCtrl.$inject = ['$stateParams', 'ProductionService', 'LoadingPopup', 'toastr', '$state'];
+    function ProductionDetailCtrl($stateParams, ProductionService, LoadingPopup, toastr, $state) {
         var vm = this;
-        var statusColor = $filter('statusColor');
 
-        vm.items = [];
-        vm.order = 'status';
-        vm.detail = function (item) {
-            var obj = JSON.stringify(item);
-            console.log(obj);
-            $state.go('app.orderDetail', {item: obj});
-        };
-        vm.filters = getFilters();
+        var item = $stateParams.item;
+        vm.item = JSON.parse(item);
 
-
-        (function init() {
-            OrderService.get().then(function (items) {
-                vm.items = items.map(mapItens).reverse();
-            });
-        })();
-
-        function mapStatusColor(items) {
-            return items.map(function (item) {
-                item.status = statusColor(item.status);
-                return item;
-            });
-        }
-
-        function mapItens(params) {
-            //['red', 'yellow', 'green'];
-            // hoje - 20 dia    s > vermelho
-            //20 - 40 -> amarelo
-            //40 > verde
-            var now = new Date();
-            var date = new Date(params.delivery_date);
-            params.date = DateService.formatToLocaleDate(date);
-            params.status = getStatus(now, date);
-            return params;
-        }
-
-        function getStatus(now, date) {
-            var calc = DateService.daysBetween(now, date);
-            if (calc < 20)
-                return 0;
-            else if (calc > 20 && calc < 40) 
-                return 1;
-            else if (calc > 40)
-                return 2;
+        vm.updateStatus = updateStatus;
+        vm.back = back;
+        function updateStatus() {
+            var status = vm.item.percentage_conclusion;
             
-            return null;
+            if (status === 100)  {
+                var confirmar = confirm('Deseja concluir produção?');
+                if (!confirmar) return;
+            }
+            
+            var id = vm.item.id_production;
+            var obj = { percentage: status, id: id };
+                
+            LoadingPopup.show();
+            onUpdateSuccess();
+            // OrderService.updateStatus(obj).then(onUpdateSuccess, onUpdateFail);
+
         }
-        function getFilters() {
-            var filters = [];
-            var filter = {};
-
-            filter.value = "name";
-            filter.desc = "Nome";
-            filters.push(filter);
-
-            filter = {};
-            filter.value = "status";
-            filter.desc = "Status";
-            filters.push(filter);
-
-
-            filter = {};
-            filter.value = "delivery_date";
-            filter.desc = "Data de Entrega";
-            filters.push(filter);
-
-            return filters;
+        function onUpdateSuccess(success) {
+            LoadingPopup.hide();
+            toastr.success('Operação realizada com sucesso!');
         }
+        function onUpdateFail(success) {
+            LoadingPopup.hide();
+            toastr.error('Erro ao realizar sua solicitacao');
 
-
+        }
+        function back() {
+            $state.go('app.orders');
+        }
     }
-})(angular);   
+
+})(angular);

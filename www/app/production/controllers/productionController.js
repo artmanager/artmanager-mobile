@@ -1,10 +1,10 @@
 /* global angular */
 (function (angular) {
-    angular.module('controllers.orderController', [])
-        .controller('OrderCtrl', OrderCtrl);
+    angular.module('controllers.productionController', [])
+        .controller('ProductionCtrl', ProductionCtrl);
 
-    OrderCtrl.$inject = ['$state', '$filter', 'OrderService', 'toastr', 'DateService'];
-    function OrderCtrl($state, $filter, OrderService, toastr, DateService) {
+    ProductionCtrl.$inject = ['$state', '$filter', 'ProductionService', 'toastr', 'DateService'];
+    function ProductionCtrl($state, $filter, ProductionService, toastr, DateService) {
         var vm = this;
         var statusColor = $filter('statusColor');
 
@@ -13,13 +13,13 @@
         vm.detail = function (item) {
             var obj = JSON.stringify(item);
             console.log(obj);
-            $state.go('app.orderDetail', {item: obj});
+            $state.go('app.productionDetail', {item: obj});
         };
         vm.filters = getFilters();
 
 
         (function init() {
-            OrderService.get().then(function (items) {
+            ProductionService.get().then(function (items) {
                 vm.items = items.map(mapItens).reverse();
             });
         })();
