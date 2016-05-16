@@ -21,7 +21,30 @@
             controllerAs: 'vm'
 
         });
-        stateProvider.state('app.orders', {
+       
+        // stateProvider.state('app.production', {
+        //     url: '/production',
+        //     title: 'Produção',
+        //     views: {
+        //         'menuContent': {
+        //             templateUrl: 'templates/production/production-items.html',
+        //             controller: 'ProductionCtrl',
+        //             controllerAs: 'vm',
+        //         }
+        //     }
+        // });
+        // stateProvider.state('app.productionDetail', {
+        //     url: '/production/:item',
+        //     title: 'Detalhes do Produto',
+        //     views: {
+        //         'menuContent': {
+        //             templateUrl: 'templates/production/production-product-detail.html',
+        //             controller: 'ProductionDetailCtrl',
+        //             controllerAs: 'vm'
+        //         }
+        //     }
+        // });
+         stateProvider.state('app.orders', {
             url: '/orders',
             title: 'Pedidos',
             views: {
@@ -44,7 +67,7 @@
             }
         });
         stateProvider.state('app.orderDetail', {
-            url: '/orders/:id',
+            url: '/orders/:item',
             title: 'Detalhes Pedido',
             views: {
                 'menuContent': {

@@ -1,15 +1,14 @@
 /* global angular*/
 (function (angular) {
-    angular.module('services.orderService', [])
-        .service('OrderService', OrderService);
+    angular.module('services.productionService', [])
+        .service('ProductionService', OrderService);
     OrderService.$inject = ['$q', '$http', 'ConstantsService', 'AuthService'];
 
     function OrderService($q, $http, ConstantsService, AuthService) {
         return {
             get: getItens,
             order: getDetail,
-            create: create,
-            updateStatus: updateStatus
+            create: create
         };
         function getItens() {
             var items = [
@@ -19,7 +18,6 @@
                     "supplier": "Mariazinha",
                     "delivery_date": "2016-06-13T21:58:44.925Z",
                     "name": "Bolsa do Batman",
-                    "percentage_conclusion": 75,
                     "height": 100,
                     "weight": 200.5,
                     "describe": "Quatro vermelhas"
@@ -27,7 +25,6 @@
                 {
                     "id_production": 124,
                     "client": "Joao",
-                    "percentage_conclusion": 50,
                     "supplier": "Joaozinho",
                     "delivery_date": "2016-10-16T21:58:44.925Z",
                     "name": "Bolsa do Homem Aranha",
@@ -39,7 +36,6 @@
                     "id_production": 543,
                     "client": "erick wendel",
                     "supplier": "Mariazinha",
-                    "percentage_conclusion": 0,
                     "delivery_date": "2016-10-13T21:58:44.925Z",
                     "name": "Bolsa do Batman",
                     "height": 100,
@@ -50,7 +46,6 @@
                     "id_production": 345,
                     "client": "Joao",
                     "supplier": "Joaozinho",
-                    "percentage_conclusion": 75,
                     "delivery_date": "2016-06-13T21:58:44.925Z",
                     "name": "Bolsa do Homem Aranha",
                     "height": 100,
@@ -60,7 +55,6 @@
                 {
                     "id_production": 312,
                     "client": "erick wendel",
-                    "percentage_conclusion": 50,
                     "supplier": "Mariazinha",
                     "delivery_date": "2016-05-13T21:58:44.925Z",
                     "name": "Bolsa do Batman",
@@ -71,7 +65,6 @@
                 {
                     "id_production": 321,
                     "client": "Joao",
-                    "percentage_conclusion": 75,
                     "supplier": "Joaozinho",
                     "delivery_date": "2016-05-13T21:58:44.925Z",
                     "name": "Bolsa do Homem Aranha",
@@ -103,17 +96,6 @@
                 method: 'POST',
                 url: ConstantsService.CREATE_ORDER_URL,
                 data: order,
-                headers: AuthService.headers()
-            }).then(function (params) {
-                return params.data;
-            });
-        }
-        
-        function updateStatus(obj) {
-           return $http({
-                method: 'POST',
-                url: ConstantsService.UPDATE_STATUS_PRODUCTION,
-                data: obj,
                 headers: AuthService.headers()
             }).then(function (params) {
                 return params.data;

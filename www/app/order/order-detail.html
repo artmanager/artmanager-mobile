@@ -1,4 +1,59 @@
-<ion-view view-title="DETALHES DO PEDIDO" name="items-view">
+<ion-view>
+    <ion-content>
+        <md-content layout-padding>
+            <div class="row">
+                <md-slider flex md-discrete
+                class="md-primary" 
+                ng-model="vm.item.percentage_conclusion" step="25" min="0" max="100" aria-label="rating">
+                </md-slider>
+                <span>{{vm.item.percentage_conclusion}}%</span>
+                <md-button class="md-raised md-primary" ng-click="vm.updateStatus()">Atualizar Status</md-button>
+            </div>
+            <md-card>
+                <md-toolbar class="item-list card-primary">
+                    <div class="md-toolbar-tools">
+                        <h3 class="md-headline">  Produto: {{vm.item.name}} </h3>
+                    </div>
+                </md-toolbar>
+
+                <md-card-content layout-align="center center">
+
+                    <div class="row">
+                        <h3 class="col md-headline"><strong>Cliente:</strong></h3>
+                        <p class="col md-headline">{{vm.item.client}}</p>
+                    </div>
+                    <div class="row">
+                        <h3 class="col md-headline"><strong>Fornecedor:</strong> </h3>
+                        <p class="col md-headline">{{vm.item.supplier}}</p>
+                    </div>
+                    <div class="row">
+                        <h3 class="col md-headline"> <strong>Peso:</strong> </h3>
+                        <p class="col md-headline">{{vm.item.weight}} KG </p>
+                    </div>
+                    <div layout="row">
+                        <h3 class="col md-headline"> <strong>Tamanho:</strong> </h3>
+                        <p class="col md-headline">{{vm.item.height}} CM</p>
+                    </div>
+
+                    <div layout="row">
+                        <h3 class="col md-headline"> <strong>Descrição:</strong> </h3>
+                        <p class="col md-headline">{{vm.item.describe}}</p>
+                    </div>
+                    <div layout="row">
+                        <h3 class="col md-headline"><strong>Entrega:</strong> </h3>
+                        <p class="col  md-headline">{{vm.item.date}} </p>
+                    </div>
+                </md-card-content>
+
+            </md-card>
+        </md-content>
+
+
+    </ion-content>
+
+</ion-view>
+
+<!--<ion-view view-title="DETALHES DO PEDIDO" name="items-view">
     <ion-content>
         <ion-item class="card">
             <h2>{{item.nome}}</h2>
@@ -45,4 +100,4 @@
 
         </ion-item>
     </ion-content>
-</ion-view>
+</ion-view>-->

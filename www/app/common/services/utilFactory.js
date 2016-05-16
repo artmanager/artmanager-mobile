@@ -13,6 +13,8 @@
         var baseProvider = BASE_API_URL + 'supplier';
         var baseProduct = BASE_API_URL + 'product';
         var baseOrder= BASE_API_URL + 'which';
+        var baseProduction = BASE_API_URL + 'production';
+        
         this.LOGIN_URL = baseAutenticacao;
         this.CREATE_USER_URL = baseUser;
         
@@ -28,6 +30,7 @@
         this.CREATE_ORDER_URL = baseOrder;
         this.ACCESS_TOKEN_KEY = 'x-access-token';
 
+        this.UPDATE_STATUS_PRODUCTION = baseProduction;
     }
 
     app.factory('LocalStorageService', LocalStorageService);
@@ -88,6 +91,32 @@
         function headers() {
             return { 'x-access-token': localStorage.token };
         } 
+    }
+    
+    app.factory('DateService', DateService);
+    function DateService() {
+        return { 
+            daysBetween : daysBetween,
+            formatToLocaleDate : formatToLocaleDate 
+        };
+        
+        function treatAsUTC(date) {
+            var result = new Date(date);
+            result.setMinutes(result.getMinutes() - result.getTimezoneOffset());
+            return result;
+        }
+
+        function daysBetween(startDate, endDate) {
+            var millisecondsPerDay = 24 * 60 * 60 * 1000;
+            return (treatAsUTC(endDate) - treatAsUTC(startDate)) / millisecondsPerDay;
+        }
+        function formatToLocaleDate(params) {
+            var month = (params.getMonth() + 1);
+            var formatedMonth = month >= 10 ? month : "0" + month;
+            var date = params.getDate() + "/" + formatedMonth + "/"+ params.getFullYear();
+            
+            return date;   
+        }
     }
     //  app.factory('httpRequestInterceptor', httpRequestInterceptor);
     // httpRequestInterceptor.$inject = ['ConstantsService'];

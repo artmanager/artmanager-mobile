@@ -19,7 +19,7 @@
         </div>
     </div>
     <div flex="30">
-        <md-select ng-model="order" class="md-title filter-select">
+        <md-select ng-model="order" class="md-title filter-select" aria-label="filter itens">
             <md-option ng-repeat="filter in filters" value="{{filter.value}}" ng-selected="{{filter.value === order}}">{{filter.desc}}</md-option>
         </md-select>
     </div>

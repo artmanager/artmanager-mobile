@@ -107,7 +107,9 @@
         }
         function toggleForms() {
             vm.showFormPayment = vm.showFormPayment ? false : true;
+            console.log('vm.showFormPayment', vm.showFormPayment);
             vm.showFormOrder = !vm.showFormPayment;
+            console.log('vm.vm.showFormOrder', vm.showFormOrder);
         }
         function finishOrder() {
             var discount = vm.order.discount || 0;

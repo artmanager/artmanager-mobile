@@ -11,6 +11,10 @@ var files =
         "order/controllers/orderRegisterController.js",
         "user/controllers/userController.js",
         "provider/controllers/providerController.js",
+        // "production/controllers/productionController.js",
+        
+        // "production/controllers/productionDetailController.js",
+        
         
         "client/controllers/clientController.js",
         "product/controllers/productController.js",
@@ -24,6 +28,7 @@ var files =
         "provider/services/providerService.js",
         "login/services/loginService.js",
         "order/services/orderService.js",
+        "production/services/productionService.js",
         "user/services/userService.js",
         "client/services/clientService.js",
         "product/services/productService.js",

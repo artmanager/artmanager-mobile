@@ -1,7 +1,7 @@
 /* global angular */
 (function (angular) {
-    angular.module('controllers.orderController', [])
-        .controller('OrderCtrl', OrderCtrl);
+    angular.module('controllers.productionController', [])
+        .controller('ProductionCtrl', OrderCtrl);
 
     OrderCtrl.$inject = ['$state', '$filter', 'OrderService', 'toastr', 'DateService'];
     function OrderCtrl($state, $filter, OrderService, toastr, DateService) {

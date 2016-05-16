@@ -1,10 +1,10 @@
 /* global angular */
 (function (angular) {
-    angular.module('controllers.orderController', [])
-        .controller('OrderCtrl', OrderCtrl);
+    angular.module('controllers.productionController', [])
+        .controller('ProductionCtrl', ProductionCtrl);
 
-    OrderCtrl.$inject = ['$state', '$filter', 'OrderService', 'toastr', 'DateService'];
-    function OrderCtrl($state, $filter, OrderService, toastr, DateService) {
+    ProductionCtrl.$inject = ['$state', '$filter', 'OrderService', 'toastr', 'DateService'];
+    function ProductionCtrl($state, $filter, OrderService, toastr, DateService) {
         var vm = this;
         var statusColor = $filter('statusColor');
 
