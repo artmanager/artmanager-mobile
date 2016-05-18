@@ -79,11 +79,11 @@
         });
         stateProvider.state('app.orders', {
             url: '/orders',
-            title: 'Cadastrar Pedido',
+            title: 'Pedidos',
             views: {
                 'menuContent': {
-                    templateUrl: 'templates/order/form-order.html',
-                    controller: 'OrderCtrl',
+                    templateUrl: 'templates/order/orders.html',
+                    controller: 'OrderListCtrl',
                     controllerAs: 'vm',
                 }
             }

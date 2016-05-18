@@ -19,6 +19,7 @@
         'controllers.productionController',
         'controllers.productionDetailController',
         'controllers.orderController',
+        'controllers.orderListController',
         'controllers.userController',
         'controllers.providerController',
         'controllers.clientController',

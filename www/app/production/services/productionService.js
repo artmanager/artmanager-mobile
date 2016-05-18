@@ -21,7 +21,8 @@
                     "percentage_conclusion": 75,
                     "height": 100,
                     "weight": 200.5,
-                    "describe": "Quatro vermelhas"
+                    "describe": "Quatro vermelhas",
+                    
                 },
                 {
                     "id_production": 124,
@@ -85,6 +86,14 @@
             defer.resolve(items);
 
             return defer.promise;
+            
+            // return $http({
+            //     method: 'GET',
+            //     url: ConstantsService.GET_PRODUCTION_URL,
+            //     headers: AuthService.headers()
+            // }).then(function (params) {
+            //     return params.data;
+            // });
         }
         
         function getDetail(id) {
@@ -105,6 +114,7 @@
                 data: obj,
                 headers: AuthService.headers()
             }).then(function (params) {
+                
                 return params.data;
             });
         }

@@ -9,6 +9,7 @@ var files =
         "production/controllers/productionController.js",
         "production/controllers/productionDetailController.js",
         "order/controllers/orderController.js",
+        "order/controllers/orderListController.js",
         "user/controllers/userController.js",
         "provider/controllers/providerController.js",
         

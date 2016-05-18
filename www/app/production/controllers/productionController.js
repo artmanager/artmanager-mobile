@@ -9,18 +9,20 @@
         var statusColor = $filter('statusColor');
 
         vm.items = [];
-        vm.order = 'status';
+        vm.order = '';
         vm.detail = function (item) {
             var obj = JSON.stringify(item);
             console.log(obj);
-            $state.go('app.productionDetail', {item: obj});
+            $state.go('app.productionDetail', { item: obj });
         };
         vm.filters = getFilters();
 
 
         (function init() {
+            vm.order = 'delivery_date';
             ProductionService.get().then(function (items) {
-                vm.items = items.map(mapItens).reverse();
+                console.log('items', items);
+                vm.items = items.map(mapItens);
             });
         })();
 
@@ -47,31 +49,34 @@
             var calc = DateService.daysBetween(now, date);
             if (calc < 20)
                 return 0;
-            else if (calc > 20 && calc < 40) 
+            else if (calc > 20 && calc < 40)
                 return 1;
             else if (calc > 40)
                 return 2;
-            
+
             return null;
         }
         function getFilters() {
             var filters = [];
             var filter = {};
 
+
+
+            filter.value = "delivery_date";
+            filter.desc = "Entrega";
+            filters.push(filter); 
+
+            filter = {};
             filter.value = "name";
             filter.desc = "Nome";
             filters.push(filter);
 
-            filter = {};
-            filter.value = "status";
-            filter.desc = "Status";
-            filters.push(filter);
+            // filter = {};
+            // filter.value = "status";
+            // filter.desc = "Status";
+            // filters.push(filter);
 
 
-            filter = {};
-            filter.value = "delivery_date";
-            filter.desc = "Data de Entrega";
-            filters.push(filter);
 
             return filters;
         }

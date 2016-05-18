@@ -1,0 +1,36 @@
+<ion-view name="orders-view">
+    <ion-content>
+        <md-content>
+            <filter-grid filters="vm.filters"></filter-grid>
+            <md-content>
+                <ion-list>
+                    <md-card ng-repeat="item in vm.items| orderBy:order:ascending" ng-click="vm.detail(item)">
+                        <md-toolbar class="item-list card-{{item.status | statusColor}}">
+                            <div class="md-toolbar-tools">
+                                <div class="row">
+                                    <h3 class="col col-90 md-headline">  {{item.user.name | uppercase}}</h3>
+                                    <i class="fa fa-chevron-right col"></i>
+
+                                </div>
+                            </div>
+                        </md-toolbar>
+                        <md-card-content  >
+                            <!--<div class="row">
+                                <h3 flex class="md-headline">Cliente: </h3>
+                                <h3 flex class="md-headline">{{item.client.name}} </h3>
+                            </div>-->
+                            <div  ng-repeat="order in item.order.products">
+                                <h3 flex class="col md-headline">Fornecedor: </h3>
+                                <h3 flex class="col md-headline">{{order.supplier}} </h3>
+                                <h3 flex class="col md-headline">Produto:  </h3>
+                                <h3 flex class="col  md-headline">{{order.name}} </h3>
+                            </div>
+                        </md-card-content>
+                    </md-card>
+                </ion-list>
+            </md-content>
+        </md-content>
+    </ion-content>
+
+
+</ion-view>

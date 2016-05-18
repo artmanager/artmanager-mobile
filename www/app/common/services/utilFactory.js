@@ -30,6 +30,7 @@
         this.CREATE_ORDER_URL = baseOrder;
         this.ACCESS_TOKEN_KEY = 'x-access-token';
 
+        this.GET_PRODUCTION_URL = baseProduction;
         this.UPDATE_STATUS_PRODUCTION = baseProduction;
     }
 
