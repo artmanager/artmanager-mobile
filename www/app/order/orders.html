@@ -2,31 +2,57 @@
     <ion-content>
         <md-content>
             <filter-grid filters="vm.filters"></filter-grid>
+            <md-content class="md-padding">
+                <form ng-submit="$event.preventDefault()">
+                    <md-autocomplete 
+                            md-selected-item="vm.selectedItem" 
+                            md-search-text-change="vm.searchTextChange(vm.searchText)"
+                            md-search-text="vm.searchText" 
+                            md-selected-item-change="vm.selectedItemChange(item)" 
+                            md-items="item in vm.querySearch(vm.searchText)"
+                            md-item-text="item.display" 
+                            md-min-length="0" 
+                            placeholder="Nome do cliente">
+                        <md-item-template>
+                            <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            Nenhum cliente "{{vm.searchText}}" encontrado.
+                        </md-not-found>
+                    </md-autocomplete>
+                </form>
+            </md-content>
             <md-content>
-                <ion-list>
-                    <md-card ng-repeat="item in vm.items| orderBy:order:ascending" ng-click="vm.detail(item)">
-                        <md-toolbar class="item-list card-{{item.status | statusColor}}">
-                            <div class="md-toolbar-tools">
-                                <div class="row">
-                                    <h3 class="col col-90 md-headline">  {{item.user.name | uppercase}}</h3>
-                                    <i class="fa fa-chevron-right col"></i>
+                <md-content layout-padding>
+                    <md-list>
 
+                        <md-card ng-repeat="item in vm.items" ng-click="vm.detail(item)">
+                            <md-toolbar class="item-list card-primary">
+                                <div class="md-toolbar-tools">
+                                    <h3 class="col col-60 md-headline">{{item.client.name | uppercase}} </h3>
+                                    <h3 class="col col-30 md-headline">{{item.creationDate}}</h3>
+                                    <i class="fa fa-chevron-right col"></i>
                                 </div>
-                            </div>
-                        </md-toolbar>
-                        <md-card-content  >
-                            <!--<div class="row">
-                                <h3 flex class="md-headline">Cliente: </h3>
-                                <h3 flex class="md-headline">{{item.client.name}} </h3>
-                            </div>-->
-                            <div  ng-repeat="order in item.order.products">
-                                <h3 flex class="col md-headline">Fornecedor: </h3>
-                                <h3 flex class="col md-headline">{{order.supplier}} </h3>
-                                <h3 flex class="col md-headline">Produto:  </h3>
-                                <h3 flex class="col  md-headline">{{order.name}} </h3>
-                            </div>
-                        </md-card-content>
-                    </md-card>
+                            </md-toolbar>
+                            <md-card-content layout-align="space-between">
+
+                                <div layout="row">
+                                    <p flex class="col md-headline"><strong>Produtos:</strong></p>
+                                    <p flex class="col md-headline">{{item.countProducts}} Unidades</p>
+                                </div>
+
+                                <md-divider></md-divider>
+
+                            </md-card-content>
+                            <md-card-content layout-align="center">
+                                <div layout="row">
+                                    <p flex class="col md-headline"><strong>Total:</strong></p>
+                                    <p flex class="col md-headline">R$ {{item.order.total | number: 2}}</p>
+                                </div>
+                            </md-card-content>
+                        </md-card>
+                </md-content>
+
                 </ion-list>
             </md-content>
         </md-content>

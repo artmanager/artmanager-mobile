@@ -10,6 +10,8 @@ var files =
         "production/controllers/productionDetailController.js",
         "order/controllers/orderController.js",
         "order/controllers/orderListController.js",
+        "order/controllers/orderDetailController.js",
+        
         "user/controllers/userController.js",
         "provider/controllers/providerController.js",
         

@@ -2,21 +2,52 @@
     angular.module('controllers.orderListController', [])
         .controller('OrderListCtrl', OrderListCtrl);
 
-    OrderListCtrl.$inject = ['OrderService', '$log', '$state', 'ClientService', 'ProductService', 'toastr', 'LoadingPopup'];
+    OrderListCtrl.$inject = ['OrderService', '$log', '$state', 'DateService', 'ClientService', 'toastr', 'LoadingPopup'];
 
-    function OrderListCtrl(OrderService, $log, $state, ClientService, ProductService, toastr, LoadingPopup) {
-         var vm = this;
-         vm.filters = getFilters();
-         (function init(){
-             vm.order = 'delivery_date';
-            OrderService.get().then(function (items) {
-                console.log('items', items);
-                vm.items = items;
+    function OrderListCtrl(OrderService, $log, $state, DateService, ClientService, toastr, LoadingPopup) {
+        var vm = this;
+        vm.filters = getFilters();
+        vm.clients = [];
+        vm.querySearch = querySearch;
+        vm.selectedItemChange = selectedItemChange;
+        vm.searchTextChange = searchTextChange;
+        vm.newState = newState;
+        vm.detail = toOrderDetail;
+        vm.countProducts = 0;
+        var count = 0;
+
+        (function init() {
+            vm.order = 'delivery_date';
+            loadOrders();
+            loadClients();
+
+        })();
+        function mapCountProducts(item) {
+            item.order.products.map(filterCountProducts);
+            item.countProducts = count;
+            return item;
+        }
+        function filterCountProducts(item) {
+            count += item.quantity;
+        }
+        function mapItens(item) {
+            item.creationDate = DateService.formatToLocaleDate(new Date(item.creationDate));
+            var products = item.order.products.map(function (product) {
+                product.delivery_date = DateService.formatToLocaleDate(new Date(product.delivery_date));
+                return product;
             });
-             
-         })();
-         
-         function getFilters() {
+            item.order.products = products;
+            return item;
+        }
+        function loadOrders() {
+            OrderService.get().then(function (items) {
+                vm.items = items
+                    .map(mapItens)
+                    .map(mapCountProducts);
+                console.log(vm.items);
+            });
+        }
+        function getFilters() {
             var filters = [];
             var filter = {};
 
@@ -24,7 +55,7 @@
 
             filter.value = "delivery_date";
             filter.desc = "Entrega";
-            filters.push(filter); 
+            filters.push(filter);
 
             filter = {};
             filter.value = "name";
@@ -40,8 +71,71 @@
 
             return filters;
         }
-         
-         
+
+        function newState(state) {
+            alert("Sorry! You'll need to create a Constituion for " + state + " first!");
+        }
+        function querySearch(query) {
+            query = angular.lowercase(query);
+            var results = query ?
+                vm.clients.filter(function (item) {
+                    return angular.lowercase(item.display).indexOf(query) >= 0;
+                })
+                : vm.clients;
+
+            return results;
+        }
+        function searchTextChange(text) {
+            $log.info('Text changed to ' + text);
+        }
+        function selectedItemChange(item) {
+            $log.info('Item changed to ' + JSON.stringify(item));
+        }
+
+        function loadClients() {
+            var clients = [{ 'id': 1, 'name': 'Erick' },
+                { 'id': 2, 'name': 'Gustavo' }]
+                .map(function (client) {
+                    return {
+                        value: client.id,
+                        display: client.name
+                    };
+                });
+
+            vm.clients = clients;
+            //    ClientService.get().then(function (values) {
+            //         if (values.error) {
+            //             toastr.error('Erro ao carregar clientes');
+            //             return;
+            //         }
+            //         if (!values.data) return;
+            //         var clients = values.data.clients.map(function (client) {
+            //             return {
+            //                 value: client.id,
+            //                 display: client.name
+            //             };
+            //         });
+
+            //         vm.clients = clients;
+
+
+            //     });
+
+
+        }
+        function createFilterFor(query) {
+            var lowercaseQuery = angular.lowercase(query);
+            return function filterFn(state) {
+                return (state.value.indexOf(lowercaseQuery) === 0);
+            };
+        }
+
+        function toOrderDetail(item) {
+            var obj = JSON.stringify(item);
+            console.log(obj);
+            $state.go('app.orderDetail', { item: obj });
+        }
+
     }
 
 })(angular);

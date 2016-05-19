@@ -27,19 +27,19 @@
         }
 
         function create() {
-            toastr.success('Produto cadastrado com sucesso!');
-            setTimeout(function (){
-                $state.go('app.orders');
-            },1500);
-            // LoadingPopup.show();
-            // try {
-            //     ProductService.create(vm.product).then(onCreate, onFail);
-            // }
-            // catch (e) {
-            //     console.log(e);
-            //     toastr.error('Erro ao cadastrar produto');
-            //     LoadingPopup.hide();
-            // }
+            // toastr.success('Produto cadastrado com sucesso!');
+            // setTimeout(function (){
+            //     $state.go('app.orders');
+            // },1500);
+            LoadingPopup.show();
+            try {
+                ProductService.create(vm.product).then(onCreate, onFail);
+            }
+            catch (e) {
+                console.log(e);
+                toastr.error('Erro ao cadastrar produto');
+                LoadingPopup.hide();
+            }
         }
 
         function goBack() {

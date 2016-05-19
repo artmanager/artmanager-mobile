@@ -88,7 +88,17 @@
                 }
             }
         });
-        
+        stateProvider.state('app.orderDetail', {
+            url: '/order/:item',
+            title: 'Detalhes do Pedido',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/order/order-detail.html',
+                    controller: 'OrderDetailCtrl',
+                    controllerAs: 'vm',
+                }
+            }
+        });
         
         
         stateProvider.state('app.createUser', {

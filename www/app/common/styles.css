@@ -94,3 +94,7 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
 }
 
 
+.divider-red {
+    background: red;
+    height: 2px;
+}

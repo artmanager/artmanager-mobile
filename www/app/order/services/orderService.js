@@ -40,8 +40,19 @@
                         "height": 100,
                         "weight": 200.5,
                         "quantity": 6,
+                        "describe": "Quatro verdes",
+                        "percentage_conclusion": "100"
+                    },
+                    {
+                        "id_production": 123,
+                        "supplier": "Tia Josefa",
+                        "delivery_date": "2016-05-13T21:58:44.925Z",
+                        "name": "Bolsa do Batman",
+                        "height": 100,
+                        "weight": 200.5,
+                        "quantity": 6,
                         "describe": "Quatro vermelhas",
-                        "produzido": "100% ou 0%"
+                        "percentage_conclusion": "50"
                     }],
                     "discount": 5.5,
                     "entrance": 11.00,
