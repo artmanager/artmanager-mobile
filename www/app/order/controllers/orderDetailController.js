@@ -12,8 +12,9 @@
         vm.updateValuePayment = updateValuePayment;
         
         vm.orderPendingPayment = true;//verifyPendingPayment();
-        vm.pendingFallback = true;
+        vm.pendingFallback = true;//vm.item.pendingFallback;
         function updateValuePayment(){
+            
             toastr.success('Valor Atualizado com sucesso!');
         }
         

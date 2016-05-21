@@ -28,6 +28,7 @@
         this.GET_PRODUCT_URL = baseProduct;
         
         this.CREATE_ORDER_URL = baseOrder;
+        this.GET_ORDER_URL = baseOrder;
         this.ACCESS_TOKEN_KEY = 'x-access-token';
 
         this.GET_PRODUCTION_URL = baseProduction;

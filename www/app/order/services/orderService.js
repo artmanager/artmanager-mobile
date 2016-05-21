@@ -21,6 +21,13 @@
         }
 
         function getItens() {
+            // return $http({
+            //     method: 'GET',
+            //     url: ConstantsService.GET_ORDER_URL,
+            //     headers: AuthService.headers()
+            // }).then(function (params) {
+            //     return params.data;
+            // });
             var defer = $q.defer();
             var itens = [{
                 "id": "1212323323232113223321",

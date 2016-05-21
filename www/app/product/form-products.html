@@ -13,7 +13,29 @@
                                 </md-option>
                             </md-select>
                         </md-input-container>
-                        
+                        <!--<md-content>
+                            <form ng-submit="$event.preventDefault()">
+                                <md-autocomplete  
+                                    md-selected-item="vm.selectedItem" 
+                                    md-search-text-change="vm.searchTextChange(vm.searchText)"
+                                    md-search-text="vm.searchText" 
+                                    md-selected-item-change="vm.selectedItemChange(item)"
+                                    md-items="item in vm.querySearch(vm.searchText)" 
+                                    md-min-length="0"
+                                    placeholder="Fornecedor">
+                                    <md-item-template>
+                                        <span md-highlight-text="vm.searchText"
+                                         md-highlight-flags="^i">{{item.display}}</span>
+                                    </md-item-template>
+                                    <md-not-found>
+                                        Nenhum "{{vm.searchText}}" encontrado.
+                                        <a ng-click="vm.newState(vm.searchText)">Cadastrar novo Fornecedor!</a>
+                                    </md-not-found>
+                                </md-autocomplete>
+                                <br>
+                                
+                            </form>
+                        </md-content>-->
 
                         <md-input-container class="md-block">
                             <label>Nome</label>
@@ -67,8 +89,7 @@
                             </md-input-container>
                             <div layout="row" layout-align="end center">
                                 <md-button class="md-primary" ng-click="vm.goBack()">Voltar</md-button>
-                                <md-button class="md-primary" ng-click="vm.create()"
-                                ng-disabled="
+                                <md-button class="md-primary" ng-click="vm.create()" ng-disabled="
                                 productForm.size.$error.required ||
                                 productForm.weight.$error.required ||
                                 productForm.cost.$error.required ||

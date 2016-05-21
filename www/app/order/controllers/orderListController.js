@@ -41,6 +41,7 @@
         }
         function loadOrders() {
             OrderService.get().then(function (items) {
+                console.log('items', items);
                 vm.items = items
                     .map(mapItens)
                     .map(mapCountProducts);

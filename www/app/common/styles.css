@@ -106,3 +106,6 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
         background: green!important;
     color: white!important;
 }
+.black {
+    color: #757575!important;
+}
