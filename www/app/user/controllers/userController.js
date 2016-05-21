@@ -7,11 +7,12 @@
     function UserCtrl($rootScope, $state, $timeout, UserService, toastr, LoadingPopup) {
         var vm = this;
 
-        vm.profiles = [{ id: 0, description: 'Administrador' }, { id: 1, description: 'Usuario' }];
+        // vm.profiles = [{ id: 0, description: 'Administrador' }, { id: 1, description: 'Usuario' }];
 
         vm.create = function () {
             console.log(vm.user);
             LoadingPopup.show();
+            vm.user.profile = 1;
             var user = { "user": vm.user };
             UserService.create(user).then(onSuccess, onError);
         };

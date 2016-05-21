@@ -33,14 +33,14 @@ Telefone, Endereco devem ser enviados como array
                                 <label>Senha</label>
                                 <input name="password" type="password" ng-model="vm.user.password" required class="border-input-all">
                             </md-input-container>
-                            <md-input-container class="md-block" flex-gt-sm>
+                            <!--<md-input-container class="md-block" flex-gt-sm>
                                 <label>Perfil</label>
                                 <md-select ng-model="user.profile" name="profile" required>
                                     <md-option ng-repeat="profile in vm.profiles" value="{{profile.id}}">
                                         {{profile.description}}
                                     </md-option>
                                 </md-select>
-                            </md-input-container>
+                            </md-input-container>-->
 
                             <div layout="row" layout-align="end center">
                                 <md-button class="md-primary" ng-click="vm.create()"

@@ -29,16 +29,21 @@
                                     </md-option>
                                 </md-select>
                             </md-input-container>
-                            <div layout="row" layout-align="end center">
+                            <!--<div layout="row" layout-align="end center">
                                 <md-button class="md-primary" ng-click="vm.toggleForm()" 
                                 ng-disabled="providerForm.name.$invalid ||
                                              providerForm.telefone0.$invalid
                                              ">Proximo</md-button>
+                            </div>-->
+                            <div layout="row" layout-align="end center">
+                                <md-button class="md-primary" ng-disabled="providerForm.name.$invalid ||
+                                             providerForm.telefone0.$invalid
+                                             " ng-click="vm.create()">Cadastrar</md-button>
                             </div>
                         </div>
 
                     </div>
-                    <div ng-show="vm.content.location">
+                    <!--<div ng-show="vm.content.location">
 
                         <div layout-gt-sm="row">
                             <div layout="row">
@@ -78,7 +83,7 @@
                                 <md-button class="md-primary" ng-click="vm.create()">Cadastrar</md-button>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </form>
             </md-content>
         </div>

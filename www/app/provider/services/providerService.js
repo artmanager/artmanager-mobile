@@ -20,14 +20,7 @@
                     headers: AuthService.headers()
                 })
                 .then(function (obj) {
-                    if (obj.data.erro === undefined) {
-                        toastr.success('Cadastro efetuado com sucesso.');
-                        return true;
-                    }
-                    else {
-                        toastr.error("Erro ao cadastrar fornecedor");
-                        return false;
-                    }
+                    return obj.data;
                     
                 });
         }

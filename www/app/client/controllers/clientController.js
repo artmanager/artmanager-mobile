@@ -2,20 +2,21 @@
 (function (angular) {
 	var app = angular.module('controllers.clientController', ['ngSanitize']);
 
-	ClientController.$inject = ['$timeout', 'ClientService', 'LoadingPopup', '$state'];
+	ClientController.$inject = ['$timeout', 'ClientService', 'LoadingPopup', '$state', 'toastr'];
 	app.controller('ClientCtrl', ClientController);
 
-	function ClientController($timeout, ClientService, LoadingPopup, $state) {
+	function ClientController($timeout, ClientService, LoadingPopup, $state, toastr) {
 		var vm = this;
         vm.isFormUser = true;
         vm.isFormLocation = false;
         
-        var phoneTypes = [{ id: 1, description: 'FIXO' }, { id: 3, description: 'CELULAR' }];
+        var phoneTypes = [{ id: 1, description: 'FIXO' }, { id: 2, description: 'CELULAR' }];
         var clientName = $state.params.clientName;
         console.log('clientName', clientName);
         vm.phoneTypes = phoneTypes;
         vm.user = {}; 
         vm.user.client = {};
+        vm.user.phone = [];
         if(clientName) {
             vm.user.client.name = clientName;
         }
@@ -52,7 +53,9 @@
             vm.isFormLocation = false;
         };
         
-        function onCreate () {
+        function onCreate (response) {
+            toastr.success(response.success);
+            
             LoadingPopup.hide();
             if(vm.user.client.name) {
                 $state.go('app.createOrder');
@@ -61,7 +64,7 @@
             
             $state.go('app.orders');
         }
-        function onFail () {
+        function onFail (response) {
             LoadingPopup.hide();
         }
 	}

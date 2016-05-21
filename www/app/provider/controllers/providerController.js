@@ -3,15 +3,17 @@
     angular.module('controllers.providerController', [])
         .controller('ProviderCtrl', ProviderCtrl);
 
-    ProviderCtrl.$inject = ['$state', '$timeout', '$stateParams', 'LocalStorageService', 'ProviderService', 'LoadingPopup'];
-    function ProviderCtrl($state, $timeout, $stateParams, LocalStorageService, ProviderService, LoadingPopup) {
+    ProviderCtrl.$inject = ['$state', '$timeout', '$stateParams', 'LocalStorageService', 'ProviderService', 'LoadingPopup', 'toastr'];
+    function ProviderCtrl($state, $timeout, $stateParams, LocalStorageService, ProviderService, LoadingPopup, toastr) {
         var vm = this;
 
         var defaultContent = { personalData: true, location: false };
         var phoneTypes = [{ id: 1, description: 'FIXO' }, { id: 3, description: 'CELULAR' }];
+        vm.provider = {};
+        vm.provider.phones = [];
         vm.phoneTypes = phoneTypes;
         vm.content = defaultContent;
-        
+
         vm.toggleForm = function () {
 
             vm.content.personalData = false;
@@ -19,8 +21,8 @@
         };
         vm.create = function () {
             LoadingPopup.show();
-            ProviderService.create(vm.provider).then(onCreate, onFail);
-            // alert(JSON.stringify(vm.provider));
+            var dados = { 'supplier': vm.provider };
+            ProviderService.create(dados).then(onCreate, onFail);
         };
 
 
@@ -28,10 +30,17 @@
             vm.content.personalData = true;
             vm.content.location = false;
         };
-        function onCreate () {
+        function onCreate(obj) {
             LoadingPopup.hide();
+            console.log('obj', obj);
+            if (obj.error !== undefined) {
+                toastr.error("Erro ao cadastrar fornecedor", obj.error);
+                return;
+            }
+            toastr.success('Cadastro efetuado com sucesso.');
+            vm.provider = {};
         }
-        function onFail () {
+        function onFail(obj) {
             LoadingPopup.hide();
         }
     }

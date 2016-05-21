@@ -21,12 +21,12 @@
                             
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Telefone</label>
-                                <input name="phone1" ng-model="vm.user.phone[0]" ui-br-phone-number>
+                                <input name="phone1" ng-model="vm.user.phone[0].number" ui-br-phone-number>
                             </md-input-container>
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Tipo de Telefone</label>
 
-                                <md-select ng-model="vm.user.phones[0].type" name="type">
+                                <md-select ng-model="vm.user.phone[0].type" name="type">
                                     <md-option ng-repeat="type in vm.phoneTypes" value="{{type.id}}">
                                         {{type.description}}
                                     </md-option>
@@ -47,13 +47,15 @@
                                 </md-select>
                             </md-input-container>-->
                             <div layout="row" layout-align="end center">
-                                <md-button class="md-primary" ng-click="vm.nextLocation()" 
-                                ng-disabled="(formUser.name.$error.required)">Proximo</md-button>
+                                <!--<md-button class="md-primary" ng-click="vm.nextLocation()" 
+                                ng-disabled="(formUser.name.$error.required)">Proximo</md-button>-->
+                            <md-button class="md-primary" ng-click="vm.create()"
+                            ng-disabled="(formUser.name.$error.required)">Cadastrar</md-button>
                             </div>
                         </div>
                     </div>
 
-                    <div ng-show="vm.isFormLocation">
+                    <!--<div ng-show="vm.isFormLocation">
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>CEP</label>
                             <input name="postalCode" ng-model="vm.user.address[0].zip_code"  ui-br-cep-mask required>
@@ -88,7 +90,7 @@
                             <md-button class="md-primary" ng-click="vm.goBack('contact')">Voltar</md-button>
                             <md-button class="md-primary" ng-click="vm.create()">Cadastrar</md-button>
                         </div>
-                    </div>
+                    </div>-->
 
                 </form>
             </md-content>
