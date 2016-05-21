@@ -1,8 +1,31 @@
 <ion-view>
     <ion-content>
-
         <ion-scroll>
+            <md-card ng-if="vm.orderPendingPayment || vm.pendingFallback">
+
+                <md-toolbar class="item-list card-red" > 
+                    <div class="md-toolbar-tools">
+                        <h3 class="md-headline"> Atualizar Pedido </h3>
+                    </div>
+                </md-toolbar>
+
+                <md-card-content layout-align="space-between" >
+                    <md-input-container class="md-block col" ng-if="vm.orderPendingPayment">
+                        <label>Valor pendente de pagamento</label>
+                        <input name="pendingValue" ui-number-mask ng-model="vm.pendingValue" class="col col-50" ui required >
+                        <md-button class="md-raised md-primary" ng-disabled="!vm.pendingValue || vm.pendingValue ===0 || vm.pendingValue > vm.item.order.total" ng-click="vm.updateValuePayment()">Atualizar Status</md-button>
+                        <br />
+                        <div class="col"><span class="red ">Valor Pendente: </span> R$ {{vm.item.order.total - (vm.pendingValue || 0)  | number: 2}}</div>
+                    </md-input-container>
+                    <md-input-container class="md-block col" ng-if="vm.pendingFallback">
+                        <md-button class="md-raised btn-green " ng-click="vm.registerProducts()">Registrar retirada de produtos</md-button>
+                        <br />
+                    </md-input-container>
+                </md-card-content>
+            </md-card>
+
             <md-card>
+
                 <md-toolbar class="item-list card-primary">
                     <div class="md-toolbar-tools">
                         <h3 class="md-headline">  Pedido </h3>
@@ -59,20 +82,18 @@
                 </md-card-content>
                 <md-card-content layout-align="space-between">
                     <div layout="row">
-                        <h3 flex class="md-headline" ng-if="vm.order.discount">Desconto:</h3>
-                        <h3 flex class="md-headline" ng-if="vm.order.entrance">Entrada:</h3>
+                        <p flex class="col md-headline" ng-if="vm.item.order.discount"><strong>Desconto:</strong> </p>
+                        <p flex class="col md-headline" ng-if="vm.item.order.discount">R$ {{vm.item.order.discount | number: 2}}</p>
 
                     </div>
                     <div layout="row">
-                        <p flex class="md-headline" ng-if="vm.order.discount">R$ {{vm.order.discount}}</p>
-                        <p flex class="md-headline" ng-if="vm.order.entrance">R$ {{vm.order.entrance}}</p>
+                        <p flex class="col md-headline" ng-if="vm.item.order.entrance"><strong>Entrada:</strong> </p>
+                        <p flex class="col md-headline" ng-if="vm.item.order.entrance">R$ {{vm.item.order.entrance | number: 2}}</p>
                     </div>
 
                     <div layout="row">
-                        <h3 flex class="md-headline">Total:</h3>
-                    </div>
-                    <div layout="row">
-                        <p flex class="md-headline">R$ {{vm.order.total_value | number: 2}}</p>
+                        <h3 flex class="col md-headline"><strong>Total:</strong> </h3>
+                        <p flex class="col md-headline">R$ {{vm.item.order.total | number: 2}}</p>
                     </div>
                     <div layout="row" layout-align="space-around end">
                         <md-button class="md-primary" ng-click="vm.backToPayment()">Voltar</md-button>

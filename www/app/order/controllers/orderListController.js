@@ -93,33 +93,23 @@
         }
 
         function loadClients() {
-            var clients = [{ 'id': 1, 'name': 'Erick' },
-                { 'id': 2, 'name': 'Gustavo' }]
-                .map(function (client) {
+            ClientService.get().then(function (values) {
+                if (values.error) {
+                    toastr.error('Erro ao carregar clientes');
+                    return;
+                }
+                if (!values.data) return;
+                var clients = values.data.clients.map(function (client) {
                     return {
                         value: client.id,
                         display: client.name
                     };
                 });
 
-            vm.clients = clients;
-            //    ClientService.get().then(function (values) {
-            //         if (values.error) {
-            //             toastr.error('Erro ao carregar clientes');
-            //             return;
-            //         }
-            //         if (!values.data) return;
-            //         var clients = values.data.clients.map(function (client) {
-            //             return {
-            //                 value: client.id,
-            //                 display: client.name
-            //             };
-            //         });
-
-            //         vm.clients = clients;
+                vm.clients = clients;
 
 
-            //     });
+            });
 
 
         }

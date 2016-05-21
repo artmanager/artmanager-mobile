@@ -98,3 +98,11 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
     background: red;
     height: 2px;
 }
+.red {
+    color: red;
+}
+
+.btn-green {
+        background: green!important;
+    color: white!important;
+}

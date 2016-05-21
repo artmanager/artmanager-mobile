@@ -8,7 +8,21 @@
         var vm = this;
         
          vm.item = JSON.parse($state.params.item);
-         
+         console.log(vm.item);
+        vm.updateValuePayment = updateValuePayment;
+        
+        vm.orderPendingPayment = true;//verifyPendingPayment();
+        vm.pendingFallback = true;
+        function updateValuePayment(){
+            toastr.success('Valor Atualizado com sucesso!');
+        }
+        
+        function verifyPendingPayment() {
+            var order = vm.item.order;
+            var pending =  (order.total - (order.discount + order.entrance)) < 0;
+            
+            return pending;
+        }    
     }
     
 })(angular);
