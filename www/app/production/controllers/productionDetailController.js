@@ -11,26 +11,29 @@
         vm.updateStatus = updateStatus;
         vm.back = back;
         function updateStatus() {
-            var status = vm.item.percentage_conclusion;
+            var status = vm.item.percentage;
             
             if (status === 100)  {
                 var confirmar = confirm('Deseja concluir produção?');
                 if (!confirmar) return;
             }
             
-            var id = vm.item.id_production;
-            var obj = { percentage: status, id: id };
-                
+            var id = vm.item.id;
+            var obj = { percentage: status, id: id };                
             LoadingPopup.show();
-            onUpdateSuccess();
-            // OrderService.updateStatus(obj).then(onUpdateSuccess, onUpdateFail);
+            ProductionService.updateStatus(obj).then(onUpdateSuccess, onUpdateFail);
 
         }
         function onUpdateSuccess(success) {
+            if(success.success)
+                toastr.success('Operação realizada com sucesso!');
+            else if(success.error)
+                toastr.error('Erro ao realizar sua solicitacao');
+                
             LoadingPopup.hide();
-            toastr.success('Operação realizada com sucesso!');
         }
         function onUpdateFail(success) {
+            console.log('success', success);
             LoadingPopup.hide();
             toastr.error('Erro ao realizar sua solicitacao');
 

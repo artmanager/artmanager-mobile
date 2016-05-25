@@ -3,8 +3,8 @@
     angular.module('controllers.productionController', [])
         .controller('ProductionCtrl', ProductionCtrl);
 
-    ProductionCtrl.$inject = ['$state', '$filter', 'ProductionService', 'toastr', 'DateService'];
-    function ProductionCtrl($state, $filter, ProductionService, toastr, DateService) {
+    ProductionCtrl.$inject = ['$state', '$filter', 'ProductionService', 'toastr', 'DateService', 'LoadingPopup'];
+    function ProductionCtrl($state, $filter, ProductionService, toastr, DateService, LoadingPopup) {
         var vm = this;
         var statusColor = $filter('statusColor');
 
@@ -12,7 +12,6 @@
         vm.order = '';
         vm.detail = function (item) {
             var obj = JSON.stringify(item);
-            console.log(obj);
             $state.go('app.productionDetail', { item: obj });
         };
         vm.filters = getFilters();
@@ -20,9 +19,13 @@
 
         (function init() {
             vm.order = 'delivery_date';
+            LoadingPopup.show();
             ProductionService.get().then(function (items) {
-                console.log('items', items);
-                vm.items = items.map(mapItens);
+                var productions = items.success;
+                console.log('productions', productions);
+                if (productions)
+                    vm.items = productions.map(mapItens);
+                LoadingPopup.hide();
             });
         })();
 
@@ -60,24 +63,15 @@
             var filters = [];
             var filter = {};
 
-
-
             filter.value = "delivery_date";
             filter.desc = "Entrega";
-            filters.push(filter); 
+            filters.push(filter);
 
             filter = {};
             filter.value = "name";
             filter.desc = "Nome";
             filters.push(filter);
-
-            // filter = {};
-            // filter.value = "status";
-            // filter.desc = "Status";
-            // filters.push(filter);
-
-
-
+ 
             return filters;
         }
 

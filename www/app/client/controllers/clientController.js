@@ -22,8 +22,13 @@
         }
         
         vm.create = function () {
-            LoadingPopup.show();
+            // LoadingPopup.show();
             ClientService.create(vm.user).then(onCreate, onFail);
+            toastr.success("Cliente cadastrado com sucesso");
+            if(vm.user.client.name) {
+                $state.go('app.createOrder');
+                return;
+            }
         };
 
         vm.nextContato = function () {

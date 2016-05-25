@@ -1,120 +1,121 @@
 <ion-view>
     <ion-content>
-        <md-content>
+        <ion-scroll>
+            <md-content>
 
-            <div layout="column" ng-cloak class="md-inline-form">
-                <div ng-hide="!vm.showFormOrder">
-                    <form name="formOrder">
-
-
-                        <md-content class="md-padding">
-                            <md-autocomplete md-search-text-change="vm.searchTextChangeClient(vm.searchTextClient)" md-search-text="vm.searchTextClient"
-                                md-selected-item-change="vm.selectedItemChangeClient(item)" md-items="item in vm.querySearchClient(vm.searchTextClient)"
-                                md-item-text="item.display" md-min-length="0" placeholder="Digite o Nome do Cliente">
-                                <md-item-template>
-                                    <span md-highlight-text="vm.searchTextClient" md-highlight-flags="^i">{{item.display}}</span>
-                                </md-item-template>
-                                <md-not-found>
-                                    "{{vm.searchTextClient}}" foi encontrado.
-                                    <a ng-click="vm.newClient(vm.searchTextClient)">Cadastrar cliente agora</a>
-                                </md-not-found>
-                            </md-autocomplete>
+                <div layout="column" ng-cloak class="md-inline-form">
+                    <div ng-hide="!vm.showFormOrder">
+                        <form name="formOrder">
 
 
-
-                        </md-content>
-
-                        <div layout-gt-sm="row" ng-hide="!vm.showFormProduct">
                             <md-content class="md-padding">
-
-                                <md-autocomplete md-search-text-change="vm.searchTextChangeProduct(vm.searchTextProduct)" md-search-text="vm.searchTextProduct"
-                                    md-selected-item-change="vm.selectedItemChangeProduct(item)" md-items="item in vm.querySearchProduct(vm.searchTextProduct)"
-                                    md-item-text="item.display" md-min-length="0" placeholder="Digite o Nome do Produto">
+                                <md-autocomplete md-search-text-change="vm.searchTextChangeClient(vm.searchTextClient)" md-search-text="vm.searchTextClient"
+                                    md-selected-item-change="vm.selectedItemChangeClient(item)" md-items="item in vm.querySearchClient(vm.searchTextClient)"
+                                    md-item-text="item.display" md-min-length="0" placeholder="Digite o Nome do Cliente">
                                     <md-item-template>
-                                        <span md-highlight-text="vm.searchTextProduct" md-highlight-flags="^i">{{item.display}}</span>
+                                        <span md-highlight-text="vm.searchTextClient" md-highlight-flags="^i">{{item.display}}</span>
                                     </md-item-template>
                                     <md-not-found>
-                                        "{{vm.searchTextProduct}}" foi encontrado.
-                                        <a ng-click="vm.newProduct(vm.searchTextProduct)">Cadastrar Produto agora</a>
+                                        "{{vm.searchTextClient}}" foi encontrado.
+                                        <a ng-click="vm.newClient(vm.searchTextClient)">Cadastrar cliente agora</a>
                                     </md-not-found>
                                 </md-autocomplete>
 
+
+
                             </md-content>
-                            <md-divider></md-divider>
 
-                            <div ng-if="vm.selectedProduct.id" class="md-padding">
+                            <div layout-gt-sm="row" ng-hide="!vm.showFormProduct">
+                                <md-content class="md-padding">
 
-                                <div layout="row">
+                                    <md-autocomplete md-search-text-change="vm.searchTextChangeProduct(vm.searchTextProduct)" md-search-text="vm.searchTextProduct"
+                                        md-selected-item-change="vm.selectedItemChangeProduct(item)" md-items="item in vm.querySearchProduct(vm.searchTextProduct)"
+                                        md-item-text="item.display" md-min-length="0" placeholder="Digite o Nome do Produto">
+                                        <md-item-template>
+                                            <span md-highlight-text="vm.searchTextProduct" md-highlight-flags="^i">{{item.display}}</span>
+                                        </md-item-template>
+                                        <md-not-found>
+                                            "{{vm.searchTextProduct}}" foi encontrado.
+                                            <a ng-click="vm.newProduct(vm.searchTextProduct)">Cadastrar Produto agora</a>
+                                        </md-not-found>
+                                    </md-autocomplete>
 
-                                    <md-input-container class="md-block" flex>
-                                        <label>Preço: </label>
-                                        <input name="cost" ng-model="vm.selectedProduct.precoVenda" ui-number-mask required disabled>
+                                </md-content>
+                                <md-divider></md-divider>
+
+                                <div ng-if="vm.selectedProduct.id" class="md-padding">
+
+                                    <div layout="row">
+
+                                        <md-input-container class="md-block" flex>
+                                            <label>Preço: </label>
+                                            <input name="cost" ng-model="vm.selectedProduct.precoVenda" ui-number-mask required disabled>
+                                        </md-input-container>
+                                        <md-input-container class="md-block" flex>
+                                            <label>Fornecedor: </label>
+                                            <input name="supplier" ng-model="vm.selectedProduct.fornecedor" required disabled>
+                                        </md-input-container>
+
+                                    </div>
+                                    <md-input-container class="md-block margin-container-order-describe">
+                                        <label>Observação</label>
+                                        <textarea name="describe" ng-model="vm.selectedProduct.observacao" md-maxlength="200" rows="5" md-select-on-focus></textarea>
                                     </md-input-container>
-                                    <md-input-container class="md-block" flex>
-                                        <label>Fornecedor: </label>
-                                        <input name="supplier" ng-model="vm.selectedProduct.fornecedor" required disabled>
+
+                                    <md-input-container class="md-block margin-container-order-quantity">
+                                        <label>Quantidade</label>
+                                        <input name="quantity" ng-model="vm.selectedProduct.quantity" required type="number" class="border-input-all">
                                     </md-input-container>
+                                    <md-checkbox aria-label="selecionar data producao" ng-model="vm.selectedProduct.toProduction" aria-label="Produção">
+                                        Produção
+                                    </md-checkbox>
+                                    <div ng-if="vm.selectedProduct.toProduction">
+                                        <md-input-container class="md-block">
+                                            <label>Data de entrega</label>
+                                            <input type="date" class="border-input-all" required name="sendDate" ng-model="vm.selectedProduct.sendDate" required>
+                                        </md-input-container>
+                                    </div>
+
 
                                 </div>
-                                <md-input-container class="md-block">
-                                    <label>Observação</label>
-                                    <textarea name="describe" ng-model="vm.selectedProduct.observacao" md-maxlength="200" rows="5" md-select-on-focus></textarea>
-                                </md-input-container>
 
-                                <md-input-container class="md-block">
-                                    <label>Quantidade</label>
-                                    <input name="quantity" ng-model="vm.selectedProduct.quantity" required type="number" class="border-input-all">
-                                </md-input-container>
-                                <md-checkbox aria-label="selecionar data producao" ng-model="vm.selectedProduct.toProduction" aria-label="Produção">
-                                    Produção
-                                </md-checkbox>
-                                <div ng-if="vm.selectedProduct.toProduction">
-                                    <md-input-container class="md-block">
-                                        <label>Data de entrega</label>
-                                        <input type="date" class="border-input-all" required name="sendDate" ng-model="vm.selectedProduct.sendDate" required>
-                                    </md-input-container>
+                                <div layout="row" layout-align="space-around end" ng-if="vm.showButtons">
+                                    <md-button class="md-primary" ng-click="vm.addToOrder(form)" ng-if="vm.selectedProduct.id" ng-disabled="formOrder.$invalid">Adicionar ao pedido</md-button>
+                                    <md-button class="md-primary" ng-click="vm.toPaymentOrder()" ng-if="vm.order.products.length > 0" ng-disabled="formOrder.$invalid || vm.order.products.length === 0">Finalizar</md-button>
                                 </div>
 
 
                             </div>
-
-                            <div layout="row" layout-align="space-around end" ng-if="vm.showButtons">
-                                <md-button class="md-primary" ng-click="vm.addToOrder(form)" ng-if="vm.selectedProduct.id" ng-disabled="formOrder.$invalid">Adicionar ao pedido</md-button>
-                                <md-button class="md-primary" ng-click="vm.toPaymentOrder()" ng-if="vm.order.products.length > 0" ng-disabled="formOrder.$invalid || vm.order.products.length === 0">Finalizar</md-button>
-                            </div>
-
-
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
 
-        </md-content>
+            </md-content>
 
-        <md-list ng-if="vm.order.products.length > 0 && vm.showFormOrder">
+            <md-list ng-if="vm.order.products.length > 0 && vm.showFormOrder">
 
-            <md-subheader class="md-no-sticky">Produtos selecionados no pedido</md-subheader>
-            <md-divider></md-divider>
-            <md-card ng-repeat="product in vm.order.products">
-                <md-card-content layout-align="space-between">
-                    <div class="row">
-                        <p class="col ">Nome:</p>
-                        <p class="col ">Quantidade:</p>
-                        <p class="col ">Entrega:</p>
-                        <p class="col">#</p>
-                    </div>
-                    <div class="row">
-                        <p class="col">{{ product.nome }}</p>
-                        <p class="col">{{ product.quantity }}</p>
-                        <p class="col" ng-if="product.sendDate">{{product.sendDate.toLocaleDateString()}}</p>
-                        <p class="col" ng-if="!product.sendDate"> - </p>
-                        <md-checkbox aria-label="remover" class="col md-secondary" ng-click="vm.removeItem(product)"></md-checkbox>
-                    </div>
-                </md-card-content>
-            </md-card>
-            <md-divider></md-divider>
-        </md-list>
-
+                <md-subheader class="md-no-sticky">Produtos selecionados no pedido</md-subheader>
+                <md-divider></md-divider>
+                <md-card ng-repeat="product in vm.order.products">
+                    <md-card-content layout-align="space-between">
+                        <div class="row">
+                            <p class="col ">Nome:</p>
+                            <p class="col ">Quantidade:</p>
+                            <p class="col ">Entrega:</p>
+                            <p class="col">#</p>
+                        </div>
+                        <div class="row">
+                            <p class="col">{{ product.nome }}</p>
+                            <p class="col">{{ product.quantity }}</p>
+                            <p class="col" ng-if="product.sendDate">{{product.sendDate.toLocaleDateString()}}</p>
+                            <p class="col" ng-if="!product.sendDate"> - </p>
+                            <md-checkbox aria-label="remover" class="col md-secondary" ng-click="vm.removeItem(product)"></md-checkbox>
+                        </div>
+                    </md-card-content>
+                </md-card>
+                <md-divider></md-divider>
+            </md-list>
+        </ion-scroll>
 
 
         <!--</md-content>-->

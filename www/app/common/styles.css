@@ -109,3 +109,14 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
 .black {
     color: #757575!important;
 }
+
+.back-button-margin {
+        top: -11px;
+}
+.margin-container-order-describe {
+    margin-top: -6%!important;
+}
+.margin-container-order-quantity {
+    margin-bottom: -1%;
+    
+}

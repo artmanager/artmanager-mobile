@@ -2,9 +2,9 @@
     angular.module('controllers.orderController', [])
         .controller('OrderCtrl', OrderCtrl);
 
-    OrderCtrl.$inject = ['ProductionService', '$log', '$state', 'ClientService', 'ProductService', 'toastr', 'LoadingPopup'];
+    OrderCtrl.$inject = ['OrderService', '$log', '$state', 'ClientService', 'ProductService', 'toastr', 'LoadingPopup'];
 
-    function OrderCtrl(ProductionService, $log, $state, ClientService, ProductService, toastr, LoadingPopup) {
+    function OrderCtrl(OrderService, $log, $state, ClientService, ProductService, toastr, LoadingPopup) {
         var vm = this;
         vm.showFormProduct = false;
 
@@ -56,33 +56,28 @@
             loadClients();
         }
         function create() {
-            toastr.success('Pedido Registrado com sucesso!');
-            setTimeout(function () {
-                $state.go('app.orders');
+            var order = {};
+            LoadingPopup.show();
+            order.client = { id: vm.client.value };
+            order.user = vm.userId;
+            order.which = {
+                total_value: vm.order.total_value,
+                entrance: vm.order.entrance,
+                discount: vm.order.discount
+            };
+            order.products = vm.order.products.map(function (product) {
+                var obj = {
+                    id: product.id,
+                    describe: product.describe
+                };
+                if (product.sendDate) {
+                    obj.delivery_date = product.sendDate;
+                }
 
-            }, 1500);
-            // var order = {};
-            // LoadingPopup.show();
-            // order.client = { id: vm.client.value };
-            // order.user = vm.userId;
-            // order.which = {
-            //     total_value: vm.order.total_value,
-            //     entrance: vm.order.entrance,
-            //     discount: vm.order.discount
-            // };
-            // order.products = vm.order.products.map(function (product) {
-            //     var obj = {
-            //         id: product.id,
-            //         describe: product.describe
-            //     };
-            //     if (product.sendDate) {
-            //         obj.delivery_date = product.sendDate;
-            //     }
-
-            //     return obj;
-            // });
-            // $log.debug('order', order);
-            // ProductionService.create(order).then(onCreateSuccess, onCreateError);
+                return obj;
+            });
+            $log.debug('order', order);
+            OrderService.create(order).then(onCreateSuccess, onCreateError);
         }
         function onCreateError(err) {
             LoadingPopup.hide();
@@ -107,9 +102,7 @@
         }
         function toggleForms() {
             vm.showFormPayment = vm.showFormPayment ? false : true;
-            console.log('vm.showFormPayment', vm.showFormPayment);
             vm.showFormOrder = !vm.showFormPayment;
-            console.log('vm.vm.showFormOrder', vm.showFormOrder);
         }
         function finishOrder() {
             var discount = vm.order.discount || 0;

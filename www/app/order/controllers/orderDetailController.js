@@ -10,12 +10,17 @@
          vm.item = JSON.parse($state.params.item);
          console.log(vm.item);
         vm.updateValuePayment = updateValuePayment;
+        vm.registerFallbackProducts = registerFallbackProducts;
         
         vm.orderPendingPayment = true;//verifyPendingPayment();
         vm.pendingFallback = true;//vm.item.pendingFallback;
         function updateValuePayment(){
             
             toastr.success('Valor Atualizado com sucesso!');
+        }
+        function registerFallbackProducts () {
+            toastr.success('Produtos entregues com sucesso!');
+            
         }
         
         function verifyPendingPayment() {

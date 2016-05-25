@@ -41,11 +41,12 @@
         }
         function loadOrders() {
             OrderService.get().then(function (items) {
-                console.log('items', items);
-                vm.items = items
-                    .map(mapItens)
-                    .map(mapCountProducts);
-                console.log(vm.items);
+                var orders = items.success;
+                console.log('orders', orders);
+                if(orders)
+                    vm.items = orders
+                        .map(mapItens)
+                        .map(mapCountProducts);
             });
         }
         function getFilters() {

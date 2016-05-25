@@ -11,14 +11,14 @@
 
                 <md-card-content layout-align="space-between" >
                     <md-input-container class="md-block col" ng-if="vm.orderPendingPayment">
-                        <label>Valor pendente de pagamento</label>
+                        <label>Valor de pagamento</label>
                         <input name="pendingValue" ui-number-mask ng-model="vm.pendingValue" class="col col-50" ui required >
                         <md-button class="md-raised md-primary" ng-disabled="!vm.pendingValue || vm.pendingValue ===0 || vm.pendingValue > vm.item.order.total" ng-click="vm.updateValuePayment()">Atualizar Status</md-button>
                         <br />
                         <div class="col"><span class="red ">Valor Pendente: </span> R$ {{vm.item.order.total - (vm.pendingValue || 0)  | number: 2}}</div>
                     </md-input-container>
                     <md-input-container class="md-block col" ng-if="vm.pendingFallback">
-                        <md-button class="md-raised btn-green " ng-click="vm.registerProducts()">Registrar retirada de produtos</md-button>
+                        <md-button class="md-raised btn-green " ng-click="vm.registerFallbackProducts()">Registrar retirada de produtos</md-button>
                         <br />
                     </md-input-container>
                 </md-card-content>

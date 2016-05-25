@@ -23,6 +23,14 @@
                 });
         }
         function products() {
+            // return $http({
+            //     method: 'GET',
+            //     url: ConstantsService.CREATE_PRODUCT_URL,
+            //     headers: AuthService.headers()
+            // })
+            //     .then(function (params) {
+            //         return params.data;
+            //     });
             var deferred = $q.defer();
             deferred.resolve(getItens());
             return deferred.promise;
