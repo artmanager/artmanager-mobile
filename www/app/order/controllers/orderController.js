@@ -8,7 +8,7 @@
         var vm = this;
         vm.showFormProduct = false;
 
-        vm.userId = 0;
+        vm.userId = 1;
         vm.products = [];
         vm.productsModel = [];
         vm.order = { products: [] };
@@ -59,19 +59,21 @@
             var order = {};
             LoadingPopup.show();
             order.client = { id: vm.client.value };
-            order.user = vm.userId;
+            order.user = {id: vm.userId};
             order.which = {
                 total_value: vm.order.total_value,
                 entrance: vm.order.entrance,
                 discount: vm.order.discount
             };
+            
             order.products = vm.order.products.map(function (product) {
                 var obj = {
                     id: product.id,
-                    describe: product.describe
+                    describe: product.describe,
+                    quantity: product.quantity
                 };
                 if (product.sendDate) {
-                    obj.delivery_date = product.sendDate;
+                    order.production = {delivery_date : product.sendDate};
                 }
 
                 return obj;
@@ -87,7 +89,10 @@
         function onCreateSuccess(success) {
             LoadingPopup.hide();
             $log.debug('onCreateSuccess', success);
-            toastr.success('Pedido registrado com sucesso !');
+            if(success.success)
+                toastr.success('Pedido registrado com sucesso !');
+            else if(success.error)
+                toastr.error('Não Foi possivel registrar seu pedido: ' + success.error);
         }
         function backToFormOrder() {
             vm.showFormPayment = false;

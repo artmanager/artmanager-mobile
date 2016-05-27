@@ -120,3 +120,6 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
     margin-bottom: -1%;
     
 }
+.negrito {
+        font-weight: bold;
+}

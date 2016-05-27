@@ -40,39 +40,39 @@
                 </md-card-content>
                 <md-card-content layout-align="space-between" ng-repeat="product in  vm.item.order.products">
                     <div layout="row">
-                        <p flex class="col md-headline"><strong>Produção em:</strong> </p>
-                        <p flex class="col md-headline">{{product.percentage_conclusion}}%</p>
+                        <p flex class="col md-headline negrito">Produção em: </p>
+                        <p flex class="col md-headline">{{product.percentage_conclusion || 0}}%</p>
                     </div>
                     <div layout="row">
-                        <p flex class="col md-headline"><strong>Produto:</strong> </p>
+                        <p flex class="col md-headline negrito">Produto: </p>
                         <p flex class="col md-headline">{{product.name}}</p>
                     </div>
                     <div layout="row">
-                        <p flex class="col md-headline"><strong>Quantidade:</strong> </p>
+                        <p flex class="col md-headline negrito">Quantidade: </p>
                         <p flex class="col md-headline">{{product.quantity}}</p>
                     </div>
                     <div layout="row">
-                        <p flex class="col md-headline"><strong>Descrição:</strong> </p>
+                        <p flex class="col md-headline negrito">Descrição: </p>
                         <p flex class="col md-headline">{{product.describe}}</p>
                     </div>
                     <div layout="row">
-                        <p flex class="col md-headline"><strong>Tamanho:</strong> </p>
+                        <p flex class="col md-headline negrito">Tamanho: </p>
                         <p flex class="col md-headline">{{product.height}} CM</p>
                     </div>
                     <div layout="row">
-                        <p flex class="col md-headline"><strong>Peso:</strong> </p>
+                        <p flex class="col md-headline negrito">Peso: </p>
                         <p flex class="col md-headline">{{product.weight}} KG </p>
                     </div>
 
                     <md-divider></md-divider>
 
-                    <div layout="row">
-                        <p flex class="col md-headline"><strong>Fornecedor:</strong> </p>
+                    <div layout="row" ng-if="product.supplier">
+                        <p flex class="col md-headline negrito">Fornecedor: </p>
                         <p flex class="col md-headline">{{product.supplier}}</p>
                     </div>
 
                     <div layout="row">
-                        <p flex class="col md-headline"><strong>Entrega:</strong></p>
+                        <p flex class="col md-headline negrito">Entrega:</p>
                         <p flex class="col md-headline" ng-if="!product.delivery_date"> Retirada </p>
                         <p flex class="col md-headline" ng-if="product.delivery_date"> {{product.delivery_date}}</p>
                     </div>
@@ -82,17 +82,17 @@
                 </md-card-content>
                 <md-card-content layout-align="space-between">
                     <div layout="row">
-                        <p flex class="col md-headline" ng-if="vm.item.order.discount"><strong>Desconto:</strong> </p>
+                        <p flex class="col md-headline negrito" ng-if="vm.item.order.discount">Desconto: </p>
                         <p flex class="col md-headline" ng-if="vm.item.order.discount">R$ {{vm.item.order.discount | number: 2}}</p>
 
                     </div>
                     <div layout="row">
-                        <p flex class="col md-headline" ng-if="vm.item.order.entrance"><strong>Entrada:</strong> </p>
+                        <p flex class="col md-headline negrito" ng-if="vm.item.order.entrance">Entrada: </p>
                         <p flex class="col md-headline" ng-if="vm.item.order.entrance">R$ {{vm.item.order.entrance | number: 2}}</p>
                     </div>
 
                     <div layout="row">
-                        <h3 flex class="col md-headline"><strong>Total:</strong> </h3>
+                        <h3 flex class="col md-headline negrito">Total: </h3>
                         <p flex class="col md-headline">R$ {{vm.item.order.total | number: 2}}</p>
                     </div>
                     <div layout="row" layout-align="space-around end">

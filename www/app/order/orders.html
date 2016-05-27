@@ -24,7 +24,7 @@
             </md-content>
             <md-content>
                 <md-content layout-padding>
-                    <md-list>
+                    <md-list ng-if="vm.items.length > 0">
 
                         <md-card ng-repeat="item in vm.items" ng-click="vm.detail(item)">
                             <md-toolbar class="item-list card-primary">

@@ -141,7 +141,7 @@
                 </div>
             </form>
         </md-content>
-        <md-content layout-padding ng-if="vm.showDetailOrder">
+        <md-content ng-if="vm.showDetailOrder">
             <md-list>
 
                 <md-card>
@@ -154,54 +154,52 @@
                     <md-card-content layout-align="space-between" ng-repeat="product in  vm.order.products">
 
                         <div layout="row">
-                            <h3 flex class="md-headline">Nome:</h3>
-                            <h3 flex class="md-headline">Quantidade:</h3>
-                        </div>
-                        <div layout="row">
+                            <p flex class="col md-headline negrito">Nome:</p>
                             <p flex class="md-headline">{{vm.client.display}}</p>
-                            <p flex class="md-headline">{{product.quantity}}</p>
                         </div>
                         <div layout="row">
-                            <h3 flex class="md-headline">Data de Entrega:</h3>
-                            <h3 flex class="md-headline">Fornecedor:</h3>
+                            <p flex class="col md-headline negrito">Quantidade:</p>
+                            <p flex class="col md-headline">{{product.quantity}}</p>
                         </div>
                         <div layout="row">
-                            <p flex class="md-headline" ng-if="product.toProduction"> {{product.sendDate.toLocaleDateString()}}</p>
-                            <p flex class="md-headline" ng-if="!product.toProduction"> Retirada </p>
+                            <p flex class="col md-headline negrito">Entrega:</p>
+                             <p flex class="col md-headline" ng-if="product.toProduction"> {{product.sendDate.toLocaleDateString()}}</p>
+                            <p flex class="col md-headline" ng-if="!product.toProduction"> Retirada </p>
 
-                            <p flex class="md-headline">{{product.fornecedor}}</p>
                         </div>
                         <div layout="row">
-                            <h3 flex class="md-headline">Tamanho:</h3>
-                            <h3 flex class="md-headline">Peso:</h3>
+                            <p flex class="col md-headline negrito">Fornecedor:</p>
+                            <p flex class="col md-headline">{{product.fornecedor}}</p>
                         </div>
                         <div layout="row">
-                            <p flex class="md-headline">{{product.tamanho}} CM</p>
-                            <p flex class="md-headline">{{product.peso}} KG </p>
+                            <p flex class="col md-headline negrito">Tamanho:</p>
+                            <p flex class="col md-headline">{{product.tamanho}} CM</p>
+                        </div>
+                        <div layout="row">
+                            <p flex class="col md-headline negrito">Peso:</p>
+                            <p flex class="col md-headline">{{product.peso}} KG </p>
                         </div>
                         <md-divider></md-divider>
 
                     </md-card-content>
                     <md-card-content layout-align="space-between">
-                        <div layout="row">
-                            <h3 flex class="md-headline" ng-if="vm.order.discount">Desconto:</h3>
-                            <h3 flex class="md-headline" ng-if="vm.order.entrance">Entrada:</h3>
+                        <div layout="row" ng-if="vm.order.discount">
+                            <p flex class="col md-headline negrito" >Desconto:</p>
+                            <p flex class="col md-headline">R$ {{vm.order.discount}}</p>
 
                         </div>
                         <div layout="row">
-                            <p flex class="md-headline" ng-if="vm.order.discount">R$ {{vm.order.discount}}</p>
-                            <p flex class="md-headline" ng-if="vm.order.entrance">R$ {{vm.order.entrance}}</p>
+                            <p flex class="col md-headline negrito" ng-if="vm.order.entrance">Entrada:</p>
+                            <p flex class="col md-headline" ng-if="vm.order.entrance">R$ {{vm.order.entrance}}</p>
                         </div>
 
                         <div layout="row">
-                            <h3 flex class="md-headline">Total:</h3>
-                        </div>
-                        <div layout="row">
-                            <p flex class="md-headline">R$ {{vm.order.total_value | number: 2}}</p>
+                            <p flex class="md-headline negrito">Total:</p>
+                            <p flex class="col md-headline">R$ {{vm.order.total_value | number: 2}}</p>
                         </div>
                         <div layout="row" layout-align="space-around end">
-                            <md-button class="md-primary" ng-click="vm.backToPayment()">Voltar</md-button>
-                            <md-button class="md-primary" ng-click="vm.create()">Finalizar</md-button>
+                            <md-button class="col md-primary" ng-click="vm.backToPayment()">Voltar</md-button>
+                            <md-button class="col md-primary" ng-click="vm.create()">Finalizar</md-button>
                         </div>
                     </md-card-content>
                 </md-card>

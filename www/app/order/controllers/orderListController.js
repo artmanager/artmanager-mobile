@@ -8,6 +8,8 @@
         var vm = this;
         vm.filters = getFilters();
         vm.clients = [];
+        vm.items = [];
+        vm.itemsFilter = [];
         vm.querySearch = querySearch;
         vm.selectedItemChange = selectedItemChange;
         vm.searchTextChange = searchTextChange;
@@ -30,23 +32,29 @@
         function filterCountProducts(item) {
             count += item.quantity;
         }
+        var i = 0;
         function mapItens(item) {
             item.creationDate = DateService.formatToLocaleDate(new Date(item.creationDate));
             var products = item.order.products.map(function (product) {
                 product.delivery_date = DateService.formatToLocaleDate(new Date(product.delivery_date));
                 return product;
             });
+            //REMOVER
+            // item.client.name = "Erick Wendel" + i++ ;
             item.order.products = products;
             return item;
         }
         function loadOrders() {
             OrderService.get().then(function (items) {
                 var orders = items.success;
-                console.log('orders', orders);
-                if(orders)
-                    vm.items = orders
-                        .map(mapItens)
-                        .map(mapCountProducts);
+                console.log('items.success', items.success);
+                if (!orders) return;
+
+                vm.items = orders
+                    .map(mapItens)
+                    .map(mapCountProducts);
+                vm.itemsFilter = angular.copy(vm.items);
+
             });
         }
         function getFilters() {
@@ -87,11 +95,33 @@
 
             return results;
         }
+        function filterOrderFromClients(query) {
+
+            var items = angular.copy(vm.itemsFilter);
+
+            var itensFilters = items.filter(function (item) {
+                var clientName = angular.lowercase(query);
+                var clientOrderName = angular.lowercase(item.client.name);
+                if(typeof clientOrderName === "undefined") return false;
+                
+                console.log('clientName: ' + clientName + ' clientOrderName: ' + clientOrderName);
+                return angular.lowercase(clientOrderName).indexOf(clientName) >= 0;
+            });
+            
+            console.log('itensFilters', itensFilters);
+            vm.items = [];
+            vm.items = itensFilters;
+            
+        }
+
         function searchTextChange(text) {
             $log.info('Text changed to ' + text);
+            filterOrderFromClients(text);
         }
         function selectedItemChange(item) {
             $log.info('Item changed to ' + JSON.stringify(item));
+            if(!item) return;
+            filterOrderFromClients(item.display);
         }
 
         function loadClients() {
