@@ -141,10 +141,7 @@
             if(vm.productName) {
                 $state.go('app.createOrder');
             }
-            if(vm.providerName) {
-                $state.go('app.createProvider', {'providerName': vm.providerName});
-                
-            }
+            
         }
         function onFail(response) {
             toastr.error('Erro, contate o suporte.', 'Não foi possivel cadastrar');

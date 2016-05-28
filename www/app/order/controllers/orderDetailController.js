@@ -13,7 +13,6 @@
         vm.registerFallbackProducts = registerFallbackProducts;
 
         vm.orderPendingPayment = verifyPendingPayment();
-        vm.pendingFallback = true;//vm.item.pendingFallback;
         
         
         function updateValuePayment() {
@@ -27,7 +26,7 @@
         function registerFallbackProducts() {
             var data = {
                 id: vm.item.id,
-                pendingFallback: 100,
+                pendingFallback: true,
                 entrance: 0
             };
             LoadingPopup.show();

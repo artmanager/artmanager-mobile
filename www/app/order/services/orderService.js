@@ -39,6 +39,7 @@
                         "describe": "Quatro vermelhas",
                         "produzido": "100% ou 0%"
                     }],
+                    "pendingFallback": false,
                     "discount": 5.5,
                     "entrance": 11.00,
                     "total": 65.00
@@ -61,6 +62,7 @@
                         "describe": "Duas Cinzas vermelhas",
                         "produzido": "100"
                     }],
+                    "pendingFallback": true,
                     "entrance": 65.00,
                     "total": 65.00
                 }

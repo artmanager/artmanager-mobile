@@ -66,7 +66,7 @@
                 vm.items = orders
                     .map(mapItens)
                     .map(mapCountProducts);
-                // vm.itemsFilter = angular.copy(vm.items);
+                vm.itemsFilter = angular.copy(vm.items);
 
             });
         }
@@ -115,7 +115,7 @@
             var itensFilters = items.filter(function (item) {
                 var clientName = angular.lowercase(query);
                 var clientOrderName = angular.lowercase(item.client.name);
-                if (typeof clientOrderName === "undefined") return false;
+                if (typeof clientOrderName === "undefined") return;
 
                 console.log('clientName: ' + clientName + ' clientOrderName: ' + clientOrderName);
                 return angular.lowercase(clientOrderName).indexOf(clientName) >= 0;

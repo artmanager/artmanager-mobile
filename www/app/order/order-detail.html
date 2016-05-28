@@ -1,7 +1,8 @@
 <ion-view>
     <ion-content>
         <ion-scroll>
-            <md-card ng-if="vm.orderPendingPayment || vm.pendingFallback">
+            
+            <md-card ng-if="vm.orderPendingPayment || vm.item.order.pendingFallback">
 
                 <md-toolbar class="item-list card-red" > 
                     <div class="md-toolbar-tools">
@@ -17,7 +18,7 @@
                         <br />
                         <div class="col"><span class="red ">Valor Pendente: </span> R$ {{vm.item.order.total - (vm.pendingValue || 0)  | number: 2}}</div>
                     </md-input-container>
-                    <md-input-container class="md-block col" ng-if="vm.pendingFallback">
+                    <md-input-container class="md-block col" ng-if="vm.item.order.pendingFallback">
                         <md-button class="md-raised btn-green " ng-click="vm.registerFallbackProducts()">Registrar retirada de produtos</md-button>
                         <br />
                     </md-input-container>
