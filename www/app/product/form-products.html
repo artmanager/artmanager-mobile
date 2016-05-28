@@ -5,37 +5,19 @@
                 <form name="productForm">
 
                     <div ng-show="vm.content.personalData">
-                        <md-input-container class="md-block">
-                            <label>Fornecedor</label>
-                            <md-select name="supplier" ng-model="vm.product.id_supplier">
-                                <md-option ng-repeat="supplier in vm.suppliers" value="{{supplier.id}}">
-                                    {{supplier.description}}
-                                </md-option>
-                            </md-select>
-                        </md-input-container>
-                        <!--<md-content>
-                            <form ng-submit="$event.preventDefault()">
-                                <md-autocomplete  
-                                    md-selected-item="vm.selectedItem" 
-                                    md-search-text-change="vm.searchTextChange(vm.searchText)"
-                                    md-search-text="vm.searchText" 
-                                    md-selected-item-change="vm.selectedItemChange(item)"
-                                    md-items="item in vm.querySearch(vm.searchText)" 
-                                    md-min-length="0"
-                                    placeholder="Fornecedor">
-                                    <md-item-template>
-                                        <span md-highlight-text="vm.searchText"
-                                         md-highlight-flags="^i">{{item.display}}</span>
-                                    </md-item-template>
-                                    <md-not-found>
-                                        Nenhum "{{vm.searchText}}" encontrado.
-                                        <a ng-click="vm.newState(vm.searchText)">Cadastrar novo Fornecedor!</a>
-                                    </md-not-found>
-                                </md-autocomplete>
-                                <br>
-                                
-                            </form>
-                        </md-content>-->
+                        <md-content class="md-padding">
+                            <md-autocomplete md-search-text-change="vm.searchTextChangeSupplier(vm.searchTextSupplier)" md-search-text="vm.searchTextSupplier"
+                                md-selected-item-change="vm.selectedItemChangeSupplier(item)" md-items="item in vm.querySearchSupplier(vm.searchTextSupplier)"
+                                md-item-text="item.display" md-min-length="0" placeholder="Digite o Nome do Fornecedor">
+                                <md-item-template>
+                                    <span md-highlight-text="vm.searchTextSupplier" md-highlight-flags="^i">{{item.display}}</span>
+                                </md-item-template>
+                                <md-not-found>
+                                    nenhum "{{vm.searchTextSupplier}}" foi encontrado.
+                                    <a ng-click="vm.newSupplier(vm.searchTextSupplier)">Cadastrar fornecedor agora</a>
+                                </md-not-found>
+                            </md-autocomplete>
+                        </md-content>
 
                         <md-input-container class="md-block">
                             <label>Nome</label>
@@ -46,15 +28,23 @@
                             <input name="describe" ng-model="vm.product.describe">
                         </md-input-container>
 
-                        <md-input-container class="md-block">
-                            <label>Categoria</label>
-                            <md-select name="category" ng-model="vm.product.id_product_category" required>
-                                <md-option ng-repeat="category in vm.categories" value="{{category.id}}">
-                                    {{category.description}}
-                                </md-option>
-                            </md-select>
-                        </md-input-container>
-
+                        <md-content class="md-padding">
+                            <md-autocomplete 
+                                md-search-text-change="vm.searchTextChangeCategory(vm.searchTextCategory)" 
+                                md-search-text="vm.searchTextCategory"
+                                md-selected-item-change="vm.selectedItemChangeCategory(item)" md-items="item in vm.querySearchCategory(vm.searchTextCategory)"
+                                md-item-text="item.display"
+                                 md-no-cache="true" 
+                                md-min-length="0" placeholder="Digite o Nome do Fornecedor">
+                                <md-item-template>
+                                    <span md-highlight-text="vm.searchTextCategory" md-highlight-flags="^i">{{item.display}}</span>
+                                </md-item-template>
+                                <md-not-found>
+                                    nenhum "{{vm.searchTextCategory}}" foi encontrado.
+                                    <a ng-click="vm.newCategory(vm.searchTextCategory)">Cadastrar fornecedor agora</a>
+                                </md-not-found>
+                            </md-autocomplete>
+                        </md-content>
                         <div layout="row" layout-align="end center">
                             <md-button class="md-primary" ng-click="vm.toggleForm()" ng-disabled="
                                 productForm.name.$error.required ||

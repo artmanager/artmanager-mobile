@@ -27,8 +27,8 @@
         function get() {
             return $http.get(ConstantsService.GET_PROVIDER_URL, {
                 headers: AuthService.headers()
-            }).then(function (data) {
-                return data;
+            }).then(function (result) {
+                return result.data;
             });
         }
     }

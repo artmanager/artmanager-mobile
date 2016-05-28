@@ -16,14 +16,23 @@
         vm.search = search;
         vm.toDetail = toDetail;
         vm.filters = getFilters();
-        vm.init = (function () {
-            EmployeeService.employess().then(function (itens) {
-                var items = itens.success;
-                vm.items = items;
-                vm.itemsFilter = items;
-            });
+        (function init() {
+            loadEmployees();
         })();
 
+        function loadEmployees() {
+            var initialDate = vm.initialDate || new Date(0);
+            var finalDate = vm.finalDate || new Date();
+            var obj = {
+                'dt_from' : initialDate.toISOString(),
+                'dt_to': finalDate.toISOString()
+            };
+            EmployeeService.employess(obj).then(function (itens) {
+                var items = itens.success;
+                vm.items = items;
+                // vm.itemsFilter = items;
+            });
+        }
         function getFilters() {
             var filters = [];
             var filter = {};
@@ -46,21 +55,22 @@
             $state.go('app.employeesDetail', {item: detail});
         }
         function search() {
-            var itens = angular.copy(vm.itemsFilter);
+            loadEmployees();
+            // var itens = angular.copy(vm.itemsFilter);
 
-            var initialDate = vm.initialDate || new Date(0);
-            var finalDate = vm.finalDate || new Date();
+            // var initialDate = vm.initialDate || new Date(0);
+            // var finalDate = vm.finalDate || new Date();
 
-            initialDate.setMonth(initialDate.getMonth() - 1);
-            finalDate.setMonth(finalDate.getMonth() - 1);
-            var filteredItens = itens.filter(function (item) {
-                var dateItem = new Date(item.year, (item.month), 01);
-                console.log('dateItem', dateItem);
-                return dateItem > initialDate && dateItem < finalDate;
+            // initialDate.setMonth(initialDate.getMonth() - 1);
+            // finalDate.setMonth(finalDate.getMonth() - 1);
+            // var filteredItens = itens.filter(function (item) {
+            //     var dateItem = new Date(item.year, (item.month), 01);
+            //     console.log('dateItem', dateItem);
+            //     return dateItem > initialDate && dateItem < finalDate;
 
-            });
-            console.log('filteredItens', filteredItens);
-            vm.items = filteredItens;
+            // });
+            // console.log('filteredItens', filteredItens);
+            // vm.items = filteredItens;
 
         }
 

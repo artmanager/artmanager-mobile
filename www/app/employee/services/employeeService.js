@@ -8,12 +8,13 @@
         };
 
 
-        function employess() {
+        function employess(obj) {
             var deferred = $q.defer();
             deferred.resolve({success : getItens()});
             return deferred.promise;
             // return $http({
             //     method: 'GET',
+            //     data: obj,
             //     url: ConstantsService.GET_PROVIDER_URL,
             //     headers: AuthService.headers()
             // }).then(function (params) {

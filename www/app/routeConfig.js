@@ -160,7 +160,7 @@
         });
         stateProvider.state('app.productsCount', {
             url: '/products/count',
-            title: 'Relatorio de Produtos',
+            title: 'Produtos Vendidos',
             views: {
                 'menuContent': {
                     templateUrl: 'templates/product/products-count.html',

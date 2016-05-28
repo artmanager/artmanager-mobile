@@ -35,6 +35,10 @@
         this.UPDATE_STATUS_PRODUCTION = baseProduction;
         
         this.UPDATE_PRODUCTION_STATUS = BASE_API_URL + 'updateEntrancePending';
+        this.REPORT_PRODUCTS  = BASE_API_URL + 'reportProduct';
+        
+        this.GET_CATEGORIES_PRODUCTS = BASE_API_URL + 'productCategory';
+        this.CREATE_CATEGORIES_PRODUCTS = BASE_API_URL + 'productCategory';
     }
 
     app.factory('LocalStorageService', LocalStorageService);

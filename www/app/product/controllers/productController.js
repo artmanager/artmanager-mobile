@@ -20,37 +20,49 @@
         })();
 
         function search() {
-            var itens = angular.copy(vm.itemsFilter);
+            loadProducts();
+            // var itens = angular.copy(vm.itemsFilter);
 
-            var initialDate = vm.initialDate || new Date(0);
-            var finalDate = vm.finalDate || new Date();
-            
-            var filteredItens = itens.filter(function (item) {
-                var dateItem = new Date(item.creationDate);
-                return dateItem >= initialDate && dateItem <= finalDate;
+            // var initialDate = vm.initialDate || new Date(0);
+            // var finalDate = vm.finalDate || new Date();
 
-            });
-            console.log('filteredItens', filteredItens);
-            vm.items = filteredItens;
+            // var filteredItens = itens.filter(function (item) {
+            //     var dateItem = new Date(item.creationDate);
+            //     return dateItem >= initialDate && dateItem <= finalDate;
+
+            // });
+            // console.log('filteredItens', filteredItens);
+            // vm.items = filteredItens;
 
         }
         function loadProducts() {
             LoadingPopup.show();
-            ProductService.products().then(function (itens) {
-                var products = itens.products;
-                if(!products) return;
-                
+            var initialDate = vm.initialDate || new Date(0);
+            var finalDate = vm.finalDate || new Date();
+            var obj = {
+                'dt_from': initialDate.toISOString(),
+                'dt_to': finalDate.toISOString()
+            };
+            ProductService.report().then(function (itens) {
+                LoadingPopup.hide();
+                var products = itens.success;
+                if (!products) return;
+
                 //remover
                 products = products.map(function (item) {
                     item.creationDate = new Date().toISOString();
+                    item.date = getDateRef(item.month, item.year);
                     return item;
                 });
                 console.log('products', products);
                 vm.items = products;
                 vm.itemsFilter = products;
-                LoadingPopup.hide();
-                
+
             });
+        }
+        function getDateRef(month, year) {
+            month = month >= 10 ? month : "0" + month;
+            return month + "/" + year;
         }
         function getFilters() {
             var filters = [];

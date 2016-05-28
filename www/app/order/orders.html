@@ -23,6 +23,12 @@
                 </form>
             </md-content>
             <md-content>
+                <div class="row">
+                    <md-datepicker  ng-model="vm.initialDate" md-placeholder="Inicio" class="col"></md-datepicker>
+                    
+                    <md-datepicker  ng-model="vm.finalDate" md-placeholder="Fim" class="col"></md-datepicker>
+                    <md-button  class="md-primary col col-10" ng-click="vm.search()"><i class="fa fa-search" aria-hidden="true"></i></md-button>
+                </div>
                 <md-content layout-padding>
                     <md-list ng-if="vm.items.length > 0">
 

@@ -102,15 +102,15 @@
                                 <i class="fa fa-arrow-right fa-stack"></i> Relatório de Produtos
                             </md-menu-sidenav-subitem>
 
+                            <md-menu-sidenav-subitem ng-click="vm.closeSidenav('left')" ui-sref="app.productsCount">
+                                <md-icon flex="15"></md-icon>
+                                <i class="fa fa-arrow-right fa-stack"></i> Relatório de Produtos Vendidos
+                            </md-menu-sidenav-subitem>
                             <md-menu-sidenav-subitem ui-sref="app.employees" ng-click="vm.closeSidenav('left')">
                                 <md-icon flex="15"></md-icon>
                                 <i class="fa fa-arrow-right fa-stack"></i> Relatório de Fornecedores
                             </md-menu-sidenav-subitem>
-                            
-                            <!--<md-menu-sidenav-subitem ng-click="vm.closeSidenav('left')">
-                                <md-icon flex="15"></md-icon>
-                                <i class="fa fa-arrow-right fa-stack"></i> Relatório de Itens
-                            </md-menu-sidenav-subitem>-->
+
                         </md-menu-sidenav-content>
                     </md-menu-sidenav-item>
 
@@ -125,7 +125,7 @@
 
                         </md-menu-sidenav-title>
                     </md-menu-sidenav-item>
-                    
+
                     <md-menu-sidenav-item ui-sref="login" ng-click="vm.closeSidenav('left')">
                         <md-menu-sidenav-title>
                             <md-toogle-menu layout="row" class="md-primary" flex>
