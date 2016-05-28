@@ -154,7 +154,9 @@
             $state.go('app.createClient', { 'clientName': vm.searchTextClient });
         }
         function newProduct(state) {
-            $state.go('app.createProduct', { 'ProductName': vm.searchTextProduct });
+            var obj = { 'productName': vm.searchTextProduct };
+            console.log('obj', obj);
+            $state.go('app.createProduct', obj);
         }
 
 

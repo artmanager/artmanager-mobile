@@ -32,6 +32,7 @@
             loadOrders();
         }
         function mapCountProducts(item) {
+            count = 0;
             item.order.products.map(filterCountProducts);
             item.countProducts = count;
             return item;
@@ -56,16 +57,16 @@
                 'dt_from': initialDate.toISOString(),
                 'dt_to': finalDate.toISOString()
             };
+            vm.items = [];
             OrderService.get(obj).then(function (items) {
                 LoadingPopup.hide();
                 var orders = items.success;
                 console.log('items.success', items.success);
                 if (!orders) return;
-                vm.items = [];
                 vm.items = orders
                     .map(mapItens)
                     .map(mapCountProducts);
-                vm.itemsFilter = angular.copy(vm.items);
+                // vm.itemsFilter = angular.copy(vm.items);
 
             });
         }

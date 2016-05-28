@@ -125,7 +125,7 @@
         });
 
         stateProvider.state('app.createProvider', {
-            url: '/createProvider',
+            url: '/createProvider/:providerName',
             title: 'Cadastrar Fornecedor',
             views: {
                 'menuContent': {
@@ -135,8 +135,9 @@
                 }
             }
         });
+         
         stateProvider.state('app.createProduct', {
-            url: '/createProduct',
+            url: '/createProduct/:productName',
             title: 'Cadastrar Produtos',
             views: {
                 'menuContent': {

@@ -3,22 +3,23 @@
     angular.module('controllers.productRegisterController', [])
         .controller('ProductRegisterCtrl', ProductRegisterCtrl);
 
-    ProductRegisterCtrl.$inject = ['toastr', 'ProductService', 'LoadingPopup', '$state', 'ProviderService', '$log'];
-    function ProductRegisterCtrl(toastr, ProductService, LoadingPopup, $state, ProviderService, $log) {
+    ProductRegisterCtrl.$inject = ['toastr', 'ProductService', 'LoadingPopup', '$state', 'ProviderService', '$log', '$stateParams'];
+    function ProductRegisterCtrl(toastr, ProductService, LoadingPopup, $state, ProviderService, $log, $stateParams) {
         var vm = this;
-
-
+        
+        
+        // if(vm.providerName) {
+            
+        // }
         vm.content = { personalData: true, cost: false };
-        // vm.categories = [{ id: 1, description: 'roupas' },
-        //     { id: 2, description: 'reciclaveis' }];
-
+        vm.product = {};
         vm.suppliers = [];
         vm.categories = [];
 
         vm.toggleForm = toggleForm;
         vm.create = create;
         vm.goBack = goBack;
-
+        
         vm.searchTextSupplier = '';
         vm.searchTextCategory = '';
 
@@ -27,7 +28,10 @@
 
         vm.supplier = {};
         vm.category = {};
-
+        vm.productName = $stateParams.productName;
+        if(vm.productName) { 
+            vm.product.name = vm.productName;
+        }
         //autocomplete
 
         vm.querySearchSupplier = querySearchSupplier;
@@ -134,6 +138,13 @@
             toastr.success(response.success);
             vm.product = {};
             LoadingPopup.hide();
+            if(vm.productName) {
+                $state.go('app.createOrder');
+            }
+            if(vm.providerName) {
+                $state.go('app.createProvider', {'providerName': vm.providerName});
+                
+            }
         }
         function onFail(response) {
             toastr.error('Erro, contate o suporte.', 'Não foi possivel cadastrar');
@@ -144,8 +155,7 @@
 
         // // autocomplete
         function newSupplier(state) {
-            console.log('novo fornecedor');
-            // $state.go('app.createSupplier', { 'supplierName': vm.searchTextSupplier });
+            $state.go('app.createProvider', { 'providerName': vm.searchTextSupplier });
         }
         function newCategory(state) {
             var category = { 'describe': vm.searchTextCategory };
