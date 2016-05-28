@@ -234,12 +234,14 @@
 
         }
         function loadProducts() {
-            ProductService.products().then(function (products) {
+            ProductService.products().then(function (result) {
+                var products = result.products;
                 if (!products) return;
                 vm.productsModel = products;
                 var itens = angular.copy(products);
+                console.log('itens', itens);
                 itens = itens.map(function mapFn(item) {
-                    return { value: item.id, display: item.nome };
+                    return { value: item.id, display: item.name };
                 });
                 vm.products = itens;
             });

@@ -70,10 +70,13 @@
                                         Produção
                                     </md-checkbox>
                                     <div ng-if="vm.selectedProduct.toProduction">
-                                        <md-input-container class="md-block">
-                                            <label>Data de entrega</label>
+                                        <label>Data de entrega</label>
+                                             <md-datepicker ng-model="vm.selectedProduct.sendDate" name="sendDate"  md-placeholder="Selecione a data" required></md-datepicker>
+
+                                        <!--<md-input-container class="md-block">
+                                            
                                             <input type="date" class="border-input-all" required name="sendDate" ng-model="vm.selectedProduct.sendDate" required>
-                                        </md-input-container>
+                                        </md-input-container>-->
                                     </div>
 
 

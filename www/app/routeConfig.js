@@ -178,18 +178,29 @@
                 'menuContent': {
                     templateUrl: 'templates/employee/employees.html',
                     controller: 'EmployeeCtrl',
-                    controllerAs: 'employees'
+                    controllerAs: 'vm'
                 }
             }
         });
         stateProvider.state('app.employeesDetail', {
-            url: '/employees/:id',
+            url: '/employees/:item',
             title: 'Detalhes',
             views: {
                 'menuContent': {
                     templateUrl: 'templates/employee/employees-detail.html',
                     controller: 'EmployeeDetailCtrl',
-                    controllerAs: 'employees'
+                    controllerAs: 'vm'
+                }
+            }
+        });
+        stateProvider.state('app.boxClosing', {
+            url: '/boxClosing',
+            title: 'Caixa',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/boxClosing/boxClosing.html',
+                    controller: 'BoxClosingCtrl',
+                    controllerAs: 'vm'
                 }
             }
         });

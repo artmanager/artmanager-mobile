@@ -33,6 +33,8 @@
 
         this.GET_PRODUCTION_URL = baseProduction;
         this.UPDATE_STATUS_PRODUCTION = baseProduction;
+        
+        this.UPDATE_PRODUCTION_STATUS = BASE_API_URL + 'updateEntrancePending';
     }
 
     app.factory('LocalStorageService', LocalStorageService);

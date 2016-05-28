@@ -29,6 +29,7 @@
         'controllers.productRegisterController',
         'controllers.employeeController',
         'controllers.employeeDetailController',
+        'controllers.boxClosingController',
 
 
 
@@ -41,6 +42,7 @@
         'services.productionService',
         'services.providerService',
         'services.orderService',
+        'services.boxClosingService',
         'filters.commonFilters',
 
         'directives.filter-grid',

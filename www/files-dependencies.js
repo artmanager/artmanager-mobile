@@ -23,10 +23,12 @@ var files =
         "product/controllers/productRegisterController.js",
         "employee/controllers/employeeController.js",
         "employee/controllers/employeeDetailController.js",
+        "boxClosing/controllers/boxClosingController.js",
 
 
 
         "provider/services/providerService.js",
+        "boxClosing/services/boxClosingService.js",
         "login/services/loginService.js",
         "production/services/productionService.js",
         "order/services/orderService.js",

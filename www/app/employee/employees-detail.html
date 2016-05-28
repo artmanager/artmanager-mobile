@@ -1,4 +1,57 @@
-<ion-view view-title="PRODUTOS VENDIDOS" name="items-view">
+<ion-view>
+    <ion-content>
+        <ion-scroll>
+            <md-card>
+
+                <md-toolbar class="item-list card-primary">
+                    <div class="md-toolbar-tools">
+                        <h3 class="md-headline"> Produtos Vendidos </h3>
+                    </div>
+                </md-toolbar>
+                <md-card-content layout-align="space-between">
+                    <md-card-content layout-align="space-between">
+                        <div layout="row">
+                            <p flex class="col md-headline negrito">Data de Referencia:</p>
+                            <p flex class="col md-headline">{{vm.dateRef}}</p>
+                        </div>
+                        <div layout="row">
+                            <p flex class="col md-headline negrito">Nome:</p>
+                            <p flex class="col md-headline">{{vm.item.supplier}}</p>
+                        </div>
+                        <div layout="row">
+                            <p flex class="col md-headline negrito">Valor total:</p>
+                            <p flex class="col md-headline">R$ {{vm.item.total}}</p>
+                        </div>
+                        
+                        <md-divider></md-divider>
+                    </md-card-content>
+                    <md-card-content layout-align="space-between" ng-repeat="product in vm.item.products">
+                        <div layout="row">
+                            <p flex class="col md-headline negrito">Produto:</p>
+                            <p flex class="col md-headline">{{product.name}}</p>
+                        </div>
+                        <div layout="row">
+                            <p flex class="col md-headline negrito">Peso:</p>
+                            <p flex class="col md-headline">{{product.weight}} KG</p>
+                        </div>
+                        <div layout="row">
+                            <p flex class="col md-headline negrito">Altura:</p>
+                            <p flex class="col md-headline">{{product.height}} CM </p>
+                        </div>
+                        <div layout="row">
+                            <p flex class="col md-headline negrito">Quantidade:</p>
+                            <p flex class="col md-headline">{{product.quantity}} unidades</p>
+                        </div>
+                        <div layout="row" layout-align="space-around end">
+                            <md-button class="md-primary" ng-click="vm.backToEmployees()">Voltar</md-button>
+                        </div>
+                    </md-card-content>
+                </md-card-content>
+            </md-card>
+        </ion-scroll>
+    </ion-content>
+</ion-view>
+<!--<ion-view view-title="PRODUTOS VENDIDOS" name="items-view">
     <ion-content>
         <ion-item class="card">
             <h2>{{item.nome}}</h2>
@@ -45,4 +98,4 @@
 
         </ion-item>
     </ion-content>
-</ion-view>
+</ion-view>-->

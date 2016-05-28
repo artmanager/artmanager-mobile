@@ -2,19 +2,25 @@
     angular.module('controllers.employeeController', [])
         .controller('EmployeeCtrl', EmployeeCtrl);
 
-    EmployeeCtrl.$inject = ['$scope', '$timeout', 'EmployeeService'];
-    function EmployeeCtrl($scope, $timeout, EmployeeService) {
-        
-        var self = $scope;
+    EmployeeCtrl.$inject = ['$timeout', 'EmployeeService', '$state'];
+    function EmployeeCtrl($timeout, EmployeeService, $state) {
 
-        self.items = [];
-        self.order = "fornecedor";
-        self.ascending = true;
+        var vm = this;
 
-        self.filters = getFilters();
-        self.init = (function () {
+        vm.items = [];
+        vm.itemsFilter = [];
+        vm.order = "fornecedor";
+        vm.ascending = true;
+        vm.initialDate = null;
+        vm.finalDate = null;
+        vm.search = search;
+        vm.toDetail = toDetail;
+        vm.filters = getFilters();
+        vm.init = (function () {
             EmployeeService.employess().then(function (itens) {
-                self.items = itens;
+                var items = itens.success;
+                vm.items = items;
+                vm.itemsFilter = items;
             });
         })();
 
@@ -22,24 +28,42 @@
             var filters = [];
             var filter = {};
 
-            // filter.value = "nome";
-            // filter.desc = "Nome";
-            // filter.selected = true;
-            // filters.push(filter);
-
             filter = {};
-            filter.value = "fornecedor";
-            filter.desc = "Fornecedor";
+            filter.value = "supplier";
+            filter.desc = "Nome";
             filters.push(filter);
 
 
             filter = {};
-            filter.value = "valorReceber";
+            filter.value = "total";
             filter.desc = "Valor a Receber";
             filters.push(filter);
 
             return filters;
         }
+        function toDetail(item) {
+            var detail = JSON.stringify(item);
+            $state.go('app.employeesDetail', {item: detail});
+        }
+        function search() {
+            var itens = angular.copy(vm.itemsFilter);
+
+            var initialDate = vm.initialDate || new Date(0);
+            var finalDate = vm.finalDate || new Date();
+
+            initialDate.setMonth(initialDate.getMonth() - 1);
+            finalDate.setMonth(finalDate.getMonth() - 1);
+            var filteredItens = itens.filter(function (item) {
+                var dateItem = new Date(item.year, (item.month), 01);
+                console.log('dateItem', dateItem);
+                return dateItem > initialDate && dateItem < finalDate;
+
+            });
+            console.log('filteredItens', filteredItens);
+            vm.items = filteredItens;
+
+        }
+
 
     }
 

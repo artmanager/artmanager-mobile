@@ -1,17 +1,21 @@
 (function (angular) {
     angular.module('controllers.employeeDetailController', [])
         .controller('EmployeeDetailCtrl', EmployeeDetailCtrl);
-    EmployeeDetailCtrl.$inject = ['$scope', '$stateParams', 'EmployeeService'];
+    EmployeeDetailCtrl.$inject = [ '$stateParams', 'EmployeeService', '$state'];
 
-    function EmployeeDetailCtrl($scope, $stateParams, EmployeeService) {
-        var self = $scope;
-        var id = $stateParams.id;
-
-        self.item = {};
-        EmployeeService.employee(id).then(function (item) {
-            self.item = item;
-            console.log(item);
-        });
-
+    function EmployeeDetailCtrl($stateParams, EmployeeService, $state) {
+        var vm = this;
+        var item = $stateParams.item;
+        vm.item = JSON.parse(item);
+        vm.backToEmployees = backToEmployees;
+        vm.dateRef = getDateRef();
+        
+        function getDateRef() {
+            var month = vm.item.month >= 10 ? vm.item.month : "0"+vm.item.month ;
+            return month + "/"+vm.item.year; 
+        }
+        function backToEmployees() {
+            $state.go('app.employees');
+        }
     }
 })(angular);

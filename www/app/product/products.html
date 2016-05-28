@@ -3,11 +3,17 @@
 
         <md-content>
 
-            <filter-grid filters="filters"></filter-grid>
+            <filter-grid filters="vm.filters"></filter-grid>
             <md-content>
-                <ion-list>
+                <div class="row">
+                    <md-datepicker  ng-model="vm.initialDate" md-placeholder="Inicio" class="col"></md-datepicker>
+                    
+                    <md-datepicker  ng-model="vm.finalDate" md-placeholder="Fim" class="col"></md-datepicker>
+                    <md-button  class="md-primary col col-10" ng-click="vm.search()"><i class="fa fa-search" aria-hidden="true"></i></md-button>
+                </div>
+                <ion-list ng-if="vm.items.length > 0">
 
-                    <md-card ng-repeat="item in items| orderBy:order:ascending">
+                    <md-card ng-repeat="item in vm.items| orderBy:order:ascending">
                         <md-toolbar class="item-list card-primary">
                             <div class="md-toolbar-tools">
                                 <div class="row">
@@ -28,16 +34,16 @@
                                 </div>-->
                             </div>
                             <div layout="row">
-                                <h6 flex class="md-headline">{{item.fornecedor}}</h6>
-                                <h6 flex class="md-headline">{{item.quantidadeDisponivel}}</h6>
+                                <h6 flex class="md-headline">{{item.supplier}}</h6>
+                                <h6 flex class="md-headline">{{item.quantity}}</h6>
                             </div>
                             <div layout="row">
                                 <h3 flex class="md-headline">Preco Venda:</h6>
                                 <h3 flex class="md-headline">Preco Custo:</h6>
                             </div>
                             <div layout="row">
-                                <h6 flex class="md-headline">R$ {{item.precoVenda | number: 2}}</h6>
-                                <h6 flex class="md-headline">R$ {{item.custo | number: 2}}</h6>
+                                <h6 flex class="md-headline">R$ {{item.sale_cost | number: 2}}</h6>
+                                <h6 flex class="md-headline">R$ {{item.cost | number: 2}}</h6>
                             </div>
                         </md-card-content>
                     </md-card>
