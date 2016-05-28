@@ -1,9 +1,62 @@
-<ion-view>
+<ion-view name="boxclosing-view">
     <ion-content>
-        <ion-scroll>
-            <md-card>
-                teste
-            </md-card>
-        </ion-scroll>
+
+        <md-content>
+
+            <filter-grid filters="vm.filters"></filter-grid>
+            <md-content>
+                <div class="row">
+                    <md-datepicker  ng-model="vm.initialDate" md-placeholder="Inicio" class="col"></md-datepicker>
+                    
+                    <md-datepicker  ng-model="vm.finalDate" md-placeholder="Fim" class="col"></md-datepicker>
+                    <md-button  class="md-primary col col-10" ng-click="vm.search()"><i class="fa fa-search" aria-hidden="true"></i></md-button>
+                </div>
+                <ion-list>
+                    
+                    <md-card ng-repeat="item in vm.items| orderBy:order:ascending">
+                        <md-toolbar class="item-list card-primary">
+                            <div class="md-toolbar-tools">
+                                <div class="row">
+                                    <h3 class="md-headline"> Data de Referencia: {{item.date}} </h3>
+                                    
+                                </div>
+
+                            </div>
+                        </md-toolbar>
+
+                        <md-card-content layout-align="space-between">
+
+                            <div layout="row">
+                                <p flex class="col md-headline negrito">Total:</p>
+                                <p flex class="col md-headline ">R$ {{item.total | number: 2}}</p>
+                            </div>
+                            
+                            <div layout="row">
+                                <p flex class="col md-headline negrito">Comissoes:</p>
+                                <p flex class="col md-headline ">R$ {{item.totalCommission | number: 2}}</p>
+                            </div>
+                            
+                            <div layout="row">
+                                <p flex class="col md-headline negrito">Produtos Vendidos:</p>
+                                <p flex class="col md-headline ">{{item.totalSaleProducts}} unidades</p>
+                            </div>
+                            
+                            <div layout="row">
+                                <p flex class="col md-headline negrito">Produtos Produzidos:</p>
+                                <p flex class="col md-headline ">{{item.totalProductionProducts}} unidades</p>
+                            </div>
+                            
+                            <div layout="row">
+                                <p flex class="col md-headline negrito">Produtos Pendentes:</p>
+                                <p flex class="col md-headline ">{{item.totalProductionPending}} unidades</p>
+                            </div>
+                            
+                        </md-card-content>
+                    </md-card>
+                </ion-list>
+            </md-content>
+        </md-content>
     </ion-content>
+
+
 </ion-view>
