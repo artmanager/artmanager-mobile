@@ -61,7 +61,7 @@
                 var orders = items.success;
                 console.log('items.success', items.success);
                 if (!orders) return;
-
+                vm.items = [];
                 vm.items = orders
                     .map(mapItens)
                     .map(mapCountProducts);
@@ -75,13 +75,13 @@
 
 
 
-            filter.value = "delivery_date";
-            filter.desc = "Entrega";
+            filter.value = "creationDate";
+            filter.desc = "Criação";
             filters.push(filter);
 
             filter = {};
-            filter.value = "name";
-            filter.desc = "Nome";
+            filter.value = "client.name";
+            filter.desc = "Cliente";
             filters.push(filter);
 
             // filter = {};

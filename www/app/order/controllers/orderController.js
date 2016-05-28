@@ -89,8 +89,11 @@
         function onCreateSuccess(success) {
             LoadingPopup.hide();
             $log.debug('onCreateSuccess', success);
-            if(success.success)
+            if(success.success){
                 toastr.success('Pedido registrado com sucesso !');
+                $state.go('app.orders');
+                
+            }
             else if(success.error)
                 toastr.error('Não Foi possivel registrar seu pedido: ' + success.error);
         }
@@ -123,8 +126,9 @@
             vm.order.total_value = 0;
 
             vm.order.products.forEach(function (e) {
-                vm.order.total_value += parseFloat(e.quantity) * parseFloat(e.precoVenda);
+                vm.order.total_value += parseFloat(e.quantity) * parseFloat(e.sale_cost);
             });
+            console.log('vm.order.total_value', vm.order.total_value);
         }
         function resetFields(form) {
             if (form) {
@@ -235,7 +239,8 @@
         }
         function loadProducts() {
             ProductService.products().then(function (result) {
-                var products = result.products;
+                
+                var products = result.success.products;
                 if (!products) return;
                 vm.productsModel = products;
                 var itens = angular.copy(products);

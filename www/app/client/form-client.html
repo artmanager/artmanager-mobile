@@ -10,13 +10,16 @@
                                 <label>Nome</label>
                                 <input name="name" ng-model="vm.user.client.name" required>
                             </md-input-container>
-
+                            <md-input-container class="md-block">
+                                <label>CPF/CNPJ</label>
+                                <input name="name" ng-model="vm.user.client.cpf_cnpj" ui-br-cpfcnpj-mask>
+                            </md-input-container>
                         </div>
 
                         <div layout-gt-sm="row">
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Email</label>
-                                <input name="phone1" ng-model="vm.user.client.email">
+                                <input name="email" ng-model="vm.user.client.email">
                             </md-input-container>
                             
                             <md-input-container class="md-block" flex-gt-sm>

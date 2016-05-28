@@ -48,12 +48,12 @@
                                     <div layout="row">
 
                                         <md-input-container class="md-block" flex>
-                                            <label>Preço: </label>
-                                            <input name="cost" ng-model="vm.selectedProduct.precoVenda" ui-number-mask required disabled>
+                                            <label>Preço de Venda: </label>
+                                            <input name="cost" ng-model="vm.selectedProduct.sale_cost" ui-number-mask required disabled>
                                         </md-input-container>
                                         <md-input-container class="md-block" flex>
                                             <label>Fornecedor: </label>
-                                            <input name="supplier" ng-model="vm.selectedProduct.fornecedor" required disabled>
+                                            <input name="supplier" ng-model="vm.selectedProduct.supplier" required disabled>
                                         </md-input-container>
 
                                     </div>
@@ -108,7 +108,7 @@
                             <p class="col">#</p>
                         </div>
                         <div class="row">
-                            <p class="col">{{ product.nome }}</p>
+                            <p class="col">{{ product.name }}</p>
                             <p class="col">{{ product.quantity }}</p>
                             <p class="col" ng-if="product.sendDate">{{product.sendDate.toLocaleDateString()}}</p>
                             <p class="col" ng-if="!product.sendDate"> - </p>
@@ -162,7 +162,7 @@
                         </div>
                         <div layout="row">
                             <p flex class="col md-headline negrito">Quantidade:</p>
-                            <p flex class="col md-headline">{{product.quantity}}</p>
+                            <p flex class="col md-headline">{{product.quantity}} {{product.quantity > 1 ? "unidades" : "unidade"}}</p>
                         </div>
                         <div layout="row">
                             <p flex class="col md-headline negrito">Entrega:</p>
@@ -172,15 +172,15 @@
                         </div>
                         <div layout="row">
                             <p flex class="col md-headline negrito">Fornecedor:</p>
-                            <p flex class="col md-headline">{{product.fornecedor}}</p>
+                            <p flex class="col md-headline">{{product.supplier}}</p>
                         </div>
                         <div layout="row">
                             <p flex class="col md-headline negrito">Tamanho:</p>
-                            <p flex class="col md-headline">{{product.tamanho}} CM</p>
+                            <p flex class="col md-headline">{{product.weight}} CM</p>
                         </div>
                         <div layout="row">
                             <p flex class="col md-headline negrito">Peso:</p>
-                            <p flex class="col md-headline">{{product.peso}} KG </p>
+                            <p flex class="col md-headline">{{product.heght}} KG </p>
                         </div>
                         <md-divider></md-divider>
 
@@ -188,12 +188,12 @@
                     <md-card-content layout-align="space-between">
                         <div layout="row" ng-if="vm.order.discount">
                             <p flex class="col md-headline negrito" >Desconto:</p>
-                            <p flex class="col md-headline">R$ {{vm.order.discount}}</p>
+                            <p flex class="col md-headline">R$ {{vm.order.discount  | number: 2}}</p>
 
                         </div>
                         <div layout="row">
                             <p flex class="col md-headline negrito" ng-if="vm.order.entrance">Entrada:</p>
-                            <p flex class="col md-headline" ng-if="vm.order.entrance">R$ {{vm.order.entrance}}</p>
+                            <p flex class="col md-headline" ng-if="vm.order.entrance">R$ {{vm.order.entrance  | number: 2}}</p>
                         </div>
 
                         <div layout="row">

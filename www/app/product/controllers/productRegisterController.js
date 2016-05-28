@@ -112,8 +112,8 @@
             try {
                 vm.product.size = (vm.product.size || 0) + "";
                 vm.product.weight = (vm.product.weight || 0) + "";
-                vm.product.id_category = vm.selectedCategory.id;
-                vm.product.id_supplier = vm.selectedSupplier.id;
+                vm.product.id_category = vm.selectedCategory.value;
+                vm.product.id_supplier = vm.selectedSupplier.value;
                 console.log(vm.product);
                 ProductService.create(vm.product).then(onCreate, onFail);
             }

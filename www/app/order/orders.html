@@ -32,7 +32,7 @@
                 <md-content layout-padding>
                     <md-list ng-if="vm.items.length > 0">
 
-                        <md-card ng-repeat="item in vm.items" ng-click="vm.detail(item)">
+                        <md-card ng-repeat="item in vm.items | orderBy:order:ascending" ng-click="vm.detail(item)">
                             <md-toolbar class="item-list card-primary">
                                 <div class="md-toolbar-tools">
                                     <h3 class="col col-60 md-headline">{{item.client.name | uppercase}} </h3>

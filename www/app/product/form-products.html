@@ -35,13 +35,13 @@
                                 md-selected-item-change="vm.selectedItemChangeCategory(item)" md-items="item in vm.querySearchCategory(vm.searchTextCategory)"
                                 md-item-text="item.display"
                                  md-no-cache="true" 
-                                md-min-length="0" placeholder="Digite o Nome do Fornecedor">
+                                md-min-length="0" placeholder="Digite o Nome da categoria">
                                 <md-item-template>
                                     <span md-highlight-text="vm.searchTextCategory" md-highlight-flags="^i">{{item.display}}</span>
                                 </md-item-template>
                                 <md-not-found>
-                                    nenhum "{{vm.searchTextCategory}}" foi encontrado.
-                                    <a ng-click="vm.newCategory(vm.searchTextCategory)">Cadastrar fornecedor agora</a>
+                                    "{{vm.searchTextCategory}}" não encontrado.
+                                    <a ng-click="vm.newCategory(vm.searchTextCategory)">Cadastrar categoria agora</a>
                                 </md-not-found>
                             </md-autocomplete>
                         </md-content>
@@ -66,16 +66,16 @@
 
                             <md-input-container class="md-block">
                                 <label>Preço de Custo(R$)</label>
-                                <input name="cost" ng-model="vm.product.cost" class="border-input-all" type="text" ui-number-mask>
+                                <input name="cost" ng-model="vm.product.cost" class="border-input-all" type="text" ui-number-mask required>
                             </md-input-container>
                             <md-input-container class="md-block">
                                 <label>Preço de venda (R$)</label>
-                                <input name="sale_cost" class="border-input-all" type="text" ng-model="vm.product.sale_cost" ui-number-mask>
+                                <input name="sale_cost" class="border-input-all" type="text" ng-model="vm.product.sale_cost" ui-number-mask required>
                             </md-input-container>
 
                             <md-input-container class="md-block">
                                 <label>Quantidade</label>
-                                <input name="quantity" ng-model="vm.product.quantity" type="number" class="border-input-all">
+                                <input name="quantity" ng-model="vm.product.quantity" type="number" class="border-input-all" required>
                             </md-input-container>
                             <div layout="row" layout-align="end center">
                                 <md-button class="md-primary" ng-click="vm.goBack()">Voltar</md-button>

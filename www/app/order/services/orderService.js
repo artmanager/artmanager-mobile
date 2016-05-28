@@ -43,6 +43,27 @@
                     "entrance": 11.00,
                     "total": 65.00
                 }
+            }, 
+            {
+                "id": "1212323323232113223321",
+                "creationDate": "2016-04-15T21:58:44.925Z",
+                "user": { "name": "jose fernando" },
+                "client": { "name": "maria" },
+                "order": {
+                    "products": [{
+                        "id_production": 321,
+                        "supplier": "Joana Maria",
+                        "delivery_date": "2016-06-13T21:58:44.925Z",
+                        "name": "Bolsa do Homem Aranha",
+                        "height": 200,
+                        "weight": 300.5,
+                        "quantity": 2,
+                        "describe": "Duas Cinzas vermelhas",
+                        "produzido": "100"
+                    }],
+                    "entrance": 65.00,
+                    "total": 65.00
+                }
             }];
 
             var defer = $q.defer();

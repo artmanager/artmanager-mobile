@@ -22,13 +22,9 @@
         }
         
         vm.create = function () {
-            // LoadingPopup.show();
+            LoadingPopup.show();
             ClientService.create(vm.user).then(onCreate, onFail);
-            toastr.success("Cliente cadastrado com sucesso");
-            if(vm.user.client.name) {
-                $state.go('app.createOrder');
-                return;
-            }
+            
         };
 
         vm.nextContato = function () {
@@ -59,14 +55,12 @@
         };
         
         function onCreate (response) {
-            toastr.success(response.success);
-            
             LoadingPopup.hide();
+            toastr.success("Cliente cadastrado com sucesso");
             if(vm.user.client.name) {
                 $state.go('app.createOrder');
                 return;
             }
-            
             $state.go('app.orders');
         }
         function onFail (response) {
