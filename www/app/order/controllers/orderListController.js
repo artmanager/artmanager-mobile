@@ -32,9 +32,9 @@
             loadOrders();
         }
         function mapCountProducts(item) {
-            count = 0;
+            
             item.order.products.map(filterCountProducts);
-            item.countProducts = count;
+            item.countProducts = item.order.products.length;
             return item;
         }
         function filterCountProducts(item) {
@@ -58,6 +58,7 @@
                 'dt_to': finalDate.toISOString()
             };
             vm.items = [];
+            console.log('obj', obj);
             OrderService.get(obj).then(function (items) {
                 LoadingPopup.hide();
                 var orders = items.success;

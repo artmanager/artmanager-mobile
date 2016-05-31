@@ -26,22 +26,15 @@
                         <md-card-content layout-align="space-between">
 
                             <div layout="row">
-                                <h3 flex class="md-headline">Data de Referencia:</h3>
                                 <h3 flex class="md-headline">Quantidade:</h3>
-                                <!--<div layout="column">
-                                    <i flex="40" layout-align="end center" class="fa fa-2x fa-chevron-right text-right"></i>
-                                </div>-->
+                                <h6 flex class="md-headline">{{item.quantity}} unidades</h6>
                             </div>
                             <div layout="row">
-                                <h6 flex class="md-headline">{{item.date}}</h6>
-                                <h6 flex class="md-headline">{{item.quantity}}</h6>
-                            </div>
-                            <div layout="row">
-                                <h3 flex class="md-headline">Preco Venda:</h6>
-                                <h3 flex class="md-headline">Preco Custo:</h6>
-                            </div>
-                            <div layout="row">
+                                <h3 flex class="md-headline">Preço Venda:</h6>
                                 <h6 flex class="md-headline">R$ {{item.sale_price | number: 2}}</h6>
+                            </div>
+                            <div layout="row">
+                                <h3 flex class="md-headline">Preço Custo:</h6>
                                 <h6 flex class="md-headline">R$ {{item.sale_cost | number: 2}}</h6>
                             </div>
                         </md-card-content>

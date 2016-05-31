@@ -16,7 +16,7 @@
                                         <span md-highlight-text="vm.searchTextClient" md-highlight-flags="^i">{{item.display}}</span>
                                     </md-item-template>
                                     <md-not-found>
-                                        "{{vm.searchTextClient}}" foi encontrado.
+                                        "{{vm.searchTextClient}}" não encontrado.
                                         <a ng-click="vm.newClient(vm.searchTextClient)">Cadastrar cliente agora</a>
                                     </md-not-found>
                                 </md-autocomplete>
@@ -35,8 +35,8 @@
                                             <span md-highlight-text="vm.searchTextProduct" md-highlight-flags="^i">{{item.display}}</span>
                                         </md-item-template>
                                         <md-not-found>
-                                            "{{vm.searchTextProduct}}" foi encontrado.
-                                            <a ng-click="vm.newProduct(vm.searchTextProduct)">Cadastrar Produto agora</a>
+                                            "{{vm.searchTextProduct}}" não encontrado.
+                                            <a ng-click="vm.newProduct(vm.searchTextProduct)">Cadastrar produto agora</a>
                                         </md-not-found>
                                     </md-autocomplete>
 
@@ -174,13 +174,13 @@
                             <p flex class="col md-headline negrito">Fornecedor:</p>
                             <p flex class="col md-headline">{{product.supplier}}</p>
                         </div>
-                        <div layout="row">
+                        <div layout="row" ng-if="product.weight">
                             <p flex class="col md-headline negrito">Tamanho:</p>
                             <p flex class="col md-headline">{{product.weight}} CM</p>
                         </div>
-                        <div layout="row">
+                        <div layout="row" ng-if="product.height">
                             <p flex class="col md-headline negrito">Peso:</p>
-                            <p flex class="col md-headline">{{product.heght}} KG </p>
+                            <p flex class="col md-headline">{{product.height}} KG </p>
                         </div>
                         <md-divider></md-divider>
 
@@ -195,7 +195,10 @@
                             <p flex class="col md-headline negrito" ng-if="vm.order.entrance">Entrada:</p>
                             <p flex class="col md-headline" ng-if="vm.order.entrance">R$ {{vm.order.entrance  | number: 2}}</p>
                         </div>
-
+                        <div layout="row" ng-if="vm.order.pending_value > 0">
+                            <p flex class="md-headline negrito">Pendente:</p>
+                            <p flex class="col md-headline">R$ {{vm.order.pending_value | number: 2}}</p>
+                        </div>
                         <div layout="row">
                             <p flex class="md-headline negrito">Total:</p>
                             <p flex class="col md-headline">R$ {{vm.order.total_value | number: 2}}</p>

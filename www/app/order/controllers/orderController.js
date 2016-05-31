@@ -115,8 +115,10 @@
         function finishOrder() {
             var discount = vm.order.discount || 0;
             var entrance = vm.order.entrance || 0;
-            vm.order.total_value = vm.order.total_value - (discount + entrance);
-
+            var total = angular.copy(vm.order.total_value);
+            var totalWithDescount = vm.order.total_value - (discount + entrance);
+            vm.order.total_value = total; //total - totalWithDescount;
+            vm.order.pending_value = totalWithDescount; 
             vm.showDetailOrder = true;
             vm.showFormPayment = false;
 
@@ -215,6 +217,7 @@
             vm.selectedProduct = selected[0];
             vm.selectedProduct.client = { id: vm.client.value };
             vm.selectedProduct.user = { id: vm.userId };
+            vm.selectedProduct.quantity = 1;
             vm.showButtons = true;
             $log.info('Item changed to ' + JSON.stringify(selected[0]));
         }
@@ -242,7 +245,8 @@
         function loadProducts() {
             ProductService.products().then(function (result) {
                 
-                var products = result.success.products;
+                var products = result.products[0];
+                console.log('products', products);
                 if (!products) return;
                 vm.productsModel = products;
                 var itens = angular.copy(products);

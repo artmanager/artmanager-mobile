@@ -4,6 +4,7 @@
         <div layout="column" ng-cloak class="md-inline-form">
             <md-content layout-padding>
                 <form name="formUser">
+                    {{formUser.$error.required}}
                     <div ng-show="vm.isFormUser">
                         <div layout-gt-sm="row">
                             <md-input-container class="md-block">
@@ -24,36 +25,19 @@
                             
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Telefone</label>
-                                <input name="phone1" ng-model="vm.user.phone[0].number" ui-br-phone-number>
+                                <input name="phone1" ng-model="vm.user.phone[0].number" required ui-br-phone-number>
                             </md-input-container>
-                            <md-input-container class="md-block" flex-gt-sm>
+                            <md-input-container class="md-block" flex-gt-sm >
                                 <label>Tipo de Telefone</label>
 
-                                <md-select ng-model="vm.user.phone[0].type" name="type">
+                                <md-select ng-model="vm.user.phone[0].type" name="type" required>
                                     <md-option ng-repeat="type in vm.phoneTypes" value="{{type.id}}">
                                         {{type.description}}
                                     </md-option>
                                 </md-select>
                             </md-input-container>
-<!--                            
-                            <md-input-container class="md-block" flex-gt-sm>
-                                <label>Telefone (opcional)</label>
-                                <input name="phone2" ng-model="vm.user.phone[1]" ui-br-phone-number>
-                            </md-input-container>
-                            <md-input-container class="md-block" flex-gt-sm>
-                                <label>Tipo de Telefone</label>
-
-                                <md-select ng-model="vm.user.phones[1].type" name="type">
-                                    <md-option ng-repeat="type in vm.phoneTypes" value="{{type.id}}">
-                                        {{type.description}}
-                                    </md-option>
-                                </md-select>
-                            </md-input-container>-->
-                            <div layout="row" layout-align="end center">
-                                <!--<md-button class="md-primary" ng-click="vm.nextLocation()" 
-                                ng-disabled="(formUser.name.$error.required)">Proximo</md-button>-->
                             <md-button class="md-primary" ng-click="vm.create()"
-                            ng-disabled="(formUser.name.$error.required)">Cadastrar</md-button>
+                            ng-disabled="(formUser.$error.required)">Cadastrar</md-button>
                             </div>
                         </div>
                     </div>

@@ -17,9 +17,14 @@
             loadBoxItens();
         })();
         function loadBoxItens() {
-            console.log('carregou');
             LoadingPopup.show();
-            BoxClosingService.get().then(onGetSuccess, onGetError);
+            var initialDate = vm.initialDate || new Date(0);
+            var finalDate = vm.finalDate || new Date();
+            var obj = {
+                'dt_from': initialDate.toISOString(),
+                'dt_to': finalDate.toISOString()
+            };
+            BoxClosingService.get(obj).then(onGetSuccess, onGetError);
         }
 
         function getDateRef(month, year) {
@@ -64,17 +69,18 @@
             return filters;
         }
         function search() {
-            var itens = angular.copy(vm.itemsFilter);
+            loadBoxItens();
+            // var itens = angular.copy(vm.itemsFilter);
 
-            var initialDate = vm.initialDate || new Date(0);
-            var finalDate = vm.finalDate || new Date();
+            // var initialDate = vm.initialDate || new Date(0);
+            // var finalDate = vm.finalDate || new Date();
 
-            var filteredItens = itens.filter(function (item) {
-                var dateItem = new Date(item.year, (item.month), 01);
-                return dateItem > initialDate && dateItem < finalDate;
+            // var filteredItens = itens.filter(function (item) {
+            //     var dateItem = new Date(item.year, (item.month), 01);
+            //     return dateItem > initialDate && dateItem < finalDate;
 
-            });
-            vm.items = filteredItens;
+            // });
+            // vm.items = filteredItens;
 
         }
         function onGetSuccess(result) {

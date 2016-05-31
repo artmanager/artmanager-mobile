@@ -36,9 +36,9 @@
                                              ">Proximo</md-button>
                             </div>-->
                             <div layout="row" layout-align="end center">
-                                <md-button class="md-primary" ng-disabled="providerForm.name.$invalid ||
-                                             providerForm.telefone0.$invalid
-                                             " ng-click="vm.create()">Cadastrar</md-button>
+                                <md-button class="md-primary" 
+                                ng-disabled="providerForm.$error.required" 
+                                ng-click="vm.create(providerForm)">Cadastrar</md-button>
                             </div>
                         </div>
 

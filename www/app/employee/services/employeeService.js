@@ -4,22 +4,29 @@
     app.service('EmployeeService', ['$q', '$http', 'ConstantsService', 'AuthService', function ($q, $http, ConstantsService, AuthService) {
         return {
             employess: employess,
-            employee: getDetail
+            employee: getDetail,
+            reportSupplier: reportSupplier
         };
-
-
+        
+        function  reportSupplier(obj) {
+            return $http({
+                method: 'POST',
+                data: obj,
+                url: ConstantsService.GET_PROVIDER_REPORT_URL, //+ "?dt_from=" + obj.dt_from + "&dt_to="+ obj.dt_to,
+                headers: AuthService.headers()
+            }).then(function (params) {
+                return params.data;
+            });
+        }
         function employess(obj) {
-            var deferred = $q.defer();
-            deferred.resolve({success : getItens()});
-            return deferred.promise;
-            // return $http({
-            //     method: 'GET',
-            //     data: obj,
-            //     url: ConstantsService.GET_PROVIDER_URL,
-            //     headers: AuthService.headers()
-            // }).then(function (params) {
-            //     return params.data;
-            // });
+            return $http({
+                method: 'GET',
+                data: obj,
+                url: ConstantsService.GET_PROVIDER_URL,
+                headers: AuthService.headers()
+            }).then(function (params) {
+                return params.data;
+            });
         }
 
         function getItens() {

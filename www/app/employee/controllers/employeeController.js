@@ -24,12 +24,15 @@
             var initialDate = vm.initialDate || new Date(0);
             var finalDate = vm.finalDate || new Date();
             var obj = {
-                'dt_from' : initialDate.toISOString(),
+                'dt_from': initialDate.toISOString(),
                 'dt_to': finalDate.toISOString()
             };
-            EmployeeService.employess(obj).then(function (itens) {
+            console.log('obj', obj);
+            
+            EmployeeService.reportSupplier(obj).then(function (itens) {
                 var items = itens.success;
                 vm.items = items;
+                console.log('items', items);
                 // vm.itemsFilter = items;
             });
         }
@@ -52,7 +55,7 @@
         }
         function toDetail(item) {
             var detail = JSON.stringify(item);
-            $state.go('app.employeesDetail', {item: detail});
+            $state.go('app.employeesDetail', { item: detail });
         }
         function search() {
             loadEmployees();

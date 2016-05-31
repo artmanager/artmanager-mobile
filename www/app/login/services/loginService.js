@@ -8,7 +8,8 @@
         return {
             login: login,
             logout: logout,
-            setAuthToken: setAuthToken
+            setAuthToken: setAuthToken,
+            resendPassword : resendPassword
             
         };
         function setAuthToken(value) {
@@ -36,6 +37,19 @@
             //     console.log(token);
             // });
 
+        }
+        function  resendPassword(obj) {
+            return $http({
+                method: 'POST',
+                url: ConstantsService.RESEND_PASSWORD_URL,
+                data: obj,
+                config: {timeout: 50000}
+            }).then(function (params) {
+                
+                return params.data;
+            });
+             
+            
         }
     }
 })();

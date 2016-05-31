@@ -17,7 +17,8 @@
 
         this.LOGIN_URL = baseAutenticacao;
         this.CREATE_USER_URL = baseUser;
-
+        
+        this.RESEND_PASSWORD_URL = BASE_API_URL + 'sendTokenToEmail';
         this.CREATE_CLIENT_URL = baseClient;
         this.GET_CLIENT_URL = baseClient;
 
@@ -39,6 +40,11 @@
 
         this.GET_CATEGORIES_PRODUCTS = BASE_API_URL + 'productCategory';
         this.CREATE_CATEGORIES_PRODUCTS = BASE_API_URL + 'productCategory';
+        
+        this.GET_PROVIDER_REPORT_URL = BASE_API_URL + 'reportSupplier';
+        
+        this.GET_REPORT_SALES = BASE_API_URL + 'reportSales';
+        
     }
 
     app.factory('LocalStorageService', LocalStorageService);

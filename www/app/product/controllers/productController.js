@@ -43,14 +43,15 @@
                 'dt_from': initialDate.toISOString(),
                 'dt_to': finalDate.toISOString()
             };
-            ProductService.report().then(function (itens) {
+            ProductService.report(obj).then(function (itens) {
                 LoadingPopup.hide();
+                console.log('itens', itens);
                 var products = itens.success;
                 if (!products) return;
 
                 //remover
                 products = products.map(function (item) {
-                    item.creationDate = new Date().toISOString();
+                    // item.creationDate = new Date().toISOString();
                     item.date = getDateRef(item.month, item.year);
                     return item;
                 });

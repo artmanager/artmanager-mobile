@@ -7,7 +7,7 @@
             <div class="card">
                 <img class="title" src="img/logo-extended.png" style="width: 89%;" alt="">
                 <!--<h1 >Login </h1>-->
-                <form name="form" novalidate>
+                <form name="form" novalidate ng-show="!vm.isFormPassword">
                     <div class="input-container">
                         <input type="text" id="Username" name="username" ng-model="vm.user.name" ng-required="true" />
                         <label for="Username">Usuario </label>
@@ -22,11 +22,29 @@
 
                     <div class="button-container">
                         <button type="submit" class="md-input md-primary  {{(form.password.$invalid || form.username.$invalid) ? '' : 'button-input-active' }} "
-                        ng-disabled="(form.password.$invalid || form.username.$invalid)" ng-click="vm.login(user)">
+                            ng-disabled="(form.password.$invalid || form.username.$invalid)" ng-click="vm.login(user)">
                             <span class="{{(form.password.$invalid || form.username.$invalid) ? ''  : 'span-input-active' }}">Entrar</span>
                         </button>
                     </div>
-                    <div class="footer black" ng-click="vm.showMessagePassword()"><strong>Esqueceu sua senha?</strong> </div>
+                    <div class="footer black" ng-click="vm.showFormPassword()"><strong>Esqueceu sua senha?</strong> </div>
+                </form>
+                <form name="formPassword" ng-if="vm.isFormPassword">
+                    <div class="input-container">
+                        <input type="email" id="email" name="email" ng-model="vm.user.email" ng-required="true" />
+                        <label for="Username">Email </label>
+                        <div class="bar"></div>
+
+
+                    </div>
+                    <div class="button-container">
+                        {{formPassword.$error.$invalid}}
+                        <button type="submit" class="md-input md-primary  button-input-active"
+                            ng-disabled="formPassword.$error.required" ng-click="vm.sendPassword()">
+                            <span class="span-input-active">Enviar</span>
+                        </button>
+                    </div>
+                    <div class="footer black" ng-click="vm.showLogin()"><strong>Voltar</strong> </div>
+
                 </form>
             </div>
             <!--<div class="card alt">

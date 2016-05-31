@@ -7,7 +7,7 @@
 
         var item = $stateParams.item;
         vm.item = JSON.parse(item);
-
+        console.log('item', vm.item);
         vm.updateStatus = updateStatus;
         vm.back = back;
         function updateStatus() {
@@ -25,8 +25,10 @@
 
         }
         function onUpdateSuccess(success) {
-            if(success.success)
+            if(success.success){
+                $state.go('app.production');
                 toastr.success('Operação realizada com sucesso!');
+            }
             else if(success.error)
                 toastr.error('Erro ao realizar sua solicitacao');
                 

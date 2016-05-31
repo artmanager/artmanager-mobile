@@ -8,12 +8,16 @@
         var vm = this;
 
         vm.item = JSON.parse($state.params.item);
-        console.log(vm.item);
+        console.log('vm.item', vm.item);
         vm.updateValuePayment = updateValuePayment;
         vm.registerFallbackProducts = registerFallbackProducts;
 
         vm.orderPendingPayment = verifyPendingPayment();
+        vm.back = back;
         
+        function back() {
+            $state.go('app.orders');
+        }
         
         function updateValuePayment() {
             var data = {
