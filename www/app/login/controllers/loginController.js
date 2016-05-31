@@ -33,11 +33,14 @@
 
         function sendPassword() {
             var obj = { user: vm.user.email };
+            LoadingPopup.show();
             LoginService.resendPassword(obj)
                 .then(onResendSuccess, onResendError);
         }
 
         function onResendSuccess(result) {
+            LoadingPopup.hide();
+            
             if (result.error)
                 toastr.error(result.success.error);
             else if (result.success)
@@ -46,6 +49,7 @@
             console.log('success', result);
         }
         function onResendError(result) {
+            LoadingPopup.hide();
             toastr.error('Erro ao realizar sua solicitação');
             console.log('error', result);
 
