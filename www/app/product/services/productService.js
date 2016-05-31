@@ -25,29 +25,29 @@
                 });
         }
         function reportProduct(date) {
-            var itens = {
-                success: [{
-                    "name": "Samambaia",
-                    "quantity": 100,
-                    "sale_price": 39.30,
-                    "sale_cost": 20.00,
-                    "month": 1,
-                    "year": 2015
-                }]
-            };
-            var deferred = $q.defer();
-            deferred.resolve(itens);
-            return deferred.promise;
+            // var itens = {
+            //     success: [{
+            //         "name": "Samambaia",
+            //         "quantity": 100,
+            //         "sale_price": 39.30,
+            //         "sale_cost": 20.00,
+            //         "month": 1,
+            //         "year": 2015
+            //     }]
+            // };
+            // var deferred = $q.defer();
+            // deferred.resolve(itens);
+            // return deferred.promise;
 
-            // return $http({
-            //     method: 'POST',
-            //     url: ConstantsService.REPORT_PRODUCTS,
-            //     data: date,
-            //     headers: AuthService.headers()
-            // })
-            //     .then(function (params) {
-            //         return params.data;
-            //     });
+            return $http({
+                method: 'POST',
+                url: ConstantsService.REPORT_PRODUCTS,
+                data: date,
+                headers: AuthService.headers()
+            })
+                .then(function (params) {
+                    return params.data;
+                });
         }
         function products() {
             return $http({
