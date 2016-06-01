@@ -16,32 +16,40 @@
                     </div>
                 </md-toolbar>
 
-                <md-card-content layout-align="center center">
+                <md-card-content layout-align="center center" class="item">
 
                     <div class="row">
                         <h3 class="col md-headline"><strong>Cliente:</strong></h3>
                         <p class="col md-headline">{{vm.item.client}}</p>
                     </div>
+                    <hr />
                     <div class="row">
                         <h3 class="col md-headline"><strong>Fornecedor:</strong> </h3>
                         <p class="col md-headline">{{vm.item.supplier}}</p>
                     </div>
+                    <hr />
                     <div class="row">
                         <h3 class="col md-headline"> <strong>Peso:</strong> </h3>
                         <p class="col md-headline">{{vm.item.weight}} KG </p>
                     </div>
+                    <hr />
                     <div layout="row">
                         <h3 class="col md-headline"> <strong>Tamanho:</strong> </h3>
                         <p class="col md-headline">{{vm.item.height}} CM</p>
                     </div>
-
+                    <hr />
                     <div layout="row">
                         <h3 class="col md-headline"> <strong>Descrição:</strong> </h3>
-                        <p class="col md-headline">{{vm.item.describe}}</p>
                     </div>
+                    <div layout="column" style="-ms-word-wrap: break-word; word-wrap: break-word; display:inline-flexbox">
+                        
+                        <p class="col span-input-active  md-headline">{{ vm.item.describe}}</p>
+                    </div>
+                    <hr />
                     <div layout="row">
                         <h3 class="col md-headline"><strong>Entrega:</strong> </h3>
-                        <p class="col  md-headline">{{vm.item.date}} </p>
+                        <p class="col md-headline">{{ vm.item.date }} </p>
+                        
                     </div>
                 </md-card-content>
 
