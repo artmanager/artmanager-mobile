@@ -6,11 +6,8 @@
     ProductRegisterCtrl.$inject = ['toastr', 'ProductService', 'LoadingPopup', '$state', 'ProviderService', '$log', '$stateParams'];
     function ProductRegisterCtrl(toastr, ProductService, LoadingPopup, $state, ProviderService, $log, $stateParams) {
         var vm = this;
-        
-        
-        // if(vm.providerName) {
-            
-        // }
+
+
         vm.content = { personalData: true, cost: false };
         vm.product = {};
         vm.suppliers = [];
@@ -19,7 +16,7 @@
         vm.toggleForm = toggleForm;
         vm.create = create;
         vm.goBack = goBack;
-        
+
         vm.searchTextSupplier = '';
         vm.searchTextCategory = '';
 
@@ -29,7 +26,7 @@
         vm.supplier = {};
         vm.category = {};
         vm.productName = $stateParams.productName;
-        if(vm.productName) { 
+        if (vm.productName) {
             vm.product.name = vm.productName;
         }
         //autocomplete
@@ -72,7 +69,10 @@
                 });
 
                 vm.suppliers = suppliersMap;
-
+                var providerName = localStorage.providerName;
+                if(!providerName) return;
+                
+                selectedItemChangeSupplier(null, providerName);
 
             });
 
@@ -138,10 +138,19 @@
             toastr.success(response.success);
             vm.product = {};
             LoadingPopup.hide();
-            if(vm.productName) {
-                $state.go('app.createOrder');
-            }
             
+            localStorage.providerName = "";
+            if (!vm.productName) {
+                localStorage.productName = null;
+                vm.searchTextSupplier = "";
+                vm.querySearchCategory = "";
+                
+                return;   
+            }
+            localStorage.productName =  vm.productName;
+            $state.go('app.createOrder');
+
+
         }
         function onFail(response) {
             toastr.error('Erro, contate o suporte.', 'Não foi possivel cadastrar');
@@ -210,8 +219,16 @@
             $log.info('Text changed to ' + text);
         }
 
-        function selectedItemChangeSupplier(item) {
-
+        function selectedItemChangeSupplier(item, name) {
+            if(name) 
+            {
+                var supplier = vm.suppliers.filter(function (supplier) {
+                    return supplier.display === name;
+                });
+                vm.searchTextSupplier = name;
+                item = supplier[0];
+            }
+            
             vm.selectedSupplier = item;
             vm.supplier = item;
             $log.info('Item changed to ' + JSON.stringify(item));

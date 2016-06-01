@@ -6,8 +6,8 @@
     ProviderCtrl.$inject = ['$state', '$timeout', '$stateParams', 'LocalStorageService', 'ProviderService', 'LoadingPopup', 'toastr'];
     function ProviderCtrl($state, $timeout, $stateParams, LocalStorageService, ProviderService, LoadingPopup, toastr) {
         var vm = this;
-        
-        
+
+
 
         var defaultContent = { personalData: true, location: false };
         var phoneTypes = [{ id: 1, description: 'FIXO' }, { id: 3, description: 'CELULAR' }];
@@ -26,7 +26,7 @@
             vm.content.location = true;
         };
         vm.create = function (providerForm) {
-            
+
             LoadingPopup.show();
             var dados = { 'supplier': vm.provider };
             ProviderService.create(dados).then(onCreate, onFail);
@@ -38,7 +38,7 @@
             vm.content.location = false;
         };
         function onCreate(obj) {
-            
+
             LoadingPopup.hide();
             console.log('obj', obj);
             if (obj.error !== undefined) {
@@ -47,8 +47,11 @@
             }
             toastr.success('Cadastro efetuado com sucesso.');
             if (vm.itemName) {
-                $state.go('app.createProduct', {'providerName': vm.provider.name});
+                localStorage.providerName = vm.provider.name;
+                $state.go('app.createProduct', { 'providerName': vm.provider.name });
+                return;
             }
+            localStorage.providerName = ""; 
             $state.go('app.createOrder');
             vm.provider = {};
         }

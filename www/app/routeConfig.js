@@ -67,7 +67,7 @@
             }
         });
         stateProvider.state('app.createOrder', {
-            url: '/createOrder',
+            url: '/createOrder/:orderParams',
             title: 'Cadastrar Pedido',
             views: {
                 'menuContent': {

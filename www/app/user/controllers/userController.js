@@ -21,7 +21,7 @@
         function onSuccess(result) {
             LoadingPopup.hide();
             if (result.error) {
-                toastr.error(result.error);
+                toastr.error('Erro ao realizar sua solicitação!');
                 return;
             }
             toastr.success('Usuario cadastrado com sucesso!');

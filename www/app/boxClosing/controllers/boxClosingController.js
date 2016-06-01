@@ -85,10 +85,16 @@
         }
         function onGetSuccess(result) {
             LoadingPopup.hide();
+            console.log('result.success', result.success);
             var itens = result.success.map(function (item) {
                 item.date = getDateRef(item.month, item.year);
                 return item;
             });
+            
+            if(itens[0].total === null) {
+                vm.items = [];
+                return;
+            }
             vm.items = itens;
             vm.itemsFilter = itens;
         }

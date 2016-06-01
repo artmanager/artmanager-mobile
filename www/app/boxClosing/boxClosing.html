@@ -13,11 +13,11 @@
                 </div>
                 <ion-list>
                     
-                    <md-card ng-repeat="item in vm.items| orderBy:order:ascending">
+                    <md-card ng-repeat="item in vm.items| orderBy:order:ascending" ng-if="vm.items.length > 0">
                         <md-toolbar class="item-list card-primary">
                             <div class="md-toolbar-tools">
                                 <div class="row">
-                                    <h3 class="md-headline"> Data de Referencia: {{item.date}} </h3>
+                                    <h3 class="md-headline"> Fechamento de Caixa </h3>
                                     
                                 </div>
 
@@ -26,11 +26,18 @@
 
                         <md-card-content layout-align="space-between">
 
-                            <div layout="row">
+                        <div layout="row">
                                 <p flex class="col md-headline negrito">Total:</p>
                                 <p flex class="col md-headline ">R$ {{item.total | number: 2}}</p>
                             </div>
-                            
+                            <div layout="row">
+                                <p flex class="col md-headline negrito">Total Liquido:</p>
+                                <p flex class="col md-headline ">R$ {{item.total_liquid | number: 2}}</p>
+                            </div>
+                            <div layout="row">
+                                <p flex class="col md-headline negrito">Total Descontos:</p>
+                                <p flex class="col md-headline ">R$ {{item.total_discount | number: 2}}</p>
+                            </div>
                             <div layout="row">
                                 <p flex class="col md-headline negrito">Comissoes:</p>
                                 <p flex class="col md-headline ">R$ {{item.totalCommission | number: 2}}</p>
@@ -38,17 +45,17 @@
                             
                             <div layout="row">
                                 <p flex class="col md-headline negrito">Produtos Vendidos:</p>
-                                <p flex class="col md-headline ">{{item.totalSaleProducts}} unidades</p>
+                                <p flex class="col md-headline ">{{item.totalsaleproducts}} unidades</p>
                             </div>
                             
                             <div layout="row">
                                 <p flex class="col md-headline negrito">Produtos Produzidos:</p>
-                                <p flex class="col md-headline ">{{item.totalProductionProducts}} unidades</p>
+                                <p flex class="col md-headline ">{{item.totalproductionproducts}} unidades</p>
                             </div>
                             
                             <div layout="row">
                                 <p flex class="col md-headline negrito">Produtos Pendentes:</p>
-                                <p flex class="col md-headline ">{{item.totalProductionPending}} unidades</p>
+                                <p flex class="col md-headline ">{{item.totalproductionpending}} unidades</p>
                             </div>
                             
                         </md-card-content>

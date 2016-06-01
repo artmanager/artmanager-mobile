@@ -58,9 +58,12 @@
             LoadingPopup.hide();
             toastr.success("Cliente cadastrado com sucesso");
             if(vm.user.client.name) {
+                localStorage.clientName = vm.user.client.name; 
                 $state.go('app.createOrder');
                 return;
             }
+            
+            localStorage.clientName = null; 
             $state.go('app.orders');
         }
         function onFail (response) {

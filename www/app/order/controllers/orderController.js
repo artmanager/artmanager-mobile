@@ -6,6 +6,8 @@
 
     function OrderCtrl(OrderService, $log, $state, ClientService, ProductService, toastr, LoadingPopup) {
         var vm = this;
+
+
         vm.showFormProduct = false;
 
         vm.userId = 1;
@@ -30,14 +32,13 @@
         vm.backToPayment = backToPayment;
         vm.backToFormOrder = backToFormOrder;
         vm.create = create;
-        
         //altoCompletes
         vm.querySearchClient = querySearchClient;
         vm.querySearchProduct = querySearchProduct;
 
         vm.selectedItemChangeClient = selectedItemChangeClient;
         vm.selectedItemChangeProduct = selectedItemChangeProduct;
-        
+
         vm.searchTextChangeClient = searchTextChangeClient;
         vm.searchTextChangeProduct = searchTextChangeProduct;
 
@@ -52,20 +53,37 @@
 
 
         function init() {
-            loadProducts();
             loadClients();
+            // setDefaultNames();
+        }
+        function setDefaultNames() {
+
+            var productName = localStorage.productName;
+            var clientName = localStorage.clientName;
+            console.log('productName', productName);
+            console.log('clientName', clientName);
+
+            if (productName) {
+                vm.searchTextProduct = productName || "";
+
+            }
+            if (clientName) {
+                vm.searchTextClient = clientName;
+
+            }
+
         }
         function create() {
             var order = {};
             LoadingPopup.show();
             order.client = { id: vm.client.value };
-            order.user = {id: vm.userId};
+            order.user = { id: vm.userId };
             order.which = {
                 total_value: vm.order.total_value,
                 entrance: vm.order.entrance,
                 discount: vm.order.discount
             };
-            
+
             order.products = vm.order.products.map(function (product) {
                 var obj = {
                     id: product.id,
@@ -73,7 +91,7 @@
                     quantity: product.quantity
                 };
                 if (product.sendDate) {
-                    order.production = {delivery_date : product.sendDate};
+                    order.production = { delivery_date: product.sendDate };
                 }
 
                 return obj;
@@ -89,13 +107,18 @@
         function onCreateSuccess(success) {
             LoadingPopup.hide();
             $log.debug('onCreateSuccess', success);
-            if(success.success){
+            if (success.success) {
+                limparLocalStorage();
                 toastr.success('Pedido registrado com sucesso !');
-                $state.go('app.orders');
-                
+                $state.go('app.production');
+
             }
-            else if(success.error)
+            else if (success.error)
                 toastr.error('Não Foi possivel registrar seu pedido: ' + success.error);
+        }
+        function limparLocalStorage() {
+            localStorage.productName = "";
+            localStorage.clientName = "";
         }
         function backToFormOrder() {
             vm.showFormPayment = false;
@@ -118,7 +141,7 @@
             var total = angular.copy(vm.order.total_value);
             var totalWithDescount = vm.order.total_value - (discount + entrance);
             vm.order.total_value = total; //total - totalWithDescount;
-            vm.order.pending_value = totalWithDescount; 
+            vm.order.pending_value = totalWithDescount;
             vm.showDetailOrder = true;
             vm.showFormPayment = false;
 
@@ -149,8 +172,8 @@
 
             resetFields(form);
         }
-       
-       
+
+
         //altoCOmpletes
         function newClient(state) {
             $state.go('app.createClient', { 'clientName': vm.searchTextClient });
@@ -200,19 +223,40 @@
         function searchTextChangeProduct(text) {
             $log.info('Text changed to ' + text);
         }
-        
-        function selectedItemChangeClient(item) {
+
+        function selectedItemChangeClient(item, name) {
+            if((!item|| item === null) && !name)
+                return;
+                
+            if(name) {
+                item = vm.clients.filter(function (client) {
+                    return client.display === name;
+                });
+                item = item[0];   
+                vm.searchTextClient = name;
+            }
             vm.showFormProduct = true;
             vm.selectedClient = item;
             vm.client = item;
             $log.info('Item changed to ' + JSON.stringify(item));
         }
-        function selectedItemChangeProduct(item) {
-            if (!item) return;
-
-            var selected = vm.productsModel.filter(function filterProducts(product) {
-                return product.id == item.value;
-            });
+        function selectedItemChangeProduct(item, name) {
+            console.log('item',item);
+            if ((!item || item === null) && !name) return;
+            var selected = [];
+            if (name) {
+                vm.searchTextProduct = name;
+                selected = vm.productsModel.filter(function filterProducts(product) {
+                    return product.name == name;
+                });
+            }
+            else if(item) {
+                selected = vm.productsModel.filter(function filterProducts(product) {
+                    return product.id == item.value;
+                });
+            }
+            else 
+                return;
 
             vm.selectedProduct = selected[0];
             vm.selectedProduct.client = { id: vm.client.value };
@@ -229,6 +273,7 @@
                     return;
                 }
                 if (!values.data) return;
+                loadProducts();
                 var clients = values.data.clients.map(function (client) {
                     return {
                         value: client.id,
@@ -237,14 +282,19 @@
                 });
 
                 vm.clients = clients;
-
+                    
+                var nameExisting=  localStorage.clientName;
+                if(!nameExisting || nameExisting === "") return;
+                 
+                 console.log('leu lcient');
+                 selectedItemChangeClient(null, nameExisting);
 
             });
 
         }
         function loadProducts() {
             ProductService.products().then(function (result) {
-                
+
                 var products = result.products[0];
                 console.log('products', products);
                 if (!products) return;
@@ -255,16 +305,22 @@
                     return { value: item.id, display: item.name };
                 });
                 vm.products = itens;
+                var nameExisting=  localStorage.productName;
+                if(!nameExisting || nameExisting === "") return;
+                 
+                 console.log('leu');
+                 selectedItemChangeProduct(null, nameExisting);
+                
             });
 
         }
         /////////////////////////////////////
- 
 
 
-        
 
-        
+
+
+
 
     }
 
