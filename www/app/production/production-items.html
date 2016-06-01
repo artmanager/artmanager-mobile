@@ -7,8 +7,8 @@
                     <md-card ng-repeat="item in vm.items| orderBy:order:ascending" ng-click="vm.detail(item)"  >
                         <md-toolbar class="item-list card-{{item.status | statusColor}}">
                             <div class="md-toolbar-tools">
-                                <div class="row">
-                                    <h3 class="col col-90 md-headline">  {{item.name | uppercase}}</h3>
+                                <div class="row row-baseline">
+                                    <h3 class="col col-67 md-headline">  {{item.name | uppercase}}</h3>
                                     <h3 class="md-headline">{{item.percentage || 0}}%</h3>
                                     <i class="fa fa-chevron-right col"></i>
 
