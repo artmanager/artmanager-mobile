@@ -25,7 +25,8 @@
 
         vm.supplier = {};
         vm.category = {};
-        vm.productName = $stateParams.productName;
+        vm.productName = $stateParams.productName || localStorage.productName || "";
+        console.log('productName', vm.productName);
         if (vm.productName) {
             vm.product.name = vm.productName;
         }
@@ -140,8 +141,9 @@
             LoadingPopup.hide();
             
             localStorage.providerName = "";
+            var name = localStorage.productName;
             if (!vm.productName) {
-                localStorage.productName = null;
+                localStorage.productName = "";
                 vm.searchTextSupplier = "";
                 vm.querySearchCategory = "";
                 

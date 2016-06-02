@@ -27,6 +27,21 @@
                             </div>
                         </md-card-content>
                     </md-card>
+                    <md-card  ng-if="vm.items.length === 0">
+                        <!--<md-toolbar class="item-list card-primary">
+                            <div class="md-toolbar-tools">
+                                <div class="row row-baseline">
+                                    <h3 class="col md-headline"></h3>
+
+                                </div>
+                            </div>
+                        </md-toolbar>-->
+                        <md-card-content layout="row" layout-align="space-between" >
+                            <div layout="column">
+                                <h3 flex class="md-headline">Nenhum item encontrado ! </h3>
+                            </div>
+                        </md-card-content>
+                    
                 </ion-list>
             </md-content>
         </md-content>

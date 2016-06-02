@@ -3,7 +3,6 @@
         <div layout="column" ng-cloak class="md-inline-form">
             <md-content layout-padding>
                 <form name="productForm">
-
                     <div ng-show="vm.content.personalData">
                         <md-content class="md-padding">
                             <md-autocomplete md-search-text-change="vm.searchTextChangeSupplier(vm.searchTextSupplier)" md-search-text="vm.searchTextSupplier"
@@ -29,10 +28,13 @@
                         </md-input-container>
 
                         <md-content class="md-padding">
-                            <md-autocomplete 
+                            <md-autocomplete
+                                ng-required  
+                                name="category"
                                 md-search-text-change="vm.searchTextChangeCategory(vm.searchTextCategory)" 
                                 md-search-text="vm.searchTextCategory"
-                                md-selected-item-change="vm.selectedItemChangeCategory(item)" md-items="item in vm.querySearchCategory(vm.searchTextCategory)"
+                                md-selected-item-change="vm.selectedItemChangeCategory(item)" 
+                                md-items="item in vm.querySearchCategory(vm.searchTextCategory)"
                                 md-item-text="item.display"
                                  md-no-cache="true" 
                                 md-min-length="0" placeholder="Digite o Nome da categoria">
@@ -46,12 +48,16 @@
                             </md-autocomplete>
                         </md-content>
                         <div layout="row" layout-align="end center">
-                            <md-button class="md-primary" ng-click="vm.toggleForm()" ng-disabled="
-                                productForm.name.$error.required ||
-                                productForm.category.$error.required">Proximo</md-button>
+                            <md-button class="md-primary" ng-click="vm.toggleForm()" 
+                            ng-disabled="productForm.$error.required || 
+                                        vm.searchTextSupplier === '' ||
+                                        vm.searchTextCategory === ''
+                                        ">Proximo</md-button>
                         </div>
                     </div>
-
+                </form>
+                <form name="costForm">
+                    
                     <div ng-show="vm.content.cost">
 
                         <div layout-gt-sm="row">
@@ -79,15 +85,7 @@
                             </md-input-container>
                             <div layout="row" layout-align="end center">
                                 <md-button class="md-primary" ng-click="vm.goBack()">Voltar</md-button>
-                                <md-button class="md-primary" ng-click="vm.create()" ng-disabled="
-                                productForm.size.$error.required ||
-                                productForm.weight.$error.required ||
-                                productForm.cost.$error.required ||
-                                productForm.sale_cost.$error.required ||
-                                productForm.cost.$error.required ||
-                                productForm.quantity.$error.required
-                                
-                                ">Cadastrar</md-button>
+                                <md-button class="md-primary" ng-click="vm.create()" ng-disabled="costForm.$error.required">Cadastrar</md-button>
                             </div>
                         </div>
                     </div>

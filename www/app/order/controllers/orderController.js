@@ -69,6 +69,7 @@
             }
             if (clientName) {
                 vm.searchTextClient = clientName;
+                
 
             }
 
@@ -91,7 +92,7 @@
                     quantity: product.quantity
                 };
                 if (product.sendDate) {
-                    order.production = { delivery_date: product.sendDate };
+                    obj.production = { delivery_date: product.sendDate };
                 }
 
                 return obj;
@@ -168,6 +169,7 @@
         }
         function addToOrder(form) {
             if (!vm.selectedProduct) return;
+            console.log('vm.selectedProduct', vm.selectedProduct);
             vm.order.products.push(vm.selectedProduct);
 
             resetFields(form);
@@ -225,14 +227,14 @@
         }
 
         function selectedItemChangeClient(item, name) {
-            if((!item|| item === null) && !name)
+            if ((!item || item === null) && !name)
                 return;
-                
-            if(name) {
+
+            if (name) {
                 item = vm.clients.filter(function (client) {
                     return client.display === name;
                 });
-                item = item[0];   
+                item = item[0];
                 vm.searchTextClient = name;
             }
             vm.showFormProduct = true;
@@ -241,7 +243,7 @@
             $log.info('Item changed to ' + JSON.stringify(item));
         }
         function selectedItemChangeProduct(item, name) {
-            console.log('item',item);
+            console.log('item', item);
             if ((!item || item === null) && !name) return;
             var selected = [];
             if (name) {
@@ -250,14 +252,18 @@
                     return product.name == name;
                 });
             }
-            else if(item) {
+            else if (item) {
                 selected = vm.productsModel.filter(function filterProducts(product) {
                     return product.id == item.value;
                 });
             }
-            else 
+            else
                 return;
 
+            if (selected === null)
+                return;
+                
+            vm.showFormProduct = true;            
             vm.selectedProduct = selected[0];
             vm.selectedProduct.client = { id: vm.client.value };
             vm.selectedProduct.user = { id: vm.userId };
@@ -282,12 +288,11 @@
                 });
 
                 vm.clients = clients;
-                    
-                var nameExisting=  localStorage.clientName;
-                if(!nameExisting || nameExisting === "") return;
-                 
-                 console.log('leu lcient');
-                 selectedItemChangeClient(null, nameExisting);
+
+                var nameExisting = localStorage.clientName;
+                if (!nameExisting || nameExisting === "") return;
+                
+                selectedItemChangeClient(null, nameExisting);
 
             });
 
@@ -305,12 +310,11 @@
                     return { value: item.id, display: item.name };
                 });
                 vm.products = itens;
-                var nameExisting=  localStorage.productName;
-                if(!nameExisting || nameExisting === "") return;
-                 
-                 console.log('leu');
-                 selectedItemChangeProduct(null, nameExisting);
-                
+                var nameExisting = localStorage.productName;
+                if (!nameExisting || nameExisting === "") return;
+
+                selectedItemChangeProduct(null, nameExisting);
+
             });
 
         }
