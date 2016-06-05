@@ -19,6 +19,7 @@
         vm.selectedProduct = {};
         vm.selectedClient = {};
         vm.client = {};
+        vm.pendingToPayment = false;
         vm.showFormProduct = false;
         vm.showButtons = false;
         vm.showFormOrder = true;
@@ -69,7 +70,7 @@
             }
             if (clientName) {
                 vm.searchTextClient = clientName;
-                
+
 
             }
 
@@ -141,7 +142,8 @@
             var entrance = vm.order.entrance || 0;
             var total = angular.copy(vm.order.total_value);
             var totalWithDescount = vm.order.total_value - (discount + entrance);
-            vm.order.total_value = total; //total - totalWithDescount;
+            vm.orderTotal_value = total - discount; //total - totalWithDescount;
+            console.log('vm.order.total_value', vm.order.total_value);
             vm.order.pending_value = totalWithDescount;
             vm.showDetailOrder = true;
             vm.showFormPayment = false;
@@ -150,11 +152,19 @@
         function toPaymentOrder() {
             toggleForms();
             vm.order.total_value = 0;
-
+            vm.pending = false;
             vm.order.products.forEach(function (e) {
                 vm.order.total_value += parseFloat(e.quantity) * parseFloat(e.sale_cost);
+
             });
-            console.log('vm.order.total_value', vm.order.total_value);
+
+            for (var i = 0; i < vm.order.products.length; i++) {
+                var value = vm.order.products[i];
+                var pending = typeof (value.sendDate) !== "undefined";
+                if (pending) continue;
+
+                vm.pendingToPayment = pending;
+            }
         }
         function resetFields(form) {
             if (form) {
@@ -262,8 +272,8 @@
 
             if (selected === null)
                 return;
-                
-            vm.showFormProduct = true;            
+
+            vm.showFormProduct = true;
             vm.selectedProduct = selected[0];
             vm.selectedProduct.client = { id: vm.client.value };
             vm.selectedProduct.user = { id: vm.userId };
@@ -291,7 +301,7 @@
 
                 var nameExisting = localStorage.clientName;
                 if (!nameExisting || nameExisting === "") return;
-                
+
                 selectedItemChangeClient(null, nameExisting);
 
             });
@@ -319,7 +329,7 @@
 
         }
         /////////////////////////////////////
-
+        
 
 
 

@@ -5,14 +5,20 @@
                 <form name="productForm">
                     <div ng-show="vm.content.personalData">
                         <md-content class="md-padding">
-                            <md-autocomplete md-search-text-change="vm.searchTextChangeSupplier(vm.searchTextSupplier)" md-search-text="vm.searchTextSupplier"
-                                md-selected-item-change="vm.selectedItemChangeSupplier(item)" md-items="item in vm.querySearchSupplier(vm.searchTextSupplier)"
-                                md-item-text="item.display" md-min-length="0" placeholder="Digite o Nome do Fornecedor">
+                            <md-autocomplete
+                                 
+                                md-search-text-change="vm.searchTextChangeSupplier(vm.searchTextSupplier)" md-search-text="vm.searchTextSupplier"
+                                md-selected-item-change="vm.selectedItemChangeSupplier(item)" 
+                                md-items="item in vm.querySearchSupplier(vm.searchTextSupplier)"
+                                name="searchSupplier"
+                                md-item-text="item.display" md-min-length="0" placeholder="Digite o Nome do Fornecedor"
+                                ng-class="{'validate': productForm.searchSupplier.$touched}">
+                                
                                 <md-item-template>
                                     <span md-highlight-text="vm.searchTextSupplier" md-highlight-flags="^i">{{item.display}}</span>
                                 </md-item-template>
                                 <md-not-found>
-                                     "{{vm.searchTextSupplier}}" não encontrado.
+                                     <!--"{{vm.searchTextSupplier}}" não encontrado.-->
                                     <a ng-click="vm.newSupplier(vm.searchTextSupplier)">Cadastrar fornecedor agora</a>
                                 </md-not-found>
                             </md-autocomplete>

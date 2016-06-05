@@ -123,3 +123,6 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
 .negrito {
         font-weight: bold;
 }
+.ng-invalid-required, .ng-invalid{
+    border-bottom-color: #cc3838!important;
+}

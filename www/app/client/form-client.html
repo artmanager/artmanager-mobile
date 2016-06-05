@@ -8,7 +8,7 @@
                         <div layout-gt-sm="row">
                             <md-input-container class="md-block">
                                 <label>Nome</label>
-                                <input name="name" ng-model="vm.user.client.name" required>
+                                <input name="name" id="name" ng-model="vm.user.client.name" required>
                             </md-input-container>
                             <md-input-container class="md-block">
                                 <label>CPF/CNPJ</label>
@@ -29,7 +29,7 @@
                             <md-input-container class="md-block" flex-gt-sm >
                                 <label>Tipo de Telefone</label>
 
-                                <md-select ng-model="vm.user.phone[0].type" name="type" required>
+                                <md-select ng-model="vm.user.phone[0].type" name="type" required class="ng-invalid-required">
                                     <md-option ng-repeat="type in vm.phoneTypes" value="{{type.id}}">
                                         {{type.description}}
                                     </md-option>

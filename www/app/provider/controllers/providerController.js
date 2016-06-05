@@ -52,8 +52,9 @@
                 return;
             }
             localStorage.providerName = ""; 
-            $state.go('app.createOrder');
             vm.provider = {};
+            document.getElementsByName("name")[0].focus();
+            // $state.go('app.createOrder');
         }
         function onFail(obj) {
             LoadingPopup.hide();

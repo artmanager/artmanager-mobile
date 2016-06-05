@@ -87,7 +87,7 @@
 
                                 <div layout="row" layout-align="space-around end" ng-if="vm.showButtons">
                                     <md-button class="md-primary" ng-click="vm.addToOrder(form)" ng-if="vm.selectedProduct.id" ng-disabled="formOrder.$invalid">Adicionar ao pedido</md-button>
-                                    <md-button class="md-primary" ng-click="vm.toPaymentOrder()" ng-if="vm.order.products.length > 0" ng-disabled="formOrder.$invalid || vm.order.products.length === 0">Finalizar</md-button>
+                                    <md-button class="md-primary" ng-click="vm.toPaymentOrder()" ng-if="vm.order.products.length > 0">Finalizar</md-button>
                                 </div>
 
 
@@ -133,17 +133,22 @@
                     <input name="total" ng-model="vm.order.total_value" type="text" disabled ui-number-mask class="border-input-all">
                 </md-input-container>
                 <md-input-container class="md-block">
-                    <label>Valor Entrada</label>
-                    <input name="entrance" ng-model="vm.order.entrance" ui-number-mask type="text" class="border-input-all">
-                </md-input-container>
-                <md-input-container class="md-block">
                     <label>Desconto</label>
                     <input name="discount" ng-model="vm.order.discount" ui-number-mask type="text" class="border-input-all">
                 </md-input-container>
-
+                <md-input-container class="md-block">
+                    <label>Valor Entrada</label>
+                    <input name="entrance" ng-model="vm.order.entrance" 
+                    ui-number-mask type="text" class="border-input-all" required="vm.verifyPendingPayment">
+                    <br />
+                    <span ng-if="!vm.pendingToPayment">Pendente a ser pago: R$ {{vm.order.total_value - vm.order.entrance - vm.order.discount | number:2}} </span>
+                </md-input-container>
                 <div layout="row" layout-align="space-around end">
                     <md-button class="md-primary" ng-click="vm.backToFormOrder()">Voltar</md-button>
-                    <md-button class="md-primary" ng-click="vm.finishOrder()" ng-disabled="formPayment.$invalid">Finalizar</md-button>
+                    <md-button class="md-primary" ng-click="vm.finishOrder()" 
+                    ng-disabled="formPayment.$invalid || 
+                                (vm.order.total_value - vm.order.entrance - vm.order.discount| number:2 ) >0 ||
+                                (vm.order.total_value - vm.order.entrance - vm.order.discount | number:2) < 0">Finalizar</md-button>
                 </div>
             </form>
         </md-content>
@@ -204,7 +209,7 @@
                         </div>
                         <div layout="row">
                             <p flex class="md-headline negrito">Total:</p>
-                            <p flex class="col md-headline">R$ {{vm.order.total_value | number: 2}}</p>
+                            <p flex class="col md-headline">R$ {{vm.orderTotal_value | number: 2}}</p>
                         </div>
                         <div layout="row" layout-align="space-around end">
                             <md-button class="col md-primary" ng-click="vm.backToPayment()">Voltar</md-button>

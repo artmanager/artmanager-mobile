@@ -58,28 +58,7 @@
                 .then(function (params) {
                     return params.data;
                 });
-            // var deferred = $q.defer();
-            // var itens =
-            //     {
-            //         'success':
-            //         {
-            //             products:
-            //             [{
-            //                 id: 1,
-            //                 category: "Bolsas",
-            //                 supplier: "Maria",
-            //                 name: "Product Test",
-            //                 size: "20cm",
-            //                 weight: "20cm",
-            //                 describe: "Produto teste",
-            //                 cost: 25.2,
-            //                 sale_cost: 55.1,
-            //                 quantity: 20
-            //             }]
-            //         }
-            //     };
-            // deferred.resolve(itens);
-            // return deferred.promise;
+            
         }
 
         function createCategory(data) {
