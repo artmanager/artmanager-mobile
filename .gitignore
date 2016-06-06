@@ -6,3 +6,5 @@ node_modules/
 platforms/
 plugins/
 coverage/
+ArtManager-release*
+my-release-key*

@@ -8,7 +8,8 @@
         return {
             create: create,
             get: getItens,
-            updateStatus: updateStatus
+            updateStatus: updateStatus,
+            remove: remove
         };
         function create(order) {
             return $http({
@@ -20,7 +21,16 @@
                 return params.data;
             });
         }
-
+        function remove(obj) {
+            return $http({
+                method: 'DELETE',
+                url: ConstantsService.CREATE_ORDER_URL,
+                data: order,
+                headers: AuthService.headers()
+            }).then(function (params) {
+                return params.data;
+            });
+        }
         function getItens(obj) {
             // var itens = [{
             //     "id": "1212323323232113223321",
