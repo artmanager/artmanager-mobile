@@ -7,18 +7,18 @@
             Ordem:
         </div>
     </div>
-    <div flex="20">
+    <div flex="15">
         <a href="#" ng-click="ascending=true" class="filter-icon"><i class="fa fa-arrow-up"></i></a>
     </div>
     <div flex="20">
         <a href="#" ng-click="ascending=false" class="filter-icon"><i class="fa fa-arrow-down"></i></a>
     </div>
-    <div flex="10">
+    <div flex="11">
         <div class="md-title">
             Por:
         </div>
     </div>
-    <div flex="30">
+    <div flex="25">
         <md-select ng-model="order" class="md-title filter-select" aria-label="filter itens">
             <md-option ng-repeat="filter in filters" value="{{filter.value}}" ng-selected="{{filter.value === order}}">{{filter.desc}}</md-option>
         </md-select>

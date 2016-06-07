@@ -19,7 +19,6 @@
                                         <span md-highlight-text="vm.searchTextClient" md-highlight-flags="^i">{{item.display}}</span>
                                     </md-item-template>
                                     <md-not-found>
-                                        "{{vm.searchTextClient}}" não encontrado.
                                         <a ng-click="vm.newClient(vm.searchTextClient)">Cadastrar cliente agora</a>
                                     </md-not-found>
                                 </md-autocomplete>
@@ -38,7 +37,6 @@
                                             <span md-highlight-text="vm.searchTextProduct" md-highlight-flags="^i">{{item.display}}</span>
                                         </md-item-template>
                                         <md-not-found>
-                                            "{{vm.searchTextProduct}}" não encontrado.
                                             <a ng-click="vm.newProduct(vm.searchTextProduct)">Cadastrar produto agora</a>
                                         </md-not-found>
                                     </md-autocomplete>
@@ -100,7 +98,7 @@
 
             <md-list ng-if="vm.order.products.length > 0 && vm.showFormOrder">
 
-                <md-subheader class="md-no-sticky">Produtos selecionados no pedido</md-subheader>
+                <md-subheader class="md-no-sticky">Produtos do pedido</md-subheader>
                 <md-divider></md-divider>
                 <md-card ng-repeat="product in vm.order.products">
                     <md-card-content layout-align="space-between">
@@ -158,7 +156,7 @@
                 <md-card>
                     <md-toolbar class="item-list card-primary">
                         <div class="md-toolbar-tools">
-                            <h3 class="md-headline">  Pedido </h3>
+                            <h3 class="md-headline"> Pedido resumido</h3>
                         </div>
                     </md-toolbar>
 
@@ -181,14 +179,6 @@
                         <div layout="row">
                             <p flex class="col md-headline negrito">Fornecedor:</p>
                             <p flex class="col md-headline">{{product.supplier}}</p>
-                        </div>
-                        <div layout="row" ng-if="product.weight > 0">
-                            <p flex class="col md-headline negrito">Tamanho:</p>
-                            <p flex class="col md-headline">{{product.weight}} CM</p>
-                        </div>
-                        <div layout="row" ng-if="product.height > 0">
-                            <p flex class="col md-headline negrito">Peso:</p>
-                            <p flex class="col md-headline">{{product.height}} KG </p>
                         </div>
                         <md-divider></md-divider>
 

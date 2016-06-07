@@ -5,7 +5,7 @@
 
 > sudo npm rebuild node-sass 
 
-> sudo npm install
+> npm install
 
 testes
 > gulp tests
