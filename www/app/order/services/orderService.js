@@ -25,7 +25,7 @@
             return $http({
                 method: 'DELETE',
                 url: ConstantsService.CREATE_ORDER_URL,
-                data: order,
+                data: obj,
                 headers: AuthService.headers()
             }).then(function (params) {
                 return params.data;

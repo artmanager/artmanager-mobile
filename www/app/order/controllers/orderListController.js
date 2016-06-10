@@ -19,7 +19,7 @@
         vm.search = search;
         vm.initialDate = null;
         vm.finalDate = null;
-        vm.remove = remove;
+        vm.removeOrder = remove;
         var count = 0;
 
         (function init() {
@@ -31,11 +31,19 @@
         function search() {
             loadOrders();
         }
-        function remove(obj) {
-            
+        function remove(id) {
+            var remove = confirm('Deseja deletar o pedido selecionado ? ');
+            if (!remove) return;
+            OrderService.remove({ 'id': id }).then(function (r) {
+                console.log(r);
+                if (r.success)
+                    toastr.success('Pedido removido com sucesso!');
+                else if (r.error)
+                    toastr.error('Não foi possivel remover o item');
+            });
         }
         function mapCountProducts(item) {
-            
+
             item.order.products.map(filterCountProducts);
             item.countProducts = item.order.products.length;
             return item;
@@ -61,18 +69,41 @@
                 'dt_to': finalDate.toISOString()
             };
             vm.items = [];
-            console.log('obj', obj);
-            OrderService.get(obj).then(function (items) {
-                LoadingPopup.hide();
-                var orders = items.success;
-                console.log('items.success', items.success);
-                if (!orders) return;
-                vm.items = orders
-                    .map(mapItens)
-                    .map(mapCountProducts);
-                vm.itemsFilter = angular.copy(vm.items);
+            vm.items = [{
+                "id": "1212323323232113223321",
+                "creationdate": "2016-05-13T21:58:44.925Z",
+                "user": { "name": "erick wendel" },
+                "client": { name: "gustavo", email: ' erick@erick.com', phone: 213213 },
+                "order": {
+                    "products": [{
+                        id_production: 1,
+                        supplier: '‘nome’',
+                        delivery_date: new Date(),
+                        name: '“gustavo”',
+                        height: '123',
+                        weight: '32132',
+                        describe: "roupa 123",
+                        quantity: 123,
+                        percentage: 100
+                    }],
+                    "discount": 5.5,
+                    "entrance": 11.00,
+                    "total": 65.00,
+                    "pendingfallback": false
+                }
+            }];
+            // console.log('obj', obj);
+            // OrderService.get(obj).then(function (items) {
+            //     LoadingPopup.hide();
+            //     var orders = items.success;
+            //     console.log('items.success', items.success);
+            //     if (!orders) return;
+            //     vm.items = orders
+            //         .map(mapItens)
+            //         .map(mapCountProducts);
+            //     vm.itemsFilter = angular.copy(vm.items);
 
-            });
+            // });
         }
         function getFilters() {
             var filters = [];

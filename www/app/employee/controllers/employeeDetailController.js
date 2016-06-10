@@ -11,6 +11,7 @@
         vm.dateRef = getDateRef();
         
         function getDateRef() {
+            if(!vm.item.month) return "";
             var month = vm.item.month >= 10 ? vm.item.month : "0"+vm.item.month ;
             return month + "/"+vm.item.year; 
         }

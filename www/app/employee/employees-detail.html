@@ -20,7 +20,7 @@
                         </div>
                         <div layout="row">
                             <p flex class="col md-headline negrito">Valor total:</p>
-                            <p flex class="col md-headline">R$ {{vm.item.total}}</p>
+                            <p flex class="col md-headline">R$ {{vm.item.total || 0 | number:2}}</p>
                         </div>
                         
                         <md-divider></md-divider>

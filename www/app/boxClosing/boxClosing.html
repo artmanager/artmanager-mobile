@@ -17,7 +17,7 @@
                         <md-toolbar class="item-list card-primary">
                             <div class="md-toolbar-tools">
                                 <div class="row">
-                                    <h3 flex class="md-headline col "> Fechamento de Caixa </h3>
+                                    <h3 flex class="md-headline col "> Fechamento de Caixa:  </h3>
                                     <i flex class="fa fa-chevron-right col col-10"></i>
 
                                 </div>
@@ -26,7 +26,10 @@
                         </md-toolbar>
 
                         <md-card-content layout-align="space-between">
-
+                            <div layout="row">
+                                <p flex class="col md-headline negrito">Data de Referência:</p>
+                                <p flex class="col md-headline ">{{item.date}}</p>
+                            </div>
                             <div layout="row">
                                 <p flex class="col md-headline negrito">Total:</p>
                                 <p flex class="col md-headline ">R$ {{item.total | number: 2}}</p>
@@ -73,13 +76,12 @@
                     <md-button class="md-primary col col-10" ng-click="vm.search()"><i class="fa fa-search" aria-hidden="true"></i></md-button>
                 </div>
                 <ion-list>
-
+                    
                     <md-card ng-repeat="item in vm.products | orderBy:order:ascending" ng-if="vm.products.length > 0">
                         <md-toolbar class="item-list card-primary">
                             <div class="md-toolbar-tools">
                                 <div class="row">
                                     <h3 flex class="md-headline col "> {{item.name}} </h3>
-                                    <i flex class="fa fa-chevron-right col col-10"></i>
 
                                 </div>
 
@@ -87,18 +89,21 @@
                         </md-toolbar>
 
                         <md-card-content layout-align="space-between">
-
+                        <div layout="row">
+                                <p flex class="col md-headline negrito">Data de Referência:</p>
+                                <p flex class="col md-headline "> {{item.date}}</p>
+                            </div>
                             <div layout="row">
                                 <p flex class="col md-headline negrito">Quantidade:</p>
-                                <p flex class="col md-headline "> {{item.quantity}} unidade{{item.quantity > <1></1> ? "s" : ""}}</p>
+                                <p flex class="col md-headline "> {{item.quantity || 0}} unidade{{item.quantity > 1 ? "s" : ""}}</p>
                             </div>
                             <div layout="row">
                                 <p flex class="col md-headline negrito">Preço de Custo:</p>
-                                <p flex class="col md-headline ">R$ {{item.sale_cost | number: 2}}</p>
+                                <p flex class="col md-headline ">R$ {{item.sale_cost || 0 | number: 2}}</p>
                             </div>
                             <div layout="row">
                                 <p flex class="col md-headline negrito">Preço de Venda:</p>
-                                <p flex class="col md-headline ">R$ {{item.sale_price | number: 2}}</p>
+                                <p flex class="col md-headline ">R$ {{item.sale_price || 0 | number: 2}}</p>
                             </div>
 
                         </md-card-content>

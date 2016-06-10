@@ -93,7 +93,7 @@
             LoadingPopup.hide();
             console.log('result.success', result.success);
             var itens = result.success.map(function (item) {
-                item.date = getDateRef(item.month, item.year);
+                if(item.month) item.date = getDateRef(item.month, item.year);
                 return item;
             });
 
