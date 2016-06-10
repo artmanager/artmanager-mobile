@@ -158,13 +158,15 @@
 
             });
 
-            for (var i = 0; i < vm.order.products.length; i++) {
-                var value = vm.order.products[i];
-                var pending = typeof (value.sendDate) !== "undefined";
-                if (pending) continue;
+            vm.order.products.forEach(function (value) {
+                var pendingGet = typeof (value.sendDate) !== "undefined";
+                console.log('pendingGet', pendingGet);
+                console.log('value.sendDate', value.sendDate);
+                vm.pendingToPayment = !pendingGet;
+                if (pendingGet) return;
 
-                vm.pendingToPayment = pending;
-            }
+            });
+            
         }
         function resetFields(form) {
             if (form) {
@@ -329,7 +331,7 @@
 
         }
         /////////////////////////////////////
-        
+
 
 
 

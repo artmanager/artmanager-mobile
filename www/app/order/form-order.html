@@ -137,16 +137,17 @@
                 <md-input-container class="md-block">
                     <label>Valor Entrada</label>
                     <input name="entrance" ng-model="vm.order.entrance" 
-                    ui-number-mask type="text" class="border-input-all" required="vm.verifyPendingPayment">
+                    ui-number-mask type="text" class="border-input-all" ng-required="vm.pendingToPayment">
                     <br />
-                    <span ng-if="!vm.pendingToPayment">Pendente a ser pago: R$ {{vm.order.total_value - vm.order.entrance - vm.order.discount | number:2}} </span>
+                    <span ng-if="vm.pendingToPayment">Pendente a ser pago: R$ {{vm.order.total_value - vm.order.entrance - vm.order.discount | number:2}} </span>
                 </md-input-container>
                 <div layout="row" layout-align="space-around end">
                     <md-button class="md-primary" ng-click="vm.backToFormOrder()">Voltar</md-button>
                     <md-button class="md-primary" ng-click="vm.finishOrder()" 
                     ng-disabled="formPayment.$invalid || 
-                                (vm.order.total_value - vm.order.entrance - vm.order.discount| number:2 ) >0 ||
-                                (vm.order.total_value - vm.order.entrance - vm.order.discount | number:2) < 0">Finalizar</md-button>
+                                vm.pendingToPayment &&
+                                ((vm.order.total_value - vm.order.entrance - vm.order.discount| number:2 ) > 0 ||
+                                (vm.order.total_value - vm.order.entrance - vm.order.discount | number:2) < 0)">Finalizar</md-button>
                 </div>
             </form>
         </md-content>
@@ -156,7 +157,7 @@
                 <md-card>
                     <md-toolbar class="item-list card-primary">
                         <div class="md-toolbar-tools">
-                            <h3 class="md-headline"> Pedido resumido</h3>
+                            <h3 class="md-headline"> Resumo do Pedido</h3>
                         </div>
                     </md-toolbar>
 

@@ -19,7 +19,7 @@
         vm.search = search;
         vm.initialDate = null;
         vm.finalDate = null;
-
+        vm.remove = remove;
         var count = 0;
 
         (function init() {
@@ -30,6 +30,9 @@
         })();
         function search() {
             loadOrders();
+        }
+        function remove(obj) {
+            
         }
         function mapCountProducts(item) {
             
