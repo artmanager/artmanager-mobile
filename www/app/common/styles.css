@@ -66,11 +66,22 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
         margin-left: -50px; 
     } 
 }
-
-#select_value_label_0 > span > div,
-#select_value_label_6 > span > div {
+md-select-value.md-select-value {
+    padding-top: 0;
+    margin-top: 0;
+    padding-left: 10%;
+    padding-right: 0;
     color: white;
+    border-bottom-style: hidden;
 }
+md-select-value.md-select-value > span > div,
+.md-select-icon {
+    color: white;
+    
+}
+/*#select_value_label_0 > span > div,
+#select_value_label_6 > span > div {
+}*/
 #content > ion-nav-view > ion-view > ion-content > div.scroll > md-content > div > md-content > md-list > md-list-item > button > md-checkbox > div.md-container.md-ink-ripple {
     top: -5px;
 }   
@@ -125,4 +136,11 @@ body > ion-nav-view > div > div > md-sidenav, .menu-content{
 }
 .ng-invalid-required, .ng-invalid{
     border-bottom-color: #cc3838!important;
+}
+.md-headline {
+    font-size: 20px!important;
+    line-height: 25px!important;
+}
+.md-title {
+    font-size: 16px!important;
 }

@@ -14,26 +14,22 @@
         vm.itemsFilter = [];
         vm.search = search;
         vm.filters = getFilters();
-
+        vm.dateSearch = getDateSearch();
         (function init() {
             loadProducts();
         })();
 
         function search() {
             loadProducts();
-            // var itens = angular.copy(vm.itemsFilter);
+             
 
-            // var initialDate = vm.initialDate || new Date(0);
-            // var finalDate = vm.finalDate || new Date();
-
-            // var filteredItens = itens.filter(function (item) {
-            //     var dateItem = new Date(item.creationDate);
-            //     return dateItem >= initialDate && dateItem <= finalDate;
-
-            // });
-            // console.log('filteredItens', filteredItens);
-            // vm.items = filteredItens;
-
+        }
+        function getDateSearch() {
+            var initialDate = vm.initialDate || undefined;
+            var finalDate = vm.finalDate || undefined;
+            var str = initialDate ? initialDate.toLocaleDateString() : "";
+            str += finalDate ? ((initialDate ? " a " : "") + finalDate.toLocaleDateString()) : "";
+            return str;
         }
         function loadProducts() {
             LoadingPopup.show();
@@ -43,6 +39,8 @@
                 'dt_from': initialDate.toISOString(),
                 'dt_to': finalDate.toISOString()
             };
+            vm.dateSearch = getDateSearch();
+
             ProductService.report(obj).then(function (itens) {
                 LoadingPopup.hide();
                 console.log('itens', itens);

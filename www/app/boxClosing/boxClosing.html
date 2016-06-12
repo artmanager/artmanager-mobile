@@ -1,7 +1,6 @@
 <ion-view name="boxclosing-view">
-    <ion-content>
-        <ion-scroll>
-        <md-content ng-if="vm.showBoxClosing">
+    <ion-content overflow-scroll="true">
+        <md-content ng-if="vm.showBoxClosing" flex>
 
             <filter-grid filters="vm.filters"></filter-grid>
             <md-content>
@@ -11,63 +10,63 @@
                     <md-datepicker ng-model="vm.finalDate" md-placeholder="Fim" class="col"></md-datepicker>
                     <md-button class="md-primary col col-10" ng-click="vm.search()"><i class="fa fa-search" aria-hidden="true"></i></md-button>
                 </div>
-                <ion-list>
+                <md-list>
+                    <ion-scroll>
 
-                    <md-card ng-repeat="item in vm.items| orderBy:order:ascending" ng-if="vm.items.length > 0" ng-click="vm.showReportProducts()">
-                        <md-toolbar class="item-list card-primary">
-                            <div class="md-toolbar-tools">
-                                <div class="row">
-                                    <h3 flex class="md-headline col "> Fechamento de Caixa:  </h3>
-                                    <i flex class="fa fa-chevron-right col col-10"></i>
+                        <md-card ng-repeat="item in vm.items| orderBy:order:ascending" ng-if="vm.items.length > 0" ng-click="vm.showReportProducts()">
+                            <md-toolbar class="item-list card-primary">
+                                <div class="md-toolbar-tools">
+                                    <div class="row">
+                                        <h3 flex class="md-headline col "> Fechamento de Caixa: </h3>
+                                        <i flex class="fa fa-chevron-right col col-10"></i>
+
+                                    </div>
 
                                 </div>
+                            </md-toolbar>
 
-                            </div>
-                        </md-toolbar>
+                            <md-card-content layout-align="space-between">
+                                <div layout="row" ng-if="item.date !== ''">
+                                    <p flex class="col md-headline negrito">Mês/Ano:</p>
+                                    <p flex class="col md-headline ">{{item.date}}</p>
+                                </div>
+                                <div layout="row">
+                                    <p flex class="col md-headline negrito">Descontos:</p>
+                                    <p flex class="col md-headline ">R$ {{item.total_discount | number: 2}}</p>
+                                </div>
+                                <div layout="row">
+                                    <p flex class="col md-headline negrito">Total Bruto:</p>
+                                    <p flex class="col md-headline ">R$ {{item.total | number: 2}}</p>
+                                </div>
+                                
+                                <div layout="row">
+                                    <p flex class="col md-headline negrito">Total Liquido:</p>
+                                    <p flex class="col md-headline ">R$ {{item.total_liquid | number: 2}}</p>
+                                </div>
+                                
+                                <div layout="row">
+                                    <p flex class="col md-headline negrito">Produtos Vendidos:</p>
+                                    <p flex class="col md-headline ">{{item.totalsaleproducts}} unidades</p>
+                                </div>
 
-                        <md-card-content layout-align="space-between">
-                            <div layout="row">
-                                <p flex class="col md-headline negrito">Data de Referência:</p>
-                                <p flex class="col md-headline ">{{item.date}}</p>
-                            </div>
-                            <div layout="row">
-                                <p flex class="col md-headline negrito">Total:</p>
-                                <p flex class="col md-headline ">R$ {{item.total | number: 2}}</p>
-                            </div>
-                            <div layout="row">
-                                <p flex class="col md-headline negrito">Total Liquido:</p>
-                                <p flex class="col md-headline ">R$ {{item.total_liquid | number: 2}}</p>
-                            </div>
-                            <div layout="row">
-                                <p flex class="col md-headline negrito">Total Descontos:</p>
-                                <p flex class="col md-headline ">R$ {{item.total_discount | number: 2}}</p>
-                            </div>
-                            <div layout="row">
-                                <p flex class="col md-headline negrito">Comissoes:</p>
-                                <p flex class="col md-headline ">R$ {{item.totalCommission | number: 2}}</p>
-                            </div>
+                                <div layout="row">
+                                    <p flex class="col md-headline negrito">Produtos Produzidos:</p>
+                                    <p flex class="col md-headline ">{{item.totalproductionproducts}} unidades</p>
+                                </div>
 
-                            <div layout="row">
-                                <p flex class="col md-headline negrito">Produtos Vendidos:</p>
-                                <p flex class="col md-headline ">{{item.totalsaleproducts}} unidades</p>
-                            </div>
+                                <div layout="row">
+                                    <p flex class="col md-headline negrito">Produtos Pendentes:</p>
+                                    <p flex class="col md-headline ">{{item.totalproductionpending}} unidades</p>
+                                </div>
 
-                            <div layout="row">
-                                <p flex class="col md-headline negrito">Produtos Produzidos:</p>
-                                <p flex class="col md-headline ">{{item.totalproductionproducts}} unidades</p>
-                            </div>
 
-                            <div layout="row">
-                                <p flex class="col md-headline negrito">Produtos Pendentes:</p>
-                                <p flex class="col md-headline ">{{item.totalproductionpending}} unidades</p>
-                            </div>
-
-                        </md-card-content>
-                    </md-card>
-                </ion-list>
+                            </md-card-content>
+                        </md-card>
+                    </ion-scroll>
+                </md-list>
             </md-content>
         </md-content>
-        <md-content ng-if="!vm.showBoxClosing">
+        <md-content ng-if="!vm.showBoxClosing" flex>
             <md-content>
                 <div class="row">
                     <md-datepicker ng-model="vm.initialDate" md-placeholder="Inicio" class="col"></md-datepicker>
@@ -75,7 +74,8 @@
                     <md-datepicker ng-model="vm.finalDate" md-placeholder="Fim" class="col"></md-datepicker>
                     <md-button class="md-primary col col-10" ng-click="vm.search()"><i class="fa fa-search" aria-hidden="true"></i></md-button>
                 </div>
-                <ion-list>
+                <md-list>
+                    <ion-scroll>
                     
                     <md-card ng-repeat="item in vm.products | orderBy:order:ascending" ng-if="vm.products.length > 0">
                         <md-toolbar class="item-list card-primary">
@@ -89,10 +89,10 @@
                         </md-toolbar>
 
                         <md-card-content layout-align="space-between">
-                        <div layout="row">
-                                <p flex class="col md-headline negrito">Data de Referência:</p>
+                            <!--<div layout="row" ng-if="item.date !== ''">
+                                <p flex class="col md-headline negrito">Mês/Ano:</p>
                                 <p flex class="col md-headline "> {{item.date}}</p>
-                            </div>
+                            </div>-->
                             <div layout="row">
                                 <p flex class="col md-headline negrito">Quantidade:</p>
                                 <p flex class="col md-headline "> {{item.quantity || 0}} unidade{{item.quantity > 1 ? "s" : ""}}</p>
@@ -108,13 +108,13 @@
 
                         </md-card-content>
                     </md-card>
-                </ion-list>
+                    </ion-scroll>
+                </md-list>
                 <div layout="row" layout-align="space-around end">
                     <md-button class="md-primary" ng-click="vm.back()">Voltar</md-button>
                 </div>
             </md-content>
         </md-content>
-        </ion-scroll>
     </ion-content>
 
 

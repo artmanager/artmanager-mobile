@@ -16,129 +16,131 @@
         </md-toolbar>
 
         <div layout="row" flex>
+
             <md-sidenav style="overflow-y: scroll" layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
 
-                <div layout="row" layout-padding>
-                    <md-card>
-                        <img src="img/logo-extended.png" class="md-card-image menu-image" alt="image caption">
-                    </md-card>
+                <div layout="row">
+                    <!--<md-card>-->
+                    <img src="img/logo-extended.png" class="md-card-image menu-image" alt="image caption">
+                    <!--</md-card>-->
 
                 </div>
+                <div layout="row">
 
+                    <md-menu-sidenav>
+                        <md-menu-sidenav-item flex="33" ng-click="vm.closeSidenav('left')" ui-sref="app.production">
+                            <md-menu-sidenav-title>
 
-                <md-menu-sidenav>
-                    <md-menu-sidenav-item ng-click="vm.closeSidenav('left')" ui-sref="app.production">
-                        <md-menu-sidenav-title>
+                                <md-icon ></md-icon>
+                                <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i>Dashboard Produção</h1>
+                                
+                            </md-menu-sidenav-title>
+                        </md-menu-sidenav-item>
+                        <md-menu-sidenav-item ng-click="vm.closeSidenav('left')" ui-sref="app.createOrder">
+                            <md-menu-sidenav-title>
 
-                            <md-icon flex="15"></md-icon>
-                            <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i>Dashboard Produção</h1>
-
-                        </md-menu-sidenav-title>
-                    </md-menu-sidenav-item>
-                    <md-menu-sidenav-item ng-click="vm.closeSidenav('left')" ui-sref="app.createOrder">
-                        <md-menu-sidenav-title>
-
-                            <md-icon flex="15"></md-icon>
-                            <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i>Novo Pedido</h1>
-
-                        </md-menu-sidenav-title>
-                    </md-menu-sidenav-item>
-                    <md-menu-sidenav-item ng-click="vm.closeSidenav('left')" ui-sref="app.orders">
-                        <md-menu-sidenav-title>
-
-                            <md-icon flex="15"></md-icon>
-                            <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i>Consultar Pedidos</h1>
-
-                        </md-menu-sidenav-title>
-                    </md-menu-sidenav-item>
-                    <md-menu-sidenav-item>
-                        <md-menu-sidenav-title>
-                            <md-toogle-menu layout="row" flex>
                                 <md-icon flex="15"></md-icon>
+                                <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i>Novo Pedido</h1>
 
-                                <h1 class="md-heading md-primary" flex><i class="fa fa-plus fa-stack"></i>Cadastros</h1>
+                            </md-menu-sidenav-title>
+                        </md-menu-sidenav-item>
+                        <md-menu-sidenav-item ng-click="vm.closeSidenav('left')" ui-sref="app.orders">
+                            <md-menu-sidenav-title>
+
                                 <md-icon flex="15"></md-icon>
-                            </md-toogle-menu>
+                                <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i>Consultar Pedidos</h1>
 
-                        </md-menu-sidenav-title>
+                            </md-menu-sidenav-title>
+                        </md-menu-sidenav-item>
+                        <md-menu-sidenav-item>
+                            <md-menu-sidenav-title>
+                                <md-toogle-menu layout="row" flex>
+                                    <md-icon flex="15"></md-icon>
 
-                        <md-menu-sidenav-content>
-                            <md-menu-sidenav-subitem ui-sref="app.createProduct" ng-click="vm.closeSidenav('left')">
-                                <md-icon flex="15"></md-icon>
-                                <i class="fa fa-arrow-right fa-stack"></i>Cadastrar Produtos
-                            </md-menu-sidenav-subitem>
-                            <md-menu-sidenav-subitem ui-sref="app.createUser" ng-click="vm.closeSidenav('left')">
-                                <md-icon flex="15"></md-icon>
-                                <span></span><i class="fa fa-arrow-right fa-stack"></i>Cadastrar Usuário
-                            </md-menu-sidenav-subitem>
+                                    <h1 class="md-heading md-primary" flex><i class="fa fa-plus fa-stack"></i>Cadastros</h1>
+                                    <md-icon flex="15"></md-icon>
+                                </md-toogle-menu>
 
-                            <md-menu-sidenav-subitem ui-sref="app.createClient" ng-click="vm.closeSidenav('left')">
-                                <md-icon flex="15"></md-icon>
-                                <i class="fa fa-arrow-right fa-stack"></i>Cadastrar Cliente
-                            </md-menu-sidenav-subitem>
-                            <md-menu-sidenav-subitem ui-sref="app.createProvider" ng-click="vm.closeSidenav('left')">
-                                <md-icon flex="15"></md-icon>
-                                <i class="fa fa-arrow-right fa-stack"></i>Cadastrar Fornecedor
-                            </md-menu-sidenav-subitem>
-                        </md-menu-sidenav-content>
-                    </md-menu-sidenav-item>
+                            </md-menu-sidenav-title>
 
-                    <md-menu-sidenav-item>
-                        <md-menu-sidenav-title>
-                            <md-toogle-menu layout="row" class="md-primary" flex>
-                                <md-icon flex="15"></md-icon>
-                                <h1 class="md-heading" flex><i class="fa fa-bar-chart fa-stack"></i>Relatórios</h1>
+                            <md-menu-sidenav-content>
+                                <md-menu-sidenav-subitem ui-sref="app.createProduct" ng-click="vm.closeSidenav('left')">
+                                    <md-icon flex="15"></md-icon>
+                                    <i class="fa fa-arrow-right fa-stack"></i>Cadastrar Produtos
+                                </md-menu-sidenav-subitem>
+                                <md-menu-sidenav-subitem ui-sref="app.createUser" ng-click="vm.closeSidenav('left')">
+                                    <md-icon flex="15"></md-icon>
+                                    <span></span><i class="fa fa-arrow-right fa-stack"></i>Cadastrar Usuário
+                                </md-menu-sidenav-subitem>
 
-                            </md-toogle-menu>
+                                <md-menu-sidenav-subitem ui-sref="app.createClient" ng-click="vm.closeSidenav('left')">
+                                    <md-icon flex="15"></md-icon>
+                                    <i class="fa fa-arrow-right fa-stack"></i>Cadastrar Cliente
+                                </md-menu-sidenav-subitem>
+                                <md-menu-sidenav-subitem ui-sref="app.createProvider" ng-click="vm.closeSidenav('left')">
+                                    <md-icon flex="15"></md-icon>
+                                    <i class="fa fa-arrow-right fa-stack"></i>Cadastrar Fornecedor
+                                </md-menu-sidenav-subitem>
+                            </md-menu-sidenav-content>
+                        </md-menu-sidenav-item>
 
-                        </md-menu-sidenav-title>
-                        <md-menu-sidenav-content>
-                            <!--<md-menu-sidenav-subitem ng-click="vm.closeSidenav('left')">
+                        <md-menu-sidenav-item>
+                            <md-menu-sidenav-title>
+                                <md-toogle-menu layout="row" class="md-primary" flex>
+                                    <md-icon flex="15"></md-icon>
+                                    <h1 class="md-heading" flex><i class="fa fa-bar-chart fa-stack"></i>Relatórios</h1>
+
+                                </md-toogle-menu>
+
+                            </md-menu-sidenav-title>
+                            <md-menu-sidenav-content>
+                                <!--<md-menu-sidenav-subitem ng-click="vm.closeSidenav('left')">
                                 <md-icon flex="15"></md-icon>
                                 <i class="fa fa-arrow-right fa-stack"></i> Relatório de Caixa
                             </md-menu-sidenav-subitem>-->
-                            <md-menu-sidenav-subitem ui-sref="app.products" ng-click="vm.closeSidenav('left')">
-                                <md-icon flex="15"></md-icon>
-                                <i class="fa fa-arrow-right fa-stack"></i>Produtos Vendidos
-                            </md-menu-sidenav-subitem>
-                            <!--todo: remover esse item das controllers -->
-                            <!--<md-menu-sidenav-subitem ng-click="vm.closeSidenav('left')" ui-sref="app.productsCount">
+                                <md-menu-sidenav-subitem ui-sref="app.products" ng-click="vm.closeSidenav('left')">
+                                    <md-icon flex="15"></md-icon>
+                                    <i class="fa fa-arrow-right fa-stack"></i>Produtos Vendidos
+                                </md-menu-sidenav-subitem>
+                                <!--todo: remover esse item das controllers -->
+                                <!--<md-menu-sidenav-subitem ng-click="vm.closeSidenav('left')" ui-sref="app.productsCount">
                                 <md-icon flex="15"></md-icon>
                                 <i class="fa fa-arrow-right fa-stack"></i> Relatório de Produtos Vendidos
                             </md-menu-sidenav-subitem>-->
-                            <md-menu-sidenav-subitem ui-sref="app.employees" ng-click="vm.closeSidenav('left')">
-                                <md-icon flex="15"></md-icon>
-                                <i class="fa fa-arrow-right fa-stack"></i>Fornecedores
-                            </md-menu-sidenav-subitem>
+                                <md-menu-sidenav-subitem ui-sref="app.employees" ng-click="vm.closeSidenav('left')">
+                                    <md-icon flex="15"></md-icon>
+                                    <i class="fa fa-arrow-right fa-stack"></i>Fornecedores
+                                </md-menu-sidenav-subitem>
 
-                        </md-menu-sidenav-content>
-                    </md-menu-sidenav-item>
+                            </md-menu-sidenav-content>
+                        </md-menu-sidenav-item>
 
-                    <md-menu-sidenav-item ui-sref="app.boxClosing" ng-click="vm.closeSidenav('left')">
-                        <md-menu-sidenav-title>
-                            <md-toogle-menu layout="row" class="md-primary" flex>
+                        <md-menu-sidenav-item ui-sref="app.boxClosing" ng-click="vm.closeSidenav('left')">
+                            <md-menu-sidenav-title>
+                                <md-toogle-menu layout="row" class="md-primary" flex>
 
-                                <md-icon flex="15"></md-icon>
-                                <h1 class="md-heading" flex><i class="fa fa-desktop fa-stack"></i>Caixa</h1>
+                                    <md-icon flex="15"></md-icon>
+                                    <h1 class="md-heading" flex><i class="fa fa-desktop fa-stack"></i>Caixa</h1>
 
-                            </md-toogle-menu>
+                                </md-toogle-menu>
 
-                        </md-menu-sidenav-title>
-                    </md-menu-sidenav-item>
+                            </md-menu-sidenav-title>
+                        </md-menu-sidenav-item>
 
-                    <md-menu-sidenav-item ui-sref="login" ng-click="vm.closeSidenav('left')">
-                        <md-menu-sidenav-title>
-                            <md-toogle-menu layout="row" class="md-primary" flex>
-                                <md-icon flex="15"></md-icon>
+                        <md-menu-sidenav-item ui-sref="login" ng-click="vm.closeSidenav('left')">
+                            <md-menu-sidenav-title>
+                                <md-toogle-menu layout="row" class="md-primary" flex>
+                                    <md-icon flex="15"></md-icon>
 
-                                <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i>Sair</h1>
+                                    <h1 class="md-heading" flex><i class="fa fa-sign-out fa-stack"></i>Sair</h1>
 
-                            </md-toogle-menu>
+                                </md-toogle-menu>
 
-                        </md-menu-sidenav-title>
-                    </md-menu-sidenav-item>
-                    </md-card>
-                </md-menu-sidenav>
+                            </md-menu-sidenav-title>
+                        </md-menu-sidenav-item>
+                        </md-card>
+                    </md-menu-sidenav>
+                </div>
             </md-sidenav>
 
             <div layout="column" flex id="content">

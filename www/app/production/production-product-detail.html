@@ -1,61 +1,57 @@
 <ion-view>
-    <ion-content>
-        <md-content layout-padding>
-            <div class="row">
-                <md-slider flex md-discrete
-                class="md-primary" 
-                ng-model="vm.item.percentage" step="25" min="0" max="100" aria-label="rating">
+    <ion-content overflow-scroll="true">
+        <md-content flex>
+            <div layout="row" layout-padding>
+                <br />
+                <md-slider flex md-discrete class="md-primary" ng-model="vm.item.percentage" step="25" min="0" max="100" aria-label="rating">
                 </md-slider>
                 <span>{{vm.item.percentage}}%</span>
                 <md-button class="md-raised md-primary" ng-click="vm.updateStatus()">Atualizar Produção</md-button>
             </div>
-            <md-card>
-                <md-toolbar class="item-list card-primary">
-                    <div class="md-toolbar-tools">
-                        <h3 class="md-headline">  Produto: {{vm.item.name}} </h3>
-                    </div>
-                </md-toolbar>
+            <md-content flex layout-align="space-between">
+                <md-card>
+                    <md-toolbar class="item-list card-primary">
+                        <div class="md-toolbar-tools">
+                            <h3 class="md-headline"> Produto: {{vm.item.name}} </h3>
+                        </div>
+                    </md-toolbar>
+                    <ion-scroll>
+                        <md-card-content >
+                            <div layout="row">
+                                <p flex class="col md-headline negrito">Cliente:</p>
+                                <p flex class="col md-headline">{{vm.item.client}}</p>
+                            </div>
 
-                <md-card-content layout-align="center center" class="item">
+                            <div layout="row">
+                                <p flex class="col md-headline negrito">Fornecedor:</p>
+                                <p flex class="col md-headline">{{vm.item.supplier}}</p>
+                            </div>
 
-                    <div class="row">
-                        <h3 class="col md-headline"><strong>Cliente:</strong></h3>
-                        <p class="col md-headline">{{vm.item.client}}</p>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <h3 class="col md-headline"><strong>Fornecedor:</strong> </h3>
-                        <p class="col md-headline">{{vm.item.supplier}}</p>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <h3 class="col md-headline"> <strong>Peso:</strong> </h3>
-                        <p class="col md-headline">{{vm.item.weight}} KG </p>
-                    </div>
-                    <hr />
-                    <div layout="row">
-                        <h3 class="col md-headline"> <strong>Tamanho:</strong> </h3>
-                        <p class="col md-headline">{{vm.item.height}} CM</p>
-                    </div>
-                    <hr />
-                    <div layout="row">
-                        <h3 class="col md-headline"> <strong>Descrição:</strong> </h3>
-                    </div>
-                    <div layout="column" style="-ms-word-wrap: break-word; word-wrap: break-word; display:inline-flexbox">
-                        
-                        <p class="col span-input-active  md-headline">{{ vm.item.describe}}</p>
-                    </div>
-                    <hr />
-                    <div layout="row">
-                        <h3 class="col md-headline"><strong>Entrega:</strong> </h3>
-                        <p class="col md-headline">{{ vm.item.date }} </p>
-                        
-                    </div>
-                </md-card-content>
+                            <div layout="row">
+                                <p flex class="col md-headline negrito">Cliente:</p>
+                                <p flex class="col md-headline">{{vm.item.client}}</p>
+                            </div>
+                            <div layout="row">
+                                <p flex class="col md-headline negrito">Entrega:</p>
+                                <p flex class="col md-headline">{{vm.item.date}}</p>
+                            </div>
+                            <div layout="row">
+                                <p flex class="col md-headline negrito">Descrição: </p>
+                            </div>
+                            <div layout="column">
+                                <p class="col span-input-active  md-headline">{{ vm.item.describe}}</p>
+                            </div>
+                        </md-card-content>
 
-            </md-card>
-            <md-button class="md-raised md-primary back-button-margin" ng-click="vm.back()">Voltar</md-button>
-            
+                        <div layout="row">
+                            <md-button class="md-raised md-primary back-button-margin" ng-click="vm.back()">Voltar</md-button>
+
+                        </div>
+                    </ion-scroll>
+                </md-card>
+
+            </md-content>
+            </ion-scroll>
         </md-content>
 
 

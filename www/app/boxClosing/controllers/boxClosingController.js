@@ -14,11 +14,19 @@
         vm.search = search;
         vm.filters = getFilters();
         vm.dateRef = getDateRef;
+        vm.dateItems = null;
         vm.products = [];
         vm.back = back;
         (function init() {
             loadBoxItens();
         })();
+        function getDateRef() {
+            var initialDate = vm.initialDate || undefined;
+            var finalDate = vm.finalDate || undefined;
+            var str = initialDate ? initialDate.toLocaleDateString() : "";
+            str += finalDate ? ((initialDate ? " a " : "") + finalDate.toLocaleDateString()) : "";
+            return str;
+        }
         function loadBoxItens() {
             LoadingPopup.show();
             var obj = getObjectFilter();
@@ -33,10 +41,11 @@
             };
             return obj;
         }
-        function getDateRef(month, year) {
-            month = month >= 10 ? month : "0" + month;
-            return month + "/" + year;
-        }
+        // function getDateRef(month, year) {
+        //     month += 1;
+        //     month = month >= 10 ? month : "0" + month;
+        //     return month + "/" + year;
+        // }
         function getFilters() {
             var filters = [];
             var filter = {};
@@ -89,11 +98,18 @@
             // vm.items = filteredItens;
 
         }
+
         function onGetSuccess(result) {
             LoadingPopup.hide();
             console.log('result.success', result.success);
             var itens = result.success.map(function (item) {
-                if(item.month) item.date = getDateRef(item.month, item.year);
+                item.date = getDateRef();
+                // if (item.month) item.date = getDateRef(item.month, item.year);
+
+                // else {
+
+                //     vm.dateItems = str;
+                // }
                 return item;
             });
 
@@ -113,15 +129,21 @@
         function showReportProducts() {
             vm.showBoxClosing = false;
             var obj = getObjectFilter();
+            LoadingPopup.show();
             ProductService.report(obj).then(function (result) {
-               if(result.error) {
-                   toastr.error('Erro ao carregar relatorio de produtos');
-                  return;
-               }
-               console.log('result', result);
-                vm.products = result.success;
+                if (result.error) {
+                    toastr.error('Erro ao carregar relatorio de produtos');
+                    return;
+                }
+                console.log('result', result);
+
+                vm.products = result.success.map(function (e) {
+                    e.date = getDateRef();
+                    return e;
+                });
+                LoadingPopup.hide();
             });
-            
+
         }
         function back() {
             vm.showBoxClosing = true;

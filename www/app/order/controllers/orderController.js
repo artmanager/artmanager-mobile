@@ -155,18 +155,14 @@
             vm.pending = false;
             vm.order.products.forEach(function (e) {
                 vm.order.total_value += parseFloat(e.quantity) * parseFloat(e.sale_cost);
-
             });
 
-            vm.order.products.forEach(function (value) {
-                var pendingGet = typeof (value.sendDate) !== "undefined";
-                console.log('pendingGet', pendingGet);
-                console.log('value.sendDate', value.sendDate);
-                vm.pendingToPayment = !pendingGet;
-                if (pendingGet) return;
-
+            var pending = vm.order.products.filter(function (value) {
+                return typeof (value.sendDate) !== "undefined";
             });
-            
+            if (pending.length > 0) return;
+            vm.pendingToPayment = true;
+
         }
         function resetFields(form) {
             if (form) {
@@ -182,8 +178,11 @@
         function addToOrder(form) {
             if (!vm.selectedProduct) return;
             console.log('vm.selectedProduct', vm.selectedProduct);
+            if (vm.order.products.indexOf(vm.selectedProduct) !== -1) {
+                alert('O produto ja está na lista !');
+                return;
+            }
             vm.order.products.push(vm.selectedProduct);
-
             resetFields(form);
         }
 

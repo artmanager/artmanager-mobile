@@ -1,47 +1,67 @@
 <ion-view name="products-view">
-    <ion-content>
-
-        <md-content>
+    <ion-content overflow-scroll="true">
+        <md-content flex>
 
             <filter-grid filters="vm.filters"></filter-grid>
-            <md-content>
+            <md-content flex>
                 <div class="row">
-                    <md-datepicker  ng-model="vm.initialDate" md-placeholder="Inicio" class="col"></md-datepicker>
-                    
-                    <md-datepicker  ng-model="vm.finalDate" md-placeholder="Fim" class="col"></md-datepicker>
-                    <md-button  class="md-primary col col-10" ng-click="vm.search()"><i class="fa fa-search" aria-hidden="true"></i></md-button>
+                    <md-datepicker ng-model="vm.initialDate" md-placeholder="Inicio" class="col"></md-datepicker>
+
+                    <md-datepicker ng-model="vm.finalDate" md-placeholder="Fim" class="col"></md-datepicker>
+                    <md-button class="md-primary col col-10" ng-click="vm.search()"><i class="fa fa-search" aria-hidden="true"></i></md-button>
                 </div>
-                <ion-list ng-if="vm.items.length > 0">
+                <md-list ng-if="vm.items.length > 0" flex>
+                    <ion-scroll>
+                        <md-card>
+                             <md-toolbar class="item-list card-primary">
+                                <div class="md-toolbar-tools" >
+                                    <div class="row">
+                                        <h3 class="md-headline col" > Referente a: {{vm.dateSearch === '' ? "Desde o Inicio" : vm.dateSearch}} </h3>
+                                        <!--<h3 class="md-headline col"> Data: {{vm.dateSearch}} </h3>-->
+                                    </div>
 
-                    <md-card ng-repeat="item in vm.items| orderBy:order:ascending">
-                        <md-toolbar class="item-list card-primary">
-                            <div class="md-toolbar-tools">
-                                <div class="row">
-                                    <h3 class="md-headline col">  {{item.name | uppercase}}</h3>
                                 </div>
+                            </md-toolbar>
+                            <md-card-content layout-align="space-between">
 
-                            </div>
-                        </md-toolbar>
+                                <md-card ng-repeat="item in vm.items| orderBy:order:ascending">
+                                    <md-toolbar class="item-list card-primary">
+                                        <div class="md-toolbar-tools">
+                                            <div class="row">
+                                                <h3 class="md-headline col"> {{item.name | uppercase}}</h3>
+                                            </div>
 
-                        <md-card-content layout-align="space-between">
+                                        </div>
+                                    </md-toolbar>
 
-                            <div layout="row">
-                                <h3 flex class="md-headline">Quantidade:</h3>
-                                <h6 flex class="md-headline">{{item.quantity}} unidades</h6>
-                            </div>
-                            <div layout="row">
-                                <h3 flex class="md-headline">Preço Venda:</h6>
-                                <h6 flex class="md-headline">R$ {{item.sale_price | number: 2}}</h6>
-                            </div>
-                            <div layout="row">
-                                <h3 flex class="md-headline">Preço Custo:</h6>
-                                <h6 flex class="md-headline">R$ {{item.sale_cost | number: 2}}</h6>
-                            </div>
-                        </md-card-content>
-                    </md-card>
-                </ion-list>
+                                    <md-card-content layout-align="space-between">
+
+                                        <div layout="row">
+                                            <h3 flex class="md-headline">Quantidade:</h3>
+                                            <h3 flex class="md-headline">{{item.quantity}} unidades</h3>
+                                        </div>
+                                        <div layout="row">
+                                            <h3 flex class="md-headline">Preço Venda:</h3>
+                                            <h3 flex class="md-headline">R$ {{item.sale_price | number: 2}}</h3>
+                                        </div>
+                                        <div layout="row">
+                                            <h3 flex class="md-headline">Preço Custo:</h3>
+                                            <h3 flex class="md-headline">R$ {{item.sale_cost | number: 2}}</h3>
+                                        </div>
+                                        <div layout="row">
+                                            <h3 flex class="md-headline">Mês/Ano:</h3>
+                                            <h3 flex class="md-headline">{{item.date}}</h3>
+                                        </div>
+                                    </md-card-content>
+                                </md-card>
+                            </md-card-content>
+                        </md-card>
+                    </ion-scroll>
+
+                </md-list>
             </md-content>
         </md-content>
+        </ion-scroll>
     </ion-content>
 
 

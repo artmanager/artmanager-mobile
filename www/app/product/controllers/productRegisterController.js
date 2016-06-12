@@ -71,15 +71,15 @@
 
                 vm.suppliers = suppliersMap;
                 var providerName = localStorage.providerName;
-                if(!providerName) return;
-                
+                if (!providerName) return;
+
                 selectedItemChangeSupplier(null, providerName);
 
             });
 
         }
 
-        function loadCategories() {
+        function loadCategories(name) {
             LoadingPopup.show();
             ProductService.categories().then(function (result) {
                 LoadingPopup.hide();
@@ -99,6 +99,14 @@
                 });
                 vm.categories = [];
                 vm.categories = categoriesMap;
+
+                if (!name) return;
+                var valor = categoriesMap.filter(function (item) {
+                    return item.display === name;
+                });
+                var selected = valor[0] || {};
+                vm.selectedCategory = selected;
+                vm.category = selected;
 
 
             });
@@ -139,17 +147,17 @@
             toastr.success(response.success);
             vm.product = {};
             LoadingPopup.hide();
-            
+
             localStorage.providerName = "";
             var name = localStorage.productName;
             if (!vm.productName) {
                 localStorage.productName = "";
                 vm.searchTextSupplier = "";
                 vm.querySearchCategory = "";
-                
-                return;   
+
+                return;
             }
-            localStorage.productName =  vm.productName;
+            localStorage.productName = vm.productName;
             $state.go('app.createOrder');
 
 
@@ -172,13 +180,14 @@
                 .then(onCreateCategorySuccess, onCreateCategoryFail);
         }
         function onCreateCategorySuccess(result) {
+
             LoadingPopup.hide();
             if (result.success)
                 toastr.success('Categoria cadastrada com sucesso !');
             else if (result.error)
                 toastr.error('Erro ao cadastrar categoria');
 
-            loadCategories();
+            loadCategories(vm.searchTextCategory);
         }
         function onCreateCategoryFail(result) {
             LoadingPopup.hide();
@@ -222,15 +231,14 @@
         }
 
         function selectedItemChangeSupplier(item, name) {
-            if(name) 
-            {
+            if (name) {
                 var supplier = vm.suppliers.filter(function (supplier) {
                     return supplier.display === name;
                 });
                 vm.searchTextSupplier = name;
                 item = supplier[0];
             }
-            
+
             vm.selectedSupplier = item;
             vm.supplier = item;
             $log.info('Item changed to ' + JSON.stringify(item));
