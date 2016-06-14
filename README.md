@@ -1,16 +1,20 @@
-# README #
+# artmanager-mobile
 
-> sudo npm install -g ionic cordova  
-> sudo npm install -g gulp gulp-sass 
+### Projeto com código fonte do aplicativo mobile.
 
-> sudo npm rebuild node-sass 
+> [ArtManager na PlayStore](https://play.google.com/store/apps/details?id=com.ionicframework.artmanagermobile115121)
 
-> npm install
+### Instalação do projeto
 
-testes
-> gulp tests
+* sudo npm install -g ionic cordova  
+* sudo npm install -g gulp gulp-sass 
+* sudo npm rebuild node-sass 
+* npm install
 
-rodar app
-> ionic serve
+### Testes
 
-feito isso ele abrirá no browser
+* gulp tests
+
+### Rodar app
+
+* ionic serve
